@@ -23,10 +23,22 @@ function App() {
       <h1>Hittar vi databasen?</h1>
 
       <h2>Users</h2>
-      <pre>{JSON.stringify(users, null, 2)}</pre>
+      <ul>
+        {users.map((user, index) => (
+          <li key={index}>
+            Name: {user.name}, Email: {user.email}
+          </li>
+        ))}
+      </ul>
 
       <h2>Bikes</h2>
-      <pre>{JSON.stringify(bikes, null, 2)}</pre>
+      <ul>
+        {bikes.map((bike, index) => (
+          <li key={index}>
+            Model: {bike.model}
+          </li>
+        ))}
+      </ul>
     </div>
   );
 }
