@@ -9,4 +9,4 @@ COPY . .
 
 EXPOSE 5000
 
-CMD ["npm", "start"]
+# CMD ["npm", "start"] # This is handled in docker-compose.yml, after seeding
