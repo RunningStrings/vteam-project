@@ -1,0 +1,49 @@
+services:
+    backend:
+        build:
+            context: ./backend
+            dockerfile: Dockerfile
+        ports:
+            - "5000:5000"
+        networks:
+            - app-network
+        volumes:
+            - ./backend:/app
+            - /app/node_modules # Persist node_modules inside container to avoid overwriting
+        depends_on:
+            - mongodb # Make sure the database is built
+        command: > # Run seeding script to populate the database first, then start the server
+            sh -c "node seed.js && node index.js"
+
+    frontend:
+        build:
+            context: ./frontend
+            dockerfile: Dockerfile
+        ports:
+            - "5173:5173" # Changed to Vite default port
+        networks:
+            - app-network
+        volumes:
+            - ./frontend:/app
+            - /app/node_modules # Persist node_modules inside container to avoid overwriting
+        # Uncomment the lines below if file watching is not working as expected!
+        # environment:
+        #     - CHOKIDAR_USEPOLLING=true
+        depends_on:
+            - backend # Make sure that the backend is built and running
+
+    mongodb: # Code shamelessly copied from dbwebb
+        image: mongo
+        environment:
+        - MONGO_DATA_DIR=/data/db
+        volumes:
+        - ./data/db:/data/db
+        ports:
+        - "27017:27017"
+        command: mongod --bind_ip_all
+        networks:
+        - app-network
+
+networks:
+    app-network:
+        driver: bridge
