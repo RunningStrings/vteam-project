@@ -28,7 +28,7 @@ function User() {
 
   return (
     <div className="App" style={{ marginLeft: "220px", padding: "20px" }}>
-      <h2 className="form__title">En användare</h2>
+      <h2>En användare</h2>
       <form className="form" onSubmit={handleSubmit}>
         <div className="form__group">
           <label htmlFor="id" className="form__label">

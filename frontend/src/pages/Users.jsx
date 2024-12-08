@@ -1,9 +1,21 @@
 import { useState, useEffect } from 'react';
+import { useNavigate} from 'react-router-dom';
+
+
 
 function Users() {
   const [users, setUsers] = useState([]);
   const [bikes, setBikes] = useState([]);
 
+  const navigate = useNavigate();
+
+  function handleClick() {
+    navigate('/user');
+  }
+  
+
+
+  
   useEffect(() => {
     // Fetch users from the backend API
     fetch('/users')
@@ -33,7 +45,7 @@ function Users() {
         </thead>
         <tbody>
         {users.map((user, index) => (
-            <tr key={index}>
+            <tr key={index} onClick={() => {handleClick()}}>
             <td>xxxx</td>
             <td>{user.name}</td>
             <td>555-545434</td>

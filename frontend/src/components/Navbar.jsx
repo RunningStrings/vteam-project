@@ -10,61 +10,61 @@ const Navbar = () => {
       padding: "20px"
     }}>
         <nav id="navbar">
-      <ul  class="navbar-items flexbox-col">
-        <li class="navbar-item flexbox-left">
-            <Link to="/" class="navbar-item-inner flexbox-left">
-            <div class="navbar-item-inner-icon-wrapper flexbox">
+      <ul  className="navbar-items flexbox-col">
+        <li className="navbar-item flexbox-left">
+            <Link to="/" className="navbar-item-inner flexbox-left">
+            <div className="navbar-item-inner-icon-wrapper flexbox">
                 <ion-icon name="home-outline"></ion-icon>
             </div>
-            <span class="link-text">Hem</span>
+            <span className="link-text">Hem</span>
             </Link>
         </li>
-        <li class="navbar-item flexbox-left">
-            <Link to="/bikes" class="navbar-item-inner flexbox-left">
-            <div class="navbar-item-inner-icon-wrapper flexbox">
+        <li className="navbar-item flexbox-left">
+            <Link to="/bikes" className="navbar-item-inner flexbox-left">
+            <div className="navbar-item-inner-icon-wrapper flexbox">
                 <ion-icon name="bicycle-outline"></ion-icon>
             </div>
-            <span class="link-text">Cyklar</span>
+            <span className="link-text">Cyklar</span>
             </Link>
         </li>
-        <li class="navbar-item flexbox-left">
-            <Link to="/users" class="navbar-item-inner flexbox-left">
-            <div class="navbar-item-inner-icon-wrapper flexbox">
+        <li className="navbar-item flexbox-left">
+            <Link to="/users" className="navbar-item-inner flexbox-left">
+            <div className="navbar-item-inner-icon-wrapper flexbox">
                 <ion-icon name="people-outline"></ion-icon>
             </div>
-            <span class="link-text">Användare</span>
+            <span className="link-text">Användare</span>
             </Link>
         </li>
-        <li class="navbar-item flexbox-left">
-            <Link to="/user" class="navbar-item-inner flexbox-left">
-            <div class="navbar-item-inner-icon-wrapper flexbox">
+        <li className="navbar-item flexbox-left">
+            <Link to="/user" className="navbar-item-inner flexbox-left">
+            <div className="navbar-item-inner-icon-wrapper flexbox">
                 <ion-icon name="person-outline"></ion-icon>
             </div>
-            <span class="link-text">En användare</span>
+            <span className="link-text">En användare</span>
             </Link>
         </li>
-        <li class="navbar-item flexbox-left">
-            <Link to="/maps" class="navbar-item-inner flexbox-left">
-            <div class="navbar-item-inner-icon-wrapper flexbox">
+        <li className="navbar-item flexbox-left">
+            <Link to="/maps" className="navbar-item-inner flexbox-left">
+            <div className="navbar-item-inner-icon-wrapper flexbox">
                 <ion-icon name="map-outline"></ion-icon>
             </div>
-            <span class="link-text">Kartor</span>
+            <span className="link-text">Kartor</span>
             </Link>
         </li>
-        <li class="navbar-item flexbox-left">
-            <Link to="/support" class="navbar-item-inner flexbox-left">
-            <div class="navbar-item-inner-icon-wrapper flexbox">
+        <li className="navbar-item flexbox-left">
+            <Link to="/support" className="navbar-item-inner flexbox-left">
+            <div className="navbar-item-inner-icon-wrapper flexbox">
                 <ion-icon name="chatbubbles-outline"></ion-icon>
             </div>
-            <span class="link-text">Support</span>
+            <span className="link-text">Support</span>
             </Link>
         </li>
-        <li class="navbar-item flexbox-left">
-            <Link to="/settings" class="navbar-item-inner flexbox-left">
-            <div class="navbar-item-inner-icon-wrapper flexbox">
+        <li className="navbar-item flexbox-left">
+            <Link to="/settings" className="navbar-item-inner flexbox-left">
+            <div className="navbar-item-inner-icon-wrapper flexbox">
                 <ion-icon name="settings-outline"></ion-icon>
             </div>
-            <span class="link-text">Inställningar</span>
+            <span className="link-text">Inställningar</span>
             </Link>
         </li>
       </ul>

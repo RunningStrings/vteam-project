@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
 import Bikes from "./pages/Bikes";

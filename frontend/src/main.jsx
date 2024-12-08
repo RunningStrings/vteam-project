@@ -7,6 +7,7 @@ import './form.css'
 //import './App.css'
 import './navstyle.css'
 import App from './App.jsx'
+import "leaflet/dist/leaflet.css"; // <- Leaflet styles
 
 createRoot(document.getElementById('root')).render(
   <React.StrictMode>
