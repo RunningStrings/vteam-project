@@ -38,10 +38,10 @@ services:
             context: ./mobileapp-customer
             dockerfile: Dockerfile
         ports:
-            - "19006:19006"
-            - "19001:19001"
-            - "19002:19002"
-            - "8081:8081"
+            - "19006:19006"  # Default port for Expo's React Native packager
+            - "19001:19001"  # Debugging port
+            - "19002:19002"  # Debugging port
+            - "8081:8081"  # Expose Metro Bundler
         networks:
             - app-network
         environment:
