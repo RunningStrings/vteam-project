@@ -2,6 +2,7 @@
   "expo": {
     "name": "mobileapp-customer",
     "slug": "mobileapp-customer",
+    "scheme": "mobileapp-customer",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
