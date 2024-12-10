@@ -1,4 +1,4 @@
-FROM node:20
+FROM node:18-alpine
 
 # Environment variables for development
 ENV NODE_ENV=development
