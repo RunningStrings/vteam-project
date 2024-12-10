@@ -33,6 +33,27 @@ services:
         depends_on:
             - backend # Make sure that the backend is built and running
 
+    mobileapp-customer:
+        build:
+            context: ./mobileapp-customer
+            dockerfile: Dockerfile
+        ports:
+            - "19006:19006"
+            - "19001:19001"
+            - "19002:19002"
+            - "8081:8081"
+        networks:
+            - app-network
+        environment:
+            # Enter your own local ip-address below, find it in the terminal with 'hostname -I'
+            REACT_NATIVE_PACKAGER_HOSTNAME: "192.168.50.83"
+            REACT_APP_API_URL: "http://backend:5000"
+        volumes:
+            - ./mobileapp-customer:/app
+            - /app/node_modules
+        depends_on:
+            - backend
+
     mongodb: # Need to create.env
         image: mongo
         environment:
