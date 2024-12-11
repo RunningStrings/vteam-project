@@ -3,7 +3,7 @@ import { Image, View, Text, StyleSheet, ScrollView } from 'react-native';
 import ParallaxScrollView from '@/components/ParallaxScrollView';
 import { IP } from '@env';
 
-export default function TabFourScreen() {
+export default function TabFiveScreen() {
     const [users, setUsers] = useState([]);
     const [bikes, setBikes] = useState([]);
 
