@@ -1,9 +1,21 @@
 import { useState, useEffect } from 'react';
+import { useNavigate} from 'react-router-dom';
 
-function Bikes() {
+
+
+function Users() {
   const [users, setUsers] = useState([]);
   const [bikes, setBikes] = useState([]);
 
+  const navigate = useNavigate();
+
+  function handleClick() {
+    navigate('/user');
+  }
+  
+
+
+  
   useEffect(() => {
     // Fetch users from the backend API
     fetch('/users')
@@ -20,56 +32,36 @@ function Bikes() {
 
   return (
     <div className="App" style={{ marginLeft: "220px", padding: "20px" }}>
-      <h2>Elsparkcyklar</h2>
+      <h2>Stationer</h2>
       <table>
         <thead>
           <tr>
             <th>Id</th>
-            <th>Modell</th>
+            <th>Namn</th>
             <th>Stad</th>
             <th>Position</th>
-            <th>Batteri</th>
-            <th>Status</th>
-            <th>Fart</th>
           </tr>
         </thead>
         <tbody>
-        {bikes.map((bikes, index) => (
-            <tr key={index}>
-            <td>{index}</td>
-            <td>{bikes.model}</td>
+            <tr>
+            <td>xxxx</td>
+            <td>Björkgatan</td>
             <td>Stockholm</td>
-            <td>N59.5645E017.5625</td>
-            <td>80%</td>
-            <td>Laddning</td>
-            <td>0</td>
+            <td>58.2052145,18.00112</td>
             </tr>
-          ))}
         </tbody>
       </table>
     </div>
   );
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-/*const Bikes = () => {
+/*const Users = () => {
     return (
       <div style={{ marginLeft: "220px", padding: "20px" }}>
-        <h1>Cykelsida</h1>
+        <h1>Användare</h1>
         <p>Welcome to the home page.</p>
       </div>
     );
   };*/
   
-  export default Bikes;
+  export default Users;

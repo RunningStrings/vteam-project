@@ -6,7 +6,7 @@ const initialFormValues = {
   firstname: "",
   lastname: "",
   email: "",
-  adress: "",
+  password: "",
   saldo: "",
   phone: "",
   admin: "no"
@@ -35,7 +35,7 @@ function User() {
             Id
           </label>
           <input 
-          type="id" 
+          type="number" 
           id="id" 
           name="id" 
           className="form__input" 
@@ -49,7 +49,7 @@ function User() {
             Förnamn
           </label>
           <input 
-          type="firstname" 
+          type="text" 
           id="firstname" 
           name="firstname" 
           className="form__input" 
@@ -63,7 +63,7 @@ function User() {
             Efternamn
           </label>
           <input 
-          type="lastname" 
+          type="text" 
           id="lastname" 
           name="lastname" 
           className="form__input" 
@@ -86,47 +86,32 @@ function User() {
           }
            />
         </div>
-
-
-        <div className="form__group">
-          <label htmlFor="address" className="form__label">
-            Adress
-          </label>
-          <input
-            type="text"
-            id="address"
-            name="address"
-            className="form__input"
-            onChange={(e) =>
-              setFormData({ ...formData, address: e.target.value})
-            }
-          />
-        </div>
-        <div className="form__group">
-          <label htmlFor="saldo" className="form__label">
-            Saldo
-          </label>
-          <input
-            type="saldo"
-            id="saldo"
-            name="saldo"
-            className="form__input"
-            onChange={(e) =>
-              setFormData({ ...formData, saldo: e.target.value})
-            }
-          />
-        </div>
         <div className="form__group">
           <label htmlFor="phone" className="form__label">
             Telefon
           </label>
           <input
-            type="phone"
+            type="tel"
             id="phone"
             name="phone"
             className="form__input"
             onChange={(e) =>
               setFormData({ ...formData, phone: e.target.value})
+            }
+          />
+        </div>
+
+        <div className="form__group">
+          <label htmlFor="saldo" className="form__label">
+            Saldo
+          </label>
+          <input
+            type="number"
+            id="saldo"
+            name="saldo"
+            className="form__input"
+            onChange={(e) =>
+              setFormData({ ...formData, saldo: e.target.value})
             }
           />
         </div>
