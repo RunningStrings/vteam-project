@@ -46,7 +46,7 @@ services:
             - app-network
         environment:
             # Enter your own local ip-address below, find it in the terminal with 'hostname -I'
-            REACT_NATIVE_PACKAGER_HOSTNAME: "192.168.50.83"
+            REACT_NATIVE_PACKAGER_HOSTNAME: "${IP}"
             REACT_APP_API_URL: "http://backend:5000"
         volumes:
             - ./mobileapp-customer:/app
