@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Image, View, Text, StyleSheet, ScrollView } from 'react-native';
 import ParallaxScrollView from '@/components/ParallaxScrollView';
+import { IP } from '@env';
 
 export default function TabFourScreen() {
     const [users, setUsers] = useState([]);
@@ -8,13 +9,13 @@ export default function TabFourScreen() {
 
     useEffect(() => {
         // Fetch users from the backend API
-        fetch('http://192.168.50.83:5000/users')
+        fetch(`http://${IP}:5000/users`)
             .then(response => response.json())
             .then(data => setUsers(data))
             .catch(error => console.error('Error fetching users:', error));
 
         // Fetch bikes from the backend API
-        fetch('http://192.168.50.83:5000/bikes')
+        fetch(`http://${IP}:5000/bikes`)
             .then(response => response.json())
             .then(data => setBikes(data))
             .catch(error => console.error('Error fetching bikes:', error));
