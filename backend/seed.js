@@ -57,14 +57,60 @@ const seedData = async () => {
         // Check if the collection has data
         const citiesCount = await cities.countDocuments();
         // If the collection is empty, insert data
-        if (usersCount === 0) {
-            await users.insertMany(citiesData);
+        if (citiesCount === 0) {
+            await cities.insertMany(citiesData);
             console.log('Inserted cities:', cities.insertedIds);
         } else {
             console.log('Cities already has data, skipping seed');
         }
 
+        // Seed bikes
+        const bikes = db.collection('bikes');
+        // Check if the collection has data
+        const bikesCount = await bikes.countDocuments();
+        // If the collection is empty, insert data
+        if (bikesCount === 0) {
+            await bikes.insertMany(bikesData);
+            console.log('Inserted bikes:', bikes.insertedIds);
+        } else {
+            console.log('Bikes already has data, skipping seed');
+        }
 
+        // Seed charging stations
+        const chargingStations = db.collection('charging_stations');
+        // Check if the collection has data
+        const chargingStationsCount = await chargingStations.countDocuments();
+        // If the collection is empty, insert data
+        if (chargingStationsCount === 0) {
+            await chargingStations.insertMany(chargingStationsData);
+            console.log('Inserted charging stations:', chargingStations.insertedIds);
+        } else {
+            console.log('Charging stations already has data, skipping seed');
+        }
+
+        // Seed parking zones
+        const parkingZones = db.collection('parking_zones');
+        // Check if the collection has data
+        const parkingZonesCount = await parkingZones.countDocuments();
+        // If the collection is empty, insert data
+        if (parkingZonesCount === 0) {
+            await parkingZones.insertMany(parkingZonesData);
+            console.log('Inserted parkingZonesData:', parkingZones.insertedIds);
+        } else {
+            console.log('Parking zones already has data, skipping seed');
+        }
+
+        // Seed users
+        const users = db.collection('users');
+        // Check if the collection has data
+        const usersCount = await users.countDocuments();
+        // If the collection is empty, insert data
+        if (usersCount === 0) {
+            await users.insertMany(usersData);
+            console.log('Inserted parkingZonesData:', users.insertedIds);
+        } else {
+            console.log('Parking zones already has data, skipping seed');
+        }
 
         console.log('Database seeded!');
     } catch (error) {
