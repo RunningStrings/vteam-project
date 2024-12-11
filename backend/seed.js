@@ -1,8 +1,12 @@
+import * as dotenv from 'dotenv';
+dotenv.config();
+
 import { MongoClient } from "mongodb";
 
 // A script to populate the database
 const seedData = async () => {
-    const uri = 'mongodb://mongodb:27017';
+    // const uri = 'mongodb://mongodb:27017';
+    const uri = process.env.MONGO_URI;
     const client = new MongoClient(uri);
 
     try {
@@ -24,7 +28,6 @@ const seedData = async () => {
         } else {
             console.log('Users already has data, skipping seed');
         }
-        
 
         // Seed bikes
         const bikes = db.collection('bikes');
