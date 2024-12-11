@@ -8,13 +8,13 @@ export default function TabFourScreen() {
 
     useEffect(() => {
         // Fetch users from the backend API
-        fetch('http://192.168.50.83:5000/users')  // Replace with correct URL for React Native
+        fetch('http://192.168.50.83:5000/users')
             .then(response => response.json())
             .then(data => setUsers(data))
             .catch(error => console.error('Error fetching users:', error));
 
         // Fetch bikes from the backend API
-        fetch('http://192.168.50.83:5000/bikes')  // Replace with correct URL for React Native
+        fetch('http://192.168.50.83:5000/bikes')
             .then(response => response.json())
             .then(data => setBikes(data))
             .catch(error => console.error('Error fetching bikes:', error));
