@@ -52,10 +52,8 @@ export default function ShowMap() {
                 style={styles.map}
                 region={region}  // Use region to center the map on the user's location
             >
-                {/* Marker for the current user's location */}
                 <Marker coordinate={region} title="Du är här" description="Din position" />
 
-                {/* Markers for the hardcoded locations */}
                 {locations.map(location => (
                     <Marker
                         key={location.id}
