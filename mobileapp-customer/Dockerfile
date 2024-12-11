@@ -18,4 +18,4 @@ COPY . .
 # - 8081: Metro Bundler, used for React Native bundling
 EXPOSE 19006 19001 19002 8081
 
-CMD ["npm", "start"]
+CMD ["npx", "expo", "start", "--", "--tunnel"]
