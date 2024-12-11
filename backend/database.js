@@ -5,9 +5,9 @@ import { MongoClient, ServerApiVersion } from 'mongodb';
 
 const database = {
     getDb: async function getDb () {
-        // Lägg eventuellt databasnamnet i .env fil?
-        // let dsn = `mongodb://mongodb:27017/bike_database`;
-        let dsn = process.env.MONGO_DSN;
+        let dsn = `mongodb://mongodb:27017/bike_database`;
+        // Need to fix docker compose to be able to use .env
+        // let dsn = process.env.MONGO_DSN;
 
         const client = new MongoClient(dsn, {
             serverApi: {
@@ -32,9 +32,7 @@ const database = {
             collectionBikes: collectionBikes,
             collectionChargingStations: collectionChargingStations,
             collectionParkingZones: collectionParkingZones,
-            collectionUsers: collectionUsers,
-            collectionTrips: collectionTrips,
-            collectionGeoZones: collectionGeoZones
+            collectionUsers: collectionUsers
         };
     }
 };
