@@ -5,8 +5,8 @@ import { MongoClient, ServerApiVersion } from 'mongodb';
 
 const database = {
     getDb: async function getDb () {
-        // Lägg eventuellt databasnamnet i .env fil?
         let dsn = `mongodb://mongodb:27017/bike_database`;
+        // let dsn = process.env.MONGO_DSN;
 
         const client = new MongoClient(dsn, {
             serverApi: {
@@ -20,12 +20,18 @@ const database = {
 
         const db = client.db();
 
-        let collectionUsers = await db.collection("users");
+        let collectionCities = await db.collection("cities");
         let collectionBikes = await db.collection("bikes");
+        let collectionChargingStations = await db.collection("charging_stations");
+        let collectionParkingZones = await db.collection("parking_zones");
+        let collectionUsers = await db.collection("users");
 
         return {
-            collectionUsers: collectionUsers,
+            collectionCities: collectionCities,
             collectionBikes: collectionBikes,
+            collectionChargingStations: collectionChargingStations,
+            collectionParkingZones: collectionParkingZones,
+            collectionUsers: collectionUsers
         };
     }
 };
