@@ -5,8 +5,8 @@ import { MongoClient } from "mongodb";
 
 // A script to populate the database
 const seedData = async () => {
-    // const uri = 'mongodb://mongodb:27017';
-    const uri = process.env.MONGO_URI;
+    const uri = 'mongodb://mongodb:27017';
+    // const uri = process.env.MONGO_URI;
     const client = new MongoClient(uri);
 
     const citiesData = [
