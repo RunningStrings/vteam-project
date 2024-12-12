@@ -4,11 +4,19 @@
     "main": "index.js",
     "type": "module",
     "scripts": {
+        "devStart": "nodemon index.js",
+        "eslint": "npx eslint *.js .",
+        "eslint:fix": "npx eslint *.js . --fix",
         "start": "node index.js"
     },
     "dependencies": {
         "dotenv": "^16.4.7",
         "express": "^4.17.1",
         "mongodb": "^6.11.0"
+    },
+    "devDependencies": {
+        "@eslint/js": "^9.16.0",
+        "eslint": "^9.16.0",
+        "nodemon": "^3.1.7"
     }
 }
