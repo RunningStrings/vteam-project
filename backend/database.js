@@ -5,8 +5,8 @@ import { MongoClient, ServerApiVersion } from 'mongodb';
 
 const database = {
     getDb: async function getDb () {
-        // let dsn = `mongodb://mongodb:27017/bike_database`;
-        let dsn = process.env.MONGO_DSN;
+        let dsn = `mongodb://mongodb:27017/bike_database`;
+        // let dsn = process.env.MONGO_DSN;
 
         const client = new MongoClient(dsn, {
             serverApi: {
