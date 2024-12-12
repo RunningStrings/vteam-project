@@ -45,7 +45,7 @@ services:
         networks:
             - app-network
         environment:
-            # Enter your own local ip-address below, find it in the terminal with 'hostname -I'
+            # Add your local IPv4-address in an .env file, defined as 'IP', find it in the terminal with 'hostname -I'
             REACT_NATIVE_PACKAGER_HOSTNAME: "${IP}"
             REACT_APP_API_URL: "http://backend:5000"
         volumes:
