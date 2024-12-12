@@ -37,8 +37,8 @@ services:
         image: mongo
         environment:
             - MONGO_DATA_DIR=/data/db
-            - MONGO_DSN="${MONGO_DSN}"
-            - MONGO_URI="${MONGO_URI}"
+            #- MONGO_DSN=${MONGO_DSN}
+            #- MONGO_URI=${MONGO_URI}
         volumes:
             - ./data/db:/data/db
         ports:
