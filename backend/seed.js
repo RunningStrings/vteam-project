@@ -2,6 +2,8 @@ import * as dotenv from 'dotenv';
 dotenv.config();
 
 import { MongoClient } from "mongodb";
+// Import to read files
+import fs from "fs/promises";
 
 // A script to populate the database
 const seedData = async () => {
@@ -9,18 +11,18 @@ const seedData = async () => {
     // const uri = process.env.MONGO_URI;
     const client = new MongoClient(uri);
 
-    const citiesData = [
-        { name: 'Stockholm', charging_stations: [], parking_zones: [], permitted_zones: [] },
-        { name: 'Linköping', charging_stations: [], parking_zones: [], permitted_zones: [] },
-        { name: 'Malmö', charging_stations: [], parking_zones: [], permitted_zones: [] }
-      ];
+    try {
+      // Load JSON file
+      const citiesCoordinatesJson = await fs.readFile('./cities.json', 'utf-8');
+      const citiesCoordinates = JSON.parse(citiesCoordinatesJson);
 
+      // Define collections
       const bikesData = [
         { city_id: 'Stockholm', location: { type: 'Point', coordinates: [18.053755700927717,59.33790633117423] }, status: 'charging', battery_level: 20, speed: 0 },
         { city_id: 'Stockholm', location: { type: 'Point', coordinates: [18.07143682275389,59.33108277676162] }, status: 'in_use', battery_level: 30, speed: 12 },
         { city_id: 'Linköping', location: { type: 'Point', coordinates: [15.618860374560555,58.40981912019322] }, status: 'available', battery_level: 30, speed: 12 },
         { city_id: 'Malmö', location: { type: 'Point', coordinates: [13.005134779931641,55.59986846956199] }, status: 'in_use', battery_level: 30, speed: 12 },
-        { city_id: 'Malmö', location: { type: 'Point', coordinates: [13.01388951015625,55.59677094190093,] }, status: 'maintenance', battery_level: 50, speed: 0 }
+        { city_id: 'Malmö', location: { type: 'Point', coordinates: [13.01388951015625,55.59677094190093] }, status: 'maintenance', battery_level: 50, speed: 0 }
       ];
 
       const chargingStationsData = [
@@ -46,26 +48,34 @@ const seedData = async () => {
         { firstname: 'Steven', lastname: 'Robinson', email:'steven@robinson.mail.se', password_hash: '', balance: 500, role: 'customer' },
         { firstname: 'Fernando', lastname: 'Crowther', email:'fernando@crowther.mail.se', password_hash: '', role: 'city_manager' },
       ];
-    
 
-    try {
-        await client.connect();
-        const db = client.db('bike_database');
+      await client.connect();
+      const db = client.db('bike_database');
 
-        // Function to seed collections
-        const seedCollection = async (collectionName, data) => {
-            const collection = db.collection(collectionName);
-            const count = await collection.countDocuments();
-            if (count === 0) {
-                await collection.insertMany(data);
-                console.log(`Inserted ${collectionName}:`, collection.insertedIds);
-            } else {
-                console.log(`${collectionName} already has data, skipping seed`);
-            }
-        };
+      // Function to seed collections
+      const seedCollection = async (collectionName, data) => {
+          const collection = db.collection(collectionName);
+          const count = await collection.countDocuments();
+          if (count === 0) {
+              await collection.insertMany(data);
+              console.log(`Inserted ${collectionName}:`, collection.insertedIds);
+          } else {
+              console.log(`${collectionName} already has data, skipping seed`);
+          }
+      };
 
-        // Seed all the collections
-        await seedCollection('cities', citiesData);
+      // Combine hardcoded cities and cities from JSON
+      const combinedCities = [
+        ...[
+            { name: 'Stockholm', charging_stations: [], parking_zones: [], permitted_zones: [] },
+            { name: 'Linköping', charging_stations: [], parking_zones: [], permitted_zones: [] },
+            { name: 'Malmö', charging_stations: [], parking_zones: [], permitted_zones: [] }
+        ],
+        ...citiesCoordinates
+      ];
+
+        // Seed rest of collections
+        await seedCollection('cities', combinedCities);
         await seedCollection('bikes', bikesData);
         await seedCollection('charging_stations', chargingStationsData);
         await seedCollection('parking_zones', parkingZonesData);
