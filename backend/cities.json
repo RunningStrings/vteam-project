@@ -1,11 +1,19 @@
-[
+{
+  "type": "FeatureCollection",
+  "features": [
     {
-      "kod": "0580",
-      "postnummer": "58181",
-      "telefon": "013-206000",
-      "epost": "kommun@linkoping.se",
-      "namn": "Linköpings kommun",
+      "type": "Feature",
+      "properties": {
+        "code": "0580",
+        "postalCode": "58181",
+        "phone": "013-206000",
+        "email": "kommun@linkoping.se",
+        "name": "Linkoping Municipality",
+        "url": "http://www.linkoping.se/",
+        "city": "LINKOPING"
+      },
       "geometry": {
+        "type": "Polygon",
         "coordinates": [
           [
             [15.62323116538, 58.61302989803],
@@ -147,19 +155,22 @@
             [15.64016611149, 58.60370942884],
             [15.62323116538, 58.61302989803]
           ]
-        ],
-        "type": "Polygon"
-      },
-      "url": "http://www.linkoping.se/",
-      "postort": "LINKÖPING"
+        ]
+      }
     },
     {
-      "kod": "1280",
-      "postnummer": "20580",
-      "telefon": "040-341000",
-      "epost": "kommunstyrelsen@malmo.se",
-      "namn": "Malmö stad",
+      "type": "Feature",
+      "properties": {
+        "code": "1280",
+        "postalCode": "20580",
+        "phone": "040-341000",
+        "email": "kommunstyrelsen@malmo.se",
+        "name": "Malmo City",
+        "url": "http://www.malmo.se/",
+        "city": "MALMO"
+      },
       "geometry": {
+        "type": "Polygon",
         "coordinates": [
           [
             [13.10839327977, 55.52452995033],
@@ -590,10 +601,8 @@
             [18.10667135122, 59.36753053233],
             [18.10355596019, 59.37074584695]
           ]
-        ],
-        "type": "Polygon"
-      },
-      "url": "http://www.stockholm.se/",
-      "postort": "STOCKHOLM"
+        ]
+      }
     }
   ]
+}
