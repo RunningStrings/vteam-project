@@ -1,7 +1,6 @@
 /**
  * General middleware for logging request info.
  */
-"use strict";
 
 /**
  * Log incoming requests to console to see who accesses the server
@@ -18,8 +17,4 @@ function logIncomingToConsole(req, res, next) {
     next();
 }
 
-
-
-module.exports = {
-    logIncomingToConsole: logIncomingToConsole
-};
+export default logIncomingToConsole;
