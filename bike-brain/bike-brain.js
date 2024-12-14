@@ -10,8 +10,8 @@ class BikeBrain {
         this.status = 'available'; // available, in-use, charging, service
         this.batteryLevel = 100;
         this.speed = 0;
-        this.tripLog = []; // Store trip logs for sending to backend
-        this.tripCurrent = null; // Store current trip
+        this.tripLog = [];
+        this.tripCurrent = null;
 
         this.socket = io('http://localhost:5000');
 
@@ -144,7 +144,7 @@ class BikeBrain {
         }
     }
 
-    // Get bike data in a structured format
+    // Get bike data
     getBikeData() {
         return {
             city_id: this.cityId,
