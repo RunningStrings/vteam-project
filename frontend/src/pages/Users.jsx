@@ -6,6 +6,7 @@ import { useNavigate} from 'react-router-dom';
 function Users() {
   const [users, setUsers] = useState([]);
   const [bikes, setBikes] = useState([]);
+  const [cities, setCities] = useState([]);
 
   const navigate = useNavigate();
 
@@ -28,7 +29,14 @@ function Users() {
       .then(response => response.json())
       .then(data => setBikes(data))
       .catch(error => console.error('Error fetching bikes:', error));
-  }, []);
+
+    // Fetch cities from the backend API
+    fetch('/cities')
+      .then(response => response.json())
+      .then(data => setCities(data))
+      .catch(error => console.error('Error fetching cities:', error));
+
+    }, []);
 
   return (
     <div className="App" style={{ marginLeft: "220px", padding: "20px" }}>
@@ -36,25 +44,36 @@ function Users() {
       <table>
         <thead>
           <tr>
-            <th>Kundnummer</th>
-            <th>Namn</th>
+            <th>Förnamn</th>
+            <th>Efternamn</th>
             <th>Telefonnummer</th>
             <th>E-post</th>
             <th>Saldo</th>
+            <th>Roll</th>
           </tr>
         </thead>
         <tbody>
         {users.map((user, index) => (
             <tr key={index} onClick={() => {handleClick()}}>
-            <td>xxxx</td>
-            <td>{user.name}</td>
+            <td>{user.firstname}</td>
+            <td>{user.lastname}</td>
             <td>555-545434</td>
             <td>{user.email}</td>
-            <td>542 kr</td>
+            <td>{user.balance}</td>
+            <td>{user.role}</td>
             </tr>
           ))}
         </tbody>
       </table>
+
+      {cities.map((city, index) => (
+            <div key={index}>{city.name}</div>
+          ))}
+
+
+
+
+
     </div>
   );
 }

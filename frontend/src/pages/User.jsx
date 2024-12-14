@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import React from "react";
 
 const initialFormValues = {
+  
   id: "",
   firstname: "",
   lastname: "",
@@ -10,6 +11,7 @@ const initialFormValues = {
   saldo: "",
   phone: "",
   admin: "no"
+
 }
 
 function User() {
@@ -30,6 +32,7 @@ function User() {
     <div className="App" style={{ marginLeft: "220px", padding: "20px" }}>
       <h2>En användare</h2>
       <form className="form" onSubmit={handleSubmit}>
+      
         <div className="form__group">
           <label htmlFor="id" className="form__label">
             Id

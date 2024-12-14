@@ -25,7 +25,6 @@ function Bikes() {
         <thead>
           <tr>
             <th>Id</th>
-            <th>Modell</th>
             <th>Stad</th>
             <th>Position</th>
             <th>Batteri</th>
@@ -37,12 +36,11 @@ function Bikes() {
         {bikes.map((bikes, index) => (
             <tr key={index}>
             <td>{index}</td>
-            <td>{bikes.model}</td>
-            <td>Stockholm</td>
-            <td>N59.5645E017.5625</td>
-            <td>80%</td>
-            <td>Laddning</td>
-            <td>0</td>
+            <td>{bikes.city_id}</td>
+            <td>{bikes.location.coordinates}</td>
+            <td>{bikes.battery_level}</td>
+            <td>{bikes.status}</td>
+            <td>{bikes.speed}</td>
             </tr>
           ))}
         </tbody>
