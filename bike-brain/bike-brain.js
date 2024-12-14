@@ -2,7 +2,18 @@
 
 import io from 'socket.io-client'
 
+/**
+ * Represents an electric bike, tracking its state, location, and trips,
+ * and handling communication with a server via socket.io.
+ */
 class BikeBrain {
+    /**
+     * Create a new BikeBrain instance.
+     * @param {string} id - The bike ID.
+     * @param {string} cityId - The city ID.
+     * @param {number} lat - The bike's starting latitude.
+     * @param {number} lon - The bike's starting longitude.
+     */
     constructor(id, cityId, lat, lon) {
         this.id = id;
         this.cityId = cityId;
@@ -33,7 +44,11 @@ class BikeBrain {
         });
     }
     
-    // Send a message with data to the server
+    /**
+     * Send a message with data to the server.
+     * @param {string} event - The event name.
+     * @param {Object} data - The data to send.
+     */
     sendMessage(event, data) {
         this.socket.emit(event, {
             bikeId: this.id,
@@ -41,13 +56,22 @@ class BikeBrain {
         });
     }
 
-    updatePosition(lat, lon) {
+    /**
+     * Updates the bike's location and sends it to the server.
+     * @param {number} lat - The latitude of the bike's new location.
+     * @param {number} lon - The longitude of the bike's new location.
+     */
+    updateLocation(lat, lon) {
         this.location.coordinates = [lat, lon];
-        this.sendMessage('update-position', {
+        this.sendMessage('update-location', {
             location: this.location
         });
     }
 
+    /**
+     * Updates the bike's speed and sends it to the server.
+     * @param {number} speed - The current speed of the bike in km/h.
+     */
     updateSpeed(speed) {
         this.speed = speed;
         this.sendMessage('update-speed', {
@@ -55,6 +79,10 @@ class BikeBrain {
         });
     }
 
+    /**
+     * Update's the bike's battery level and sends it to the server.
+     * @param {number} batteryLevel - The current battery level of the bike (1-100).
+     */
     updateBattery(batteryLevel) {
         this.batteryLevel = batteryLevel;
         this.sendMessage('update-battery', {
@@ -62,8 +90,10 @@ class BikeBrain {
         });
     }
 
-    // Store the start time, customer ID, and position of the current 
-    // trip to tripCurrent.
+    /**
+     * Starts a new trip for a customer.
+     * @param {string} customerId - The ID of the customer renting the bike.
+     */
     startTrip(customerId) {
         const startTime = new Date();
         this.tripCurrent = {
@@ -74,9 +104,9 @@ class BikeBrain {
         console.log(`Trip started for customer ${customerId} at ${startTime}`);
     }
 
-    // Add the stop time and position of the current trip to 
-    // tripCurrent, then push tripCurrent to tripLog, emit the tripLog
-    // to the server, and finally reset tripCurrent.
+    /**
+     * Ends the current trip, logs it, sends the log to the server, and resets the trip state.
+     */
     stopTrip() {
         const stopTime = new Date();
         if (this.tripCurrent) {
@@ -91,7 +121,18 @@ class BikeBrain {
         this.tripCurrent = null;
     }
 
-    // Method for admin to control bike
+    /**
+     * Updates the bike's status based on the action selected by admin.
+     * Depending on the action, the bike's status and other properties (e.g., speed)
+     * are modified.
+     * Also triggers an indicator light via the `bikeLight` method.
+     * 
+     * @param {string} action - The action selected by admin.
+     *                          Valid actions:
+     *                          - 'stop': Sets the bike to 'available' status and resets speed to 0.
+     *                          - 'service': Puts the bike in 'in-service' mode.
+     *                          - 'charge': Sets the bike to 'charging' status.
+     */
     controlBike(action) {
         if (action === 'stop') {
             this.status = 'available';
@@ -107,7 +148,13 @@ class BikeBrain {
         this.bikeLight(this.status);
     }
 
-    // Start rental
+    /**
+     * Starts a rental by changing the bike's status to 'in-use' and initiating a trip.
+     * If the bike is not available, the rental cannot be started.
+     * 
+     * @param {string} customerId - The ID of the customer renting the bike.
+     * @returns Returns a message if the bike's status is not 'available'.
+     */
     startRental(customerId) {
         if (this.status !== 'available') {
             console.log('Bike not available for rental');
@@ -119,7 +166,12 @@ class BikeBrain {
         this.bikeLight(this.status);
     }
 
-    // Stop rental
+    /**
+     * Stops the rental by changing the bike's status to 'available' and ending the current trip.
+     * If the bike is not in use, the rental cannot be stopped.
+     * 
+     * @returns Returns a message if the bike's status is not 'in-use'.
+     */
     stopRental() {
         if (this.status !== 'in-use') {
             console.log('Bike not in use');
@@ -131,7 +183,17 @@ class BikeBrain {
         this.bikeLight(this.status);
     }
 
-    // Show a light indicating the bike's status
+    /**
+     * Displays a colored light (logs a color to the console) 
+     * indicating the bike's status.
+     * 
+     * @param {string} status - The current status of the bike.
+     *                          Each status corresponds with a color:
+     *                          - 'available' = green
+     *                          - 'charging' = red
+     *                          - 'service' = yellow
+     *                          - 'in-use' = blue
+     */
     bikeLight(status) {
         if (status === 'available') {
             console.log('green');
@@ -144,7 +206,17 @@ class BikeBrain {
         }
     }
 
-    // Get bike data
+    /**
+     * Retrieves the current data of the bike.
+     * Returns an object containing the bike's city ID, location, status, 
+     * battery level, and speed.
+     * @returns {Object}    An object containing the bike's data:
+     *                      - {number} city_id - The ID of the city the bike is located in.
+     *                      - {Object} location - The bike's location.
+     *                      - {string} status - The current status of the bike.
+     *                      - {number} battery_level - The current battery level.
+     *                      - {number} speed - The current speed of the bike
+     */
     getBikeData() {
         return {
             city_id: this.cityId,
