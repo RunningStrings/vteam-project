@@ -12,7 +12,8 @@ services:
             - /app/node_modules # Persist node_modules inside container to avoid overwriting
         depends_on:
             - mongodb # Make sure the database is built
-        command: > # Run seeding script to populate the database first, then start the server
+        command:
+            > # Run seeding script to populate the database first, then start the server
             sh -c "node seed.js && node index.js"
 
     frontend:
@@ -32,17 +33,19 @@ services:
         depends_on:
             - backend # Make sure that the backend is built and running
 
-    mongodb: # Code shamelessly copied from dbwebb
+    mongodb: # Need to create.env
         image: mongo
         environment:
-        - MONGO_DATA_DIR=/data/db
+            - MONGO_DATA_DIR=/data/db
+            #- MONGO_DSN=${MONGO_DSN}
+            #- MONGO_URI=${MONGO_URI}
         volumes:
-        - ./data/db:/data/db
+            - ./data/db:/data/db
         ports:
-        - "27017:27017"
+            - "27017:27017"
         command: mongod --bind_ip_all
         networks:
-        - app-network
+            - app-network
 
 networks:
     app-network:
