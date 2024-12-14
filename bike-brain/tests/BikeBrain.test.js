@@ -122,6 +122,21 @@ describe('BikeBrain', () => {
             const connectErrorHandler = getMockHandlerForEvent('connect_error', mockSocket);
             expect(connectErrorHandler).toBeDefined();
         });
+
+        it('should log an error message when connect_error occurs', () => {
+            const mockError = new Error('Mock connection error');
+            const connectErrorHandler = getMockHandlerForEvent('connect_error', mockSocket);
+
+            expect(connectErrorHandler).toBeDefined();
+
+            jest.spyOn(console, 'error').mockImplementation(() => {});
+
+            connectErrorHandler(mockError);
+
+            expect(console.error).toHaveBeenCalledWith(`Connection error for bike ${bike.id}:`, mockError);
+
+            console.error.mockRestore();
+        });
     });
 
     describe('Trip and Rental Functionality', () => {
@@ -265,6 +280,30 @@ describe('BikeBrain', () => {
                     type: "Point",
                 },
             });
+        });
+
+        if('should log blue when bike status is in-use', () => {
+            jest.spyOn(console, 'log').mockImplementation(() => {});
+
+            bike.bikeLight('in-use');
+
+            expect(console.log).toHaveBeenCalledWith('blue');
+
+            console.log.mockRestore();
+        })
+
+        it('should return bike data in the correct format', () => {
+            const expectedData = {
+                city_id: bike.cityId,
+                location: bike.location,
+                status: bike.status,
+                battery_level: bike.batteryLevel,
+                speed: bike.speed,
+            };
+
+            const result = bike.getBikeData();
+
+            expect(result).toEqual(expectedData);
         });
     });
 
