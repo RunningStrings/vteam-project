@@ -3,13 +3,13 @@
 import io from 'socket.io-client'
 
 class BikeBrain {
-    constructor(id, lat, lon) {
+    constructor(id, cityId, lat, lon) {
         this.id = id;
-        this.lat = lat;
-        this.lon = lon;
-        this.speed = 0;
+        this.cityId = cityId;
+        this.location = {type: 'Point', coordinates: [lat, lon] };
         this.status = 'available'; // available, in-use, charging, service
         this.batteryLevel = 100;
+        this.speed = 0;
         this.tripLog = []; // Store trip logs for sending to backend
         this.tripCurrent = null; // Store current trip
 
@@ -42,11 +42,9 @@ class BikeBrain {
     }
 
     updatePosition(lat, lon) {
-        this.lat = lat;
-        this.lon = lon;
+        this.location.coordinates = [lat, lon];
         this.sendMessage('update-position', {
-            lat: this.lat,
-            lon: this.lon
+            location: this.location
         });
     }
 
@@ -70,8 +68,7 @@ class BikeBrain {
         const startTime = new Date();
         this.tripCurrent = {
             customerId: customerId,
-            startLat: this.lat,
-            startLon: this.lon,
+            startLocation: { lat: this.location.coordinates[0], lon: this.location.coordinates[1] },
             startTime: startTime,
         };
         console.log(`Trip started for customer ${customerId} at ${startTime}`);
@@ -83,8 +80,7 @@ class BikeBrain {
     stopTrip() {
         const stopTime = new Date();
         if (this.tripCurrent) {
-            this.tripCurrent.stopLat = this.lat;
-            this.tripCurrent.stopLon = this.lon;
+            this.tripCurrent.stopLocation = { lat: this.location.coordinates[0], lon: this.location.coordinates[1] };
             this.tripCurrent.stopTime = stopTime;
             this.tripLog.push(this.tripCurrent);
             console.log(`Trip ended for customer ${this.tripCurrent.customerId} at ${stopTime}`);
