@@ -144,6 +144,17 @@ class BikeBrain {
         }
     }
 
+    // Get bike data in a structured format
+    getBikeData() {
+        return {
+            city_id: this.cityId,
+            location: this.location,
+            status: this.status,
+            battery_level: this.batteryLevel,
+            speed: this.speed
+        };
+    }
+
 }
 
 export default BikeBrain;
