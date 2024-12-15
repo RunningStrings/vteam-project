@@ -1,6 +1,13 @@
 import io from 'socket.io-client';
 import BikeBrain from '../bike-brain';
 
+const MOCK_BIKE_ID = 1;
+const MOCK_CITY_ID = 'Stockholm';
+const MOCK_LAT = 55.5965;
+const MOCK_LON = 12.9963;
+const MOCK_CUSTOMER_ID = 'customer123';
+const MOCK_DATE = new Date('2024-12-12T12:00:00Z');
+
 jest.mock('socket.io-client', () => {
     const mockOn = jest.fn();
     const mockEmit = jest.fn();
@@ -21,7 +28,7 @@ const getMockHandlerForEvent = (eventName, mockSocket) => {
     return mockSocket.on.mock.calls.find(call => call[0] === eventName)?.[1];
 };
 
-// Isolated test because of prototype usage
+// Isolated for controlBike
 describe('BikeBrain: mocked controlBike', () => {
     let bike;
     let originalControlBike;
@@ -31,7 +38,7 @@ describe('BikeBrain: mocked controlBike', () => {
         mockSocket = require('socket.io-client')();
         originalControlBike = BikeBrain.prototype.controlBike;
         BikeBrain.prototype.controlBike = jest.fn();
-        bike = new BikeBrain(1, 1, 55.5965, 12.9963);
+        bike = new BikeBrain(MOCK_BIKE_ID, MOCK_CITY_ID, MOCK_LAT, MOCK_LON);
     });
 
     afterEach(() => {
@@ -50,44 +57,13 @@ describe('BikeBrain: mocked controlBike', () => {
     });
 });
 
-// Isolated test to mock the socket properly
-describe('BikeBrain: sendMessage functionality', () => {
-    let bike;
-    let mockSocket;
-
-    beforeEach(() => {
-        mockSocket = {
-            emit: jest.fn(),
-        };
-
-        bike = new BikeBrain(1, 1, 55.5965, 12.9963);
-        bike.socket = mockSocket;
-    });
-
-    afterEach(() => {
-        jest.restoreAllMocks();
-    });
-
-    it('should send a message with the correct event and data', () => {
-        const mockEvent = 'update-speed';
-        const mockData = { speed: 15 };
-
-        bike.sendMessage(mockEvent, mockData);
-
-        expect(mockSocket.emit).toHaveBeenCalledWith(mockEvent, {
-            bikeId: bike.id,
-            ...mockData,
-        });
-    });
-});
-
 describe('BikeBrain', () => {
     let bike;
     let mockSocket;
 
     beforeEach(() => {
         mockSocket = require('socket.io-client')();
-        bike = new BikeBrain(1, 1, 55.5965, 12.9963);
+        bike = new BikeBrain(MOCK_BIKE_ID, MOCK_CITY_ID, MOCK_LAT, MOCK_LON);
         bike.sendMessage = jest.fn();
         jest.spyOn(console, 'log').mockImplementation(() => {});
     });
@@ -137,12 +113,74 @@ describe('BikeBrain', () => {
 
             console.error.mockRestore();
         });
+
+        describe('Socket Communication: sendMessage', () => {
+            let bike;
+            let mockSocket;
+        
+            beforeEach(() => {
+                mockSocket = {
+                    emit: jest.fn(),
+                };
+        
+                bike = new BikeBrain(MOCK_BIKE_ID, MOCK_CITY_ID, MOCK_LAT, MOCK_LON);
+                bike.socket = mockSocket;
+            });
+        
+            afterEach(() => {
+                jest.restoreAllMocks();
+            });
+        
+            it('should send a message with the correct event and data', () => {
+                const mockEvent = 'update-speed';
+                const mockData = { speed: 15 };
+        
+                bike.sendMessage(mockEvent, mockData);
+        
+                expect(mockSocket.emit).toHaveBeenCalledWith(mockEvent, {
+                    bikeId: bike.id,
+                    ...mockData,
+                });
+            });
+        });
+
+        describe('Socket Communication: disconnect', () => {
+            let bike;
+            let mockSocket;
+
+            beforeEach(() => {
+                mockSocket = {
+                    disconnect: jest.fn(),
+                };
+
+                bike = new BikeBrain();
+                bike.socket = mockSocket;
+            });
+
+            afterEach(() => {
+                jest.restoreAllMocks();
+            });
+
+            it('should call disconnect on the socket if it exists', () => {
+                bike.disconnect();
+
+                expect(mockSocket.disconnect).toHaveBeenCalledTimes(1);
+            });
+
+            it('should do nothing if the socket does not exist', () => {
+                bike.socket = undefined;
+
+                bike.disconnect();
+
+                expect(mockSocket.disconnect).not.toHaveBeenCalled();
+            });
+        });
     });
 
     describe('Trip and Rental Functionality', () => {
         it('should start a trip and store trip details', () => {
-            const mockCustomerId = 'customer123';
-            const mockDate = new Date('2024-12-12T12:00:00Z');
+            const mockCustomerId = MOCK_CUSTOMER_ID;
+            const mockDate = new Date(MOCK_DATE);
             jest.spyOn(global, 'Date').mockImplementation(() => mockDate);
 
             bike.startTrip(mockCustomerId);
@@ -159,12 +197,12 @@ describe('BikeBrain', () => {
         });
 
         it('should stop a trip, log the trip, and reset tripCurrent', () => {
-            const mockStartTime = new Date('2024-12-12T12:00:00Z');
+            const mockStartTime = new Date(MOCK_DATE);
             const mockStopTime = new Date('2024-12-12T13:00:00Z');
             jest.spyOn(global, 'Date').mockImplementation(() => mockStartTime).mockImplementationOnce(() => mockStopTime);
 
             bike.tripCurrent = {
-                customerId: 'customer123',
+                customerId: MOCK_CUSTOMER_ID,
                 startLat: bike.location.coordinates[0],
                 startLon: bike.location.coordinates[1],
                 startTime: mockStartTime,
@@ -174,7 +212,7 @@ describe('BikeBrain', () => {
             expect(bike.tripCurrent).toBeNull();
             expect(bike.tripLog).toHaveLength(1);
             expect(bike.tripLog[0]).toEqual({
-                customerId: 'customer123',
+                customerId: MOCK_CUSTOMER_ID,
                 startLat: bike.location.coordinates[0],
                 startLon: bike.location.coordinates[1],
                 startTime: mockStartTime,
@@ -198,7 +236,7 @@ describe('BikeBrain', () => {
         });
 
         it('should start a rental if the bike is available', () => {
-            const mockCustomerId = 'customer123';
+            const mockCustomerId = MOCK_CUSTOMER_ID;
             bike.startTrip = jest.fn();
 
             bike.startRental(mockCustomerId);
@@ -211,7 +249,7 @@ describe('BikeBrain', () => {
             bike.status = 'charging';
             bike.startTrip = jest.fn();
 
-            bike.startRental('customer123');
+            bike.startRental(MOCK_CUSTOMER_ID);
 
             expect(bike.status).toBe('charging');
             expect(bike.startTrip).not.toHaveBeenCalled();
@@ -220,7 +258,7 @@ describe('BikeBrain', () => {
         it('should stop a rental and reset the bike status', () => {
             bike.status = 'in-use';
             bike.tripCurrent = {
-                customerId: 'customer123',
+                customerId: MOCK_CUSTOMER_ID,
                 startLat: bike.lat,
                 startLon: bike.lon,
                 startTime: new Date(),
@@ -249,8 +287,8 @@ describe('BikeBrain', () => {
     describe('Bike Functionality', () => {
         it('should initialize a bike with the expected properties', () => {
             expect(bike.id).toBe(1);
-            expect(bike.location.coordinates[0]).toBe(55.5965);
-            expect(bike.location.coordinates[1]).toBe(12.9963);
+            expect(bike.location.coordinates[0]).toBe(MOCK_LAT);
+            expect(bike.location.coordinates[1]).toBe(MOCK_LON);
             expect(bike.speed).toBe(0);
             expect(bike.status).toBe('available');
             expect(bike.batteryLevel).toBe(100);
@@ -304,6 +342,29 @@ describe('BikeBrain', () => {
             const result = bike.getBikeData();
 
             expect(result).toEqual(expectedData);
+        });
+
+        describe('BikeBrain: autocharge functionality', () => {
+            let bike;
+        
+            beforeEach(() => {
+                bike = new BikeBrain(MOCK_BIKE_ID, MOCK_CITY_ID, MOCK_LAT, MOCK_LON);
+                jest.spyOn(console, 'log').mockImplementation(() => {});
+                jest.spyOn(bike, 'controlBike').mockImplementation(() => {});
+            });
+        
+            afterEach(() => {
+                jest.restoreAllMocks();
+            });
+        
+            it('should log the correct message and call controlBike with "charge"', () => {
+                bike.autoCharge();
+        
+                expect(console.log).toHaveBeenCalledWith(
+                    `Bike ${bike.id} is being charged at a charging station`
+                );
+                expect(bike.controlBike).toHaveBeenCalledWith('charge');
+            });
         });
     });
 
