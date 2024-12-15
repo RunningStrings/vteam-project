@@ -98,7 +98,7 @@ describe('BikeBrain', () => {
 
     describe('Socket Communication', () => {
         it('should call socket.io to connect', () => {
-            expect(io).toHaveBeenCalledWith('http://localhost:5000');
+            expect(io).toHaveBeenCalledWith('http://localhost:5001');
         });
 
         it('should log a message when the bike connects to the server', () => {
@@ -270,11 +270,11 @@ describe('BikeBrain', () => {
             expect(bike.sendMessage).toHaveBeenCalledWith('update-battery', { batteryLevel: 85 });
         });
 
-        it('should update position and send the update to the server', () => {
-            bike.updatePosition(55.5947, 13.0088);
+        it('should update location and send the update to the server', () => {
+            bike.updateLocation(55.5947, 13.0088);
             expect(bike.location.coordinates[0]).toBe(55.5947);
             expect(bike.location.coordinates[1]).toBe(13.0088);
-            expect(bike.sendMessage).toHaveBeenCalledWith('update-position', {
+            expect(bike.sendMessage).toHaveBeenCalledWith('update-location', {
                 location: {
                     coordinates: [55.5947, 13.0088],
                     type: "Point",
@@ -313,8 +313,8 @@ describe('BikeBrain', () => {
             expect(bike.status).toBe('available');
             expect(bike.speed).toBe(0);
 
-            bike.controlBike('service');
-            expect(bike.status).toBe('in-service');
+            bike.controlBike('maintenance');
+            expect(bike.status).toBe('maintenance');
 
             bike.controlBike('charge');
             expect(bike.status).toBe('charging');
