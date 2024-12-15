@@ -96,6 +96,8 @@ app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
 
+// Using separate port to make it easier to see bike-brain communication.
+// Can be removed when not needed (socket runs on the regular backend port).
 server.listen(5001, () => {
   console.log('Socket.IO server is running on http://localhost:5001');
 });
