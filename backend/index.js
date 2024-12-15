@@ -1,8 +1,37 @@
 import express from 'express';
 import database from './database.js';
+import http from 'http'; // Needed for socket.io
+import { Server } from 'socket.io';
 
 const app = express();
 const PORT = process.env.PORT || 5000;
+const server = http.createServer(app);
+const io = new Server(server);
+
+io.on('connection', (socket) => {
+  console.log('A bike connected:', socket.id);
+
+  // Listen for events from the bike
+  socket.on('update-location', (data) => {
+      console.log('Location update:', data);
+  });
+
+  socket.on('update-speed', (data) => {
+      console.log('Speed update:', data);
+  });
+
+  socket.on('update-battery', (data) => {
+      console.log('Battery update:', data);
+  });
+
+  socket.on('log-trip', (data) => {
+      console.log('Trip log:', data);
+  });
+
+  socket.on('disconnect', () => {
+      console.log('A bike disconnected:', socket.id);
+  });
+});
 
 app.get('/', (req, res) => {
   res.send('Hello from the Backend!');
@@ -65,4 +94,8 @@ app.get('/users', async (req, res) => {
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
+});
+
+server.listen(5001, () => {
+  console.log('Socket.IO server is running on http://localhost:5001');
 });
