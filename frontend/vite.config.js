@@ -9,6 +9,8 @@ export default defineConfig({
       '/users': 'http://backend:5000',
       '/bikes': 'http://backend:5000',
       '/cities': 'http://backend:5000',
+      '/charging_stations': 'http://backend:5000',
+      '/parking_zones': 'http://backend:5000'
     },
   },
 });
