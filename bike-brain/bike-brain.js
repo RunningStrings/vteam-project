@@ -18,13 +18,13 @@ class BikeBrain {
         this.id = id;
         this.cityId = cityId;
         this.location = {type: 'Point', coordinates: [lat, lon] };
-        this.status = 'available'; // available, in-use, charging, service
+        this.status = 'available'; // available, in-use, charging, maintenance
         this.batteryLevel = 100;
         this.speed = 0;
         this.tripLog = [];
         this.tripCurrent = null;
 
-        this.socket = io('http://localhost:5000');
+        this.socket = io('http://localhost:5001');
 
         this.socket.on('connect', () => {
             console.log(`Bike ${this.id} connected to the server`);
@@ -42,6 +42,15 @@ class BikeBrain {
         this.socket.on('connect_error', (error) => {
             console.error(`Connection error for bike ${this.id}:`, error);
         });
+    }
+
+    /**
+     * Disconnects the bike from the server.
+     */
+    disconnect() {
+        if (this.socket) {
+            this.socket.disconnect();
+        }
     }
     
     /**
@@ -130,7 +139,7 @@ class BikeBrain {
      * @param {string} action - The action selected by admin.
      *                          Valid actions:
      *                          - 'stop': Sets the bike to 'available' status and resets speed to 0.
-     *                          - 'service': Puts the bike in 'in-service' mode.
+     *                          - 'maintenance': Puts the bike in 'maintenance' mode.
      *                          - 'charge': Sets the bike to 'charging' status.
      */
     controlBike(action) {
@@ -138,14 +147,22 @@ class BikeBrain {
             this.status = 'available';
             this.speed = 0;
             console.log(`Bike ${this.id} has been stopped`);
-        } else if (action === 'service') {
-            this.status = 'in-service';
-            console.log(`Bike ${this.id} is in service mode`);
+        } else if (action === 'maintenance') {
+            this.status = 'maintenance';
+            console.log(`Bike ${this.id} is in maintenance mode`);
         } else if (action === 'charge') {
             this.status = 'charging';
             console.log(`Bike ${this.id} is charging`);
         }
         this.bikeLight(this.status);
+    }
+
+    /**
+     * Automatically triggers when the bike is returned to a charging station.
+     */
+    autoCharge() {
+        console.log(`Bike ${this.id} is being charged at a charging station`);
+        this.controlBike('charge');
     }
 
     /**
@@ -191,7 +208,7 @@ class BikeBrain {
      *                          Each status corresponds with a color:
      *                          - 'available' = green
      *                          - 'charging' = red
-     *                          - 'service' = yellow
+     *                          - 'maintenance' = yellow
      *                          - 'in-use' = blue
      */
     bikeLight(status) {
@@ -199,7 +216,7 @@ class BikeBrain {
             console.log('green');
         } else if (status === 'charging') {
             console.log('red');
-        } else if (status === 'service') {
+        } else if (status === 'maintenance') {
             console.log('yellow');
         } else if (status === 'in-use') {
             console.log('blue');
