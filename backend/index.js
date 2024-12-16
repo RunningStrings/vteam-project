@@ -32,11 +32,11 @@ app.get('/', (req, res) => {
   res.send('Hello from the Backend!');
 });
 
-app.get('/users', async (req, res) => {
+app.get('/cities', async (req, res) => {
   try {
     const db = await database.getDb();
-    const users = await db.collectionUsers.find().toArray();
-    res.json(users);
+    const cities = await db.collectionCities.find().toArray();
+    res.json(cities);
   } catch (error) {
     console.error('Error fetching users:', error);
     // res.status(500).send('Server Error');
