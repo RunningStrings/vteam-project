@@ -14,7 +14,7 @@ services:
             - mongodb # Make sure the database is built
         command:
             > # Run seeding script to populate the database first, then start the server
-            sh -c "node seed.js && node index.js"
+            sh -c "node seed.js && npm run nodemon"
 
     frontend:
         build:
