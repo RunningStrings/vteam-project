@@ -97,6 +97,10 @@ class BikeBrain {
      * @param {number} batteryLevel - The current battery level of the bike (1-100).
      */
     updateBattery(batteryLevel) {
+        if (batteryLevel < 0 || batteryLevel > 100) {
+            console.error("Battery level must be between 0 and 100");
+            return;
+        }
         this.batteryLevel = batteryLevel;
         this.sendMessage('update-battery', {
             batteryLevel: this.batteryLevel
