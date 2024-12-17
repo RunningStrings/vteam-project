@@ -71,6 +71,10 @@ class BikeBrain {
      * @param {number} lon - The longitude of the bike's new location.
      */
     updateLocation(lat, lon) {
+        if (typeof lat !== 'number' || typeof lon !== 'number') {
+            console.error("Invalid coordinates provided");
+            return;
+        }
         this.location.coordinates = [lat, lon];
         this.sendMessage('update-location', {
             location: this.location
