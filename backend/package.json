@@ -4,6 +4,7 @@
     "main": "index.js",
     "type": "module",
     "scripts": {
+        "nodemon": "nodemon --legacy-watch index.js",
         "devStart": "nodemon index.js",
         "eslint": "npx eslint *.js .",
         "eslint:fix": "npx eslint *.js . --fix",
