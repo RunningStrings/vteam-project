@@ -185,6 +185,10 @@ class BikeBrain {
             console.log('Bike not available for rental');
             return;
         }
+        if (this.tripCurrent) {
+            console.log('Trip already in progress');
+            return;
+        }
         this.status = 'in-use';
         this.startTrip(customerId);
         console.log(`Bike ${this.id} has been rented`);
