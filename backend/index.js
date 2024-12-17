@@ -10,49 +10,27 @@ import database from './database.js';
 
 const app = express();
 const PORT = process.env.PORT || 5000;
+app.use(express.json());
 
 // import { router as indexRouter } from './routes/index.js';
 import { router as userRouter } from './routes/users.js';
-// import { router as cityRouter } from './routes/cities.js';
-// import { router as bikeRouter } from './routes/bikes.js';
-// import { router as stationRouter } from './routes/stations.js';
-// import { router as zoneRouter } from './routes/zones.js';
+import { router as cityRouter } from './routes/cities.js';
+import { router as bikeRouter } from './routes/bikes.js';
+import { router as stationRouter } from './routes/charging_stations.js';
+import { router as zoneRouter } from './routes/parking_zones.js';
 // import { router as rentRouter } from './routes/rents.js';
 import logIncomingToConsole from './middlewear/index.js';
 
-app.use("/users", userRouter)
-// app.use("/cities", cityRouter)
-// app.use("/bikes", bikeRouter)
-// app.use("/stations", stationRouter)
-// app.use("/zones", zoneRouter)
+app.use("/users", userRouter);
+app.use("/cities", cityRouter);
+app.use("/bikes", bikeRouter);
+app.use("/charging_stations", stationRouter);
+app.use("/parking_zones", zoneRouter);
 // app.use("/rents", rentRouter)
 app.use(logIncomingToConsole);
 
 app.get('/', (req, res) => {
   res.send('Hello from the Backend!');
-});
-
-app.get('/cities', async (req, res) => {
-  try {
-    const db = await database.getDb();
-    const cities = await db.collectionCities.find().toArray();
-    res.json(cities);
-  } catch (error) {
-    console.error('Error fetching users:', error);
-    // res.status(500).send('Server Error');
-    res.status(500).json({ errorMessage: "Server Error" });
-  }
-});
-
-app.get('/bikes', async (req, res) => {
-  try {
-    const db = await database.getDb();
-    const bikes = await db.collectionBikes.find().toArray();
-    res.json(bikes);
-  } catch (error) {
-    console.error('Error fetching bikes:', error);
-    res.status(500).send('Server Error');
-  }
 });
 
 app.listen(PORT, logStartUpDetailsToConsole);
