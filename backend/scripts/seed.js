@@ -51,7 +51,7 @@ const seedData = async () => {
 
     try {
         // Load cities.json
-        const citiesJson = await fs.readFile('.data/cities.json', 'utf-8');
+        const citiesJson = await fs.readFile('../data/cities.json', 'utf-8');
         const citiesGeoData = JSON.parse(citiesJson);
 
         // Add geometry to citiesData by matching city names
