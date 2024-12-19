@@ -1,5 +1,6 @@
 import * as dotenv from 'dotenv';
 import { MongoClient } from "mongodb";
+import path from 'path';
 import fs from 'fs/promises';
 
 dotenv.config();
@@ -49,13 +50,20 @@ const seedData = async () => {
     //     { firstname: 'Fernando', lastname: 'Crowther', email:'fernando@crowther.mail.se', password_hash: '', role: 'city_manager' },
     //   ];
 
+    // Resolve json paths
+    const bikesPath = path.resolve(__dirname, '../data_json/bikes.json');
+    const chargingStationsPath = path.resolve(__dirname, '../data_json/charging_stations.json');
+    const citiesPath = path.resolve(__dirname, '../data_json/cities.json');
+    const parkingZonesPath = path.resolve(__dirname, '../data_json/parking_zones.json');
+    const usersPath = path.resolve(__dirname, '../data_json/users.json');
+
     try {
         // Load external JSON data files
-        const bikesJson = await fs.readFile('../data/bikes.json', 'utf-8');
-        const chargingStationsJson = await fs.readFile('../data/charging_stations.json', 'utf-8');
-        const citiesJson = await fs.readFile('../data/cities.json', 'utf-8');
-        const parkingZonesJson = await fs.readFile('../data/parking_zones.json', 'utf-8');
-        const usersJson = await fs.readFile('../data/users.json', 'utf-8');
+        const bikesJson = await fs.readFile(bikesPath, 'utf-8');
+        const chargingStationsJson = await fs.readFile(chargingStationsPath, 'utf-8');
+        const citiesJson = await fs.readFile(citiesPath, 'utf-8');
+        const parkingZonesJson = await fs.readFile(parkingZonesPath, 'utf-8');
+        const usersJson = await fs.readFile(usersPath, 'utf-8');
 
         // parse JSON data
         const bikesData = JSON.parse(bikesJson);
@@ -92,9 +100,9 @@ const seedData = async () => {
         };
 
         // Seed all the collections
-        await seedCollection('cities', bikesData);
-        await seedCollection('bikes', chargingStationsData);
-        await seedCollection('charging_stations', citiesData);
+        await seedCollection('bikes', bikesData);
+        await seedCollection('charging_stations', chargingStationsData);
+        await seedCollection('cities', citiesData);
         await seedCollection('parking_zones', parkingZonesData);
         await seedCollection('users', usersData);
 
