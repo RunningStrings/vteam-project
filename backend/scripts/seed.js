@@ -1,6 +1,8 @@
 import * as dotenv from 'dotenv';
 import { MongoClient } from "mongodb";
-import path from 'path';
+import path from 'node:path';
+import { dirname } from 'node:path';
+import { fileURLToPath } from 'node:url';
 import fs from 'fs/promises';
 
 dotenv.config();
@@ -51,11 +53,13 @@ const seedData = async () => {
     //   ];
 
     // Resolve json paths
-    const bikesPath = path.resolve(__dirname, '../data_json/bikes.json');
-    const chargingStationsPath = path.resolve(__dirname, '../data_json/charging_stations.json');
-    const citiesPath = path.resolve(__dirname, '../data_json/cities.json');
-    const parkingZonesPath = path.resolve(__dirname, '../data_json/parking_zones.json');
-    const usersPath = path.resolve(__dirname, '../data_json/users.json');
+    const __dirname = dirname(fileURLToPath(import.meta.url));
+
+    const bikesPath = path.join(__dirname, '../data_json/bikes.json');
+    const chargingStationsPath = path.join(__dirname, '../data_json/charging_stations.json');
+    const citiesPath = path.join(__dirname, '../data_json/cities.json');
+    const parkingZonesPath = path.join(__dirname, '../data_json/parking_zones.json');
+    const usersPath = path.join(__dirname, '../data_json/users.json');
 
     try {
         // Load external JSON data files
