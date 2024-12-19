@@ -4,9 +4,8 @@
  * @author Bikeriderz
  *
  */
-
 import express from 'express';
-import database from './database.js';
+// import database from './database.js';
 
 const app = express();
 const PORT = process.env.PORT || 5000;
