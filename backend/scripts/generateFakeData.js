@@ -122,6 +122,7 @@ const generateParkingsData = (numParkings) => {
                 type: "Polygon",
                 coordinates: [ polygon ],
             },
+            bikes : [], // Placeholder for bikes at parking
             capacity: capacity
         };
     });
