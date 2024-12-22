@@ -11,6 +11,7 @@ export default defineConfig({
       '/cities': 'http://backend:5000',
       '/charging_stations': 'http://backend:5000',
       '/parking_zones': 'http://backend:5000'
+      '/charging_stations': 'http://backend:5000',
     },
   },
 });

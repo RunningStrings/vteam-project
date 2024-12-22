@@ -1,0 +1,373 @@
+[
+  {
+    "firstname": "Marie",
+    "lastname": "Lindholm",
+    "email": "Marie_Lindholm42@hotmail.com",
+    "password_hash": "",
+    "role": "customer",
+    "balance": 200
+  },
+  {
+    "firstname": "Mohamed",
+    "lastname": "Dahlberg",
+    "email": "Mohamed_Dahlberg14@gmail.com",
+    "password_hash": "",
+    "role": "customer",
+    "balance": 507
+  },
+  {
+    "firstname": "Eva",
+    "lastname": "Strömberg Arvidsson",
+    "email": "Eva_StrombergArvidsson@yahoo.com",
+    "password_hash": "",
+    "role": "city_manager"
+  },
+  {
+    "firstname": "Per",
+    "lastname": "Arvidsson Ström",
+    "email": "Per_ArvidssonStrom@yahoo.com",
+    "password_hash": "",
+    "role": "city_manager"
+  },
+  {
+    "firstname": "Margareta",
+    "lastname": "Svensson",
+    "email": "Margareta.Svensson19@yahoo.com",
+    "password_hash": "",
+    "role": "customer",
+    "balance": 175
+  },
+  {
+    "firstname": "Ulrika",
+    "lastname": "Fransson",
+    "email": "Ulrika.Fransson68@gmail.com",
+    "password_hash": "",
+    "role": "customer",
+    "balance": 86
+  },
+  {
+    "firstname": "Kristina",
+    "lastname": "Lindberg",
+    "email": "Kristina.Lindberg@gmail.com",
+    "password_hash": "",
+    "role": "customer",
+    "balance": 139
+  },
+  {
+    "firstname": "Isabelle",
+    "lastname": "Eliasson",
+    "email": "Isabelle.Eliasson20@hotmail.com",
+    "password_hash": "",
+    "role": "city_manager"
+  },
+  {
+    "firstname": "Simon",
+    "lastname": "Hansen",
+    "email": "Simon.Hansen96@gmail.com",
+    "password_hash": "",
+    "role": "city_manager"
+  },
+  {
+    "firstname": "Tommy",
+    "lastname": "Forsberg",
+    "email": "Tommy_Forsberg@hotmail.com",
+    "password_hash": "",
+    "role": "city_manager"
+  },
+  {
+    "firstname": "Gunilla",
+    "lastname": "Ali",
+    "email": "Gunilla.Ali72@hotmail.com",
+    "password_hash": "",
+    "role": "customer",
+    "balance": 853
+  },
+  {
+    "firstname": "Olle",
+    "lastname": "Lundin",
+    "email": "Olle.Lundin@hotmail.com",
+    "password_hash": "",
+    "role": "customer",
+    "balance": 84
+  },
+  {
+    "firstname": "John",
+    "lastname": "Lundström Nordin",
+    "email": "John.LundstromNordin@gmail.com",
+    "password_hash": "",
+    "role": "admin"
+  },
+  {
+    "firstname": "Per",
+    "lastname": "Mohamed",
+    "email": "Per_Mohamed84@yahoo.com",
+    "password_hash": "",
+    "role": "city_manager"
+  },
+  {
+    "firstname": "Pernilla",
+    "lastname": "Olsson",
+    "email": "Pernilla.Olsson94@yahoo.com",
+    "password_hash": "",
+    "role": "admin"
+  },
+  {
+    "firstname": "Lennart",
+    "lastname": "Lindholm",
+    "email": "Lennart_Lindholm31@yahoo.com",
+    "password_hash": "",
+    "role": "admin"
+  },
+  {
+    "firstname": "Sven",
+    "lastname": "Hansson",
+    "email": "Sven.Hansson30@yahoo.com",
+    "password_hash": "",
+    "role": "customer",
+    "balance": 517
+  },
+  {
+    "firstname": "Jesper",
+    "lastname": "Wikström Lindqvist",
+    "email": "Jesper.WikstromLindqvist93@hotmail.com",
+    "password_hash": "",
+    "role": "admin"
+  },
+  {
+    "firstname": "Ann-Christin",
+    "lastname": "Nyberg Hansson",
+    "email": "Ann-Christin_NybergHansson@hotmail.com",
+    "password_hash": "",
+    "role": "customer",
+    "balance": 569
+  },
+  {
+    "firstname": "Alexandra",
+    "lastname": "Löfgren",
+    "email": "Alexandra_Lofgren83@gmail.com",
+    "password_hash": "",
+    "role": "city_manager"
+  },
+  {
+    "firstname": "Pia",
+    "lastname": "Andersson Håkansson",
+    "email": "Pia_AnderssonHakansson@yahoo.com",
+    "password_hash": "",
+    "role": "customer",
+    "balance": 617
+  },
+  {
+    "firstname": "Helen",
+    "lastname": "Mattsson",
+    "email": "Helen.Mattsson@gmail.com",
+    "password_hash": "",
+    "role": "customer",
+    "balance": 765
+  },
+  {
+    "firstname": "Leo",
+    "lastname": "Bengtsson",
+    "email": "Leo.Bengtsson32@yahoo.com",
+    "password_hash": "",
+    "role": "admin"
+  },
+  {
+    "firstname": "Sara",
+    "lastname": "Fredriksson",
+    "email": "Sara.Fredriksson@gmail.com",
+    "password_hash": "",
+    "role": "admin"
+  },
+  {
+    "firstname": "Tobias",
+    "lastname": "Andreasson",
+    "email": "Tobias_Andreasson@hotmail.com",
+    "password_hash": "",
+    "role": "customer",
+    "balance": 542
+  },
+  {
+    "firstname": "Bo",
+    "lastname": "Jansson",
+    "email": "Bo_Jansson71@hotmail.com",
+    "password_hash": "",
+    "role": "customer",
+    "balance": 467
+  },
+  {
+    "firstname": "Edvin",
+    "lastname": "Strömberg Blomqvist",
+    "email": "Edvin.StrombergBlomqvist47@yahoo.com",
+    "password_hash": "",
+    "role": "city_manager"
+  },
+  {
+    "firstname": "Elisabeth",
+    "lastname": "Mårtensson",
+    "email": "Elisabeth_Martensson@hotmail.com",
+    "password_hash": "",
+    "role": "city_manager"
+  },
+  {
+    "firstname": "Leif",
+    "lastname": "Martinsson",
+    "email": "Leif.Martinsson@hotmail.com",
+    "password_hash": "",
+    "role": "city_manager"
+  },
+  {
+    "firstname": "Karl",
+    "lastname": "Holmqvist",
+    "email": "Karl.Holmqvist18@yahoo.com",
+    "password_hash": "",
+    "role": "admin"
+  },
+  {
+    "firstname": "Rasmus",
+    "lastname": "Olofsson",
+    "email": "Rasmus.Olofsson17@hotmail.com",
+    "password_hash": "",
+    "role": "customer",
+    "balance": 442
+  },
+  {
+    "firstname": "Astrid",
+    "lastname": "Lund",
+    "email": "Astrid.Lund@yahoo.com",
+    "password_hash": "",
+    "role": "admin"
+  },
+  {
+    "firstname": "Gustav",
+    "lastname": "Lundgren",
+    "email": "Gustav_Lundgren@yahoo.com",
+    "password_hash": "",
+    "role": "customer",
+    "balance": 645
+  },
+  {
+    "firstname": "Elias",
+    "lastname": "Bergström",
+    "email": "Elias.Bergstrom@gmail.com",
+    "password_hash": "",
+    "role": "city_manager"
+  },
+  {
+    "firstname": "Pia",
+    "lastname": "Olofsson",
+    "email": "Pia.Olofsson66@yahoo.com",
+    "password_hash": "",
+    "role": "city_manager"
+  },
+  {
+    "firstname": "Kjell",
+    "lastname": "Holm Månsson",
+    "email": "Kjell_HolmMansson@gmail.com",
+    "password_hash": "",
+    "role": "customer",
+    "balance": 275
+  },
+  {
+    "firstname": "Britt-Marie",
+    "lastname": "Sundberg",
+    "email": "Britt-Marie.Sundberg11@yahoo.com",
+    "password_hash": "",
+    "role": "city_manager"
+  },
+  {
+    "firstname": "Emilia",
+    "lastname": "Holmgren",
+    "email": "Emilia.Holmgren@hotmail.com",
+    "password_hash": "",
+    "role": "city_manager"
+  },
+  {
+    "firstname": "Nina",
+    "lastname": "Ek",
+    "email": "Nina_Ek@yahoo.com",
+    "password_hash": "",
+    "role": "customer",
+    "balance": 355
+  },
+  {
+    "firstname": "Astrid",
+    "lastname": "Lundin",
+    "email": "Astrid.Lundin@gmail.com",
+    "password_hash": "",
+    "role": "admin"
+  },
+  {
+    "firstname": "Jonathan",
+    "lastname": "Wikström",
+    "email": "Jonathan_Wikstrom@yahoo.com",
+    "password_hash": "",
+    "role": "city_manager"
+  },
+  {
+    "firstname": "Christoffer",
+    "lastname": "Arvidsson",
+    "email": "Christoffer.Arvidsson47@yahoo.com",
+    "password_hash": "",
+    "role": "admin"
+  },
+  {
+    "firstname": "Ann-Christin",
+    "lastname": "Åkesson",
+    "email": "Ann-Christin_Akesson@hotmail.com",
+    "password_hash": "",
+    "role": "customer",
+    "balance": 166
+  },
+  {
+    "firstname": "Olof",
+    "lastname": "Hellström",
+    "email": "Olof_Hellstrom@yahoo.com",
+    "password_hash": "",
+    "role": "city_manager"
+  },
+  {
+    "firstname": "Elsa",
+    "lastname": "Isaksson",
+    "email": "Elsa.Isaksson@hotmail.com",
+    "password_hash": "",
+    "role": "customer",
+    "balance": 793
+  },
+  {
+    "firstname": "Lisbeth",
+    "lastname": "Andersson",
+    "email": "Lisbeth.Andersson@gmail.com",
+    "password_hash": "",
+    "role": "city_manager"
+  },
+  {
+    "firstname": "Samuel",
+    "lastname": "Nyström",
+    "email": "Samuel.Nystrom@hotmail.com",
+    "password_hash": "",
+    "role": "customer",
+    "balance": 558
+  },
+  {
+    "firstname": "David",
+    "lastname": "Forsberg Nyström",
+    "email": "David.ForsbergNystrom@hotmail.com",
+    "password_hash": "",
+    "role": "customer",
+    "balance": 641
+  },
+  {
+    "firstname": "Elias",
+    "lastname": "Olofsson",
+    "email": "Elias_Olofsson95@yahoo.com",
+    "password_hash": "",
+    "role": "admin"
+  },
+  {
+    "firstname": "Sofie",
+    "lastname": "Norberg",
+    "email": "Sofie.Norberg71@hotmail.com",
+    "password_hash": "",
+    "role": "admin"
+  }
+]
