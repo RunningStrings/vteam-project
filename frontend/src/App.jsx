@@ -5,6 +5,7 @@ import LoginButton from "./components/LoginButton";
 import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
 import Bikes from "./pages/Bikes";
+import Parkings from "./pages/Parkings";
 import Stations from "./pages/Stations";
 import Users from "./pages/Users";
 import User from "./pages/User";
@@ -26,6 +27,7 @@ const App = () => {
             <Route path="/" element={<Home />} />
             <Route path="/bikes" element={<Bikes />} />
             <Route path="/stations" element={<Stations />} />
+            <Route path="/parkings" element={<Parkings />} />
             <Route path="/users" element={<Users />} />
             <Route path="/user" element={<User />} />
             <Route path="/maps" element={<Maps />} />

@@ -6,7 +6,7 @@ import { useNavigate} from 'react-router-dom';
 function Users() {
   const [users, setUsers] = useState([]);
   const [bikes, setBikes] = useState([]);
-  const [stations, setStations] = useState([]);
+  const [parkings, setParkings] = useState([]);
 
   const navigate = useNavigate();
 
@@ -26,38 +26,34 @@ function Users() {
       .catch(error => console.error('Error fetching bikes:', error));
 
     // Fetch stations from the backend API
-    fetch('/charging_stations')
+    fetch('/parking_zones')
       .then(response => response.json())
-      .then(data => setStations(data))
-      .catch(error => console.error('Error fetching stations:', error));
+      .then(data => setParkings(data))
+      .catch(error => console.error('Error fetching parkings:', error));
 
 
   }, []);
 
   return (
     <div className="App" style={{ marginLeft: "120px", padding: "20px" }}>
-      <h2>Laddningsstationer</h2>
+      <h2>Parkeringar</h2>
       <table>
       
         <thead>
           <tr>
             <th>Id</th>
-            <th>Namn</th>
             <th>Stad</th>
             <th>Position</th>
             <th>Antal cyklar nu</th>
-            <th>Kapacitet</th>
           </tr>
         </thead>
         <tbody>
-        {stations.map((station, index) => (
+        {parkings.map((parking, index) => (
             <tr>
             <td>{index}</td>
-            <td>Björkgatan</td>
-            <td>{station.city_id}</td>
-            <td>{station.location.coordinates[0].toFixed(4)} {station.location.coordinates[1].toFixed(4)}</td>
-            <td>{station.bikes.length}</td>
-            <td>{station.capacity}</td>
+            <td>{parking.city_id}</td>
+            <td>{parking.location.coordinates[0][0].toFixed(4)}  {parking.location.coordinates[0][1].toFixed(4)}</td>
+            <td>0</td>
             </tr>
           ))}
         </tbody>

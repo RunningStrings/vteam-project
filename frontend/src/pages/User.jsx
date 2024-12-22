@@ -4,22 +4,23 @@ import React from "react";
 const initialFormValues = {
   
   id: "",
-  firstname: "",
+  firstname: "{formData.firstName}",
   lastname: "",
   email: "",
   password: "",
   saldo: "",
   phone: "",
   admin: "no"
-
+  
 }
 
 function User() {
   const [formData, setFormData] = useState(initialFormValues);
+  const [users, setUsers] = useState([]); // Deklarerar users
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
-    console.log(formData);
+    //console.log(formData);
     setFormData(initialFormValues);
   };
 
@@ -28,7 +29,21 @@ function User() {
     setFormData({ ...formData, [name]: value });
   };
 
+  useEffect(() => {
+    // Fetch users from the backend API
+    fetch('/users')
+      .then(response => response.json())
+      .then(data => setUsers(data))
+      .catch(error => console.error('Error fetching users:', error));
+    }, []);
+
+
+
+
   return (
+    //console.log(formData);
+    
+    
     <div className="App" style={{ marginLeft: "220px", padding: "20px" }}>
       <h2>En användare</h2>
       <form className="form" onSubmit={handleSubmit}>
@@ -40,7 +55,8 @@ function User() {
           <input 
           type="number" 
           id="id" 
-          name="id" 
+          name="id"
+          value={formData.id}
           className="form__input" 
           onChange={(e) =>
             setFormData({ ...formData, id: e.target.value})
@@ -54,7 +70,8 @@ function User() {
           <input 
           type="text" 
           id="firstname" 
-          name="firstname" 
+          name="firstname"
+          value={formData.firstname}
           className="form__input" 
           onChange={(e) =>
             setFormData({ ...formData, firstname: e.target.value})
@@ -143,62 +160,5 @@ function User() {
   );
 };
 
-
-
-/*function User() {
-  const [users, setUsers] = useState([]);
-  const [bikes, setBikes] = useState([]);
-
-  useEffect(() => {
-    // Fetch users from the backend API
-    fetch('/users')
-      .then(response => response.json())
-      .then(data => setUsers(data))
-      .catch(error => console.error('Error fetching users:', error));
-
-    // Fetch bikes from the backend API
-    fetch('/bikes')
-      .then(response => response.json())
-      .then(data => setBikes(data))
-      .catch(error => console.error('Error fetching bikes:', error));
-  }, []);
-
-  return (
-    <div className="App" style={{ marginLeft: "220px", padding: "20px" }}>
-      <h2>En Användare</h2>
-      <table>
-        <thead>
-          <tr>
-            <th>Kundnummer</th>
-            <th>Namn</th>
-            <th>Telefonnummer</th>
-            <th>E-post</th>
-            <th>Saldo</th>
-          </tr>
-        </thead>
-        <tbody>
-        {users.map((user, index) => (
-            <tr key={index}>
-            <td>xxxx</td>
-            <td>{user.name}</td>
-            <td>555-545434</td>
-            <td>{user.email}</td>
-            <td>542 kr</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
-  );
-}*/
-
-/*const Users = () => {
-    return (
-      <div style={{ marginLeft: "220px", padding: "20px" }}>
-        <h1>Användare</h1>
-        <p>Welcome to the home page.</p>
-      </div>
-    );
-  };*/
   
   export default User;

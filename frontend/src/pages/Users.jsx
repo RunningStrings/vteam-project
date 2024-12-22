@@ -39,7 +39,7 @@ function Users() {
     }, []);
 
   return (
-    <div className="App" style={{ marginLeft: "220px", padding: "20px" }}>
+    <div className="App" style={{ marginLeft: "200px", padding: "20px" }}>
       <h2>Användare</h2>
       <table>
         <thead>
@@ -66,9 +66,7 @@ function Users() {
         </tbody>
       </table>
 
-      {cities.map((city, index) => (
-            <div key={index}>{city.name}</div>
-          ))}
+     
 
 
 

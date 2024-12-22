@@ -5,13 +5,6 @@ import L, { LatLng } from "leaflet";
 
 import { useMap } from "../hooks";
 
-/*function Maps() {
-  const [charging_stations, setStations] = useState([]);
-  const [bikes, setBikes] = useState([]);
-  const [cities, setCities] = useState([]);
-
-
-  }*/
   const Maps = () => {
 
     
@@ -66,10 +59,7 @@ for (let index = 0; index < cities.length; index++) {
 }
   //const {position} = useMap();//L.GeoJson.coordsToLatLngs() ;
   return (
-
-
-
-<div style={{ marginLeft: "150px", marginBottom: "100px", width: "100px", padding: "20px" }}>
+<div>
     <h2>Karta</h2>
     <MapContainer
       center={[57.18219, 16.59094]}
@@ -86,15 +76,7 @@ for (let index = 0; index < cities.length; index++) {
 
 
 {cities.map((city, index) => (
-  //if(city.geometry && city.geometry.coordinates && city.geometry.coordinates.length > 0) {
-    // Transform GeoJSON-style coordinates ([longitude, latitude]) to Leaflet-compatible ([latitude, longitude])
-    //const positions = city.geometry.coordinates[0].map(([longitude, latitude]) => [latitude, longitude]);
-      //L.marker({station.location.coordinates}, {icon: stationIcon}).addTo(map);
-  //L.polygon({city.geometry.coordinates}).addTo(L.map);
-        //if(city.geometry.coordinates!=0) {
-          //positions = city.geometry.coordinates[0].map(([longitude, latitude]) => [latitude, longitude]);    
         <Polygon
-          
         positions={city.geometry.coordinates} //LatLng.wrap(
           key={index}
           color="blue"
@@ -102,56 +84,35 @@ for (let index = 0; index < cities.length; index++) {
           fill="true"
           fillOpacity={0.15}
           >
-          
-          
-  
         </Polygon>
-      //}
-  
-      ))}
+       ))}
 
 {parkings.map((parking, index) => (
         <Polygon
-          
         positions={parking.location.coordinates} //LatLng.wrap(
           key={index}
           color="red"
           fillColor="red"
           fill="true"
           >
-          
-          
         <Popup>
-        
          <br />
           </Popup>
         </Polygon>
-      //}
-  
+ 
       ))}
 
-
-
-
 {stations.map((station, index) => (
-      
-    //L.marker({station.location.coordinates}, {icon: stationIcon}).addTo(map);
-
       <Marker 
         position={station.location.coordinates}
         key={index}
         icon={stationIcon}
         >
-        
-        
       <Popup>
-      
        Station nr: {index} <br />
        Hagagatan
         </Popup>
       </Marker>
-  
-
     ))}
 {bikes.map((bike, index) => (
     //{charging_stations.map((charging_stations, index) => (
@@ -167,27 +128,10 @@ for (let index = 0; index < cities.length; index++) {
       {bike.status} 
         </Popup>
       </Marker>
-  
-
     ))}
-
-
     </MapContainer>
     </div>
   );  
-  
-  
-  
   };
   
   export default Maps;
-
-
-  
-  
-  /*return (
-      <div style={{ marginLeft: "220px", padding: "20px" }}>
-        <h1>Kartor</h1>
-        <p>Welcome to the home page.</p>
-      </div>
-    );*/
