@@ -24,13 +24,15 @@ const database = {
         let collectionChargingStations = await db.collection("charging_stations");
         let collectionParkingZones = await db.collection("parking_zones");
         let collectionUsers = await db.collection("users");
+        let collectionTrips = await db.collection("trips");
 
         return {
             collectionCities: collectionCities,
             collectionBikes: collectionBikes,
             collectionChargingStations: collectionChargingStations,
             collectionParkingZones: collectionParkingZones,
-            collectionUsers: collectionUsers
+            collectionUsers: collectionUsers,
+            collectionTrips: collectionTrips
         };
     }
 };
