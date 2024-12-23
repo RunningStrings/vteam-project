@@ -1,55 +1,153 @@
 [
   {
-    "id": 87,
-    "name": "Bergströms Gata",
+    "id": 29,
+    "name": "Bergmans Gata",
     "city_name": "Malmö",
     "location": {
       "type": "Point",
       "coordinates": [
-        55.50583219598346,
-        13.051160705594082
+        55.67879432178252,
+        13.029724882294245
       ]
     },
     "bikes": [],
-    "capacity": 29
+    "capacity": 14
   },
   {
-    "id": 84,
-    "name": "Hellströms Gata",
-    "city_name": "Malmö",
+    "id": 88,
+    "name": "Ekgränden",
+    "city_name": "Stockholm",
     "location": {
       "type": "Point",
       "coordinates": [
-        55.640687810082355,
-        13.095299590805093
+        59.45884057372157,
+        18.194734014954374
       ]
     },
     "bikes": [],
-    "capacity": 36
+    "capacity": 39
   },
   {
-    "id": 9,
-    "name": "Östra Skolallén",
-    "city_name": "Malmö",
+    "id": 63,
+    "name": "Lindholms Gata",
+    "city_name": "Stockholm",
     "location": {
       "type": "Point",
       "coordinates": [
-        55.55067145947376,
-        13.037357928507454
+        59.34607753836616,
+        18.18063559872609
       ]
     },
     "bikes": [],
-    "capacity": 24
+    "capacity": 30
   },
   {
-    "id": 19,
-    "name": "Karls Väg",
+    "id": 96,
+    "name": "Samuelssons Väg",
     "city_name": "Malmö",
     "location": {
       "type": "Point",
       "coordinates": [
-        55.52387113436237,
-        12.959796523845993
+        55.576676791897995,
+        12.947956364643249
+      ]
+    },
+    "bikes": [],
+    "capacity": 44
+  },
+  {
+    "id": 38,
+    "name": "Berits Gata",
+    "city_name": "Malmö",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        55.515543777927235,
+        12.999599535948033
+      ]
+    },
+    "bikes": [],
+    "capacity": 40
+  },
+  {
+    "id": 49,
+    "name": "Louises Väg",
+    "city_name": "Malmö",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        55.622753499590296,
+        12.91693935317954
+      ]
+    },
+    "bikes": [],
+    "capacity": 21
+  },
+  {
+    "id": 29,
+    "name": "Västra Genallén",
+    "city_name": "Linköping",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        58.44202345475301,
+        15.69158043359799
+      ]
+    },
+    "bikes": [],
+    "capacity": 27
+  },
+  {
+    "id": 27,
+    "name": "Pernillas Gata",
+    "city_name": "Stockholm",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        59.45109356050391,
+        18.07961326380747
+      ]
+    },
+    "bikes": [],
+    "capacity": 47
+  },
+  {
+    "id": 85,
+    "name": "Östra Ekallén",
+    "city_name": "Linköping",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        58.49474034710013,
+        15.671662570540894
+      ]
+    },
+    "bikes": [],
+    "capacity": 26
+  },
+  {
+    "id": 8,
+    "name": "Östra Storgärdet",
+    "city_name": "Linköping",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        58.4714724773086,
+        15.621509316126437
+      ]
+    },
+    "bikes": [],
+    "capacity": 12
+  },
+  {
+    "id": 41,
+    "name": "Lisbeths Väg",
+    "city_name": "Stockholm",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        59.4240251331738,
+        18.126119066098976
       ]
     },
     "bikes": [],
@@ -57,17 +155,59 @@
   },
   {
     "id": 87,
-    "name": "Gengatan",
-    "city_name": "Malmö",
+    "name": "Johnnys Väg",
+    "city_name": "Linköping",
     "location": {
       "type": "Point",
       "coordinates": [
-        55.582026177177056,
-        13.035239971562698
+        58.43043678134867,
+        15.697457362239566
       ]
     },
     "bikes": [],
-    "capacity": 28
+    "capacity": 18
+  },
+  {
+    "id": 67,
+    "name": "Idrottsgatan",
+    "city_name": "Linköping",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        58.486574034822084,
+        15.625213138961268
+      ]
+    },
+    "bikes": [],
+    "capacity": 24
+  },
+  {
+    "id": 75,
+    "name": "Undre Furugränden",
+    "city_name": "Stockholm",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        59.49583340655098,
+        18.008483450205894
+      ]
+    },
+    "bikes": [],
+    "capacity": 49
+  },
+  {
+    "id": 78,
+    "name": "Jakobssons Gata",
+    "city_name": "Linköping",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        58.40986202849567,
+        15.650497705612146
+      ]
+    },
+    "bikes": [],
+    "capacity": 48
   },
   {
     "id": 82,
@@ -76,386 +216,8 @@
     "location": {
       "type": "Point",
       "coordinates": [
-        55.66553986277477,
-        13.051407259627892
-      ]
-    },
-    "bikes": [],
-    "capacity": 48
-  },
-  {
-    "id": 46,
-    "name": "Josefs Väg",
-    "city_name": "Stockholm",
-    "location": {
-      "type": "Point",
-      "coordinates": [
-        59.42782632575511,
-        18.096785857686328
-      ]
-    },
-    "bikes": [],
-    "capacity": 20
-  },
-  {
-    "id": 93,
-    "name": "Södra Stationsgatan",
-    "city_name": "Linköping",
-    "location": {
-      "type": "Point",
-      "coordinates": [
-        58.478394568748655,
-        15.68275466414782
-      ]
-    },
-    "bikes": [],
-    "capacity": 23
-  },
-  {
-    "id": 51,
-    "name": "Björkgränden",
-    "city_name": "Malmö",
-    "location": {
-      "type": "Point",
-      "coordinates": [
-        55.51187792014046,
-        13.044935736564668
-      ]
-    },
-    "bikes": [],
-    "capacity": 32
-  },
-  {
-    "id": 48,
-    "name": "Storgatan",
-    "city_name": "Stockholm",
-    "location": {
-      "type": "Point",
-      "coordinates": [
-        59.46370104320575,
-        18.16459330866378
-      ]
-    },
-    "bikes": [],
-    "capacity": 41
-  },
-  {
-    "id": 36,
-    "name": "Norra Kvarnallén",
-    "city_name": "Linköping",
-    "location": {
-      "type": "Point",
-      "coordinates": [
-        58.42624122202562,
-        15.647804640786838
-      ]
-    },
-    "bikes": [],
-    "capacity": 47
-  },
-  {
-    "id": 83,
-    "name": "Nordins Gata",
-    "city_name": "Malmö",
-    "location": {
-      "type": "Point",
-      "coordinates": [
-        55.62871817587412,
-        13.080831490634575
-      ]
-    },
-    "bikes": [],
-    "capacity": 21
-  },
-  {
-    "id": 50,
-    "name": "Västra Kyrkogränden",
-    "city_name": "Malmö",
-    "location": {
-      "type": "Point",
-      "coordinates": [
-        55.61335300976757,
-        12.910920178481033
-      ]
-    },
-    "bikes": [],
-    "capacity": 26
-  },
-  {
-    "id": 4,
-    "name": "Berggrens Gata",
-    "city_name": "Linköping",
-    "location": {
-      "type": "Point",
-      "coordinates": [
-        58.42541282018121,
-        15.662902104014115
-      ]
-    },
-    "bikes": [],
-    "capacity": 24
-  },
-  {
-    "id": 97,
-    "name": "Skogsvägen",
-    "city_name": "Malmö",
-    "location": {
-      "type": "Point",
-      "coordinates": [
-        55.53793243919674,
-        12.903486861846224
-      ]
-    },
-    "bikes": [],
-    "capacity": 26
-  },
-  {
-    "id": 8,
-    "name": "Ekallén",
-    "city_name": "Stockholm",
-    "location": {
-      "type": "Point",
-      "coordinates": [
-        59.40742709017161,
-        18.112439990239803
-      ]
-    },
-    "bikes": [],
-    "capacity": 49
-  },
-  {
-    "id": 99,
-    "name": "Larss Väg",
-    "city_name": "Malmö",
-    "location": {
-      "type": "Point",
-      "coordinates": [
-        55.63356715856159,
-        13.06688697193987
-      ]
-    },
-    "bikes": [],
-    "capacity": 36
-  },
-  {
-    "id": 76,
-    "name": "Övre Kvarnvägen",
-    "city_name": "Stockholm",
-    "location": {
-      "type": "Point",
-      "coordinates": [
-        59.33543296625734,
-        18.16699939193387
-      ]
-    },
-    "bikes": [],
-    "capacity": 48
-  },
-  {
-    "id": 13,
-    "name": "Norra Industrigatan",
-    "city_name": "Malmö",
-    "location": {
-      "type": "Point",
-      "coordinates": [
-        55.67575664747837,
-        13.040928828840778
-      ]
-    },
-    "bikes": [],
-    "capacity": 14
-  },
-  {
-    "id": 94,
-    "name": "Skogsallén",
-    "city_name": "Malmö",
-    "location": {
-      "type": "Point",
-      "coordinates": [
-        55.519167954857636,
-        12.942347922443783
-      ]
-    },
-    "bikes": [],
-    "capacity": 20
-  },
-  {
-    "id": 90,
-    "name": "Undre Ängsgatan",
-    "city_name": "Malmö",
-    "location": {
-      "type": "Point",
-      "coordinates": [
-        55.509573391358366,
-        12.946166801581601
-      ]
-    },
-    "bikes": [],
-    "capacity": 30
-  },
-  {
-    "id": 27,
-    "name": "Storgärdet",
-    "city_name": "Stockholm",
-    "location": {
-      "type": "Point",
-      "coordinates": [
-        59.487159367722974,
-        18.05947021475032
-      ]
-    },
-    "bikes": [],
-    "capacity": 48
-  },
-  {
-    "id": 1,
-    "name": "Viklunds Gata",
-    "city_name": "Malmö",
-    "location": {
-      "type": "Point",
-      "coordinates": [
-        55.68236218196233,
-        12.95541054938221
-      ]
-    },
-    "bikes": [],
-    "capacity": 13
-  },
-  {
-    "id": 62,
-    "name": "Olivers Väg",
-    "city_name": "Linköping",
-    "location": {
-      "type": "Point",
-      "coordinates": [
-        58.47753863828247,
-        15.647337674802863
-      ]
-    },
-    "bikes": [],
-    "capacity": 15
-  },
-  {
-    "id": 33,
-    "name": "Genvägen",
-    "city_name": "Malmö",
-    "location": {
-      "type": "Point",
-      "coordinates": [
-        55.54388355086378,
-        13.093133561890438
-      ]
-    },
-    "bikes": [],
-    "capacity": 44
-  },
-  {
-    "id": 33,
-    "name": "Norra Skolallén",
-    "city_name": "Linköping",
-    "location": {
-      "type": "Point",
-      "coordinates": [
-        58.42594770851732,
-        15.623985642578276
-      ]
-    },
-    "bikes": [],
-    "capacity": 24
-  },
-  {
-    "id": 62,
-    "name": "Övre Aspvägen",
-    "city_name": "Stockholm",
-    "location": {
-      "type": "Point",
-      "coordinates": [
-        59.424266263844586,
-        18.184138638698812
-      ]
-    },
-    "bikes": [],
-    "capacity": 44
-  },
-  {
-    "id": 65,
-    "name": "Järnvägsvägen",
-    "city_name": "Malmö",
-    "location": {
-      "type": "Point",
-      "coordinates": [
-        55.56728990400322,
-        12.919281593453135
-      ]
-    },
-    "bikes": [],
-    "capacity": 34
-  },
-  {
-    "id": 24,
-    "name": "Evas Väg",
-    "city_name": "Stockholm",
-    "location": {
-      "type": "Point",
-      "coordinates": [
-        59.4382142303881,
-        18.004045860228445
-      ]
-    },
-    "bikes": [],
-    "capacity": 38
-  },
-  {
-    "id": 65,
-    "name": "Övre Stationsgatan",
-    "city_name": "Stockholm",
-    "location": {
-      "type": "Point",
-      "coordinates": [
-        59.473833570934275,
-        18.07991732935455
-      ]
-    },
-    "bikes": [],
-    "capacity": 12
-  },
-  {
-    "id": 64,
-    "name": "Järnvägsgränden",
-    "city_name": "Malmö",
-    "location": {
-      "type": "Point",
-      "coordinates": [
-        55.56413945954552,
-        13.089242095352066
-      ]
-    },
-    "bikes": [],
-    "capacity": 36
-  },
-  {
-    "id": 11,
-    "name": "Södra Järnvägsvägen",
-    "city_name": "Malmö",
-    "location": {
-      "type": "Point",
-      "coordinates": [
-        55.50904521156929,
-        13.032831175968505
-      ]
-    },
-    "bikes": [],
-    "capacity": 26
-  },
-  {
-    "id": 78,
-    "name": "Arvids Väg",
-    "city_name": "Stockholm",
-    "location": {
-      "type": "Point",
-      "coordinates": [
-        59.30841030286037,
-        18.020167201113438
+        55.556530375791255,
+        13.013194783962621
       ]
     },
     "bikes": [],
@@ -463,240 +225,478 @@
   },
   {
     "id": 45,
-    "name": "Östra Stationsgärdet",
-    "city_name": "Malmö",
-    "location": {
-      "type": "Point",
-      "coordinates": [
-        55.65463375663309,
-        13.074229359928388
-      ]
-    },
-    "bikes": [],
-    "capacity": 12
-  },
-  {
-    "id": 70,
-    "name": "Södra Ringgärdet",
-    "city_name": "Malmö",
-    "location": {
-      "type": "Point",
-      "coordinates": [
-        55.685988615918056,
-        12.93002054910139
-      ]
-    },
-    "bikes": [],
-    "capacity": 43
-  },
-  {
-    "id": 44,
-    "name": "Svens Gata",
+    "name": "Marcuss Gata",
     "city_name": "Linköping",
     "location": {
       "type": "Point",
       "coordinates": [
-        58.41506761233018,
-        15.659890098575492
-      ]
-    },
-    "bikes": [],
-    "capacity": 25
-  },
-  {
-    "id": 39,
-    "name": "Norra Industrivägen",
-    "city_name": "Malmö",
-    "location": {
-      "type": "Point",
-      "coordinates": [
-        55.5944100565376,
-        13.03994539553856
-      ]
-    },
-    "bikes": [],
-    "capacity": 49
-  },
-  {
-    "id": 78,
-    "name": "Felixs Gata",
-    "city_name": "Stockholm",
-    "location": {
-      "type": "Point",
-      "coordinates": [
-        59.31030771199467,
-        18.01840414196417
-      ]
-    },
-    "bikes": [],
-    "capacity": 16
-  },
-  {
-    "id": 93,
-    "name": "Nyströms Väg",
-    "city_name": "Malmö",
-    "location": {
-      "type": "Point",
-      "coordinates": [
-        55.693269870976536,
-        13.056151989773051
-      ]
-    },
-    "bikes": [],
-    "capacity": 11
-  },
-  {
-    "id": 47,
-    "name": "Övre Industriallén",
-    "city_name": "Linköping",
-    "location": {
-      "type": "Point",
-      "coordinates": [
-        58.48137005422977,
-        15.680878279759263
+        58.4278386667364,
+        15.687218833382966
       ]
     },
     "bikes": [],
     "capacity": 44
   },
   {
-    "id": 94,
-    "name": "Annikas Gata",
+    "id": 99,
+    "name": "Berggrens Väg",
     "city_name": "Malmö",
     "location": {
       "type": "Point",
       "coordinates": [
-        55.579743754241164,
-        12.977868385120269
-      ]
-    },
-    "bikes": [],
-    "capacity": 42
-  },
-  {
-    "id": 95,
-    "name": "Norra Kyrkogränden",
-    "city_name": "Stockholm",
-    "location": {
-      "type": "Point",
-      "coordinates": [
-        59.41962603597441,
-        18.107636128687112
-      ]
-    },
-    "bikes": [],
-    "capacity": 21
-  },
-  {
-    "id": 78,
-    "name": "Samuelssons Väg",
-    "city_name": "Malmö",
-    "location": {
-      "type": "Point",
-      "coordinates": [
-        55.581365072074014,
-        12.979768574980474
-      ]
-    },
-    "bikes": [],
-    "capacity": 29
-  },
-  {
-    "id": 54,
-    "name": "Björkgränden",
-    "city_name": "Linköping",
-    "location": {
-      "type": "Point",
-      "coordinates": [
-        58.41091853529261,
-        15.644086488978164
+        55.66826854491431,
+        12.995611106070413
       ]
     },
     "bikes": [],
     "capacity": 16
   },
   {
-    "id": 57,
-    "name": "Skolvägen",
-    "city_name": "Stockholm",
-    "location": {
-      "type": "Point",
-      "coordinates": [
-        59.39894132814742,
-        18.09488166487255
-      ]
-    },
-    "bikes": [],
-    "capacity": 50
-  },
-  {
-    "id": 43,
-    "name": "Wikströms Gata",
+    "id": 92,
+    "name": "Villagärdet",
     "city_name": "Linköping",
     "location": {
       "type": "Point",
       "coordinates": [
-        58.46459072393152,
-        15.645789893393575
+        58.408464774147575,
+        15.656786656313697
+      ]
+    },
+    "bikes": [],
+    "capacity": 18
+  },
+  {
+    "id": 12,
+    "name": "Davids Väg",
+    "city_name": "Stockholm",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        59.41356778346578,
+        18.07754858464515
+      ]
+    },
+    "bikes": [],
+    "capacity": 20
+  },
+  {
+    "id": 35,
+    "name": "Övre Kvarngränden",
+    "city_name": "Linköping",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        58.43013646300982,
+        15.616279423599519
+      ]
+    },
+    "bikes": [],
+    "capacity": 11
+  },
+  {
+    "id": 35,
+    "name": "Skogsgärdet",
+    "city_name": "Malmö",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        55.510752306253465,
+        13.06638064240987
+      ]
+    },
+    "bikes": [],
+    "capacity": 19
+  },
+  {
+    "id": 12,
+    "name": "Ängsgatan",
+    "city_name": "Stockholm",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        59.352037658885486,
+        18.115471721219965
+      ]
+    },
+    "bikes": [],
+    "capacity": 32
+  },
+  {
+    "id": 11,
+    "name": "Nyströms Gata",
+    "city_name": "Malmö",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        55.64697180812133,
+        13.022273581038807
+      ]
+    },
+    "bikes": [],
+    "capacity": 45
+  },
+  {
+    "id": 77,
+    "name": "Västra Bäckgärdet",
+    "city_name": "Malmö",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        55.551043734121485,
+        12.911706205008917
+      ]
+    },
+    "bikes": [],
+    "capacity": 29
+  },
+  {
+    "id": 43,
+    "name": "Eliassons Väg",
+    "city_name": "Stockholm",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        59.45669769116192,
+        18.06377390844586
+      ]
+    },
+    "bikes": [],
+    "capacity": 22
+  },
+  {
+    "id": 92,
+    "name": "Norra Björkallén",
+    "city_name": "Linköping",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        58.41712264655633,
+        15.676123711121228
+      ]
+    },
+    "bikes": [],
+    "capacity": 16
+  },
+  {
+    "id": 28,
+    "name": "Leifs Väg",
+    "city_name": "Linköping",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        58.44911105132415,
+        15.6282825585102
+      ]
+    },
+    "bikes": [],
+    "capacity": 45
+  },
+  {
+    "id": 95,
+    "name": "Fabriksgränden",
+    "city_name": "Linköping",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        58.47013513475357,
+        15.67810726445616
+      ]
+    },
+    "bikes": [],
+    "capacity": 17
+  },
+  {
+    "id": 5,
+    "name": "Rasmuss Väg",
+    "city_name": "Linköping",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        58.46273865499024,
+        15.62964712588832
+      ]
+    },
+    "bikes": [],
+    "capacity": 10
+  },
+  {
+    "id": 68,
+    "name": "Övre Fabriksgärdet",
+    "city_name": "Stockholm",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        59.474595623091915,
+        18.090742060609372
+      ]
+    },
+    "bikes": [],
+    "capacity": 14
+  },
+  {
+    "id": 79,
+    "name": "Agness Väg",
+    "city_name": "Malmö",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        55.623127727841734,
+        13.084627152041845
+      ]
+    },
+    "bikes": [],
+    "capacity": 37
+  },
+  {
+    "id": 49,
+    "name": "Daniels Väg",
+    "city_name": "Linköping",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        58.462496399050956,
+        15.672937319105955
+      ]
+    },
+    "bikes": [],
+    "capacity": 38
+  },
+  {
+    "id": 63,
+    "name": "Undre Bäckgärdet",
+    "city_name": "Malmö",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        55.56278983253123,
+        12.961780039029934
+      ]
+    },
+    "bikes": [],
+    "capacity": 13
+  },
+  {
+    "id": 36,
+    "name": "Hassans Gata",
+    "city_name": "Stockholm",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        59.314767314276864,
+        18.158451928863098
+      ]
+    },
+    "bikes": [],
+    "capacity": 20
+  },
+  {
+    "id": 14,
+    "name": "Guns Väg",
+    "city_name": "Stockholm",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        59.48117282984955,
+        18.039581063354415
+      ]
+    },
+    "bikes": [],
+    "capacity": 10
+  },
+  {
+    "id": 92,
+    "name": "Viktorias Väg",
+    "city_name": "Stockholm",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        59.35110422560497,
+        18.137656182418567
+      ]
+    },
+    "bikes": [],
+    "capacity": 22
+  },
+  {
+    "id": 73,
+    "name": "Övre Kyrkgränden",
+    "city_name": "Stockholm",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        59.43996704243578,
+        18.114550461016435
+      ]
+    },
+    "bikes": [],
+    "capacity": 43
+  },
+  {
+    "id": 77,
+    "name": "Larssons Gata",
+    "city_name": "Stockholm",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        59.370450412817675,
+        18.07552563325682
+      ]
+    },
+    "bikes": [],
+    "capacity": 39
+  },
+  {
+    "id": 78,
+    "name": "Mattssons Gata",
+    "city_name": "Stockholm",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        59.46796884364488,
+        18.112665180079876
       ]
     },
     "bikes": [],
     "capacity": 46
   },
   {
-    "id": 90,
+    "id": 68,
+    "name": "Furugränden",
+    "city_name": "Stockholm",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        59.33815570994078,
+        18.077378386624318
+      ]
+    },
+    "bikes": [],
+    "capacity": 32
+  },
+  {
+    "id": 80,
     "name": "Nyströms Gata",
     "city_name": "Stockholm",
     "location": {
       "type": "Point",
       "coordinates": [
-        59.33064620414252,
-        18.16941462856306
+        59.40870682829723,
+        18.093294778398178
       ]
     },
     "bikes": [],
-    "capacity": 36
+    "capacity": 18
   },
   {
-    "id": 16,
-    "name": "Strömbergs Väg",
-    "city_name": "Stockholm",
-    "location": {
-      "type": "Point",
-      "coordinates": [
-        59.467054752466744,
-        18.066103085276666
-      ]
-    },
-    "bikes": [],
-    "capacity": 30
-  },
-  {
-    "id": 38,
-    "name": "Norra Trädgårdgatan",
+    "id": 22,
+    "name": "Mariannes Väg",
     "city_name": "Malmö",
     "location": {
       "type": "Point",
       "coordinates": [
-        55.69870563737339,
-        13.09471145457944
+        55.56442114545285,
+        12.973606431033147
+      ]
+    },
+    "bikes": [],
+    "capacity": 50
+  },
+  {
+    "id": 89,
+    "name": "Västra Ringgränden",
+    "city_name": "Stockholm",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        59.35935786640502,
+        18.009631043797288
+      ]
+    },
+    "bikes": [],
+    "capacity": 50
+  },
+  {
+    "id": 75,
+    "name": "Ringgärdet",
+    "city_name": "Linköping",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        58.46828160180678,
+        15.678847723234336
+      ]
+    },
+    "bikes": [],
+    "capacity": 33
+  },
+  {
+    "id": 29,
+    "name": "Storgatan",
+    "city_name": "Linköping",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        58.45814018192508,
+        15.676162321863837
+      ]
+    },
+    "bikes": [],
+    "capacity": 20
+  },
+  {
+    "id": 40,
+    "name": "Pers Väg",
+    "city_name": "Stockholm",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        59.38266990780773,
+        18.196809609304996
       ]
     },
     "bikes": [],
     "capacity": 48
   },
   {
-    "id": 26,
-    "name": "Hermanssons Gata",
+    "id": 93,
+    "name": "Jans Gata",
     "city_name": "Stockholm",
     "location": {
       "type": "Point",
       "coordinates": [
-        59.417681493032816,
-        18.124020074414148
+        59.319234884776776,
+        18.106772957357812
       ]
     },
     "bikes": [],
-    "capacity": 50
+    "capacity": 46
+  },
+  {
+    "id": 30,
+    "name": "Ekvägen",
+    "city_name": "Malmö",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        55.69949189270136,
+        13.018998907472781
+      ]
+    },
+    "bikes": [],
+    "capacity": 31
+  },
+  {
+    "id": 45,
+    "name": "Nybergs Gata",
+    "city_name": "Linköping",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        58.41388508400478,
+        15.614611609221484
+      ]
+    },
+    "bikes": [],
+    "capacity": 18
   }
 ]

@@ -1,156 +1,156 @@
 [
   {
-    "id": 2,
+    "id": 23,
+    "city_name": "Linköping",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        58.4778230853399,
+        15.685668176016692
+      ]
+    },
+    "status": "maintenance",
+    "battery": 5,
+    "speed": 0
+  },
+  {
+    "id": 90,
     "city_name": "Stockholm",
     "location": {
       "type": "Point",
       "coordinates": [
-        59.3949388869513,
-        18.18708607523023
+        59.417917598281356,
+        18.073607589639085
       ]
     },
     "status": "in_use",
-    "battery": 31,
-    "speed": 8
+    "battery": 81,
+    "speed": 5
   },
   {
-    "id": 1,
+    "id": 81,
     "city_name": "Linköping",
     "location": {
       "type": "Point",
       "coordinates": [
-        58.41254902737521,
-        15.67347163498894
-      ]
-    },
-    "status": "maintenance",
-    "battery": 32,
-    "speed": 0
-  },
-  {
-    "id": 97,
-    "city_name": "Malmö",
-    "location": {
-      "type": "Point",
-      "coordinates": [
-        55.65097261341599,
-        12.992540694340791
-      ]
-    },
-    "status": "in_use",
-    "battery": 11,
-    "speed": 8
-  },
-  {
-    "id": 78,
-    "city_name": "Linköping",
-    "location": {
-      "type": "Point",
-      "coordinates": [
-        58.497708205014234,
-        15.697724383626575
+        58.442861886572985,
+        15.674812001550634
       ]
     },
     "status": "available",
-    "battery": 45,
+    "battery": 55,
     "speed": 0
   },
   {
-    "id": 77,
+    "id": 90,
     "city_name": "Malmö",
     "location": {
       "type": "Point",
       "coordinates": [
-        55.55910838354831,
-        13.090808040439024
+        55.59115027548443,
+        13.020952113156511
+      ]
+    },
+    "status": "in_use",
+    "battery": 7,
+    "speed": 14
+  },
+  {
+    "id": 17,
+    "city_name": "Linköping",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        58.45193422336859,
+        15.601603521137605
       ]
     },
     "status": "charging",
-    "battery": 95,
+    "battery": 77,
     "speed": 0
   },
   {
-    "id": 3,
-    "city_name": "Stockholm",
-    "location": {
-      "type": "Point",
-      "coordinates": [
-        59.4069730333518,
-        18.146068806026953
-      ]
-    },
-    "status": "maintenance",
-    "battery": 66,
-    "speed": 0
-  },
-  {
-    "id": 71,
+    "id": 19,
     "city_name": "Linköping",
     "location": {
       "type": "Point",
       "coordinates": [
-        58.40433080462046,
-        15.669399750245864
+        58.48743936266719,
+        15.638304957458834
       ]
     },
-    "status": "available",
-    "battery": 35,
-    "speed": 0
+    "status": "in_use",
+    "battery": 33,
+    "speed": 8
   },
   {
-    "id": 72,
+    "id": 5,
     "city_name": "Malmö",
     "location": {
       "type": "Point",
       "coordinates": [
-        55.677065166095794,
-        12.94109793674132
+        55.576027151618845,
+        12.996562444490905
       ]
     },
-    "status": "in_use",
-    "battery": 96,
-    "speed": 9
+    "status": "charging",
+    "battery": 9,
+    "speed": 0
   },
   {
     "id": 51,
+    "city_name": "Malmö",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        55.616466487930566,
+        13.077274919709879
+      ]
+    },
+    "status": "in_use",
+    "battery": 55,
+    "speed": 18
+  },
+  {
+    "id": 96,
     "city_name": "Linköping",
     "location": {
       "type": "Point",
       "coordinates": [
-        58.44441500490319,
-        15.624927443031897
-      ]
-    },
-    "status": "available",
-    "battery": 87,
-    "speed": 0
-  },
-  {
-    "id": 32,
-    "city_name": "Stockholm",
-    "location": {
-      "type": "Point",
-      "coordinates": [
-        59.36813781497363,
-        18.173602288106803
+        58.473703298500325,
+        15.672388671668852
       ]
     },
     "status": "in_use",
-    "battery": 79,
+    "battery": 91,
     "speed": 10
   },
   {
-    "id": 40,
-    "city_name": "Stockholm",
+    "id": 33,
+    "city_name": "Linköping",
     "location": {
       "type": "Point",
       "coordinates": [
-        59.30916639591795,
-        18.18078852173893
+        58.42616870733973,
+        15.60781496687208
       ]
     },
     "status": "charging",
-    "battery": 70,
+    "battery": 1,
+    "speed": 0
+  },
+  {
+    "id": 56,
+    "city_name": "Malmö",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        55.59926586541812,
+        12.992389562474612
+      ]
+    },
+    "status": "charging",
+    "battery": 63,
     "speed": 0
   },
   {
@@ -159,358 +159,120 @@
     "location": {
       "type": "Point",
       "coordinates": [
-        59.49831025758952,
-        18.094170841781096
+        59.37617403052789,
+        18.101332130139795
       ]
     },
     "status": "in_use",
-    "battery": 73,
-    "speed": 1
+    "battery": 9,
+    "speed": 9
   },
   {
-    "id": 99,
+    "id": 97,
     "city_name": "Linköping",
     "location": {
       "type": "Point",
       "coordinates": [
-        58.42972600205227,
-        15.666013903749644
-      ]
-    },
-    "status": "available",
-    "battery": 25,
-    "speed": 0
-  },
-  {
-    "id": 79,
-    "city_name": "Linköping",
-    "location": {
-      "type": "Point",
-      "coordinates": [
-        58.48833231957523,
-        15.686575717827827
+        58.478440632344174,
+        15.651514134304705
       ]
     },
     "status": "in_use",
-    "battery": 65,
-    "speed": 5
+    "battery": 37,
+    "speed": 16
   },
   {
-    "id": 98,
-    "city_name": "Malmö",
-    "location": {
-      "type": "Point",
-      "coordinates": [
-        55.511998634119145,
-        12.971040976801
-      ]
-    },
-    "status": "maintenance",
-    "battery": 15,
-    "speed": 0
-  },
-  {
-    "id": 46,
+    "id": 20,
     "city_name": "Stockholm",
     "location": {
       "type": "Point",
       "coordinates": [
-        59.42993063814738,
-        18.080961957108588
-      ]
-    },
-    "status": "in_use",
-    "battery": 28,
-    "speed": 19
-  },
-  {
-    "id": 35,
-    "city_name": "Linköping",
-    "location": {
-      "type": "Point",
-      "coordinates": [
-        58.41044210024793,
-        15.633094217331806
+        59.34938291200505,
+        18.178178962391563
       ]
     },
     "status": "available",
-    "battery": 87,
+    "battery": 81,
     "speed": 0
   },
   {
-    "id": 75,
-    "city_name": "Malmö",
-    "location": {
-      "type": "Point",
-      "coordinates": [
-        55.69868067952793,
-        12.999690552561429
-      ]
-    },
-    "status": "in_use",
-    "battery": 42,
-    "speed": 18
-  },
-  {
-    "id": 44,
+    "id": 28,
     "city_name": "Stockholm",
     "location": {
       "type": "Point",
       "coordinates": [
-        59.45110803253424,
-        18.015890614190305
-      ]
-    },
-    "status": "in_use",
-    "battery": 60,
-    "speed": 14
-  },
-  {
-    "id": 15,
-    "city_name": "Malmö",
-    "location": {
-      "type": "Point",
-      "coordinates": [
-        55.65007472235158,
-        13.020836956695993
-      ]
-    },
-    "status": "available",
-    "battery": 21,
-    "speed": 0
-  },
-  {
-    "id": 29,
-    "city_name": "Malmö",
-    "location": {
-      "type": "Point",
-      "coordinates": [
-        55.55215087164662,
-        12.973133886416317
+        59.30609378487889,
+        18.099191298816756
       ]
     },
     "status": "maintenance",
-    "battery": 24,
+    "battery": 93,
     "speed": 0
   },
   {
-    "id": 69,
+    "id": 4,
     "city_name": "Linköping",
     "location": {
       "type": "Point",
       "coordinates": [
-        58.41050537851271,
-        15.624094289300773
-      ]
-    },
-    "status": "maintenance",
-    "battery": 35,
-    "speed": 0
-  },
-  {
-    "id": 74,
-    "city_name": "Stockholm",
-    "location": {
-      "type": "Point",
-      "coordinates": [
-        59.422472065271386,
-        18.02652736907836
-      ]
-    },
-    "status": "available",
-    "battery": 65,
-    "speed": 0
-  },
-  {
-    "id": 6,
-    "city_name": "Malmö",
-    "location": {
-      "type": "Point",
-      "coordinates": [
-        55.641296387642626,
-        12.95854489503246
+        58.45991099925681,
+        15.617114613040766
       ]
     },
     "status": "charging",
-    "battery": 55,
+    "battery": 2,
     "speed": 0
   },
   {
-    "id": 35,
-    "city_name": "Stockholm",
-    "location": {
-      "type": "Point",
-      "coordinates": [
-        59.47742719921838,
-        18.026127184231033
-      ]
-    },
-    "status": "in_use",
-    "battery": 16,
-    "speed": 13
-  },
-  {
-    "id": 100,
-    "city_name": "Stockholm",
-    "location": {
-      "type": "Point",
-      "coordinates": [
-        59.4711761021465,
-        18.00645515789834
-      ]
-    },
-    "status": "maintenance",
-    "battery": 66,
-    "speed": 0
-  },
-  {
-    "id": 73,
+    "id": 93,
     "city_name": "Malmö",
     "location": {
       "type": "Point",
       "coordinates": [
-        55.6123227205696,
-        12.983006761756117
+        55.60226324055501,
+        12.962726306309865
       ]
     },
-    "status": "in_use",
-    "battery": 59,
-    "speed": 19
+    "status": "charging",
+    "battery": 19,
+    "speed": 0
   },
   {
-    "id": 21,
+    "id": 67,
     "city_name": "Linköping",
     "location": {
       "type": "Point",
       "coordinates": [
-        58.419603119410226,
-        15.637435508136182
+        58.411681459065655,
+        15.668536912037569
       ]
     },
-    "status": "maintenance",
+    "status": "charging",
     "battery": 76,
     "speed": 0
   },
   {
-    "id": 73,
-    "city_name": "Malmö",
-    "location": {
-      "type": "Point",
-      "coordinates": [
-        55.588400986498776,
-        13.028734267708641
-      ]
-    },
-    "status": "available",
-    "battery": 94,
-    "speed": 0
-  },
-  {
-    "id": 57,
-    "city_name": "Malmö",
-    "location": {
-      "type": "Point",
-      "coordinates": [
-        55.53173799874523,
-        12.933668646739473
-      ]
-    },
-    "status": "maintenance",
-    "battery": 98,
-    "speed": 0
-  },
-  {
-    "id": 33,
+    "id": 20,
     "city_name": "Stockholm",
     "location": {
       "type": "Point",
       "coordinates": [
-        59.4649780229362,
-        18.065244094625868
-      ]
-    },
-    "status": "in_use",
-    "battery": 62,
-    "speed": 10
-  },
-  {
-    "id": 54,
-    "city_name": "Stockholm",
-    "location": {
-      "type": "Point",
-      "coordinates": [
-        59.40285303621147,
-        18.09488360074713
-      ]
-    },
-    "status": "maintenance",
-    "battery": 13,
-    "speed": 0
-  },
-  {
-    "id": 37,
-    "city_name": "Linköping",
-    "location": {
-      "type": "Point",
-      "coordinates": [
-        58.49856251508536,
-        15.665925290337706
+        59.411689024828156,
+        18.060277734384645
       ]
     },
     "status": "available",
-    "battery": 16,
+    "battery": 90,
     "speed": 0
   },
   {
-    "id": 59,
-    "city_name": "Linköping",
-    "location": {
-      "type": "Point",
-      "coordinates": [
-        58.45300415545458,
-        15.609034767389868
-      ]
-    },
-    "status": "in_use",
-    "battery": 34,
-    "speed": 10
-  },
-  {
-    "id": 98,
-    "city_name": "Linköping",
-    "location": {
-      "type": "Point",
-      "coordinates": [
-        58.45159273243086,
-        15.656230725196975
-      ]
-    },
-    "status": "in_use",
-    "battery": 98,
-    "speed": 18
-  },
-  {
-    "id": 38,
-    "city_name": "Linköping",
-    "location": {
-      "type": "Point",
-      "coordinates": [
-        58.43569413798396,
-        15.618929480244361
-      ]
-    },
-    "status": "maintenance",
-    "battery": 64,
-    "speed": 0
-  },
-  {
-    "id": 75,
+    "id": 95,
     "city_name": "Malmö",
     "location": {
       "type": "Point",
       "coordinates": [
-        55.5236084093504,
-        13.099363823363822
+        55.630516943788884,
+        12.996208585896898
       ]
     },
     "status": "maintenance",
@@ -518,27 +280,97 @@
     "speed": 0
   },
   {
-    "id": 54,
-    "city_name": "Malmö",
+    "id": 28,
+    "city_name": "Stockholm",
     "location": {
       "type": "Point",
       "coordinates": [
-        55.65177419514608,
-        12.967448769067172
+        59.498417642882664,
+        18.147987609700078
       ]
     },
-    "status": "charging",
-    "battery": 5,
+    "status": "available",
+    "battery": 12,
     "speed": 0
   },
   {
-    "id": 59,
+    "id": 27,
     "city_name": "Linköping",
     "location": {
       "type": "Point",
       "coordinates": [
-        58.47201181856383,
-        15.694769157310596
+        58.4946552240648,
+        15.631169855639557
+      ]
+    },
+    "status": "available",
+    "battery": 36,
+    "speed": 0
+  },
+  {
+    "id": 29,
+    "city_name": "Linköping",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        58.43182731777784,
+        15.623803271463585
+      ]
+    },
+    "status": "in_use",
+    "battery": 89,
+    "speed": 13
+  },
+  {
+    "id": 41,
+    "city_name": "Stockholm",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        59.482290280308085,
+        18.011292764154252
+      ]
+    },
+    "status": "in_use",
+    "battery": 32,
+    "speed": 20
+  },
+  {
+    "id": 28,
+    "city_name": "Linköping",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        58.4449414322233,
+        15.658159910589742
+      ]
+    },
+    "status": "in_use",
+    "battery": 95,
+    "speed": 16
+  },
+  {
+    "id": 47,
+    "city_name": "Malmö",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        55.57573605842126,
+        13.087296750739734
+      ]
+    },
+    "status": "charging",
+    "battery": 52,
+    "speed": 0
+  },
+  {
+    "id": 40,
+    "city_name": "Stockholm",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        59.35043539551651,
+        18.150603447850937
       ]
     },
     "status": "maintenance",
@@ -546,157 +378,325 @@
     "speed": 0
   },
   {
-    "id": 2,
+    "id": 44,
     "city_name": "Stockholm",
     "location": {
       "type": "Point",
       "coordinates": [
-        59.36824987210511,
-        18.189807995334533
+        59.446775537317535,
+        18.199340427316642
       ]
     },
     "status": "available",
-    "battery": 43,
+    "battery": 84,
     "speed": 0
   },
   {
-    "id": 62,
+    "id": 66,
+    "city_name": "Stockholm",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        59.325621518883864,
+        18.09053470306624
+      ]
+    },
+    "status": "charging",
+    "battery": 27,
+    "speed": 0
+  },
+  {
+    "id": 66,
     "city_name": "Linköping",
     "location": {
       "type": "Point",
       "coordinates": [
-        58.401388974774136,
-        15.63819544989341
+        58.402592361479805,
+        15.618920140386416
       ]
     },
     "status": "maintenance",
-    "battery": 68,
-    "speed": 0
-  },
-  {
-    "id": 17,
-    "city_name": "Malmö",
-    "location": {
-      "type": "Point",
-      "coordinates": [
-        55.51012857991714,
-        12.947521861073227
-      ]
-    },
-    "status": "in_use",
-    "battery": 100,
-    "speed": 9
-  },
-  {
-    "id": 1,
-    "city_name": "Stockholm",
-    "location": {
-      "type": "Point",
-      "coordinates": [
-        59.33604603093356,
-        18.128366439672916
-      ]
-    },
-    "status": "in_use",
-    "battery": 53,
-    "speed": 15
-  },
-  {
-    "id": 15,
-    "city_name": "Malmö",
-    "location": {
-      "type": "Point",
-      "coordinates": [
-        55.66579698010631,
-        13.075866355134572
-      ]
-    },
-    "status": "charging",
-    "battery": 49,
-    "speed": 0
-  },
-  {
-    "id": 83,
-    "city_name": "Malmö",
-    "location": {
-      "type": "Point",
-      "coordinates": [
-        55.580942876890546,
-        12.964321180137722
-      ]
-    },
-    "status": "in_use",
-    "battery": 66,
-    "speed": 12
-  },
-  {
-    "id": 11,
-    "city_name": "Stockholm",
-    "location": {
-      "type": "Point",
-      "coordinates": [
-        59.390517074435465,
-        18.073284947525263
-      ]
-    },
-    "status": "maintenance",
-    "battery": 11,
+    "battery": 81,
     "speed": 0
   },
   {
     "id": 18,
-    "city_name": "Linköping",
-    "location": {
-      "type": "Point",
-      "coordinates": [
-        58.48739353351567,
-        15.606455642867285
-      ]
-    },
-    "status": "available",
-    "battery": 41,
-    "speed": 0
-  },
-  {
-    "id": 61,
-    "city_name": "Stockholm",
-    "location": {
-      "type": "Point",
-      "coordinates": [
-        59.39149519746488,
-        18.17412900286482
-      ]
-    },
-    "status": "in_use",
-    "battery": 93,
-    "speed": 5
-  },
-  {
-    "id": 78,
-    "city_name": "Linköping",
-    "location": {
-      "type": "Point",
-      "coordinates": [
-        58.45353353186299,
-        15.639934637482394
-      ]
-    },
-    "status": "maintenance",
-    "battery": 92,
-    "speed": 0
-  },
-  {
-    "id": 35,
     "city_name": "Malmö",
     "location": {
       "type": "Point",
       "coordinates": [
-        55.55282758890492,
-        12.952641758953062
+        55.65485613206191,
+        12.97464815767746
+      ]
+    },
+    "status": "maintenance",
+    "battery": 77,
+    "speed": 0
+  },
+  {
+    "id": 32,
+    "city_name": "Malmö",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        55.578370809361225,
+        13.045522606521619
+      ]
+    },
+    "status": "available",
+    "battery": 61,
+    "speed": 0
+  },
+  {
+    "id": 44,
+    "city_name": "Linköping",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        58.47613196507771,
+        15.682851501401581
+      ]
+    },
+    "status": "available",
+    "battery": 98,
+    "speed": 0
+  },
+  {
+    "id": 6,
+    "city_name": "Linköping",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        58.44488935936659,
+        15.616548306340421
+      ]
+    },
+    "status": "maintenance",
+    "battery": 36,
+    "speed": 0
+  },
+  {
+    "id": 26,
+    "city_name": "Linköping",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        58.45426540162241,
+        15.63379270984814
       ]
     },
     "status": "in_use",
-    "battery": 71,
-    "speed": 18
+    "battery": 87,
+    "speed": 6
+  },
+  {
+    "id": 94,
+    "city_name": "Linköping",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        58.441817351774844,
+        15.63051167072612
+      ]
+    },
+    "status": "charging",
+    "battery": 77,
+    "speed": 0
+  },
+  {
+    "id": 31,
+    "city_name": "Linköping",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        58.41459516288238,
+        15.670396874819977
+      ]
+    },
+    "status": "charging",
+    "battery": 70,
+    "speed": 0
+  },
+  {
+    "id": 12,
+    "city_name": "Malmö",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        55.60525038464199,
+        12.995022542326428
+      ]
+    },
+    "status": "maintenance",
+    "battery": 91,
+    "speed": 0
+  },
+  {
+    "id": 49,
+    "city_name": "Linköping",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        58.441620440295935,
+        15.697544287638848
+      ]
+    },
+    "status": "available",
+    "battery": 85,
+    "speed": 0
+  },
+  {
+    "id": 25,
+    "city_name": "Linköping",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        58.45793317591117,
+        15.658510541552237
+      ]
+    },
+    "status": "charging",
+    "battery": 29,
+    "speed": 0
+  },
+  {
+    "id": 47,
+    "city_name": "Malmö",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        55.546281033263675,
+        13.051802430742418
+      ]
+    },
+    "status": "available",
+    "battery": 62,
+    "speed": 0
+  },
+  {
+    "id": 19,
+    "city_name": "Linköping",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        58.40510975068446,
+        15.609139380988168
+      ]
+    },
+    "status": "in_use",
+    "battery": 82,
+    "speed": 3
+  },
+  {
+    "id": 22,
+    "city_name": "Linköping",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        58.42405487484752,
+        15.676362644580534
+      ]
+    },
+    "status": "in_use",
+    "battery": 24,
+    "speed": 15
+  },
+  {
+    "id": 92,
+    "city_name": "Linköping",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        58.490846360776224,
+        15.674586493760035
+      ]
+    },
+    "status": "charging",
+    "battery": 78,
+    "speed": 0
+  },
+  {
+    "id": 70,
+    "city_name": "Stockholm",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        59.41561946325167,
+        18.173373149418993
+      ]
+    },
+    "status": "charging",
+    "battery": 59,
+    "speed": 0
+  },
+  {
+    "id": 70,
+    "city_name": "Linköping",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        58.47372121748868,
+        15.619532326763784
+      ]
+    },
+    "status": "available",
+    "battery": 81,
+    "speed": 0
+  },
+  {
+    "id": 70,
+    "city_name": "Stockholm",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        59.49404071484691,
+        18.08925535011827
+      ]
+    },
+    "status": "in_use",
+    "battery": 96,
+    "speed": 7
+  },
+  {
+    "id": 80,
+    "city_name": "Linköping",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        58.461194611656666,
+        15.661178677624008
+      ]
+    },
+    "status": "in_use",
+    "battery": 44,
+    "speed": 12
+  },
+  {
+    "id": 71,
+    "city_name": "Linköping",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        58.40469863471549,
+        15.641581761600184
+      ]
+    },
+    "status": "available",
+    "battery": 7,
+    "speed": 0
+  },
+  {
+    "id": 93,
+    "city_name": "Stockholm",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        59.33180280465216,
+        18.137123749895075
+      ]
+    },
+    "status": "maintenance",
+    "battery": 19,
+    "speed": 0
   }
 ]
