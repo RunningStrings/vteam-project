@@ -110,7 +110,8 @@ const generateParkingsData = (numParkings) => {
         const city = faker.helpers.arrayElement(Object.keys(cities));
         const { lat, lon } = cities[city];
         // Shift coordinates
-        const polygon = generateRandomPolygon(lat, lon, 5);
+        const latitude = generateRandomCoordinate(lat[0], lat[1]);
+        const longitude = generateRandomCoordinate(lon[0], lon[1]);
 
         const capacity = faker.number.int({ min: 10, max: 50 }); // Random capacity places
 
@@ -119,9 +120,9 @@ const generateParkingsData = (numParkings) => {
             name: name,
             city_name: city,
             location: {
-                type: "Polygon",
-                coordinates: [ polygon ],
-            },
+                type: "Point",
+                coordinates: [latitude, longitude],
+                },
             bikes : [], // Placeholder for bikes at parking
             capacity: capacity
         };
