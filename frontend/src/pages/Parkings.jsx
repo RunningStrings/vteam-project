@@ -51,8 +51,8 @@ function Users() {
         {parkings.map((parking, index) => (
             <tr>
             <td>{index}</td>
-            <td>{parking.city_id}</td>
-            <td>{parking.location.coordinates[0][0].toFixed(4)}  {parking.location.coordinates[0][1].toFixed(4)}</td>
+            <td>{parking.city_name}</td>
+            <td>{parking.location.coordinates}</td> 
             <td>0</td>
             </tr>
           ))}

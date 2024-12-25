@@ -49,11 +49,23 @@
     box-shadow: inset 0 2px 4px #0019b0;
 }
 
+#buttons li {
+    float: left;
+    list-style: none;
+    text-align: center;
+    background-color: #015516;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    width: 90px;
+    line-height: 40px;
+  }
+
 .green-button {
     color: #fff;
     background-color: #038009;
     background-image: linear-gradient(#038009, #015205);
-    border-color: #038007;
+    border-color: #007004;
+    display: block;
 }
 
 .green-button:hover {

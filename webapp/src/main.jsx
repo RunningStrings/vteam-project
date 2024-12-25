@@ -5,6 +5,7 @@ import './style/navigation.css'
 import './style/buttons.css'
 import App from './App.jsx'
 import "./style/leaflet.css"; // <- Leaflet styles
+import './style/form.css'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>

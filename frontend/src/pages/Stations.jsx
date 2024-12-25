@@ -53,8 +53,8 @@ function Users() {
         {stations.map((station, index) => (
             <tr>
             <td>{index}</td>
-            <td>Björkgatan</td>
-            <td>{station.city_id}</td>
+            <td>{station.name}</td>
+            <td>{station.city_name}</td>
             <td>{station.location.coordinates[0].toFixed(4)} {station.location.coordinates[1].toFixed(4)}</td>
             <td>{station.bikes.length}</td>
             <td>{station.capacity}</td>

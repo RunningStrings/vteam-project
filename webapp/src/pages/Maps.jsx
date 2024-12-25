@@ -1,6 +1,7 @@
 /* global L */
 import { MapContainer, TileLayer, Marker, Popup, Polygon } from "react-leaflet";
 import { useState, useEffect } from 'react';
+import MarkerClusterGroup from "@changey/react-leaflet-markercluster";
 import L, { LatLng } from "leaflet";
 
 import { useMap } from "../hooks";
@@ -49,6 +50,28 @@ import { useMap } from "../hooks";
       iconUrl: './src/assets/kick-scooter.png',
     iconSize:[25,25]  
     });
+
+    const bikeRed = new L.Icon({
+      iconUrl: './src/assets/scooter_red.png',
+    iconSize:[25,25]  
+    });
+
+    const bikeGreen = new L.Icon({
+      iconUrl: './src/assets/scooter_green.png',
+    iconSize:[25,25]  
+    });
+
+    const bikeOrange = new L.Icon({
+      iconUrl: './src/assets/scooter_orange.png',
+    iconSize:[25,25]  
+    });
+
+    const bikeEmpty = new L.Icon({
+      iconUrl: './src/assets/scooter_empty.png',
+    iconSize:[25,25]  
+    });
+
+
 
     //const cityBorder = new L.polygon;
     //console.log(stations);    
@@ -102,6 +125,7 @@ for (let index = 0; index < cities.length; index++) {
  
       ))}
 
+<MarkerClusterGroup>
 {stations.map((station, index) => (
       <Marker 
         position={station.location.coordinates}
@@ -114,12 +138,14 @@ for (let index = 0; index < cities.length; index++) {
         </Popup>
       </Marker>
     ))}
+</MarkerClusterGroup>
+<MarkerClusterGroup>
 {bikes.map((bike, index) => (
     //{charging_stations.map((charging_stations, index) => (
       <Marker 
         position={bike.location.coordinates}
         key={index}
-        icon={bikeIcon}
+        icon={bike.status === "available" ? bikeGreen: bike.status === "charging" ? bikeRed: bikeEmpty} 
         >
       <Popup>
       
@@ -129,7 +155,8 @@ for (let index = 0; index < cities.length; index++) {
         </Popup>
       </Marker>
     ))}
-    </MapContainer>
+</MarkerClusterGroup>
+</MapContainer>
     </div>
   );  
   };

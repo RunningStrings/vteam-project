@@ -35,10 +35,10 @@ function Bikes() {
         <tbody>
         {bikes.map((bikes, index) => (
             <tr key={index}>
-            <td>{index}</td>
-            <td>{bikes.city_id}</td>
+            <td>{bikes.id}</td>
+            <td>{bikes.city_name}</td>
             <td>{bikes.location.coordinates}</td>
-            <td>{bikes.battery_level}</td>
+            <td>{bikes.battery}</td>
             <td>{bikes.status}</td>
             <td>{bikes.speed}</td>
             </tr>

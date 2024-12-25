@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import './App.css'
+import './style/form.css'
 import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
 import Rent from "./pages/Rent";
@@ -14,7 +15,7 @@ function App() {
 
   return (
     <Router>
-      <div style={{ display: "flex" }}>
+      <div >
         <div className="bottom-nav"><Navbar /></div>
         
         <div>
