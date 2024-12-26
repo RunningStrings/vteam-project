@@ -5,15 +5,21 @@ export default [
     js.configs.recommended,
    {
        rules: {
-           "no-unused-vars": "warn",
-           "no-undef": "warn",
-        //    "semi": ["error", "always"],
-        //    "eqeqeq": ["error", "always"],
-        //    "no-console": "warn",
-        //    "quotes": ["error", "double"],
-        //    "curly": ["error", "all"],
-        //    "consistent-return": "error",
-        //    "prefer-const": "error",
+            // // Consistent Formatting
+            // "semi": ["warn", "always"],
+            // "quotes": ["warn", "double"],
+            // "indent": ["warn", 4],
+            // // Error Prevention
+            // "eqeqeq": ["warn", "always"],
+            // "no-unused-vars": "warn",
+            // "no-undef": "warn",
+            // // Code Quality
+            // "no-console": "warn",
+            // "curly": ["warn", "all"],
+            // "consistent-return": "warn",
+            // "prefer-const": "warn",
+            // "complexity": ["error", { "max": 10 }],
+            // "max-lines": ["warn", { "max": 100 }],
        },
        languageOptions: {
             globals: {
