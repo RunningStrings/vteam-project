@@ -18,7 +18,8 @@ import { router as bikeRouter } from './routes/bikes.js';
 import { router as stationRouter } from './routes/charging_stations.js';
 import { router as zoneRouter } from './routes/parking_zones.js';
 // import { router as rentRouter } from './routes/rents.js';
-import logIncomingToConsole from './middlewear/index.js';
+import errorMiddleware from './middlewares/errorMiddleware.js';
+import logIncomingToConsole from './middlewares/index.js';
 
 app.use("/users", userRouter);
 app.use("/cities", cityRouter);
@@ -27,6 +28,7 @@ app.use("/charging_stations", stationRouter);
 app.use("/parking_zones", zoneRouter);
 // app.use("/rents", rentRouter)
 app.use(logIncomingToConsole);
+app.use(errorMiddleware);
 
 app.get('/', (req, res) => {
   res.send('Hello from the Backend!');
