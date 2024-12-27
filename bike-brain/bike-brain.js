@@ -153,7 +153,7 @@ class BikeBrain {
      */
     controlBike(action) {
         if (action === 'stop') {
-            this.status = 'mainenance';
+            this.status = 'maintenance';
             this.speed = 0;
             console.log(`Bike ${this.id} has been stopped`);
         } else if (action === 'make-available') {
