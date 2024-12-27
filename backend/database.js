@@ -31,7 +31,8 @@ const database = {
             collectionBikes: collectionBikes,
             collectionChargingStations: collectionChargingStations,
             collectionParkingZones: collectionParkingZones,
-            collectionUsers: collectionUsers
+            collectionUsers: collectionUsers,
+            client: client
         };
     }
 };

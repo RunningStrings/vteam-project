@@ -2,24 +2,29 @@
  * Route for users.
  */
 import express from 'express';
-import database from './../database.js';
+// import database from '../database.js';
 import { ObjectId } from 'mongodb';
+import userModel from "../models/userModel.js";
 
 const router = express.Router();
 
 router
     .route("/")
-    .get(async (req, res) => {
+    .get(async (req, res, next) => {
         try {
-            const db = await database.getDb();
-            const users = await db.collectionUsers.find().toArray();
-            res.json(users);
+            const result = await userModel.fetchAllUsers();
+            // const db = await database.getDb();
+            // const users = await db.collectionUsers.find().toArray();
+            res.status(200).json({
+                data: result
+            });
         } catch (error) {
-        console.error('Error get users:', error);
-        res.status(error.status || 500).json({ errorMessage: error.message || "Server Error" });
+            next(error)
+        // console.error('Error get users:', error);
+        // res.status(error.status || 500).json({ errorMessage: error.message || "Server Error" });
         }
     })
-    .post(async (req, res) => {
+    .post(async (req, res, next) => {
         try {
             const { firstName, lastName, email, password, role } = req.body;
 
@@ -57,70 +62,82 @@ router
 
 router
     .route("/:id")
-    .get(async (req, res) => {
+    .get(async (req, res, next) => {
         try {
-            const db = await database.getDb();
-            const userId = req.params.id;
+            const result = await userModel.fetchUserById(req.params.id);
 
-            if (!ObjectId.isValid(userId)) {
-                return res.status(400).json({ errorMessage: "ID format is invalid" });
-            }
+            res.status(200).json({
+                data: result
+            });
+            // const db = await database.getDb();
+            // const userID = req.params.id;
+            // if (!ObjectId.isValid(userId)) {
+            //     return res.status(400).json({ errorMessage: "ID format is invalid" });
+            // }
 
-            const objectId = new ObjectId(userId);
-            const user = await db.collectionUsers.findOne({ _id: objectId });
+            // const objectId = new ObjectId(userId);
+            // const user = await db.collectionUsers.findOne({ _id: objectId });
 
-            if (!user) {
-                return res.status(404).json({ errorMessage: "User can not be found.",
-                    objectId: userId
-                }
-                );
-            }
+            // if (!user) {
+            //     return res.status(404).json({ errorMessage: "User can not be found.",
+            //         objectId: userId
+            //     }
+            //     );
+            // }
 
-            res.status(200).json(user);
+
+            // res.status(200).json(user);
         } catch (error) {
             console.error('Error get one user:', error);
-            res.status(error.status || 500).json({ errorMessage: error.message || "Server Error" });
+            next(error)
+            // res.status(error.status || 500).json({ errorMessage: error.message || "Server Error" });
         }
     })
-    .put(async (req, res) => {
+    .patch(async (req, res, next) => {
         try {
-            const db = await database.getDb();
-            const userId = req.params.id;
-            const update = req.body;
+            const result = await userModel.updateUserById(req.params.id, req.body);
 
-            if (!ObjectId.isValid(userId)) {
-                return res.status(400).json({ errorMessage: "ID format is invalid" });
-            }
+            res.status(200).json({
+                data: result
+            });
+            // const db = await database.getDb();
+            // const userID = req.params.id;
+            // const update = req.body;
 
-            const objectId = new ObjectId(userId);
-            const user = await db.collectionUsers.findOne({ _id: objectId });
+            // if (!ObjectId.isValid(userID)) {
+            //     return res.status(400).json({ errorMessage: "ID format is invalid" });
+            // }
 
-            if (!user) {
-                return res.status(404).json({ errorMessage: "User can not be found.",
-                    objectId: userId
-                });
-            }
+            // const objectId = new ObjectId(userId);
+            // const user = await db.collectionUsers.findOne({ _id: objectId });
 
-            const results = await db.collectionUsers.updateOne(
-                { _id: objectId },
-                { $set: update }
-            );
+            // if (!user) {
+            //     return res.status(404).json({ errorMessage: "User can not be found.",
+            //         objectId: userId
+            //     });
+            // }
 
-            if (results.modifiedCount !== 1) {
-                return res.status(400).json({
-                    errorMessage: "Fail. No update possible with the given information.",
-                    objectId: userId
-                });
-            }
+            // const results = await db.collectionUsers.updateOne(
+            //     { _id: objectId },
+            //     { $set: update }
+            // );
 
-            const updatedUser = await db.collectionUsers.findOne({ _id: objectId });
-            return res.status(200).json(updatedUser);
+            // if (results.modifiedCount !== 1) {
+            //     return res.status(400).json({
+            //         errorMessage: "Fail. No update possible with the given information.",
+            //         objectId: userId
+            //     });
+            // }
+
+            // const updatedUser = await db.collectionUsers.findOne({ _id: objectId });
+            // return res.status(200).json(updatedUser);
         } catch (error) {
-            console.error('Error put one user:', error);
-            res.status(error.status || 500).json({ errorMessage: error.message || "Server Error" });
+            console.error('Error patch one user:', error);
+            next(error);
+            // res.status(error.status || 500).json({ errorMessage: error.message || "Server Error" });
         }
     })
-    .delete(async (req, res) => {
+    .delete(async (req, res, next) => {
         try {
             const db = await database.getDb();
             const userId = req.params.id;
