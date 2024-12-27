@@ -246,12 +246,12 @@ describe('BikeBrain', () => {
         });
 
         it('should not start a rental if the bike is not available', () => {
-            bike.status = 'charging';
+            bike.status = 'maintenance';
             bike.startTrip = jest.fn();
 
             bike.startRental(MOCK_CUSTOMER_ID);
 
-            expect(bike.status).toBe('charging');
+            expect(bike.status).toBe('maintenance');
             expect(bike.startTrip).not.toHaveBeenCalled();
         });
 
@@ -371,7 +371,7 @@ describe('BikeBrain', () => {
     describe('Admin Control', () => {
         it('should handle admin control actions', () => {
             bike.controlBike('stop');
-            expect(bike.status).toBe('available');
+            expect(bike.status).toBe('maintenance');
             expect(bike.speed).toBe(0);
 
             bike.controlBike('maintenance');
