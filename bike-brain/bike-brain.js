@@ -147,14 +147,18 @@ class BikeBrain {
      * @param {string} action - The action selected by admin.
      *                          Valid actions:
      *                          - 'stop': Sets the bike to 'available' status and resets speed to 0.
+     *                            'make-available': Makes the bike available for rental.
      *                          - 'maintenance': Puts the bike in 'maintenance' mode.
      *                          - 'charge': Sets the bike to 'charging' status.
      */
     controlBike(action) {
         if (action === 'stop') {
-            this.status = 'available';
+            this.status = 'mainenance';
             this.speed = 0;
             console.log(`Bike ${this.id} has been stopped`);
+        } else if (action === 'make-available') {
+            this.status = 'available';
+            console.log(`Bike ${this.id} is now available for rental.`);
         } else if (action === 'maintenance') {
             this.status = 'maintenance';
             console.log(`Bike ${this.id} is in maintenance mode`);
@@ -175,13 +179,14 @@ class BikeBrain {
 
     /**
      * Starts a rental by changing the bike's status to 'in-use' and initiating a trip.
-     * If the bike is not available, the rental cannot be started.
+     * If the bike is not available or if the bike is charging and has a
+     * batteryLevel lower than 50% the rental cannot be started.
      * 
      * @param {string} customerId - The ID of the customer renting the bike.
      * @returns Returns a message if the bike's status is not 'available'.
      */
     startRental(customerId) {
-        if (this.status !== 'available') {
+        if (!(this.status === 'available' || (this.status === 'charging' && this.batteryLevel >= 50))) {
             console.log('Bike not available for rental');
             return;
         }
