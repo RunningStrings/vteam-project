@@ -2,7 +2,7 @@
  * Route for bikes.
  */
 import express from 'express';
-import database from '../config/database.js';
+import database from '../database_config/database.js';
 import { ObjectId } from 'mongodb';
 
 const router = express.Router();

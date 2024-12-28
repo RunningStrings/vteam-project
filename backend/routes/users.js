@@ -2,7 +2,7 @@
  * Route for users.
  */
 import express from 'express';
-// import database from '../database.js';
+// import database from '../database_config/database.js';
 import { ObjectId } from 'mongodb';
 import userModel from "../models/userModel.js";
 
