@@ -2,7 +2,7 @@
  * Route for zones.
  */
 import express from 'express';
-import database from './../database.js';
+import database from '../database.js';
 import { ObjectId } from 'mongodb';
 
 const router = express.Router();
@@ -77,7 +77,7 @@ router
             res.status(error.status || 500).json({ errorMessage: error.message || "Server Error" });
         }
     })
-    .put(async (req, res) => {
+    .patch(async (req, res) => {
         try {
             const db = await database.getDb();
             const zoneId = req.params.id;
@@ -111,7 +111,7 @@ router
             const updatedZone = await db.collectionParkingZones.findOne({ _id: objectId });
             return res.status(200).json(updatedZone);
         } catch (error) {
-            console.error('Error put one zone:', error);
+            console.error('Error patch one zone:', error);
             res.status(error.status || 500).json({ errorMessage: error.message || "Server Error" });
         }
     })

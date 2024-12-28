@@ -2,7 +2,7 @@
  * Route for charging stations.
  */
 import express from 'express';
-import database from './../database.js';
+import database from '../database.js';
 import { ObjectId } from 'mongodb';
 
 const router = express.Router();
@@ -80,7 +80,7 @@ router
             res.status(error.status || 500).json({ errorMessage: error.message || "Server Error" });
         }
     })
-    .put(async (req, res) => {
+    .patch(async (req, res) => {
         try {
             const db = await database.getDb();
             const stationId = req.params.id;
@@ -114,7 +114,7 @@ router
             const updatedStation = await db.collectionChargingStations.findOne({ _id: objectId });
             return res.status(200).json(updatedStation);
         } catch (error) {
-            console.error('Error put one station:', error);
+            console.error('Error patch one station:', error);
             res.status(error.status || 500).json({ errorMessage: error.message || "Server Error" });
         }
     })
