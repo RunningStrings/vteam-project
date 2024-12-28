@@ -33,6 +33,7 @@ const database = {
             collectionParkingZones: collectionParkingZones,
             collectionUsers: collectionUsers,
             collectionTrips: collectionTrips
+            client: client
         };
     }
 };
