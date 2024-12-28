@@ -1,0 +1,450 @@
+[
+  {
+    "id": 18,
+    "name": "Guns Väg",
+    "city_name": "Malmö",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        55.60798846747571,
+        13.009833293578225
+      ]
+    },
+    "bikes": [],
+    "capacity": 25
+  },
+  {
+    "id": 92,
+    "name": "Undre Furuallén",
+    "city_name": "Malmö",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        55.60762232837678,
+        13.006946966278548
+      ]
+    },
+    "bikes": [],
+    "capacity": 46
+  },
+  {
+    "id": 66,
+    "name": "Mikaels Väg",
+    "city_name": "Malmö",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        55.60814735696431,
+        13.00190812370468
+      ]
+    },
+    "bikes": [],
+    "capacity": 30
+  },
+  {
+    "id": 48,
+    "name": "Västra Järnvägsallén",
+    "city_name": "Malmö",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        55.604443734833524,
+        13.00301783698967
+      ]
+    },
+    "bikes": [],
+    "capacity": 45
+  },
+  {
+    "id": 100,
+    "name": "Simons Gata",
+    "city_name": "Malmö",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        55.604973194925776,
+        12.998793353924668
+      ]
+    },
+    "bikes": [],
+    "capacity": 25
+  },
+  {
+    "id": 56,
+    "name": "Samuelssons Gata",
+    "city_name": "Malmö",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        55.604466754985964,
+        12.995424634310382
+      ]
+    },
+    "bikes": [],
+    "capacity": 20
+  },
+  {
+    "id": 55,
+    "name": "Pålssons Väg",
+    "city_name": "Malmö",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        55.607344167674455,
+        12.997448582789247
+      ]
+    },
+    "bikes": [],
+    "capacity": 20
+  },
+  {
+    "id": 90,
+    "name": "Christers Väg",
+    "city_name": "Malmö",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        55.602409419522616,
+        13.00148472423814
+      ]
+    },
+    "bikes": [],
+    "capacity": 18
+  },
+  {
+    "id": 60,
+    "name": "Lundströms Gata",
+    "city_name": "Malmö",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        55.60057176222321,
+        13.007639091149969
+      ]
+    },
+    "bikes": [],
+    "capacity": 37
+  },
+  {
+    "id": 76,
+    "name": "Industrivägen",
+    "city_name": "Malmö",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        55.603436054429665,
+        13.00824994642656
+      ]
+    },
+    "bikes": [],
+    "capacity": 16
+  },
+  {
+    "id": 2,
+    "name": "Mohameds Väg",
+    "city_name": "Malmö",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        55.60329070749273,
+        13.032998280303474
+      ]
+    },
+    "bikes": [],
+    "capacity": 44
+  },
+  {
+    "id": 44,
+    "name": "Östra Åkerallén",
+    "city_name": "Malmö",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        55.61314983641017,
+        12.976831726515769
+      ]
+    },
+    "bikes": [],
+    "capacity": 18
+  },
+  {
+    "id": 39,
+    "name": "Nybergs Väg",
+    "city_name": "Malmö",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        55.61045462926552,
+        12.982736464631472
+      ]
+    },
+    "bikes": [],
+    "capacity": 24
+  },
+  {
+    "id": 3,
+    "name": "Lundströms Gata",
+    "city_name": "Malmö",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        55.609773992104664,
+        12.97680762554441
+      ]
+    },
+    "bikes": [],
+    "capacity": 39
+  },
+  {
+    "id": 55,
+    "name": "Dahlbergs Gata",
+    "city_name": "Malmö",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        55.60472919518148,
+        12.979336508721218
+      ]
+    },
+    "bikes": [],
+    "capacity": 37
+  },
+  {
+    "id": 11,
+    "name": "Undre Ekvägen",
+    "city_name": "Malmö",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        55.59377977385191,
+        12.948308454528814
+      ]
+    },
+    "bikes": [],
+    "capacity": 12
+  },
+  {
+    "id": 58,
+    "name": "Williams Väg",
+    "city_name": "Malmö",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        55.59599231234648,
+        12.976725379838626
+      ]
+    },
+    "bikes": [],
+    "capacity": 48
+  },
+  {
+    "id": 88,
+    "name": "Långviken",
+    "city_name": "Malmö",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        55.59257290521643,
+        12.997216394503596
+      ]
+    },
+    "bikes": [],
+    "capacity": 44
+  },
+  {
+    "id": 13,
+    "name": "Ludvigs Gata",
+    "city_name": "Malmö",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        55.592941703607806,
+        13.026923848555128
+      ]
+    },
+    "bikes": [],
+    "capacity": 44
+  },
+  {
+    "id": 79,
+    "name": "Stationsgatan",
+    "city_name": "Malmö",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        55.60045268654852,
+        13.01997832298818
+      ]
+    },
+    "bikes": [],
+    "capacity": 40
+  },
+  {
+    "id": 97,
+    "name": "Karls Väg",
+    "city_name": "Malmö",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        55.590645908813656,
+        13.01103070678974
+      ]
+    },
+    "bikes": [],
+    "capacity": 34
+  },
+  {
+    "type": "Feature",
+    "properties": {
+      "type": "parking"
+    },
+    "geometry": {
+      "coordinates": [
+        55.59138497516642,
+        13.008617614952783
+      ],
+      "type": "Point"
+    },
+    "id": 34
+  },
+  {
+    "id": 89,
+    "name": "Lilla Varholmen",
+    "city_name": "Malmö",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        55.58896230811652,
+        13.00607207082166
+      ]
+    },
+    "bikes": [],
+    "capacity": 40
+  },
+  {
+    "id": 90,
+    "name": "Västra Varvsgatan",
+    "city_name": "Malmö",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        55.5904056889255,
+        13.003020378340835
+      ]
+    },
+    "bikes": [],
+    "capacity": 34
+  },
+  {
+    "id": 91,
+    "name": "Östervärn",
+    "city_name": "Malmö",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        55.59627490779354,
+        13.006386305805705
+      ]
+    },
+    "bikes": [],
+    "capacity": 18
+  },
+  {
+    "id": 92,
+    "name": "Fiskebäcks Väg",
+    "city_name": "Malmö",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        55.59608831226495,
+        13.017832296754989
+      ]
+    },
+    "bikes": [],
+    "capacity": 24
+  },
+  {
+    "type": "Feature",
+    "properties": {
+      "type": "parking"
+    },
+    "geometry": {
+      "coordinates": [
+        55.596912833260234,
+        12.996051862442073
+      ],
+      "type": "Point"
+    },
+    "id": 41
+  },
+  {
+    "id": 93,
+    "name": "Sofielund",
+    "city_name": "Malmö",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        55.600891132605,
+        12.995201963334267
+      ]
+    },
+    "bikes": [],
+    "capacity": 12
+  },
+  {
+    "id": 94,
+    "name": "Slussen",
+    "city_name": "Malmö",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        55.6054136567989,
+        13.02351579090481
+      ]
+    },
+    "bikes": [],
+    "capacity": 20
+  },
+  {
+    "id": 95,
+    "name": "Björkliden",
+    "city_name": "Malmö",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        55.60331671010081,
+        12.982180127305469
+      ]
+    },
+    "bikes": [],
+    "capacity": 30
+  },
+  {
+    "id": 96,
+    "name": "Haverdals Gata",
+    "city_name": "Malmö",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        55.60002248133989,
+        12.969976281480257
+      ]
+    },
+    "bikes": [],
+    "capacity": 25
+  },
+  {
+    "id": 97,
+    "name": "Sydhamnsgatan",
+    "city_name": "Malmö",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        55.59277031355367,
+        12.98914137020597
+      ]
+    },
+    "bikes": [],
+    "capacity": 48
+  }
+]
