@@ -22,8 +22,8 @@ const database = {
 
         let collectionCities = await db.collection("cities");
         let collectionBikes = await db.collection("bikes");
-        let collectionChargingStations = await db.collection("charging_stations");
-        let collectionParkingZones = await db.collection("parking_zones");
+        let collectionChargingStations = await db.collection("stations");
+        let collectionParkingZones = await db.collection("zones");
         let collectionUsers = await db.collection("users");
         let collectionTrips = await db.collection("trips");
 
