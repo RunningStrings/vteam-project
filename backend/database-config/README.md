@@ -22,7 +22,7 @@
 		"speed": "number"							// km/h
 	}
 
-	charging_stations: {
+	stations: {
 		"_id": "ObjectId",
 		"name": "string",
 		"city_name": "string",
@@ -34,7 +34,7 @@
 		"capacity": "number",             			// Maximum number of bikes in station
 	}
 
-	parking_zones: {
+	parking: {
 		"_id": "ObjectId",
 		"name": "string",
 		"city_name": "string",
