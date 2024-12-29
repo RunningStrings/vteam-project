@@ -1,0 +1,1 @@
+// Implement function to distribute bikes ID from bikes_small.js or bike_big.js to parking/ and stations/
