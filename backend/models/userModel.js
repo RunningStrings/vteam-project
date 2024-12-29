@@ -1,7 +1,7 @@
 /**
  * Model object for users. Stores model functions for users route.
  */
-import database from '../database_config/database.js';
+import database from '../database-config/database.js';
 import { ObjectId } from 'mongodb';
 import { createError } from './utils/createError.js'
 

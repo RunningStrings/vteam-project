@@ -2,7 +2,7 @@
  * Route for zones.
  */
 import express from 'express';
-import database from '../database_config/database.js';
+import database from '../database-config/database.js';
 import { ObjectId } from 'mongodb';
 
 const router = express.Router();
