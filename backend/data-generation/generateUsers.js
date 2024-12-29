@@ -2,7 +2,7 @@ import { writeJsonFile } from './fileDirectoryUtils.js';
 import { faker, fakerSV } from '@faker-js/faker';
 
 /**
- * Generates a single user object with mock data.
+ * Generates a single user object with mock data from faker.
  * @returns {Object} - A user object.
  */
 const generateUser = () => {
@@ -34,7 +34,7 @@ const generateUsers = (count) => {
 };
 
 /**
- * Main function to generate users and write to a JSON file.
+ * Main function, generate users and write to a JSON file.
  * @param {string} filePath - Path to save the generated JSON file.
  * @param {number} count - Number of users to generate.
  */
