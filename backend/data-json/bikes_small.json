@@ -1,66 +1,66 @@
 [
   {
     "id": 1,
-    "city_name": "Malmö",
+    "city_name": "Linköping",
     "location": "",
-    "status": "maintenance",
-    "battery": 8,
+    "status": "charging",
+    "battery": 59,
     "speed": 0
   },
   {
     "id": 2,
-    "city_name": "Malmö",
+    "city_name": "Stockholm",
     "location": "",
-    "status": "maintenance",
-    "battery": 10,
+    "status": "charging",
+    "battery": 19,
     "speed": 0
   },
   {
     "id": 3,
     "city_name": "Malmö",
     "location": "",
-    "status": "charging",
-    "battery": 55,
+    "status": "maintenance",
+    "battery": 16,
     "speed": 0
   },
   {
     "id": 4,
-    "city_name": "Linköping",
+    "city_name": "Malmö",
     "location": "",
-    "status": "charging",
-    "battery": 94,
-    "speed": 0
+    "status": "in_use",
+    "battery": 13,
+    "speed": 6
   },
   {
     "id": 5,
-    "city_name": "Malmö",
+    "city_name": "Stockholm",
     "location": "",
-    "status": "maintenance",
-    "battery": 39,
+    "status": "charging",
+    "battery": 5,
     "speed": 0
   },
   {
     "id": 6,
-    "city_name": "Stockholm",
+    "city_name": "Linköping",
     "location": "",
     "status": "in_use",
-    "battery": 1,
-    "speed": 20
+    "battery": 81,
+    "speed": 2
   },
   {
     "id": 7,
     "city_name": "Stockholm",
     "location": "",
-    "status": "charging",
-    "battery": 17,
+    "status": "maintenance",
+    "battery": 2,
     "speed": 0
   },
   {
     "id": 8,
-    "city_name": "Malmö",
+    "city_name": "Linköping",
     "location": "",
     "status": "maintenance",
-    "battery": 68,
+    "battery": 78,
     "speed": 0
   },
   {
@@ -68,39 +68,39 @@
     "city_name": "Malmö",
     "location": "",
     "status": "available",
-    "battery": 43,
+    "battery": 28,
     "speed": 0
   },
   {
     "id": 10,
-    "city_name": "Malmö",
+    "city_name": "Linköping",
     "location": "",
     "status": "charging",
-    "battery": 14,
+    "battery": 26,
     "speed": 0
   },
   {
     "id": 11,
-    "city_name": "Stockholm",
+    "city_name": "Malmö",
     "location": "",
-    "status": "in_use",
-    "battery": 14,
-    "speed": 15
+    "status": "charging",
+    "battery": 58,
+    "speed": 0
   },
   {
     "id": 12,
-    "city_name": "Malmö",
+    "city_name": "Linköping",
     "location": "",
-    "status": "in_use",
-    "battery": 73,
-    "speed": 18
+    "status": "charging",
+    "battery": 31,
+    "speed": 0
   },
   {
     "id": 13,
-    "city_name": "Stockholm",
+    "city_name": "Malmö",
     "location": "",
     "status": "available",
-    "battery": 5,
+    "battery": 68,
     "speed": 0
   },
   {
@@ -108,195 +108,107 @@
     "city_name": "Stockholm",
     "location": "",
     "status": "in_use",
-    "battery": 48,
-    "speed": 10
+    "battery": 100,
+    "speed": 4
   },
   {
     "id": 15,
     "city_name": "Malmö",
     "location": "",
-    "status": "maintenance",
-    "battery": 17,
-    "speed": 0
+    "status": "in_use",
+    "battery": 47,
+    "speed": 3
   },
   {
     "id": 16,
-    "city_name": "Linköping",
+    "city_name": "Malmö",
     "location": "",
-    "status": "charging",
-    "battery": 90,
+    "status": "available",
+    "battery": 43,
     "speed": 0
   },
   {
     "id": 17,
     "city_name": "Malmö",
     "location": "",
-    "status": "charging",
-    "battery": 23,
+    "status": "available",
+    "battery": 63,
     "speed": 0
   },
   {
     "id": 18,
-    "city_name": "Malmö",
+    "city_name": "Stockholm",
     "location": "",
-    "status": "charging",
-    "battery": 62,
+    "status": "maintenance",
+    "battery": 46,
     "speed": 0
   },
   {
     "id": 19,
-    "city_name": "Linköping",
+    "city_name": "Malmö",
     "location": "",
     "status": "available",
-    "battery": 55,
+    "battery": 20,
     "speed": 0
   },
   {
     "id": 20,
-    "city_name": "Malmö",
+    "city_name": "Linköping",
     "location": "",
-    "status": "charging",
-    "battery": 14,
+    "status": "maintenance",
+    "battery": 16,
     "speed": 0
   },
   {
     "id": 21,
     "city_name": "Stockholm",
     "location": "",
-    "status": "charging",
-    "battery": 53,
+    "status": "maintenance",
+    "battery": 43,
     "speed": 0
   },
   {
     "id": 22,
-    "city_name": "Stockholm",
+    "city_name": "Linköping",
     "location": "",
-    "status": "available",
-    "battery": 22,
+    "status": "charging",
+    "battery": 45,
     "speed": 0
   },
   {
     "id": 23,
-    "city_name": "Malmö",
+    "city_name": "Stockholm",
     "location": "",
-    "status": "available",
-    "battery": 2,
-    "speed": 0
+    "status": "in_use",
+    "battery": 92,
+    "speed": 19
   },
   {
     "id": 24,
-    "city_name": "Linköping",
+    "city_name": "Stockholm",
     "location": "",
-    "status": "maintenance",
-    "battery": 3,
-    "speed": 0
+    "status": "in_use",
+    "battery": 26,
+    "speed": 1
   },
   {
     "id": 25,
-    "city_name": "Linköping",
+    "city_name": "Stockholm",
     "location": "",
-    "status": "in_use",
-    "battery": 9,
-    "speed": 16
+    "status": "charging",
+    "battery": 5,
+    "speed": 0
   },
   {
     "id": 26,
-    "city_name": "Stockholm",
-    "location": "",
-    "status": "maintenance",
-    "battery": 97,
-    "speed": 0
-  },
-  {
-    "id": 27,
-    "city_name": "Malmö",
-    "location": "",
-    "status": "in_use",
-    "battery": 64,
-    "speed": 18
-  },
-  {
-    "id": 28,
     "city_name": "Linköping",
-    "location": "",
-    "status": "charging",
-    "battery": 96,
-    "speed": 0
-  },
-  {
-    "id": 29,
-    "city_name": "Linköping",
-    "location": "",
-    "status": "maintenance",
-    "battery": 44,
-    "speed": 0
-  },
-  {
-    "id": 30,
-    "city_name": "Linköping",
-    "location": "",
-    "status": "available",
-    "battery": 37,
-    "speed": 0
-  },
-  {
-    "id": 31,
-    "city_name": "Linköping",
-    "location": "",
-    "status": "available",
-    "battery": 57,
-    "speed": 0
-  },
-  {
-    "id": 32,
-    "city_name": "Stockholm",
-    "location": "",
-    "status": "charging",
-    "battery": 82,
-    "speed": 0
-  },
-  {
-    "id": 33,
-    "city_name": "Linköping",
-    "location": "",
-    "status": "charging",
-    "battery": 66,
-    "speed": 0
-  },
-  {
-    "id": 34,
-    "city_name": "Malmö",
-    "location": "",
-    "status": "available",
-    "battery": 15,
-    "speed": 0
-  },
-  {
-    "id": 35,
-    "city_name": "Malmö",
     "location": "",
     "status": "in_use",
     "battery": 52,
-    "speed": 10
+    "speed": 15
   },
   {
-    "id": 36,
-    "city_name": "Malmö",
-    "location": "",
-    "status": "maintenance",
-    "battery": 31,
-    "speed": 0
-  },
-  {
-    "id": 37,
-    "city_name": "Linköping",
-    "location": "",
-    "status": "in_use",
-    "battery": 22,
-    "speed": 3
-  },
-  {
-    "id": 38,
+    "id": 27,
     "city_name": "Stockholm",
     "location": "",
     "status": "available",
@@ -304,99 +216,187 @@
     "speed": 0
   },
   {
-    "id": 39,
-    "city_name": "Malmö",
+    "id": 28,
+    "city_name": "Stockholm",
     "location": "",
-    "status": "charging",
-    "battery": 86,
+    "status": "in_use",
+    "battery": 94,
+    "speed": 15
+  },
+  {
+    "id": 29,
+    "city_name": "Stockholm",
+    "location": "",
+    "status": "maintenance",
+    "battery": 83,
     "speed": 0
   },
   {
-    "id": 40,
+    "id": 30,
+    "city_name": "Stockholm",
+    "location": "",
+    "status": "in_use",
+    "battery": 81,
+    "speed": 5
+  },
+  {
+    "id": 31,
+    "city_name": "Malmö",
+    "location": "",
+    "status": "available",
+    "battery": 8,
+    "speed": 0
+  },
+  {
+    "id": 32,
+    "city_name": "Stockholm",
+    "location": "",
+    "status": "in_use",
+    "battery": 46,
+    "speed": 8
+  },
+  {
+    "id": 33,
+    "city_name": "Malmö",
+    "location": "",
+    "status": "in_use",
+    "battery": 97,
+    "speed": 6
+  },
+  {
+    "id": 34,
+    "city_name": "Linköping",
+    "location": "",
+    "status": "in_use",
+    "battery": 13,
+    "speed": 14
+  },
+  {
+    "id": 35,
+    "city_name": "Linköping",
+    "location": "",
+    "status": "available",
+    "battery": 65,
+    "speed": 0
+  },
+  {
+    "id": 36,
+    "city_name": "Linköping",
+    "location": "",
+    "status": "available",
+    "battery": 12,
+    "speed": 0
+  },
+  {
+    "id": 37,
     "city_name": "Stockholm",
     "location": "",
     "status": "charging",
-    "battery": 38,
+    "battery": 3,
+    "speed": 0
+  },
+  {
+    "id": 38,
+    "city_name": "Linköping",
+    "location": "",
+    "status": "maintenance",
+    "battery": 9,
+    "speed": 0
+  },
+  {
+    "id": 39,
+    "city_name": "Linköping",
+    "location": "",
+    "status": "in_use",
+    "battery": 69,
+    "speed": 18
+  },
+  {
+    "id": 40,
+    "city_name": "Malmö",
+    "location": "",
+    "status": "available",
+    "battery": 18,
     "speed": 0
   },
   {
     "id": 41,
-    "city_name": "Stockholm",
+    "city_name": "Malmö",
     "location": "",
     "status": "available",
-    "battery": 10,
+    "battery": 57,
     "speed": 0
   },
   {
     "id": 42,
-    "city_name": "Linköping",
+    "city_name": "Malmö",
     "location": "",
-    "status": "maintenance",
-    "battery": 93,
+    "status": "available",
+    "battery": 83,
     "speed": 0
   },
   {
     "id": 43,
-    "city_name": "Malmö",
+    "city_name": "Stockholm",
     "location": "",
-    "status": "available",
-    "battery": 97,
-    "speed": 0
+    "status": "in_use",
+    "battery": 6,
+    "speed": 16
   },
   {
     "id": 44,
     "city_name": "Linköping",
     "location": "",
-    "status": "charging",
-    "battery": 27,
+    "status": "maintenance",
+    "battery": 64,
     "speed": 0
   },
   {
     "id": 45,
-    "city_name": "Linköping",
+    "city_name": "Stockholm",
     "location": "",
-    "status": "available",
+    "status": "charging",
     "battery": 66,
     "speed": 0
   },
   {
     "id": 46,
-    "city_name": "Malmö",
+    "city_name": "Linköping",
     "location": "",
-    "status": "available",
-    "battery": 32,
+    "status": "maintenance",
+    "battery": 6,
     "speed": 0
   },
   {
     "id": 47,
-    "city_name": "Stockholm",
+    "city_name": "Malmö",
     "location": "",
     "status": "in_use",
-    "battery": 26,
-    "speed": 9
+    "battery": 94,
+    "speed": 13
   },
   {
     "id": 48,
     "city_name": "Malmö",
     "location": "",
     "status": "maintenance",
-    "battery": 53,
+    "battery": 18,
     "speed": 0
   },
   {
     "id": 49,
-    "city_name": "Stockholm",
+    "city_name": "Linköping",
     "location": "",
-    "status": "charging",
-    "battery": 93,
+    "status": "available",
+    "battery": 83,
     "speed": 0
   },
   {
     "id": 50,
-    "city_name": "Malmö",
+    "city_name": "Stockholm",
     "location": "",
-    "status": "available",
-    "battery": 52,
-    "speed": 0
+    "status": "in_use",
+    "battery": 97,
+    "speed": 17
   }
 ]
