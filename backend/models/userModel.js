@@ -140,6 +140,18 @@ const userModel = {
                 createError(`user with ID: ${id} cannot be found`, 404);
             }
 
+
+            const allowedProperties = ["firstName", "lastName",
+                "email", "password", "role"];
+            const reqProperties = Object.keys(body);
+            const isInvalidUpdate = reqProperties.some(property =>
+                !allowedProperties.includes(property));
+
+           if (isInvalidUpdate) {
+               createError(`invalid update property key. This API only allow
+                    updates of already existing properties.`, 400);
+           }
+
             result = await db.collectionUsers.updateOne(filter, { $set: body });
 
             if (result.modifiedCount !== 1) {
