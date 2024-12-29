@@ -1,7 +1,7 @@
 import updateIds from './updateIds.js';
 import generateUserJsonFile from './generateUsers.js';
 import generateBikesJsonFile from './generateBikes.js';
-
+// import distributeBikes from './distributeBikes.js';
 
 /**
  * Main function to generate and update data.
@@ -29,6 +29,9 @@ const main = () => {
     generateBikesJsonFile('../data-json/bikes_big.json', 1000)
     // Update bikes Id
     updateIds(['../data-json/bikes_big.json']);
+
+    // Distributed bikes in parkings and stations
+    // distributeBikes(['../data-json/parkings', '../data-json/stations'], '../data-json/bikes_small.json');
 };
 
 main();
