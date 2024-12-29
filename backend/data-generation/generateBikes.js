@@ -1,5 +1,5 @@
 import { writeJsonFile } from './fileDirectoryUtils.js';
-import { faker, fakerSV } from '@faker-js/faker';
+import { faker } from '@faker-js/faker';
 
 /**
  * Generates a single bike object with mock data from faker.
