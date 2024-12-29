@@ -3,38 +3,36 @@ import { MongoClient } from "mongodb";
 import path from 'node:path';
 import { dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import fs from 'fs/promises';
+import { readJsonFile, getJsonFilesFromDirectory } from '../data-generation/fileDirectoryUtils.js'; // Import utilities
 
 dotenv.config();
 
 // A script to populate the database
 const seedData = async () => {
     const uri = process.env.MONGO_URI;
+    // const uri = 'mongodb://mongodb:27017'
     const client = new MongoClient(uri);
 
-    // Resolve json paths
+    // Resolve __dirname and data paths
     const __dirname = dirname(fileURLToPath(import.meta.url));
-
-    const bikesPath = path.join(__dirname, '../data_json/bikes.json');
-    const chargingStationsPath = path.join(__dirname, '../data_json/charging_stations.json');
-    const citiesPath = path.join(__dirname, '../data_json/cities.json');
-    const parkingZonesPath = path.join(__dirname, '../data_json/parking_zones.json');
-    const usersPath = path.join(__dirname, '../data_json/users.json');
+    const dataJsonDir = path.join(__dirname, '../data-json'); // Root data folder
 
     try {
-        // Load external JSON data files
-        const bikesJson = await fs.readFile(bikesPath, 'utf-8');
-        const chargingStationsJson = await fs.readFile(chargingStationsPath, 'utf-8');
-        const citiesJson = await fs.readFile(citiesPath, 'utf-8');
-        const parkingZonesJson = await fs.readFile(parkingZonesPath, 'utf-8');
-        const usersJson = await fs.readFile(usersPath, 'utf-8');
+        // Load external JSON data files using utility functions
+        const bikesData = readJsonFile(path.join(dataJsonDir, 'bikes_big.json'));
+        const citiesData = readJsonFile(path.join(dataJsonDir, 'cities.json'));
+        const usersData = readJsonFile(path.join(dataJsonDir, 'users_big.json'));
 
-        // parse JSON data
-        const bikesData = JSON.parse(bikesJson);
-        const chargingStationsData = JSON.parse(chargingStationsJson);
-        const citiesData = JSON.parse(citiesJson);
-        const parkingZonesData = JSON.parse(parkingZonesJson);
-        const usersData = JSON.parse(usersJson);
+        // Use getJsonFilesFromDirectory to collect all station and parking files
+        const stationFiles = getJsonFilesFromDirectory(path.join(dataJsonDir, 'stations'));
+        const stationsData = stationFiles.map(filePath => readJsonFile(filePath));
+
+        const parkingFiles = getJsonFilesFromDirectory(path.join(dataJsonDir, 'parkings'));
+        const parkingsData = parkingFiles.map(filePath => readJsonFile(filePath));
+
+        if (!bikesData || !citiesData || !usersData) {
+            throw new Error('Error loading necessary JSON files');
+        }
 
         await client.connect();
         const db = client.db('bike_database');
@@ -53,9 +51,9 @@ const seedData = async () => {
 
         // Seed all the collections
         await seedCollection('bikes', bikesData);
-        await seedCollection('charging_stations', chargingStationsData);
+        await seedCollection('stations', stationsData.flat()); // Flatten the station data
+        await seedCollection('parkings', parkingsData.flat()); // Flatten the parking data
         await seedCollection('cities', citiesData);
-        await seedCollection('parking_zones', parkingZonesData);
         await seedCollection('users', usersData);
 
         console.log('Database seeded!');
