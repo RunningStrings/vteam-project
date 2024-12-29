@@ -1,8 +1,7 @@
 # Database for the vteam project
 
 ## Database schema
-
-	cities: { 
+	cities: {
 		"_id": "ObjectId",
 		"name": "string",
 		"geometry": {
@@ -82,6 +81,9 @@
 	}
 
 ## Database reset
-In root directory `sudo rm -rf ./data/db`
+From root directory: `sudo rm -rf ./data/db`
 
 ## Regenerate data
+To generate new ID for parkings and stations
+
+From root directory, `cd backend/data_generation` then `node index.js`.
