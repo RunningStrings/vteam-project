@@ -14,7 +14,7 @@
     "capacity": 26
   },
   {
-    "id": 87,
+    "id": 86,
     "name": "Johnnys Väg",
     "city_name": "Linköping",
     "location": {
@@ -28,7 +28,7 @@
     "capacity": 18
   },
   {
-    "id": 67,
+    "id": 87,
     "name": "Idrottsgatan",
     "city_name": "Linköping",
     "location": {
@@ -42,7 +42,7 @@
     "capacity": 24
   },
   {
-    "id": 45,
+    "id": 88,
     "name": "Marcuss Gata",
     "city_name": "Linköping",
     "location": {
@@ -56,7 +56,7 @@
     "capacity": 44
   },
   {
-    "id": 92,
+    "id": 89,
     "name": "Norra Björkallén",
     "city_name": "Linköping",
     "location": {
@@ -70,7 +70,7 @@
     "capacity": 16
   },
   {
-    "id": 28,
+    "id": 90,
     "name": "Leifs Väg",
     "city_name": "Linköping",
     "location": {
@@ -84,7 +84,7 @@
     "capacity": 45
   },
   {
-    "id": 75,
+    "id": 91,
     "name": "Ringgärdet",
     "city_name": "Linköping",
     "location": {
@@ -98,7 +98,7 @@
     "capacity": 33
   },
   {
-    "id": 29,
+    "id": 92,
     "name": "Storgatan",
     "city_name": "Linköping",
     "location": {
@@ -112,7 +112,7 @@
     "capacity": 20
   },
   {
-    "id": 45,
+    "id": 93,
     "name": "Nybergs Gata",
     "city_name": "Linköping",
     "location": {
@@ -126,7 +126,7 @@
     "capacity": 18
   },
   {
-    "id": 49,
+    "id": 94,
     "name": "Daniels Väg",
     "city_name": "Linköping",
     "location": {
@@ -154,7 +154,7 @@
     "capacity": 17
   },
   {
-    "id": 35,
+    "id": 96,
     "name": "Övre Kvarngränden",
     "city_name": "Linköping",
     "location": {
@@ -168,7 +168,7 @@
     "capacity": 11
   },
   {
-    "id": 92,
+    "id": 97,
     "name": "Villagärdet",
     "city_name": "Linköping",
     "location": {
@@ -182,7 +182,7 @@
     "capacity": 18
   },
   {
-    "id": 78,
+    "id": 98,
     "name": "Jakobssons Gata",
     "city_name": "Linköping",
     "location": {
@@ -196,7 +196,7 @@
     "capacity": 48
   },
   {
-    "id": 8,
+    "id": 99,
     "name": "Östra Storgärdet",
     "city_name": "Linköping",
     "location": {

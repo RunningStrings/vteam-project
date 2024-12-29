@@ -1,6 +1,6 @@
 [
   {
-    "id": 1,
+    "id": 100,
     "name": "Bergmans Gata",
     "city_name": "Malmö",
     "location": {
@@ -14,7 +14,7 @@
     "capacity": 14
   },
   {
-    "id": 96,
+    "id": 101,
     "name": "Samuelssons Väg",
     "city_name": "Malmö",
     "location": {
@@ -28,7 +28,7 @@
     "capacity": 44
   },
   {
-    "id": 38,
+    "id": 102,
     "name": "Berits Gata",
     "city_name": "Malmö",
     "location": {
@@ -42,7 +42,7 @@
     "capacity": 40
   },
   {
-    "id": 49,
+    "id": 103,
     "name": "Louises Väg",
     "city_name": "Malmö",
     "location": {
@@ -56,7 +56,7 @@
     "capacity": 21
   },
   {
-    "id": 82,
+    "id": 104,
     "name": "Undre Nyvägen",
     "city_name": "Malmö",
     "location": {
@@ -70,7 +70,7 @@
     "capacity": 17
   },
   {
-    "id": 99,
+    "id": 105,
     "name": "Berggrens Väg",
     "city_name": "Malmö",
     "location": {
@@ -84,7 +84,7 @@
     "capacity": 16
   },
   {
-    "id": 35,
+    "id": 106,
     "name": "Skogsgärdet",
     "city_name": "Malmö",
     "location": {
@@ -98,7 +98,7 @@
     "capacity": 19
   },
   {
-    "id": 11,
+    "id": 107,
     "name": "Nyströms Gata",
     "city_name": "Malmö",
     "location": {
@@ -112,7 +112,7 @@
     "capacity": 45
   },
   {
-    "id": 77,
+    "id": 108,
     "name": "Västra Bäckgärdet",
     "city_name": "Malmö",
     "location": {
@@ -126,7 +126,7 @@
     "capacity": 29
   },
   {
-    "id": 79,
+    "id": 109,
     "name": "Agness Väg",
     "city_name": "Malmö",
     "location": {
@@ -140,7 +140,7 @@
     "capacity": 37
   },
   {
-    "id": 63,
+    "id": 110,
     "name": "Undre Bäckgärdet",
     "city_name": "Malmö",
     "location": {
@@ -154,7 +154,7 @@
     "capacity": 13
   },
   {
-    "id": 22,
+    "id": 111,
     "name": "Mariannes Väg",
     "city_name": "Malmö",
     "location": {
@@ -168,7 +168,7 @@
     "capacity": 50
   },
   {
-    "id": 30,
+    "id": 112,
     "name": "Ekvägen",
     "city_name": "Malmö",
     "location": {
@@ -182,7 +182,7 @@
     "capacity": 31
   },
   {
-    "id": 105,
+    "id": 113,
     "name": "Hammarvägen",
     "city_name": "Malmö",
     "location": {
@@ -196,7 +196,7 @@
     "capacity": 18
   },
   {
-    "id": 106,
+    "id": 114,
     "name": "Almedalsvägen",
     "city_name": "Malmö",
     "location": {
@@ -210,7 +210,7 @@
     "capacity": 22
   },
   {
-    "id": 107,
+    "id": 115,
     "name": "Rosenholm",
     "city_name": "Malmö",
     "location": {
@@ -224,7 +224,7 @@
     "capacity": 25
   },
   {
-    "id": 108,
+    "id": 116,
     "name": "Västanvägen",
     "city_name": "Malmö",
     "location": {
@@ -238,7 +238,7 @@
     "capacity": 30
   },
   {
-    "id": 109,
+    "id": 117,
     "name": "Tullgatan",
     "city_name": "Malmö",
     "location": {
@@ -252,7 +252,7 @@
     "capacity": 24
   },
   {
-    "id": 110,
+    "id": 118,
     "name": "Grönegatan",
     "city_name": "Malmö",
     "location": {
