@@ -9,7 +9,7 @@
 			"coordinates": [[longitude, latitude],[longitude, latitude]...]
 		}
 	}
-	
+
 	bikes: {
 		"_id": "ObjectId",
 		"city_name": "string",
@@ -21,7 +21,7 @@
 		"battery_level": "number",        			// Percentage (0-100)
 		"speed": "number"							// km/h
 	}
-	
+
 	charging_stations: {
 		"_id": "ObjectId",
 		"name": "string",
@@ -33,7 +33,7 @@
 		"bikes": ["ObjectId"],            			// List of bikes ID in station
 		"capacity": "number",             			// Maximum number of bikes in station
 	}
-	
+
 	parking_zones: {
 		"_id": "ObjectId",
 		"name": "string",
@@ -48,15 +48,15 @@
 
 	users: {
 		"_id": "ObjectId",
+		"role": "string",                 			// e.g., 'customer', 'admin', 'city_manager'
 		"firstname": "string",
 		"lastname": "string",
 		"email": "string",
 		"password_hash": "string",
 		"balance": "number",             			// Prepaid balance
-		"role": "string",                 			// e.g., 'customer', 'admin', 'city_manager'
 		"trip_history": ["ObjectId"]     			// List of trips ID
 	}
-	
+
 	trips: {
 		"_id": "ObjectId",
 		"bike_id": "ObjectId",            			// Reference to Bikes
