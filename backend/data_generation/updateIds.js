@@ -8,7 +8,7 @@ import fs from 'node:fs'; // For filesystem operations (reading and writing)
  */
 const readJsonFile = (filePath) => {
     try {
-        // Synchronously read the file contents as u UTF-8 string
+        // Synchronously read the file content as UTF-8 string
         const rawData = fs.readFileSync(filePath, 'utf8');
         // Parse JSON string into Javascript object and return it
         return JSON.parse(rawData);
@@ -89,7 +89,7 @@ const processFile = (file, currentId) => {
 }
 
 /**
- * Updates IDs in JSON files.
+ * Main function, updates IDs in JSON files.
  * @param {Array<string>} targets - Array of file or directory paths.
  */
 const updateIds = (targets) => {
