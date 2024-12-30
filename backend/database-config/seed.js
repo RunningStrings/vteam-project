@@ -10,7 +10,6 @@ dotenv.config();
 // A script to populate the database
 const seedData = async () => {
     const uri = process.env.MONGO_URI;
-    // const uri = 'mongodb://mongodb:27017'
     const client = new MongoClient(uri);
 
     // Resolve __dirname and data paths
