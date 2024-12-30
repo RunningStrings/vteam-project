@@ -7,7 +7,7 @@ import { faker } from '@faker-js/faker';
  */
 const generateBike = () => {
         const city = faker.helpers.arrayElement(['Stockholm', 'Linköping', 'Malmö']);
-        const status = faker.helpers.arrayElement(["charging", "in_use", "available", "maintenance"]); // Random status from array
+        const status = faker.helpers.arrayElement(["charging", "in-use", "available", "maintenance"]); // Random status from array
         const battery = faker.number.int({ min: 0, max: 100 });
         const speed = status === 'in_use' ? faker.number.int({ min: 1, max: 20 }) : 0; // Random speed if in use
 
