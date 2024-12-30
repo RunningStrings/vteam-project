@@ -1,7 +1,7 @@
 import updateIds from './updateIds.js';
 import generateUserJsonFile from './generateUsers.js';
 import generateBikesJsonFile from './generateBikes.js';
-// import distributeBikes from './distributeBikes.js';
+import distributeBikes from './distributeBikes.js';
 
 /**
  * Main function to generate and update data.
@@ -11,23 +11,23 @@ const main = () => {
     updateIds(['../data-json/parkings', '../data-json/stations']);
 
     // Generate 50 users
-    generateUserJsonFile('../data-json/users_small.json', 50)
+    generateUserJsonFile('../data-json/users_small.json', 50);
 
     // Generate 1000 users
-    generateUserJsonFile('../data-json/users_big.json', 1000)
+    generateUserJsonFile('../data-json/users_big.json', 1000);
 
-    // Generate 50 bikes
-    generateBikesJsonFile('../data-json/bikes_small.json', 50)
-    // Update bikes Id
+    // // Generate 500 bikes
+    generateBikesJsonFile('../data-json/bikes_small.json', 500);
+    // // Update bikes Id
     updateIds(['../data-json/bikes_small.json']);
 
     // Generate 1000 bikes
-    generateBikesJsonFile('../data-json/bikes_big.json', 1000)
+    generateBikesJsonFile('../data-json/bikes_big.json', 1000);
     // Update bikes Id
     updateIds(['../data-json/bikes_big.json']);
 
     // Distributed bikes in parkings and stations
-    // distributeBikes(['../data-json/parkings', '../data-json/stations'], '../data-json/bikes_small.json');
+    distributeBikes(['../data-json/parkings', '../data-json/stations'], '../data-json/bikes_small.json');
 };
 
 main();
