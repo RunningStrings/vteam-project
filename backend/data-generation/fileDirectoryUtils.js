@@ -8,7 +8,7 @@ import fs from 'node:fs'; // For filesystem operations (reading and writing)
  */
 const readJsonFile = (filePath) => {
     try {
-        // Synchronously read the file content as UTF-8 string
+        // Synchronously read the file content
         const rawData = fs.readFileSync(filePath, 'utf8');
         // Parse JSON string into Javascript object and return it
         return JSON.parse(rawData);
