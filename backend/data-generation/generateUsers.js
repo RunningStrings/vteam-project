@@ -13,7 +13,6 @@ const generateUser = () => {
     const balance = role === 'customer' ? faker.number.int({ min: 0, max: 1000 }) : undefined; // Add balance placeholder if customer
 
     return {
-        id: 0,
         role: role,
         firstname: firstName,
         lastname: lastName,
