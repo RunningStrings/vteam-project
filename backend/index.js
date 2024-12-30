@@ -12,41 +12,60 @@ import logIncomingToConsole from './middlewares/index.js';
 // import database from './database-config/database.js';
 // import database from './database.js';
 import http from 'http'; // Needed for socket.io
-import { Server } from 'socket.io';
+// import { Server } from 'socket.io';
+import { initializeSocket } from './socket.js';
 
 const app = express();
 const PORT = process.env.PORT || 5000;
 const pathV1 = "/api/v1";
 
 const server = http.createServer(app);
-const io = new Server(server);
+const io = initializeSocket(server);
 
-io.on('connection', (socket) => {
-    console.log('A bike connected:', socket.id);
-
-    // Listen for events from the bike
-    socket.on('update-location', (data) => {
-        console.log('Location update:', data);
-    });
-
-    socket.on('update-speed', (data) => {
-        console.log('Speed update:', data);
-    });
-
-    socket.on('update-battery', (data) => {
-        console.log('Battery update:', data);
-    });
-
-    socket.on('log-trip', (data) => {
-        console.log('Trip log:', data);
-    });
-
-    socket.on('disconnect', () => {
-        console.log('A bike disconnected:', socket.id);
-    });
-});
 app.use(express.json());
 app.use(cors());
+
+// io.on('connection', (socket) => {
+//     console.log('A bike connected:', socket.id);
+
+//     // Listen for events from the bike
+//     socket.on('update-location', (data) => {
+//         console.log('Location update:', data);
+//     });
+
+//     socket.on('update-speed', (data) => {
+//         console.log('Speed update:', data);
+//     });
+
+//     socket.on('update-battery', (data) => {
+//         console.log('Battery update:', data);
+//     });
+
+//     socket.on('log-trip', (data) => {
+//         console.log('Trip log:', data);
+//     });
+
+//     socket.on('disconnect', () => {
+//         console.log('A bike disconnected:', socket.id);
+//     });
+// });
+
+// import { router as indexRouter } from './routes/index.js';
+import { router as userRouter } from './routes/users.js';
+import { router as cityRouter } from './routes/cities.js';
+import { router as bikeRouter } from './routes/bikes.js';
+import { router as stationRouter } from './routes/charging_stations.js';
+import { router as zoneRouter } from './routes/parking_zones.js';
+// import { router as rentRouter } from './routes/rents.js';
+import errorMiddleware from './middlewares/errorMiddleware.js';
+import logIncomingToConsole from './middlewares/index.js';
+
+app.use("/users", userRouter);
+app.use("/cities", cityRouter);
+app.use("/bikes", bikeRouter);
+app.use("/charging_stations", stationRouter);
+app.use("/parking_zones", zoneRouter);
+// app.use("/rents", rentRouter)
 app.use(logIncomingToConsole);
 app.use(errorMiddleware);
 allRoutes(app, pathV1);
