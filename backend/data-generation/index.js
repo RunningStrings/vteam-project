@@ -12,13 +12,9 @@ const main = () => {
 
     // Generate 50 users
     generateUserJsonFile('../data-json/users_small.json', 50)
-    // Update users Id
-    updateIds(['../data-json/users_small.json']);
 
     // Generate 1000 users
     generateUserJsonFile('../data-json/users_big.json', 1000)
-    // Update users Id
-    updateIds(['../data-json/users_big.json']);
 
     // Generate 50 bikes
     generateBikesJsonFile('../data-json/bikes_small.json', 50)
