@@ -42,7 +42,7 @@ const assignBikesToStations = (allData, bikes, bikeIds) => {
   // First pass: Ensure each parking/station gets at least one bike
   allData.forEach(({ data }) => {
     data.forEach((item) => {
-        item.bikes = [];
+        item.bikes = []; // Reset bikes array
 
         if (bikeIds.length > 0 && item.bikes.length === 0) {
             const bikeToAssign = bikeIds.shift(); // Take one bike
@@ -52,7 +52,6 @@ const assignBikesToStations = (allData, bikes, bikeIds) => {
             const bike = bikes.find((b) => b.id === bikeToAssign);
             if (bike) {
                 bike.location.coordinates = item.location.coordinates; // Assign station's location coordinates
-                bike.status = 'parked'; // Update bike status to parked
             }
         }
     });
@@ -72,34 +71,34 @@ const distributeRemainingBikes = (allData, bikes, bikeIds) => {
 
     // Second pass: Distribute remaining bikes evenly across all stations
     while (bikeIds.length > 0) {
-    const { data } = allData[index]; // Get the current station/parking data
-    let bikeAssignedInCurrentFile = false; // Flag to track if any bike was assigned in this file
+        const { data } = allData[index]; // Get the current station/parking data
+        let bikeAssignedInCurrentFile = false; // Flag to track if any bike was assigned in this file
 
-    // Iterate over all items in the current data array (stations/parkings)
-    for (const item of data) {
-        if (item.bikes.length < item.capacity) { // Check if the current item has available capacity
-            const bikeToAssign = bikeIds.shift(); // Take one bike
-            item.bikes.push(bikeToAssign); // Assign the bike
+        // Iterate over all items in the current data array (stations/parkings)
+        for (const item of data) {
+            if (item.bikes.length < item.capacity) { // Check if the current item has available capacity
+                const bikeToAssign = bikeIds.shift(); // Take one bike
+                item.bikes.push(bikeToAssign); // Assign the bike
 
-            // Update bike location
-            const bike = bikes.find((b) => b.id === bikeToAssign);
-            if (bike) {
-                bike.location.coordinates = item.location.coordinates; // Assign station's location coordinates
-                bike.status = 'parked'; // Update bike status to parked
+                // Update bike location
+                const bike = bikes.find((b) => b.id === bikeToAssign);
+                if (bike) {
+                    bike.location.coordinates = item.location.coordinates; // Assign station's location coordinates
+                    bike.status = 'parked'; // Update bike status to parked
+                }
+
+                bikeAssignedInCurrentFile = true; // Mark that a bike was assigned in this file
+                if (bikeIds.length === 0) break; // Exit the loop if no bikes are left to assign
             }
-
-            bikeAssignedInCurrentFile = true; // Mark that a bike was assigned in this file
-            if (bikeIds.length === 0) break; // Exit the loop if no bikes are left to assign
         }
-    }
 
-    // Move to the next file in round-robin fashion if bikes were assigned in the current file
-    if (!bikeAssignedInCurrentFile || bikeIds.length > 0) {
-        index = (index + 1) % allData.length; // Move to the next file in round-robin fashion
-    }
+        // Move to the next file in round-robin fashion if bikes were assigned in the current file
+        if (!bikeAssignedInCurrentFile || bikeIds.length > 0) {
+            index = (index + 1) % allData.length; // Move to the next file in round-robin fashion
+        }
 
-    // If no bikes left to distribute, break the loop
-    if (bikeIds.length === 0) break;
+        // If no bikes left to distribute, break the loop
+        if (bikeIds.length === 0) break;
     }
 };
 
