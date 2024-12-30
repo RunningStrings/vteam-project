@@ -1,7 +1,7 @@
 import { readJsonFile, writeJsonFile, getAllDataFromTargets } from './fileDirectoryUtils.js';
 
 /**
- * Assign a bike to a station and update the bike's location.
+ * Assign a bike to a station/parking and update the bike's location.
  * @param {Object} item - The station/parking object to assign the bike to.
  * @param {string} bikeId - The bike ID to assign.
  * @param {Array} bikes - The list of all bikes.
@@ -15,7 +15,7 @@ const assignBike = (item, bikeId, bikes) => {
 };
 
 /**
- * Assign bikes to parking stations, ensuring each parking station gets at least one bike.
+ * Assign bikes to station/parking, each station/parking gets at least one bike.
  * @param {Array} allData - List of parkings and stations with their data.
  * @param {Array} bikes - List of all bikes.
  * @param {Array} bikeIds - List of bike IDs to be assigned to stations.
@@ -33,8 +33,8 @@ const assignBikesToStations = (allData, bikes, bikeIds) => {
 };
 
 /**
- * Distribute remaining bikes evenly across stations (round-robin).
- * @param {Array} allData - List of parkings and stations with their data.
+ * Distribute remaining bikes evenly across station/parking (round-robin).
+ * @param {Array} allData - List of station/parking with their data.
  * @param {Array} bikes - List of all bikes.
  * @param {Array} bikeIds - List of remaining bike IDs to be distributed.
  */
