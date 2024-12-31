@@ -10,17 +10,16 @@ dotenv.config();
  * Main function to generate and update data.
  */
 const main = () => {
-
-    // Get the file name and count based on NODE_ENV ('simulering' for big, anything else for small)
-    const bikeFile = process.env.NODE_ENV === 'simulering'
+    // Get the file name and count based on NODE_ENV ('simulation' for big, anything else for small)
+    const bikeFile = process.env.NODE_ENV === 'simulation'
          ? '../data-json/bikes_big.json'
          : '../data-json/bikes_small.json';
 
-    const userFile = process.env.NODE_ENV === 'simulering'
+    const userFile = process.env.NODE_ENV === 'simulation'
          ? '../data-json/users_big.json'
          : '../data-json/users_small.json';
 
-    const count = process.env.NODE_ENV === 'simulering' ? 1000 : 500;
+    const count = process.env.NODE_ENV === 'simulation' ? 1000 : 500;
 
     // Update or create Id and increment it for parkings and stations
     updateIds(['../data-json/parkings', '../data-json/stations']);
