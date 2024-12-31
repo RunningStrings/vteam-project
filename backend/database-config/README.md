@@ -1,7 +1,7 @@
 # Database for the vteam project
 
 ## Setup
-* Set environnements, from root directory, `touch .env` if not exists or update it with:
+* Set environnements, from root directory(`vteam-project/`), `touch .env` if not exists or update it with:
   * `NODE_ENV="development"`
   * `MONGO_DSN=mongodb://mongodb:27017/bike_database`
   * `MONGO_URI=mongodb://mongodb:27017`
@@ -17,6 +17,11 @@ When starting `docker-compose up --build` runs:
   * Creates or updates a `bikes.json` with 500 or 1000 entries depending of NODE_ENV.
   * Updates ID for`bikes.json`.
   * Distributes `bikes.json` (ID) in all json files in parkings and stations.
+* `seed.js`:
+  * Takes all json files and flatten them.
+  * Populates each collections with correct json files.
+* In backend service:
+  * `- NODE_ENV=simulation` allowed generation/distribution of 1000 for simulation (could be used for simulation docker?) when commented out, only 500 entries are created/distributed.
 
 ## Database schema
 	cities: { 
@@ -131,12 +136,9 @@ When starting `docker-compose up --build` runs:
 	├── package.json            	# Project dependencies and scripts
 
 ## Regenerate data (optional)
-To regenerate data manually for local test without docker. From root directory, `cd backend/data_generation` then `node index.js`.
+To regenerate data manually for local test without docker. From root directory(`vteam-project/`), `cd backend/data_generation` then `node index.js`.
 * Generate new ID for parkings/* .json and stations/* .json.
 * Generate new users.json with 500 or 1000 depending of NODE.ENV.
 * Generate new bikes.json with 500 or 1000 depending of NODE.ENV.
 * Generate new ID for bikes.json.
 * Distributes bikes generated (500 or 1000 depending of NODE.ENV) into parkings and stations json files.
-
-## NODE ENV
-To generate data for 1000 for simulation, NODE_ENV (process.env.NODE_ENV) needs to be set to: `process.env.NODE_ENV="simulation"` in docker-compose.yml for simulation.
