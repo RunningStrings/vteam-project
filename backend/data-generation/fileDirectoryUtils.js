@@ -69,30 +69,30 @@ const getJsonFilesFromDirectory = (dirPath) => {
  */
 const getAllDataFromTargets = (targets) => {
     let allData = [];
-  
+
     targets.forEach((target) => {
-      try {
-        const stats = fs.statSync(target);
-        const filesToProcess = stats.isDirectory()
-          ? getJsonFilesFromDirectory(target) // Get all JSON files in directory
-          : target.endsWith('.json')
-          ? [target] // Single JSON file
-          : [];
-  
-        filesToProcess.forEach((file) => {
-          const data = readJsonFile(file);
-          if (Array.isArray(data)) {
-            allData.push({ file, data });
-          } else {
-            console.error(`Skipping ${file}: Content is not an array.`);
-          }
-        });
-      } catch (error) {
-        console.error(`Error processing target ${target}:`, error.message);
-      }
+        try {
+            const stats = fs.statSync(target);
+            const filesToProcess = stats.isDirectory()
+             ? getJsonFilesFromDirectory(target) // Get all JSON files in directory
+             : target.endsWith('.json')
+             ? [target] // Single JSON file
+             : [];
+
+            filesToProcess.forEach((file) => {
+                const data = readJsonFile(file);
+                if (Array.isArray(data)) {
+                    allData.push({ file, data });
+                } else {
+                    console.error(`Skipping ${file}: Content is not an array.`);
+                }
+            });
+        } catch (error) {
+            console.error(`Error processing target ${target}:`, error.message);
+        }
     });
-  
+
     return allData;
-  };
+};
 
 export { readJsonFile, writeJsonFile, getJsonFilesFromDirectory, getAllDataFromTargets };
