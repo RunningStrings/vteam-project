@@ -13,11 +13,6 @@ dotenv.config();
  * Main function to generate and update data.
  */
 const main = () => {
-    // const parkingsDirectoryPath = '../data-json/parkings';
-    // const stationsDirectoryPath = '../data-json/stations';
-    // const usersFilePath = '../data-json/users.json';
-    // const bikesFilePath = '../data-json/bikes.json';
-
     // Resolve __dirname and data paths
     const __dirname = dirname(fileURLToPath(import.meta.url));
     const dataJsonDir = path.join(__dirname, '../data-json'); // Root data folder
