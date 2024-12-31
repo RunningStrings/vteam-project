@@ -1,7 +1,7 @@
 /**
  * Model object for parking_zones. Stores model functions for parking_zones route.
  */
-import database from '../database.js';
+import database from '../database-config/database.js';
 import { ObjectId } from 'mongodb';
 import { createError } from './utils/createError.js'
 
@@ -10,7 +10,7 @@ const zoneModel = {
         const db = await database.getDb();
 
         try {
-            const result = await db.collectionParkingZones.find().toArray();
+            const result = await db.collectionParkings.find().toArray();
 
             return result;
         } catch (error) {
@@ -32,7 +32,7 @@ const zoneModel = {
                 _id: ObjectId.createFromHexString(id)
             };
                 
-            const result = await db.collectionParkingZones.findOne(filter);
+            const result = await db.collectionParkings.findOne(filter);
 
             if (!result) {
                 createError(`zone with ID: ${id} cannot be found`, 404);
@@ -62,7 +62,7 @@ const zoneModel = {
                 _id: ObjectId.createFromHexString(id)
                 };
                 
-            let result = await db.collectionParkingZones.findOne(filter);    
+            let result = await db.collectionParkings.findOne(filter);    
 
             if (!result) {
                 createError(`zone with ID: ${id} cannot be found`, 404);
@@ -73,14 +73,14 @@ const zoneModel = {
                 location: body.location
             };
 
-            result = await db.collectionParkingZones.updateOne(filter, { $set: updateParkingZone });
+            result = await db.collectionParkings.updateOne(filter, { $set: updateParkingZone });
 
             if (result.modifiedCount !== 1) {
                 createError(`no update possible with the given information for zone with ID: ${id}.`
                 + " Make sure information you provide is new.", 400);
             }
 
-            result = await db.collectionParkingZones.findOne(filter);
+            result = await db.collectionParkings.findOne(filter);
 
             return result;
         } finally {
@@ -100,7 +100,7 @@ const zoneModel = {
                 _id: ObjectId.createFromHexString(id)
                 };
                 
-            let result = await db.collectionParkingZones.findOne(filter);
+            let result = await db.collectionParkings.findOne(filter);
 
             if (!result) {
                 createError(`zone with ID: ${id} cannot be found`, 404);
@@ -116,7 +116,7 @@ const zoneModel = {
                 + " updates of already existing properties.", 400);
             }
 
-            result = await db.collectionParkingZones.updateOne(filter, { $set: body });
+            result = await db.collectionParkings.updateOne(filter, { $set: body });
 
             if (result.modifiedCount !== 1) {
                 createError(`no update possible with the given information for zone with ID: ${id}.`
@@ -141,13 +141,13 @@ const zoneModel = {
                 _id: ObjectId.createFromHexString(id)
                 };
                 
-            let result = await db.collectionParkingZones.findOne(filter);
+            let result = await db.collectionParkings.findOne(filter);
 
             if (!result) {
                 createError(`zone with ID: ${id} cannot be found`, 404);
             }
 
-            result = await db.collectionParkingZones.deleteOne(filter);
+            result = await db.collectionParkings.deleteOne(filter);
 
             if (result.deletedCount !== 1) {
                 createError(`fail, no delete possible with the given information for zone with ID: ${id}.`, 400);
@@ -173,13 +173,13 @@ const zoneModel = {
             };
 
             // const zoneName = newParkingZone.city_id;
-            // const duplicateParkingZone = await db.collectionParkingZones.findOne({zoneName});
+            // const duplicateParkingZone = await db.collectionParkings.findOne({zoneName});
 
             // if (duplicateParkingZone) {
             //     createError("zone with this city_id already exists.", 400);
             // }
 
-            const result = await db.collectionParkingZones.insertOne(newParkingZone);
+            const result = await db.collectionParkings.insertOne(newParkingZone);
             
             return result;
         } finally {
