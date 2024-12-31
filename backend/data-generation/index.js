@@ -16,7 +16,7 @@ const main = () => {
     bikesFilePath = '../data-json/bikes.json';
 
     // Get the file count based on NODE_ENV ('simulation' for 1000, anything else for 500)
-    const count = NODE_ENV === 'simulation' ? 1000 : 500;
+    const count = process.env.NODE_ENV === 'simulation' ? 1000 : 500;
 
     // Update or create Id and increment it for parkings and stations
     updateIds([parkingsDirectoryPath, stationsDirectoryPath]);
