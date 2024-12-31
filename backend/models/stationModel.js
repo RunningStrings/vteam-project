@@ -1,7 +1,7 @@
 /**
  * Model object for charging_stations. Stores model functions for charging_stations route.
  */
-import database from '../database.js';
+import database from '../database-config/database.js';
 import { ObjectId } from 'mongodb';
 import { createError } from './utils/createError.js'
 
@@ -10,7 +10,7 @@ const stationModel = {
         const db = await database.getDb();
 
         try {
-            const result = await db.collectionChargingStations.find().toArray();
+            const result = await db.collectionStations.find().toArray();
 
             return result;
         } catch (error) {
@@ -32,7 +32,7 @@ const stationModel = {
                 _id: ObjectId.createFromHexString(id)
             };
                 
-            const result = await db.collectionChargingStations.findOne(filter);
+            const result = await db.collectionStations.findOne(filter);
 
             if (!result) {
                 createError(`station with ID: ${id} cannot be found`, 404);
@@ -62,7 +62,7 @@ const stationModel = {
                 _id: ObjectId.createFromHexString(id)
                 };
                 
-            let result = await db.collectionChargingStations.findOne(filter);    
+            let result = await db.collectionStations.findOne(filter);    
 
             if (!result) {
                 createError(`station with ID: ${id} cannot be found`, 404);
@@ -75,14 +75,14 @@ const stationModel = {
                 capacity: body.capacity
             };
 
-            result = await db.collectionChargingStations.updateOne(filter, { $set: updateChargingStation });
+            result = await db.collectionStations.updateOne(filter, { $set: updateChargingStation });
 
             if (result.modifiedCount !== 1) {
                 createError(`no update possible with the given information for station with ID: ${id}.
                     Make sure information you provide is new.`, 400);
             }
 
-            result = await db.collectionChargingStations.findOne(filter);
+            result = await db.collectionStations.findOne(filter);
 
             return result;
         } finally {
@@ -102,7 +102,7 @@ const stationModel = {
                 _id: ObjectId.createFromHexString(id)
                 };
                 
-            let result = await db.collectionChargingStations.findOne(filter);
+            let result = await db.collectionStations.findOne(filter);
 
             if (!result) {
                 createError(`station with ID: ${id} cannot be found`, 404);
@@ -119,7 +119,7 @@ const stationModel = {
                      updates of already existing properties.`, 400);
             }
 
-            result = await db.collectionChargingStations.updateOne(filter, { $set: body });
+            result = await db.collectionStations.updateOne(filter, { $set: body });
 
             if (result.modifiedCount !== 1) {
                 createError(`no update possible with the given information for station with ID: ${id}.
@@ -144,13 +144,13 @@ const stationModel = {
                 _id: ObjectId.createFromHexString(id)
                 };
                 
-            let result = await db.collectionChargingStations.findOne(filter);
+            let result = await db.collectionStations.findOne(filter);
 
             if (!result) {
                 createError(`station with ID: ${id} cannot be found`, 404);
             }
 
-            result = await db.collectionChargingStations.deleteOne(filter);
+            result = await db.collectionStations.deleteOne(filter);
 
             if (result.deletedCount !== 1) {
                 createError(`fail, no delete possible with the given information for station with ID: ${id}.`, 400);
@@ -179,13 +179,13 @@ const stationModel = {
             };
 
             // const stationName = newChargingStation.city_id;
-            // const duplicateChargingStation = await db.collectionChargingStations.findOne({stationName});
+            // const duplicateChargingStation = await db.collectionStations.findOne({stationName});
 
             // if (duplicateChargingStation) {
             //     createError("station with this city_id already exists.", 400);
             // }
 
-            const result = await db.collectionChargingStations.insertOne(newChargingStation);
+            const result = await db.collectionStations.insertOne(newChargingStation);
             
             return result;
         } finally {

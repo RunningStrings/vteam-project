@@ -1,7 +1,7 @@
 /**
  * Model object for cities. Stores model functions for cities route.
  */
-import database from '../database.js';
+import database from '../database-config/database.js';
 import { ObjectId } from 'mongodb';
 import { createError } from './utils/createError.js'
 

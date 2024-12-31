@@ -1,0 +1,436 @@
+[
+  {
+    "id": 119,
+    "name": "Ekgränden",
+    "city_name": "Stockholm",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        59.31585960899119,
+        18.054992249759124
+      ]
+    },
+    "bikes": [],
+    "capacity": 39
+  },
+  {
+    "id": 120,
+    "name": "Lindholms Gata",
+    "city_name": "Stockholm",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        59.30590395286097,
+        18.080999610253002
+      ]
+    },
+    "bikes": [],
+    "capacity": 30
+  },
+  {
+    "id": 121,
+    "name": "Pernillas Gata",
+    "city_name": "Stockholm",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        59.326654855221165,
+        18.073771980742777
+      ]
+    },
+    "bikes": [],
+    "capacity": 47
+  },
+  {
+    "id": 122,
+    "name": "Undre Furugränden",
+    "city_name": "Stockholm",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        59.327196297194746,
+        18.05282830386301
+      ]
+    },
+    "bikes": [],
+    "capacity": 49
+  },
+  {
+    "id": 123,
+    "name": "Davids Väg",
+    "city_name": "Stockholm",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        59.33266808332496,
+        18.07154200529186
+      ]
+    },
+    "bikes": [],
+    "capacity": 20
+  },
+  {
+    "id": 124,
+    "name": "Ängsgatan",
+    "city_name": "Stockholm",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        59.3411596443666,
+        18.071237051672767
+      ]
+    },
+    "bikes": [],
+    "capacity": 32
+  },
+  {
+    "id": 125,
+    "name": "Eliassons Väg",
+    "city_name": "Stockholm",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        59.340003229712806,
+        18.05687126305122
+      ]
+    },
+    "bikes": [],
+    "capacity": 22
+  },
+  {
+    "id": 126,
+    "name": "Övre Fabriksgärdet",
+    "city_name": "Stockholm",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        59.3427967985225,
+        18.046972871345247
+      ]
+    },
+    "bikes": [],
+    "capacity": 14
+  },
+  {
+    "id": 127,
+    "name": "Hassans Gata",
+    "city_name": "Stockholm",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        59.34333068882938,
+        18.067017372394048
+      ]
+    },
+    "bikes": [],
+    "capacity": 20
+  },
+  {
+    "id": 128,
+    "name": "Guns Väg",
+    "city_name": "Stockholm",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        59.35948642558179,
+        17.996829537269832
+      ]
+    },
+    "bikes": [],
+    "capacity": 10
+  },
+  {
+    "id": 129,
+    "name": "Viktorias Väg",
+    "city_name": "Stockholm",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        59.36018164803522,
+        17.972838433356742
+      ]
+    },
+    "bikes": [],
+    "capacity": 22
+  },
+  {
+    "id": 130,
+    "name": "Övre Kyrkgränden",
+    "city_name": "Stockholm",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        59.365706648340534,
+        17.969822758470798
+      ]
+    },
+    "bikes": [],
+    "capacity": 43
+  },
+  {
+    "id": 131,
+    "name": "Larssons Gata",
+    "city_name": "Stockholm",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        59.35860220636343,
+        18.00407746991101
+      ]
+    },
+    "bikes": [],
+    "capacity": 39
+  },
+  {
+    "id": 132,
+    "name": "Mattssons Gata",
+    "city_name": "Stockholm",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        59.34961867313331,
+        18.048774619726544
+      ]
+    },
+    "bikes": [],
+    "capacity": 46
+  },
+  {
+    "id": 133,
+    "name": "Furugränden",
+    "city_name": "Stockholm",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        59.30982664378885,
+        18.084771774175863
+      ]
+    },
+    "bikes": [],
+    "capacity": 32
+  },
+  {
+    "id": 134,
+    "name": "Nyströms Gata",
+    "city_name": "Stockholm",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        59.31030810600174,
+        18.094246909727218
+      ]
+    },
+    "bikes": [],
+    "capacity": 18
+  },
+  {
+    "id": 135,
+    "name": "Västra Ringgränden",
+    "city_name": "Stockholm",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        59.309929423485784,
+        18.063723988561577
+      ]
+    },
+    "bikes": [],
+    "capacity": 50
+  },
+  {
+    "id": 136,
+    "name": "Pers Väg",
+    "city_name": "Stockholm",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        59.31670870310961,
+        18.038901842898838
+      ]
+    },
+    "bikes": [],
+    "capacity": 48
+  },
+  {
+    "id": 137,
+    "name": "Jans Gata",
+    "city_name": "Stockholm",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        59.31691245109559,
+        18.032588998913752
+      ]
+    },
+    "bikes": [],
+    "capacity": 46
+  },
+  {
+    "id": 138,
+    "name": "Björkvägen",
+    "city_name": "Stockholm",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        59.3137331572016,
+        18.060455148741937
+      ]
+    },
+    "bikes": [],
+    "capacity": 35
+  },
+  {
+    "id": 139,
+    "name": "Högbergsgatan",
+    "city_name": "Stockholm",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        59.313326646230166,
+        18.119764607756338
+      ]
+    },
+    "bikes": [],
+    "capacity": 42
+  },
+  {
+    "id": 140,
+    "name": "Sjövägen",
+    "city_name": "Stockholm",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        59.30631504415098,
+        18.111044816792543
+      ]
+    },
+    "bikes": [],
+    "capacity": 29
+  },
+  {
+    "id": 141,
+    "name": "Östergatan",
+    "city_name": "Stockholm",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        59.33394164402387,
+        18.027959176914294
+      ]
+    },
+    "bikes": [],
+    "capacity": 41
+  },
+  {
+    "id": 142,
+    "name": "Granvägen",
+    "city_name": "Stockholm",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        59.33324170698225,
+        18.043761639790347
+      ]
+    },
+    "bikes": [],
+    "capacity": 50
+  },
+  {
+    "id": 143,
+    "name": "Kungsgatan",
+    "city_name": "Stockholm",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        59.326144989601744,
+        18.09591599100358
+      ]
+    },
+    "bikes": [],
+    "capacity": 45
+  },
+  {
+    "id": 144,
+    "name": "Långgatan",
+    "city_name": "Stockholm",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        59.33837795848905,
+        18.084967792900358
+      ]
+    },
+    "bikes": [],
+    "capacity": 38
+  },
+  {
+    "id": 145,
+    "name": "Rödvägen",
+    "city_name": "Stockholm",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        59.31400719695239,
+        18.081787662416957
+      ]
+    },
+    "bikes": [],
+    "capacity": 48
+  },
+  {
+    "id": 146,
+    "name": "Solgatan",
+    "city_name": "Stockholm",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        59.3467810997289,
+        18.053583380258146
+      ]
+    },
+    "bikes": [],
+    "capacity": 33
+  },
+  {
+    "id": 147,
+    "name": "Västerlånggatan",
+    "city_name": "Stockholm",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        59.33173688299334,
+        18.075807412097532
+      ]
+    },
+    "bikes": [],
+    "capacity": 37
+  },
+  {
+    "id": 148,
+    "name": "Korsgatan",
+    "city_name": "Stockholm",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        59.331763051813226,
+        18.081206949066
+      ]
+    },
+    "bikes": [],
+    "capacity": 40
+  },
+  {
+    "id": 149,
+    "name": "Västra Gatan",
+    "city_name": "Stockholm",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        59.34202954582037,
+        18.07734732463254
+      ]
+    },
+    "bikes": [],
+    "capacity": 36
+  }
+]
