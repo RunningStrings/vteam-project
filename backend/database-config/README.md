@@ -9,6 +9,14 @@
 * Delete instance of data, from root directory: 
     * `sudo rm -rf ./data/db`
 
+## How it works?
+When starting `docker-compose up --build` runs:
+* `index.js` :
+  * Sets or updates ID for all json files in parkings and stations.
+  * Creates or updates a `users.json` with 500 or 1000 entries depending of NODE_ENV.
+  * Creates or updates a `bikes.json` with 500 or 1000 entries depending of NODE_ENV.
+  * Updates ID for`bikes.json`.
+  * Distributes `bikes.json` (ID) in all json files in parkings and stations.
 ## Database schema
 	cities: { 
 		"_id": "ObjectId",
