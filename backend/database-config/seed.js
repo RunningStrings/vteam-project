@@ -21,6 +21,7 @@ const seedData = async () => {
         const bikesData = readJsonFile(path.join(dataJsonDir, 'bikes.json'));
         const citiesData = readJsonFile(path.join(dataJsonDir, 'cities.json'));
         const usersData = readJsonFile(path.join(dataJsonDir, 'users.json'));
+        const tripsData = readJsonFile(path.join(dataJsonDir, 'trips.json'));
 
         // Use getJsonFilesFromDirectory to collect all station and parking files
         const stationFiles = getJsonFilesFromDirectory(path.join(dataJsonDir, 'stations'));
@@ -29,7 +30,7 @@ const seedData = async () => {
         const parkingFiles = getJsonFilesFromDirectory(path.join(dataJsonDir, 'parkings'));
         const parkingsData = parkingFiles.map(filePath => readJsonFile(filePath));
 
-        if (!bikesData || !citiesData || !usersData) {
+        if (!bikesData || !citiesData || !usersData || !tripsData || !stationsData || !parkingsData) {
             throw new Error('Error loading necessary JSON files');
         }
 
