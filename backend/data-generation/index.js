@@ -5,63 +5,32 @@ import generateBikesJsonFile from './generateBikes.js';
 import distributeBikes from './distributeBikes.js';
 
 dotenv.config();
-let NODE_ENV="simulation"
 
 /**
  * Main function to generate and update data.
  */
 const main = () => {
-    // Get the file name and count based on NODE_ENV ('simulation' for big, anything else for small)
-//     const bikeFile = process.env.NODE_ENV === 'simulation'
-//          ? '../data-json/bikes_big.json'
-//          : '../data-json/bikes_small.json';
+    parkingsDirectoryPath = '../data-json/parkings';
+    stationsDirectoryPath = '../data-json/stations';
+    usersFilePath = '../data-json/users.json';
+    bikesFilePath = '../data-json/bikes.json';
 
-//     const userFile = process.env.NODE_ENV === 'simulation'
-//          ? '../data-json/users_big.json'
-//          : '../data-json/users_small.json';
-
-//     const count = process.env.NODE_ENV === 'simulation' ? 1000 : 500;
+    // Get the file count based on NODE_ENV ('simulation' for 1000, anything else for 500)
     const count = NODE_ENV === 'simulation' ? 1000 : 500;
 
-
     // Update or create Id and increment it for parkings and stations
-    updateIds(['../data-json/parkings', '../data-json/stations']);
+    updateIds([parkingsDirectoryPath, stationsDirectoryPath]);
 
     // Generate users json
-//     generateUserJsonFile(userFile, count);
-    generateUserJsonFile('../data-json/users.json', count);
-
+    generateUserJsonFile(usersFilePath, count);
 
     // Generate bike json
-//     generateBikesJsonFile(bikeFile, count);
-    generateBikesJsonFile('../data-json/bikes.json', count);
+    generateBikesJsonFile(bikesFilePath, count);
     // Update bikes Id
-    updateIds(['../data-json/bikes.json']);
+    updateIds([bikesFilePath]);
 
     // Distributed bikes in parkings and stations
-    distributeBikes(['../data-json/parkings', '../data-json/stations'], '../data-json/bikes.json');
-
-    // // Update or create Id and increment it for parkings and stations
-    // updateIds(['../data-json/parkings', '../data-json/stations']);
-
-    // // Generate 50 users
-    // generateUserJsonFile('../data-json/users_small.json', 50);
-
-    // // Generate 1000 users
-    // generateUserJsonFile('../data-json/users_big.json', 1000);
-
-    // // // Generate 500 bikes
-    // generateBikesJsonFile('../data-json/bikes_small.json', 500);
-    // // // Update bikes Id
-    // updateIds(['../data-json/bikes_small.json']);
-
-    // // Generate 1000 bikes
-    // generateBikesJsonFile('../data-json/bikes_big.json', 1000);
-    // // Update bikes Id
-    // updateIds(['../data-json/bikes_big.json']);
-
-    // // Distributed bikes in parkings and stations
-    // distributeBikes(['../data-json/parkings', '../data-json/stations'], bikeFile);
+    distributeBikes([parkingsDirectoryPath, stationsDirectoryPath], bikesFilePath);
 };
 
 main();
