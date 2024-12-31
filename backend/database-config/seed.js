@@ -55,6 +55,7 @@ const seedData = async () => {
         await seedCollection('parkings', parkingsData.flat()); // Flatten the parking data
         await seedCollection('cities', citiesData);
         await seedCollection('users', usersData);
+        await seedCollection('trips', tripsData);
 
         console.log('Database seeded!');
     } catch (error) {
