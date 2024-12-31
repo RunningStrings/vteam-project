@@ -16,20 +16,11 @@ const seedData = async () => {
     const __dirname = dirname(fileURLToPath(import.meta.url));
     const dataJsonDir = path.join(__dirname, '../data-json'); // Root data folder
 
-    // Get the file name based on NODE_ENV ('simulation' for big, anything else for small)
-    const bikePath = process.env.NODE_ENV === 'simulation'
-    ? 'bikes_big.json'
-    : 'bikes_small.json';
-
-    const userPath = process.env.NODE_ENV === 'simulation'
-    ? 'users_big.json'
-    : 'users_small.json';
-
     try {
         // Load external JSON data files using utility functions
-        const bikesData = readJsonFile(path.join(dataJsonDir, bikePath));
+        const bikesData = readJsonFile(path.join(dataJsonDir, 'bikes.json'));
         const citiesData = readJsonFile(path.join(dataJsonDir, 'cities.json'));
-        const usersData = readJsonFile(path.join(dataJsonDir, userPath));
+        const usersData = readJsonFile(path.join(dataJsonDir, 'users.json'));
 
         // Use getJsonFilesFromDirectory to collect all station and parking files
         const stationFiles = getJsonFilesFromDirectory(path.join(dataJsonDir, 'stations'));
