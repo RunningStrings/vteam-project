@@ -17,6 +17,7 @@ When starting `docker-compose up --build` runs:
   * Creates or updates a `bikes.json` with 500 or 1000 entries depending of NODE_ENV.
   * Updates ID for`bikes.json`.
   * Distributes `bikes.json` (ID) in all json files in parkings and stations.
+
 ## Database schema
 	cities: { 
 		"_id": "ObjectId",
