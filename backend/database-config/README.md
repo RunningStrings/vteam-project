@@ -128,3 +128,6 @@ From root directory, `cd backend/data_generation` then `node index.js`.
 * Generate new bikes.json with 500 or 1000 depending of NODE.ENV.
 * Generate new ID for bikes.json.
 * Distributes bikes generated (500 or 1000 depending of NODE.ENV) into parkings and stations json files.
+
+## NODE ENV
+To generate data for 1000 for simulation, NODE_ENV (process.env.NODE_ENV) needs to be set to: `process.env.NODE_ENV="simulation"` in docker-compose.yml for simulation.
