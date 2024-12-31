@@ -1,9 +1,11 @@
 import * as dotenv from 'dotenv';
+import path from 'node:path';
+import { dirname } from 'node:path';
+import { fileURLToPath } from 'node:url';
 import updateIds from './updateIds.js';
 import generateUserJsonFile from './generateUsers.js';
 import generateBikesJsonFile from './generateBikes.js';
 import distributeBikes from './distributeBikes.js';
-import path from 'node:path';
 
 dotenv.config();
 
@@ -16,14 +18,15 @@ const main = () => {
     // const usersFilePath = '../data-json/users.json';
     // const bikesFilePath = '../data-json/bikes.json';
 
-    // Base directory
-    const basePath = path.resolve(); // This resolves to the root of your project
+    // Resolve __dirname and data paths
+    const __dirname = dirname(fileURLToPath(import.meta.url));
+    const dataJsonDir = path.join(__dirname, '../data-json'); // Root data folder
 
-    // Define paths using `path.resolve`
-    const parkingsDirectoryPath = path.resolve(basePath, 'data-json/parkings');
-    const stationsDirectoryPath = path.resolve(basePath, 'data-json/stations');
-    const usersFilePath = path.resolve(basePath, 'data-json/users.json');
-    const bikesFilePath = path.resolve(basePath, 'data-json/bikes.json');
+    // Resolve complete data path
+    const parkingsDirectoryPath = path.join(dataJsonDir, 'parkings');
+    const stationsDirectoryPath = path.join(dataJsonDir, 'stations');
+    const usersFilePath = path.join(dataJsonDir, 'users.json');
+    const bikesFilePath = path.join(dataJsonDir, 'bikes.json');
 
     // Get the file count based on NODE_ENV ('simulation' for 1000, anything else for 500)
     const count = process.env.NODE_ENV === 'simulation' ? 1000 : 500;
