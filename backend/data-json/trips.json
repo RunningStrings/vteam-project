@@ -1,23 +1,83 @@
 [
   {
-      "bike_id": "ObjectId",
-      "customer_id": "",
-      "start": {
-          "location": {
-              "type": "point",
-              "coordinates": []
-          },
-          "timestamp": "timestamp"
+    "bike_id": "testObjectIdBike1",
+    "customer_id": "testObjectIdCustomer1",
+    "start": {
+      "location": {
+        "type": "point",
+        "coordinates": [
+          58.40561732770678,
+          15.623573225674448
+        ]
       },
-      "end": {
-          "location": {
-              "type": "point",
-              "coordinates": []
-          },
-          "timestamp": "timestamp"
+      "timestamp": "1519211809934"
+    },
+    "end": {
+      "location": {
+        "type": "point",
+        "coordinates": [
+          58.407556546612,
+          15.644779018476129
+        ]
       },
-      "distance": "number",
-      "cost": "number",
-      "parking_type": "string"
-  }
+      "timestamp": "1519211810362"
+    },
+    "distance": "5",
+    "cost": "25",
+    "parking_type": "station"
+  },
+  {
+    "bike_id": "testObjectIdBike2",
+    "customer_id": "testObjectIdCustomer2",
+    "start": {
+      "location": {
+        "type": "point",
+        "coordinates": [
+          55.607323843656815,
+          13.028301726385251
+        ]
+      },
+      "timestamp": "1519211810362"
+    },
+    "end": {
+      "location": {
+        "type": "point",
+        "coordinates": [
+          55.61378958059842,
+          12.980856588823372
+        ]
+      },
+      "timestamp": "1519211811670"
+    },
+    "distance": "5",
+    "cost": "25",
+    "parking_type": "station"
+},
+{
+  "bike_id": "testObjectIdBike3",
+  "customer_id": "testObjectIdCustomer3",
+  "start": {
+    "location": {
+      "type": "point",
+      "coordinates": [
+        59.33837795848905,
+        18.084967792900358
+      ]
+    },
+    "timestamp": "1519211811670"
+  },
+  "end": {
+    "location": {
+      "type": "point",
+      "coordinates": [
+        59.3467810997289,
+        18.053583380258146
+      ]
+    },
+    "timestamp": "1519211812500"
+  },
+  "distance": "5",
+  "cost": "25",
+  "parking_type": "station"
+}
 ]
