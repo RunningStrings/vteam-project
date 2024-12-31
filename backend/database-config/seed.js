@@ -16,12 +16,12 @@ const seedData = async () => {
     const __dirname = dirname(fileURLToPath(import.meta.url));
     const dataJsonDir = path.join(__dirname, '../data-json'); // Root data folder
 
-    // Get the file name based on NODE_ENV ('simulering' for big, anything else for small)
-    const bikePath = process.env.NODE_ENV === 'simulering'
+    // Get the file name based on NODE_ENV ('simulation' for big, anything else for small)
+    const bikePath = process.env.NODE_ENV === 'simulation'
     ? 'bikes_big.json'
     : 'bikes_small.json';
 
-    const userPath = process.env.NODE_ENV === 'simulering'
+    const userPath = process.env.NODE_ENV === 'simulation'
     ? 'users_big.json'
     : 'users_small.json';
 
