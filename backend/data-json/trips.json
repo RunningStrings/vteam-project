@@ -1,0 +1,23 @@
+[
+  {
+      "bike_id": "ObjectId",
+      "customer_id": "",
+      "start": {
+          "location": {
+              "type": "point",
+              "coordinates": []
+          },
+          "timestamp": "timestamp"
+      },
+      "end": {
+          "location": {
+              "type": "point",
+              "coordinates": []
+          },
+          "timestamp": "timestamp"
+      },
+      "distance": "number",
+      "cost": "number",
+      "parking_type": "string"
+  }
+]
