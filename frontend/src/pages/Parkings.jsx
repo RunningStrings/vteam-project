@@ -4,8 +4,6 @@ import { useNavigate} from 'react-router-dom';
 
 
 function Users() {
-  const [users, setUsers] = useState([]);
-  const [bikes, setBikes] = useState([]);
   const [parkings, setParkings] = useState([]);
 
   const navigate = useNavigate();
@@ -13,23 +11,21 @@ function Users() {
  
   
   useEffect(() => {
-    // Fetch users from the backend API
-    fetch('/users')
-      .then(response => response.json())
-      .then(data => setUsers(data))
-      .catch(error => console.error('Error fetching users:', error));
 
-    // Fetch bikes from the backend API
-    fetch('/bikes')
-      .then(response => response.json())
-      .then(data => setBikes(data))
-      .catch(error => console.error('Error fetching bikes:', error));
-
-    // Fetch stations from the backend API
+    // Fetch parkings from the backend API
     fetch('/parking_zones')
-      .then(response => response.json())
-      .then(data => setParkings(data))
-      .catch(error => console.error('Error fetching parkings:', error));
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      return response.json();
+    })
+    .then((responseData) => {
+      setParkings(responseData.data); // Ensure this is the correct data structure
+    })
+    .catch((error) => {
+      console.error('Error fetching parkerings:', error);
+    });
 
 
   }, []);
@@ -52,7 +48,7 @@ function Users() {
             <tr>
             <td>{index}</td>
             <td>{parking.city_name}</td>
-            <td>{parking.location.coordinates}</td> 
+            <td>{parking.location.coordinate}</td> 
             <td>0</td>
             </tr>
           ))}

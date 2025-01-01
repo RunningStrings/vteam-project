@@ -8,7 +8,7 @@ import Trips from "./pages/Trips";
 import User from "./pages/User";
 import Maps from "./pages/Maps";
 import Support from "./pages/Support";
-import Settings from "./pages/Settings";
+import Payment from "./pages/Payment";
 //import { useAuth0 } from "@auth0/auth0-react";
 
 const App = () => {
@@ -26,7 +26,7 @@ const App = () => {
             <Route path="/user" element={<User />} />
             <Route path="/maps" element={<Maps />} />
             <Route path="/support" element={<Support />} />
-            <Route path="/settings" element={<Settings />} />
+            <Route path="/payment" element={<Payment />} />
           </Routes>
         </div>
       </div>

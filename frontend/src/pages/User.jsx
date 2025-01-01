@@ -14,9 +14,30 @@ const initialFormValues = {
   
 }
 
+function search(data) {
+  let number=0;
+  let sessionId=sessionStorage.getItem('email');
+  console.log(sessionId);
+  
+  for (let i=0; i<data.length; i++) {
+  
+    //console.log(data[i].email);
+    
+    if(data[i].id == sessionId)
+      number=i;
+}
+  return number;
+}
+
+
+
+
+
+
 function User() {
   const [formData, setFormData] = useState(initialFormValues);
   const [users, setUsers] = useState([]); // Deklarerar users
+  const [selectedUserId, setSelectedUserId] = useState([]); // Deklarerar users
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
@@ -39,7 +60,42 @@ function User() {
 
     useEffect(() => {
       // Fetch users from the backend API
-      fetch("/users")
+      fetch('/users')
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+          }
+          return response.json();
+        })
+        .then((responseData) => {
+          setUsers(responseData.data); // Store all users
+          const emailFromSession = sessionStorage.getItem('email'); // Get email from sessionStorage
+          if (emailFromSession) {
+            const matchedUser = responseData.data.find((user) => user.email === emailFromSession);
+            if (matchedUser) {
+              setFormData(matchedUser); // Populate the form with the matched user's data
+            }
+          }
+        })        
+        
+        
+        
+        
+        /*.then((responseData) => {
+          setUsers(responseData.data); // Ensure this is the correct data structure
+          if (responseData.data && responseData.data.length > 0) {
+            const firstUser = responseData.data[0]; // Assume we're using the first user for now
+            setFormData(firstUser); // Populate the form with the first user's data
+            setSelectedUserId(firstUser.id); // Set selected user ID
+          }
+        })*/
+        .catch((error) => {
+          console.error('Error fetching users:', error);
+        });
+
+
+
+/*      fetch("/users")
         .then((response) => response.json())
         .then((data) => {
           setUsers(data); // Store users
@@ -49,10 +105,17 @@ function User() {
             setSelectedUserId(firstUser.id); // Set selected user ID
           }
         })
-        .catch((error) => console.error("Error fetching users:", error));
+        .catch((error) => console.error("Error fetching users:", error));*/
     }, []);
 
-
+    const handleUserSelect = (evt) => {
+      const userId = evt.target.value;
+      setSelectedUserId(userId);
+      const user = users.find((u) => u.id === userId);
+      if (user) {
+        setFormData(user); // Populate formData with the selected user's data
+      }
+    };
 
   return (
     //console.log(formData);
@@ -60,23 +123,8 @@ function User() {
     
     <div className="App" style={{ marginLeft: "220px", padding: "20px" }}>
       <h2>En användare</h2>
-      <form className="form" onSubmit={handleSubmit}>
+      <form className="form" onSubmit={handleUserSelect}>
       
-        <div className="form__group">
-          <label htmlFor="id" className="form__label">
-            Id
-          </label>
-          <input 
-          type="string" 
-          id="id" 
-          name="id"
-          value={formData._id}
-          className="form__input" 
-          onChange={(e) =>
-            setFormData({ ...formData, id: e.target.value})
-          }
-           />
-        </div>
         <div className="form__group">
           <label htmlFor="firstname" className="form__label">
             Förnamn
@@ -123,17 +171,17 @@ function User() {
            />
         </div>
         <div className="form__group">
-          <label htmlFor="phone" className="form__label">
-            Telefon
+          <label htmlFor="trips" className="form__label">
+            Resehistorik
           </label>
           <input
-            type="tel"
-            id="phone"
-            name="phone"
-            value={formData.phone}
+            type="text"
+            id="trips"
+            name="trips"
+            value={formData.trips}
             className="form__input"
             onChange={(e) =>
-              setFormData({ ...formData, phone: e.target.value})
+              setFormData({ ...formData, trips: e.target.value})
             }
           />
         </div>
@@ -180,3 +228,22 @@ function User() {
 
   
   export default User;
+
+
+  /*
+          <div className="form__group">
+          <label htmlFor="id" className="form__label">
+            Id
+          </label>
+          <input 
+          type="string" 
+          id="id" 
+          name="id"
+          value={formData._id}
+          className="form__input" 
+          onChange={(e) =>
+            setFormData({ ...formData, id: e.target.value})
+          }
+           />
+        </div>
+*/

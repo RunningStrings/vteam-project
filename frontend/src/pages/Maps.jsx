@@ -22,29 +22,86 @@ import { useMap } from "../hooks";
     const [parkings, setParking] = useState([]);
 
   useEffect(() => {
-    // Fetch bikes from the backend API
+    // Fetch cities from the backend API
     fetch('/cities')
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      return response.json();
+    })
+    .then((responseData) => {
+      setCities(responseData.data); // Ensure this is the correct data structure
+    })
+    .catch((error) => {
+      console.error('Error fetching cities:', error);
+    });
+
+
+
+
+    /*fetch('/cities')
       .then(response => response.json())
       .then(data => setCities(data))
       .catch(error => console.error('Error fetching cities:', error));
+*/
+    // Fetch parkings from the backend API
+    fetch('/parking_zones')
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      return response.json();
+    })
+    .then((responseData) => {
+      setParkings(responseData.data); // Ensure this is the correct data structure
+    })
+    .catch((error) => {
+      console.error('Error fetching parkerings:', error);
+    });
 
-    // Fetch bikes from the backend API
+
+
+
+
+
+
+/*
     fetch('/parking_zones')
       .then(response => response.json())
       .then(data => setParking(data))
       .catch(error => console.error('Error fetching parking:', error));
-
+*/
     // Fetch stations from the backend API
     fetch('/charging_stations')
-      .then(response => response.json())
-      .then(data => setStations(data))
-      .catch(error => console.error('Error fetching stations:', error));
-    
-    // Fetch bikes from the backend API
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      return response.json();
+    })
+    .then((responseData) => {
+      setStations(responseData.data); // Ensure this is the correct data structure
+    })
+    .catch((error) => {
+      console.error('Error fetching stations:', error);
+    });
+
     fetch('/bikes')
-      .then(response => response.json())
-      .then(data => setBikes(data))
-      .catch(error => console.error('Error fetching bikes:', error));
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      return response.json();
+    })
+    .then((responseData) => {
+      setBikes(responseData.data); // Ensure this is the correct data structure
+    })
+    .catch((error) => {
+      console.error('Error fetching bikes:', error);
+    });    
+
+
     }, []);
 
     const stationIcon = new L.Icon({
@@ -136,9 +193,9 @@ for (let index = 0; index < cities.length; index++) {
       ))}
 
 {parkings.map((parking, index) => (
-        <Polygon
+        <Marker
           
-        positions={parking.location.coordinates} //LatLng.wrap(
+        position={parking.location.coordinates} //LatLng.wrap(
           key={index}
           color="red"
           fillColor="red"
@@ -150,7 +207,7 @@ for (let index = 0; index < cities.length; index++) {
         
          <br />
           </Popup>
-        </Polygon>
+        </Marker>
       //}
   
       ))}

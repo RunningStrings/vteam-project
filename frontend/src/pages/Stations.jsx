@@ -26,10 +26,21 @@ function Users() {
       .catch(error => console.error('Error fetching bikes:', error));
 
     // Fetch stations from the backend API
-    fetch('/charging_stations')
-      .then(response => response.json())
-      .then(data => setStations(data))
-      .catch(error => console.error('Error fetching stations:', error));
+      fetch('/charging_stations')
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        return response.json();
+      })
+      .then((responseData) => {
+        setStations(responseData.data); // Ensure this is the correct data structure
+      })
+      .catch((error) => {
+        console.error('Error fetching stations:', error);
+      });
+
+
 
 
   }, []);
