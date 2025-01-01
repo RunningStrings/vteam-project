@@ -8,8 +8,7 @@
         "devStart": "nodemon index.js",
         "eslint": "npx eslint *.js .",
         "eslint:fix": "npx eslint *.js . --fix",
-        "start": "node index.js",
-        "generateData": "node scripts/generateFakeData.js"
+        "start": "node index.js"
     },
     "dependencies": {
         "dotenv": "^16.4.7",

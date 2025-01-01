@@ -21,16 +21,19 @@ const database = {
 
         let collectionCities = await db.collection("cities");
         let collectionBikes = await db.collection("bikes");
-        let collectionChargingStations = await db.collection("charging_stations");
-        let collectionParkingZones = await db.collection("parking_zones");
+        let collectionStations = await db.collection("stations");
+        let collectionParkings = await db.collection("zones");
         let collectionUsers = await db.collection("users");
+        let collectionTrips = await db.collection("trips");
 
         return {
             collectionCities: collectionCities,
             collectionBikes: collectionBikes,
-            collectionChargingStations: collectionChargingStations,
-            collectionParkingZones: collectionParkingZones,
-            collectionUsers: collectionUsers
+            collectionStations: collectionStations,
+            collectionParkings: collectionParkings,
+            collectionUsers: collectionUsers,
+            collectionTrips: collectionTrips,
+            client: client
         };
     }
 };
