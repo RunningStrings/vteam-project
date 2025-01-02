@@ -22,7 +22,7 @@ const database = {
         let collectionCities = await db.collection("cities");
         let collectionBikes = await db.collection("bikes");
         let collectionStations = await db.collection("stations");
-        let collectionParkings = await db.collection("zones");
+        let collectionParkings = await db.collection("parkings");
         let collectionUsers = await db.collection("users");
         let collectionTrips = await db.collection("trips");
 
