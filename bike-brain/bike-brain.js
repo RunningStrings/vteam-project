@@ -94,6 +94,10 @@ class BikeBrain {
 
     /**
      * Update's the bike's battery level and sends it to the server.
+     * If the bike is in use, warns at 20% and 10%, and sets the status to
+     * 'maintenance' at 0%.
+     * If the bike is not in use, sets the status to 'maintenance' when the 
+     * battery level is 20% or lower.
      * @param {number} batteryLevel - The current battery level of the bike (1-100).
      */
     updateBattery(batteryLevel) {
@@ -105,6 +109,41 @@ class BikeBrain {
         this.sendMessage('update-battery', {
             batteryLevel: this.batteryLevel
         });
+
+        // Call method to handle warnings
+        this.handleBatteryWarnings();
+
+        // Update the indicator light
+        this.bikeLight(this.status);
+    }
+
+    /**
+     * Handles battery warnings and status changes based on battery level.
+     */
+    handleBatteryWarnings() {
+        if (this.batteryLevel < 20) {
+            if (this.status === 'in-use') {
+                if (batteryLevel <= 10) {
+                    console.warn(`Bike ${this.id} has low battery (${batteryLevel}%)`);
+                } else if (batteryLevel < 20) {
+                    console.warn(`Bike ${this.id} has low battery (${batteryLevel})`);
+                }
+
+                // Set status to 'maintenance' when battery is drained
+                if (batteryLevel === 0) {
+                    this.status = 'maintenance';
+                    console.log(`Bike ${this.id} in need of maintenance due to 0% battery`);
+                }
+            } else {
+                // If bike is not in use, set status to 'maintenance' if battery level
+                // is 20% or lower
+                if (batteryLevel < 20) {
+                    console.warn(`Bike ${this.id} has low battery (${batteryLevel}%)`);
+                    this.status = 'maintenance';
+                    console.log(`Bike ${this.id} status changed to 'maintenance' due to low battery`)
+                }
+            }
+        }
     }
 
     /**
@@ -115,6 +154,8 @@ class BikeBrain {
         const startTime = new Date();
         this.tripCurrent = {
             customerId: customerId,
+            bikeId: this.id,
+            cityId: this.cityId,
             startLocation: { lat: this.location.coordinates[0], lon: this.location.coordinates[1] },
             startTime: startTime,
         };
@@ -122,17 +163,29 @@ class BikeBrain {
     }
 
     /**
-     * Ends the current trip, logs it, sends the log to the server, and resets the trip state.
+     * Ends the current trip, stores it in a local log, sends the 
+     * current trip to the server, and resets the trip state.
      */
     stopTrip() {
         const stopTime = new Date();
         if (this.tripCurrent) {
             this.tripCurrent.stopLocation = { lat: this.location.coordinates[0], lon: this.location.coordinates[1] };
             this.tripCurrent.stopTime = stopTime;
+            const duration = (stopTime - this.tripCurrent.startTime) / (1000 * 60); // Duration in minutes
+            this.tripCurrent.duration = duration;
+
             this.tripLog.push(this.tripCurrent);
+
+            // Limit local trip log to last 100 trips
+            if (this.tripLog.length > 100) {
+                this.tripLog.shift(); // Remove the oldest trip
+            }
+
             console.log(`Trip ended for customer ${this.tripCurrent.customerId} at ${stopTime}`);
+
+            // Send only current trip to the server
             this.sendMessage('log-trip', {
-                tripLog: this.tripLog
+                tripLog: this.tripCurrent,
             });
         }
         this.tripCurrent = null;
