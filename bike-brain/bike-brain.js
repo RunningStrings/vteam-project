@@ -199,27 +199,46 @@ class BikeBrain {
      * 
      * @param {string} action - The action selected by admin.
      *                          Valid actions:
-     *                          - 'stop': Sets the bike to 'available' status and resets speed to 0.
+     *                          - 'stop': Sets the bike to 'maintenance' status and resets speed to 0.
      *                            'make-available': Makes the bike available for rental.
      *                          - 'maintenance': Puts the bike in 'maintenance' mode.
      *                          - 'charge': Sets the bike to 'charging' status.
      */
     controlBike(action) {
         if (action === 'stop') {
-            this.status = 'maintenance';
-            this.speed = 0;
-            console.log(`Bike ${this.id} has been stopped`);
+            console.log(`Stopping bike ${this.id}. Speed will gradually decrease to 0.`);
+            this.graduallyStopBike();
         } else if (action === 'make-available') {
             this.status = 'available';
             console.log(`Bike ${this.id} is now available for rental.`);
         } else if (action === 'maintenance') {
             this.status = 'maintenance';
-            console.log(`Bike ${this.id} is in maintenance mode`);
+            console.log(`Bike ${this.id} is in maintenance mode.`);
         } else if (action === 'charge') {
             this.status = 'charging';
             console.log(`Bike ${this.id} is charging`);
         }
         this.bikeLight(this.status);
+    }
+
+    /**
+     * Gradually reduces the bike's speed to 0 before setting status 
+     * to 'maintenance'.
+     */
+    graduallyStopBike() {
+        const decelerationRate = 2;
+        const intervalTime = 500;
+        const decelerationInterval = setInterval(() => {
+            if (this.speed > 0) {
+                this.speed = Math.max(0, this.speed - decelerationRate);
+                console.log(`Bike ${this.id} speed: ${this.speed}`);
+            } else {
+                clearInterval(decelerationInterval);
+                this.status = 'maintenance';
+                console.log(`Bike ${this.id} has been stopped and is now in maintenance mode.`);
+                this.bikeLight(this.status);
+            }
+        }, intervalTime);
     }
 
     /**
