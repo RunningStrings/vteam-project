@@ -232,15 +232,14 @@ class BikeBrain {
 
     /**
      * Starts a rental by changing the bike's status to 'in-use' and initiating a trip.
-     * If the bike is not available or if the bike is charging and has a
-     * batteryLevel lower than 50% the rental cannot be started.
+     * If the conditions for battery level or status are not met a 
+     * rental cannot be started.
      * 
      * @param {string} customerId - The ID of the customer renting the bike.
-     * @returns Returns a message if the bike's status is not 'available'.
+     * @returns {void}
      */
     startRental(customerId) {
-        if (!(this.status === 'available' || (this.status === 'charging' && this.batteryLevel >= 50))) {
-            console.log('Bike not available for rental');
+        if (this.isRentalBlocked()) {
             return;
         }
         if (this.tripCurrent) {
@@ -251,6 +250,22 @@ class BikeBrain {
         this.startTrip(customerId);
         console.log(`Bike ${this.id} has been rented`);
         this.bikeLight(this.status);
+    }
+
+    /**
+     * Checks if the bike rental should be blocked based on status and battery level.
+     * @return {boolean} - True if the rental is blocked, otherwise false.
+     */
+    isRentalBlocked() {
+        if (this.status === 'avaliable' && this.batteryLevel <= 20) {
+            console.log(`Bike not available for rental due to low battery (${this.batteryLevel}%)`);
+            return true;
+        }
+        if (!(this.status === 'available' || (this.status === 'charging' && this.batteryLevel >= 50))) {
+            console.log('Bike not available for rental');
+            return true;
+        }
+        return false;
     }
 
     /**
