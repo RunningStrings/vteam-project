@@ -13,8 +13,6 @@ const userModel = {
             const result = await db.collectionUsers.find().toArray();
 
             return result;
-        } catch (error) {
-            createError(error);
         } finally {
             await db.client.close();
         }

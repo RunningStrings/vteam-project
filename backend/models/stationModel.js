@@ -13,8 +13,6 @@ const stationModel = {
             const result = await db.collectionStations.find().toArray();
 
             return result;
-        } catch (error) {
-            createError(error);
         } finally {
             await db.client.close();
         }

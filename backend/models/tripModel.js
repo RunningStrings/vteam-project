@@ -1,16 +1,17 @@
 /**
- * Model object for bikes. Stores model functions for bikes route.
+ * Model object for trips, which result from a user renting a bike.
+ * Stores model functions for trips route.
  */
 import database from '../database-config/database.js';
 import { ObjectId } from 'mongodb';
 import { createError } from './utils/createError.js'
 
-const bikeModel = {
-    fetchAllBikes: async function fetchAllBikes() {
+const tripModel = {
+    fetchAllTrips: async function fetchAllTrips() {
         const db = await database.getDb();
 
         try {
-            const result = await db.collectionBikes.find().toArray();
+            const result = await db.collectionTrips.find().toArray();
 
             return result;
         } finally {
@@ -18,7 +19,7 @@ const bikeModel = {
         }
     },
 
-    fetchBikeById: async function fetchBikeById(id) {
+    fetchTripById: async function fetchTripById(id) {
         if (!ObjectId.isValid(id)) {
             createError("ID format is invalid", 400)
         }
@@ -30,10 +31,10 @@ const bikeModel = {
                 _id: ObjectId.createFromHexString(id)
             };
                 
-            const result = await db.collectionBikes.findOne(filter);
+            const result = await db.collectionTrips.findOne(filter);
 
             if (!result) {
-                createError(`bike with ID: ${id} cannot be found`, 404);
+                createError(`trip with ID: ${id} cannot be found`, 404);
             }
 
             return result;
@@ -42,14 +43,14 @@ const bikeModel = {
         }
     },
 
-    updateCompleteBikeById: async function updateCompleteBikeById(id, body) {
+    updateCompleteTripById: async function updateCompleteTripById(id, body) {
         if (!ObjectId.isValid(id)) {
             createError("ID format is invalid", 400);
         }
 
         if (!body.city_id || !body.location || !body.status || !body.battery_level || !body.speed) {
             createError(`city_id, location, status, speed and battery_level are required. Use patch method
-                 instead if you only want to update part of the bike resource.`, 400);
+                 instead if you only want to update part of the trip resource.`, 400);
         }
 
         const db = await database.getDb();
@@ -59,13 +60,13 @@ const bikeModel = {
                 _id: ObjectId.createFromHexString(id)
                 };
                 
-            let result = await db.collectionBikes.findOne(filter);    
+            let result = await db.collectionTrips.findOne(filter);    
 
             if (!result) {
-                createError(`bike with ID: ${id} cannot be found`, 404);
+                createError(`trip with ID: ${id} cannot be found`, 404);
             }    
 
-            const updateBike = {
+            const updateTrip = {
                 city_id: body.city_id,
                 location: body.location,
                 status: body.status,
@@ -73,14 +74,14 @@ const bikeModel = {
                 speed: body.speed
             };
 
-            result = await db.collectionBikes.updateOne(filter, { $set: updateBike });
+            result = await db.collectionTrips.updateOne(filter, { $set: updateTrip });
 
             if (result.modifiedCount !== 1) {
-                createError(`no update possible with the given information for bike with ID: ${id}.
+                createError(`no update possible with the given information for trip with ID: ${id}.
                     Make sure information you provide is new.`, 400);
             }
 
-            result = await db.collectionBikes.findOne(filter);
+            result = await db.collectionTrips.findOne(filter);
 
             return result;
         } finally {
@@ -88,7 +89,7 @@ const bikeModel = {
         }
     },
 
-    updateBikeById: async function updateBikeById(id, body) {
+    updateTripById: async function updateTripById(id, body) {
         if (!ObjectId.isValid(id)) {
             createError("ID format is invalid", 400);
         }
@@ -100,10 +101,10 @@ const bikeModel = {
                 _id: ObjectId.createFromHexString(id)
                 };
                 
-            let result = await db.collectionBikes.findOne(filter);
+            let result = await db.collectionTrips.findOne(filter);
 
             if (!result) {
-                createError(`bike with ID: ${id} cannot be found`, 404);
+                createError(`trip with ID: ${id} cannot be found`, 404);
             }
 
             const allowedProperties = ["city_id", "location", "status",
@@ -117,10 +118,10 @@ const bikeModel = {
                     updates of already existing properties.`, 400);
            }
 
-            result = await db.collectionBikes.updateOne(filter, { $set: body });
+            result = await db.collectionTrips.updateOne(filter, { $set: body });
 
             if (result.modifiedCount !== 1) {
-                createError(`no update possible with the given information for bike with ID: ${id}.
+                createError(`no update possible with the given information for trip with ID: ${id}.
                     Make sure information you provide is new.`, 400);
             }
 
@@ -130,7 +131,7 @@ const bikeModel = {
         }
     },
 
-    deleteBikeById: async function deleteBikeById(id) {
+    deleteTripById: async function deleteTripById(id) {
         if (!ObjectId.isValid(id)) {
             createError("ID format is invalid", 400);
         }
@@ -142,16 +143,16 @@ const bikeModel = {
                 _id: ObjectId.createFromHexString(id)
                 };
                 
-            let result = await db.collectionBikes.findOne(filter);
+            let result = await db.collectionTrips.findOne(filter);
 
             if (!result) {
-                createError(`bike with ID: ${id} cannot be found`, 404);
+                createError(`trip with ID: ${id} cannot be found`, 404);
             }
 
-            result = await db.collectionBikes.deleteOne(filter);
+            result = await db.collectionTrips.deleteOne(filter);
 
             if (result.deletedCount !== 1) {
-                createError(`fail, no delete possible with the given information for bike with ID: ${id}.`, 400);
+                createError(`fail, no delete possible with the given information for trip with ID: ${id}.`, 400);
             }
 
             return;
@@ -160,7 +161,7 @@ const bikeModel = {
         }
     },
 
-    createBike: async function createBike(body) {
+    createTrip: async function createTrip(body) {
         if (!body.city_id || !body.location || !body.status || !body.battery_level || !body.speed) {
             createError("city_id, location, status, speed and battery_level are required.", 400);
         }
@@ -168,7 +169,7 @@ const bikeModel = {
         const db = await database.getDb();
 
         try {
-            const newBike = {
+            const newTrip = {
                 city_id: body.city_id,
                 location: body.location,
                 status: body.status,
@@ -176,14 +177,14 @@ const bikeModel = {
                 speed: body.speed
             };
 
-            // const status = newBike.status;
-            // const duplicateBike = await db.collectionBikes.findOne({status});
+            // const status = newTrip.status;
+            // const duplicateTrip = await db.collectionTrips.findOne({status});
 
-            // if (duplicateBike) {
-            //     createError("Bike with this status already exists.", 400)
+            // if (duplicateTrip) {
+            //     createError("Trip with this status already exists.", 400)
             // }
 
-            const result = await db.collectionBikes.insertOne(newBike);
+            const result = await db.collectionTrips.insertOne(newTrip);
             
             return result;
         } finally {
@@ -192,4 +193,4 @@ const bikeModel = {
     }
 };
 
-export default bikeModel;
+export default tripModel;
