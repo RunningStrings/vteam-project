@@ -89,17 +89,31 @@ const userModel = {
                 createError(`user with ID: ${id} cannot be found`, 404);
             }    
 
+            const allowedProperties = ["firstname", "lastname",
+                "email", "password", "role", "balance", "trip_history"];
+            const reqProperties = Object.keys(body);
+            const isInvalidUpdate = reqProperties.some(property =>
+                !allowedProperties.includes(property));
+
+           if (isInvalidUpdate) {
+               createError("invalid update property key. This API only allow"
+                    + " updates of already existing properties.", 400);
+           }
+
             const updateUser = {
                 firstname: body.firstname,
                 lastname: body.lastname,
                 email: body.email,
-                password_hash: body.password,
                 role: body.role,
                 balance: body.balance,
             };
 
             if (body.trip_history) {
                 updateUser.trip_history = body.trip_history;
+            }
+
+            if (body.password) {
+                updateUser.password_hash = body.password;
             }
 
             result = await db.collectionUsers.updateOne(filter, { $set: updateUser });
@@ -146,7 +160,7 @@ const userModel = {
 
 
             const allowedProperties = ["firstname", "lastname",
-                "email", "password", "role", "balance"];
+                "email", "password", "role", "balance", "trip_history"];
             const reqProperties = Object.keys(body);
             const isInvalidUpdate = reqProperties.some(property =>
                 !allowedProperties.includes(property));
