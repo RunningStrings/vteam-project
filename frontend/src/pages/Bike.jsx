@@ -120,6 +120,8 @@ function Bike() {
       if (bike) {
         setFormData(bike); // Populate formData with the selected user's data
         console.log(bike.location.coordinates);
+        console.log(bike);
+        
         
       }
     };
@@ -157,7 +159,7 @@ function Bike() {
           type="text" 
           id="city" 
           name="city"
-          value={formData.city_name}
+          defaultValue={formData.city_name}
           className="form__input" 
           onChange={(e) =>
             setFormData({ ...formData, city: e.target.value})
@@ -187,7 +189,7 @@ function Bike() {
           type="number" 
           id="battery" 
           name="battery" 
-          value={formData.battery}
+          defaultValue={formData.battery}
           className="form__input" 
           onChange={(e) =>
             setFormData({ ...formData, battery: e.target.value})
@@ -204,8 +206,7 @@ function Bike() {
             name="status"
             id="status"
             className="form__select"
-            defaultValue="no"
-            value={formData.status}
+            defaultValue={formData.status}
             onChange={(e) =>
               setFormData({ ...formData, status: e.target.value})
             }
@@ -224,7 +225,7 @@ function Bike() {
             type="number"
             id="speed"
             name="speed"
-            value={formData.speed}
+            defaultValue={formData.speed}
             className="form__input"
             onChange={(e) =>
               setFormData({ ...formData, speed: e.target.value})

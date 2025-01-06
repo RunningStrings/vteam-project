@@ -1,221 +1,128 @@
-import { useState, useEffect } from 'react';
-import React from "react";
+import { useState, useEffect } from "react";
+import { apiKey, baseURL, toast } from "../components/utils.jsx";
 
-const initialFormValues = {
-  
-  id: "",
-  city: "",
-  position: "",
-  battery: "",
-  status: "",
-  speed: ""
+async function updateUserBalance(userId, newBalance) {
+  const endpoint = `${baseURL}/users/${userId}`;
+  const body = { "balance": newBalance+"" };
+
+  try {
+    const response = await fetch(endpoint, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+        //"x-api-key": apiKey, // Aktivera vid behov
+      },
+      body: JSON.stringify(body),
+    });
+
+    if (!response.ok) {
+      throw new Error(`Error: ${response.status} ${response.statusText}`);
+    }
+
+    const data = await response.json();
+    toast("Balance successfully updated!");
+    return data;
+  } catch (error) {
+    toast("An error occurred while updating balance.");
+    console.error("Error updating balance:", error);
+  }
 }
 
-function search(data) {
-  let number=0;
-  let sessionId=sessionStorage.getItem('id');
-  console.log(sessionId);
-  
-  for (let i=0; i<data.length; i++) {
-  
-    //console.log(data[i].email);
-    
-    if(data[i].id == sessionId)
-      number=i;
-}
-  return number;
-}
+function DynamicForm() {
+  const [selectedOption, setSelectedOption] = useState("");
+  const [users, setUsers] = useState([]);
+  const [balance, setBalance] = useState("");
 
+  useEffect(() => {
+    fetch(`${baseURL}/users`,{
+      headers: {
+        "Content-Type": "application/json",
+        //"x-api-key": apiKey,
+      },
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        return response.json();
+      })
+      .then((data) => setUsers(data.data || []))
+      .catch((error) => console.error("Error fetching users:", error));
+  }, []);
 
-function User() {
-  const [formData, setFormData] = useState(initialFormValues);
-  const [bikes, setBikes] = useState([]); // Deklarerar bikes
-  const [currentIndex, setCurrentIndex] = useState(0); 
-  const [selectedUserId, setSelectedUserId] = useState(null); 
-  
-
-  const handleSubmit = (evt) => {
-    evt.preventDefault();
-    //console.log(formData);
-    setFormData(initialFormValues);
+  const handleOptionChange = (event) => {
+    setSelectedOption(event.target.value);
   };
 
-  /*const handleChange = (evt) => {
-    const { name, value } = evt.target;
-    setFormData({ ...formData, [name]: value });
-  };*/
-
-  /*useEffect(() => {
-    // Fetch users from the backend API
-    fetch('/users')
-      .then(response => response.json())
-      .then(data => setUsers(data))
-      .catch(error => console.error('Error fetching users:', error));
-    }, []);*/
-
-
-
-
-    useEffect(() => {
-      // Fetch users from the backend API
-      fetch("/bikes")
-        .then((response) => response.json())
-        .then((data) => {
-          setBikes(data); // Store bikes
-          if (data.length > 0) {
-            let number=search(data);
-            //console.log(number);
-            
-            //console.log(sessionStorage.getItem('email'));
-            
-            /*for (let i=0; i<data.length; i++) {
-              if(data.email===sessionStorage.getItem('email'))
-                number=i;
-            }*/
-            
-            const firstBike = data[number]; // Assume we're using the first user for now
-            //console.log(data);
-            
-            setFormData(firstBike); // Populate the form with the first user's data
-            setSelectedUserId(firstBike.id); // Set selected user ID
-          }
-        })
-        .catch((error) => console.error("Error fetching bikes:", error));
-    }, []);
-
- // Navigate to the next bike
- const handleNext = () => {
-  if (currentIndex < users.length - 1) {
-    const nextIndex = currentIndex + 1;
-    setCurrentIndex(nextIndex);
-    setFormData(users[nextIndex]);
-  }
-};
-
-// Navigate to the previous user
-const handlePrevious = () => {
-  if (currentIndex > 0) {
-    const prevIndex = currentIndex - 1;
-    setCurrentIndex(prevIndex);
-    setFormData(users[prevIndex]);
-  }
-};
-
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const userId = "6775634df665dfbf9f5bf389"; // Ersätt med riktig användar-ID
+    updateUserBalance(userId, balance);
+  };
 
   return (
-   
-    
-    
     <div className="App" style={{ marginLeft: "220px", padding: "20px" }}>
-      <h2>En cykel</h2>
+      <h2>Betalning</h2>
+      <p>Du kan ha olika typer av betalning.</p>
+      <p>Antingen betalar du direkt med kreditkort eller så väljer du månadsinbetalning.</p>
       <form className="form" onSubmit={handleSubmit}>
-      
         <div className="form__group">
-          <label htmlFor="id" className="form__label">
-            Id
-          </label>
-          <input 
-          type="string" 
-          id="id" 
-          name="id"
-          value={formData.id}
-          className="form__input" 
-          onChange={(e) =>
-            setFormData({ ...formData, id: e.target.value})
-          }
-           />
-        </div>
-        <div className="form__group">
-          <label htmlFor="city" className="form__label">
-            Stad
-          </label>
-          <input 
-          type="text" 
-          id="city" 
-          name="city"
-          value={formData.city_name}
-          className="form__input" 
-          onChange={(e) =>
-            setFormData({ ...formData, city: e.target.value})
-          }
-           />
-        </div>
-        <div className="form__group">
-          <label htmlFor="position" className="form__label">
-            Position
-          </label>
-          <input 
-          type="text" 
-          id="position" 
-          name="position" 
-          value={formData.id}//location.coordinates}
-          className="form__input" 
-          //onChange={(e) =>
-          //  setFormData({ ...formData, position: e.target.value})
-          //}
-           />
-        </div>
-        <div className="form__group">
-          <label htmlFor="email" className="form__label">
-            Batteri
-          </label>
-          <input 
-          type="number" 
-          id="battery" 
-          name="battery" 
-          value={formData.battery}
-          className="form__input" 
-          onChange={(e) =>
-            setFormData({ ...formData, battery: e.target.value})
-          }
-           />
-        </div>
-       
-
-        <div className="form__group">
-          <label htmlFor="status" className="form__label">
-            Status
-          </label>
+          <label htmlFor="category" className="form__label">Välj typ av betalning:</label>
           <select
-            name="status"
-            id="status"
+            id="category"
+            name="category"
             className="form__select"
-            defaultValue="no"
-            value={formData.status}
-            onChange={(e) =>
-              setFormData({ ...formData, status: e.target.value})
-            }
+            value={selectedOption}
+            onChange={handleOptionChange}
           >
-            <option value="available">Tillgänglig</option>
-            <option value="in_use">Används</option>
-            <option value="charging">Laddas</option>
-            <option value="maintenance">Underhåll</option>
+            <option value="">-- Välj --</option>
+            <option value="onetime">Engångsbetalning</option>
+            <option value="month">Månadsbetalning</option>
           </select>
         </div>
-        <div className="form__group">
-          <label htmlFor="status" className="form__label">
-            Fart
-          </label>
-          <input
-            type="number"
-            id="speed"
-            name="speed"
-            value={formData.speed}
-            className="form__input"
-            onChange={(e) =>
-              setFormData({ ...formData, speed: e.target.value})
-            }
-          />
-        </div>
- 
-        <button className="button" type="submit">
-          Submit
-        </button>
 
-        </form>
+        {selectedOption === "onetime" && (
+          <div>
+            <div className="form__group">
+              <label htmlFor="name" className="form__label">Namn på kreditkortet:</label>
+              <input type="text" id="name" name="name" className="form__input" />
+            </div>
+            <div className="form__group">
+              <label htmlFor="saldo" className="form__label">Belopp:</label>
+              <input
+                type="text"
+                id="saldo"
+                name="saldo"
+                className="form__input"
+                onChange={(e) => setBalance(e.target.value)}
+              />
+            </div>
+          </div>
+        )}
+
+        {selectedOption === "month" && (
+          <div>
+            <div className="form__group">
+              <label htmlFor="account" className="form__label">Kontonummer:</label>
+              <input type="text" id="account" name="account" className="form__input" />
+            </div>
+            <div className="form__group">
+              <label htmlFor="money" className="form__label">Belopp:</label>
+              <input
+                type="text"
+                id="money"
+                name="money"
+                className="form__input"
+                onChange={(e) => setBalance(e.target.value)}
+              />
+            </div>
+          </div>
+        )}
+
+        <button type="submit" className="form__button">Skicka</button>
+      </form>
     </div>
   );
-};
+}
 
-  
-  export default User;
+export default DynamicForm;

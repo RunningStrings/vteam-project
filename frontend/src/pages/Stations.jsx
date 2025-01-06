@@ -62,7 +62,7 @@ function Users() {
         </thead>
         <tbody>
         {stations.map((station, index) => (
-            <tr>
+            <tr key={index}>
             <td>{index}</td>
             <td>{station.name}</td>
             <td>{station.city_name}</td>

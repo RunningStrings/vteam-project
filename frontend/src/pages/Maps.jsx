@@ -1,10 +1,11 @@
-/* global L */
-import { MapContainer, TileLayer, Marker, Popup, Polygon } from "react-leaflet";
+
+import { MapContainer, TileLayer, Marker, Popup, Polygon, Circle } from "react-leaflet";
 import { useState, useEffect } from 'react';
 import MarkerClusterGroup from "@changey/react-leaflet-markercluster";
 import L, { LatLng } from "leaflet";
 
 import { useMap } from "../hooks";
+//import { Circle } from "leaflet";
 
 /*function Maps() {
   const [charging_stations, setStations] = useState([]);
@@ -19,7 +20,7 @@ import { useMap } from "../hooks";
     const [bikes, setBikes] = useState([]);
     const [cities, setCities] = useState([]);
     const [stations, setStations] = useState([]);
-    const [parkings, setParking] = useState([]);
+    const [parkings, setParkings] = useState([]);
 
   useEffect(() => {
     // Fetch cities from the backend API
@@ -105,7 +106,7 @@ import { useMap } from "../hooks";
     }, []);
 
     const stationIcon = new L.Icon({
-      iconUrl: './src/assets/location.png',
+      iconUrl: './src/assets/charging.png',
     iconSize:[32,32]  
     });
 
@@ -133,6 +134,11 @@ import { useMap } from "../hooks";
     const bikeBlue = new L.Icon({
       iconUrl: './src/assets/scooter_blue.png',
     iconSize:[25,25]  
+    });
+
+    const parkingIcon = new L.Icon({
+      iconUrl: './src/assets/parking.png',
+    iconSize:[15,15]  
     });
 
 
@@ -180,9 +186,10 @@ for (let index = 0; index < cities.length; index++) {
         positions={city.geometry.coordinates} //LatLng.wrap(
           key={index}
           color="blue"
-          fillColor="blue"
+          fillColor="green"
           fill="true"
           fillOpacity={0.15}
+          zIndexOffset={10}
           >
           
           
@@ -193,13 +200,40 @@ for (let index = 0; index < cities.length; index++) {
       ))}
 
 {parkings.map((parking, index) => (
-        <Marker
+        <Circle
           
-        position={parking.location.coordinates} //LatLng.wrap(
+        center={parking.location.coordinates} //LatLng.wrap(
           key={index}
           color="red"
           fillColor="red"
           fill="true"
+          radius="10"
+          zIndexOffset={50}
+          >
+          
+          
+        <Popup>
+        
+         <br />
+          </Popup>
+        </Circle>
+ 
+
+
+
+//}
+  
+      ))}
+
+{parkings.map((parking, index) => (
+
+        <Marker
+          
+        position={parking.location.coordinates} //LatLng.wrap(
+          key={index}
+          icon={parkingIcon}
+          zIndexOffset={100}
+
           >
           
           
@@ -208,9 +242,13 @@ for (let index = 0; index < cities.length; index++) {
          <br />
           </Popup>
         </Marker>
-      //}
+
+
+
+//}
   
       ))}
+
 
 
 
@@ -223,6 +261,7 @@ for (let index = 0; index < cities.length; index++) {
         position={station.location.coordinates}
         key={index}
         icon={stationIcon}
+        zIndexOffset={100}
         >
         
         
@@ -239,6 +278,7 @@ for (let index = 0; index < cities.length; index++) {
 <MarkerClusterGroup>
 {bikes.map((bike, index) => (
       <Marker 
+      zIndexOffset={200}
         position={bike.location.coordinates}
         key={index}
         icon={bike.status === "in_use" ? bikeBlue : bike.status === "available" ? bikeGreen : bike.status === "charging" ? bikeOrange : bikeRed}

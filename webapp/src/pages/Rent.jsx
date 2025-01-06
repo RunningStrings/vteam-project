@@ -6,7 +6,8 @@ const Home = () => {
   
   function Bikes() {
     const [bikes, setBikes] = useState([]);
-  
+    let sessionId=sessionStorage.getItem('bikeid');
+    console.log(sessionId);
     useEffect(() => {
       // Fetch users from the backend API
       fetch('/users')
@@ -33,7 +34,8 @@ const Home = () => {
         type="number" 
         id="id" 
         name="id"
-        className="form__input" 
+        className="form__input"
+        defaultValue={sessionId} 
         //onChange={(e) =>
         //  setFormData({ ...formData, id: e.target.value})
         //}

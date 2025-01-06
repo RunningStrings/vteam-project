@@ -41,15 +41,17 @@ function Users() {
             <th>Stad</th>
             <th>Position</th>
             <th>Antal cyklar nu</th>
+            <th>Kapacitet</th>
           </tr>
         </thead>
         <tbody>
         {parkings.map((parking, index) => (
-            <tr>
-            <td>{index}</td>
+            <tr key={index}>
+            <td>{parking.id}</td>
             <td>{parking.city_name}</td>
-            <td>{parking.location.coordinate}</td> 
-            <td>0</td>
+            <td>{parking.location.coordinates}</td> 
+            <td>{parking.bikes.length}</td>
+            <td>{parking.capacity}</td>
             </tr>
           ))}
         </tbody>

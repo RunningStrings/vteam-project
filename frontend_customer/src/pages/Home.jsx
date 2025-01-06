@@ -5,7 +5,7 @@ const Home = () => {
         <br></br>
         <p>Välkommen till oss. Vi sätter jorden i rullning.</p>
         <br></br>
-        <img src="./src/assets/scooter.png" width="420" height="320"></img>
+        <img src="../src/assets/scooter.png" width="420" height="320"></img>
       </div>
     );
   };

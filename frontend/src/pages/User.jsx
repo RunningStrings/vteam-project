@@ -202,20 +202,21 @@ function User() {
           />
         </div>
         <div className="form__group">
-          <label htmlFor="admin" className="form__label">
-            Administratör
+          <label htmlFor="role" className="form__label">
+            Roll
           </label>
           <select
-            name="admin"
-            id="admin"
+            name="role"
+            id="role"
             className="form__select"
-            defaultValue="no"
+            value={formData.role}
             onChange={(e) =>
-              setFormData({ ...formData, admin: e.target.value})
+              setFormData({ ...formData, role: e.target.value})
             }
           >
-            <option value="no">Nej</option>
-            <option value="yes">Ja</option>
+            <option value="city_manager">Stadschef</option>
+            <option value="admin">Administratör</option>
+            <option value="customer">Kund</option>
           </select>
         </div>
         <button className="button" type="submit">

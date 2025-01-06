@@ -63,7 +63,7 @@ const Navbar = () => {
         <li className="navbar-item flexbox-left">
             <Link to="/payment" className="navbar-item-inner flexbox-left">
             <div className="navbar-item-inner-icon-wrapper flexbox">
-                <ion-icon name="creditcard-outline"></ion-icon>
+                <ion-icon name="card-outline"></ion-icon>
             </div>
             <span className="link-text">Betalning</span>
             </Link>
