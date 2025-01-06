@@ -13,8 +13,6 @@ const cityModel = {
             const result = await db.collectionCities.find().toArray();
 
             return result;
-        } catch (error) {
-            createError(error);
         } finally {
             await db.client.close();
         }

@@ -13,8 +13,6 @@ const zoneModel = {
             const result = await db.collectionParkings.find().toArray();
 
             return result;
-        } catch (error) {
-            createError(error);
         } finally {
             await db.client.close();
         }
