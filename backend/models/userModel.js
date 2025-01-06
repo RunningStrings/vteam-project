@@ -61,9 +61,10 @@ const userModel = {
             createError("ID format is invalid", 400);
         }
 
-        if (!body.firstName || !body.lastName || !body.email || !body.role) {
-            createError(`firstName, lastName, email and role are required. Use patch method
-                 instead if you only want to update part of the user resource.`, 400);
+        if (!body.firstname || !body.lastname || !body.email || !body.role || !body.balance) {
+            createError("firstname, lastname, email, balance and role are required."
+                + " Use patch method instead if you only want to update part of the user resource."
+                , 400);
         }
 
         const db = await database.getDb();
@@ -89,18 +90,23 @@ const userModel = {
             }    
 
             const updateUser = {
-                firstName: body.firstName,
-                lastName: body.lastName,
+                firstname: body.firstname,
+                lastname: body.lastname,
                 email: body.email,
-                password: body.password,
-                role: body.role
+                password_hash: body.password,
+                role: body.role,
+                balance: body.balance,
             };
+
+            if (body.trip_history) {
+                updateUser.trip_history = body.trip_history;
+            }
 
             result = await db.collectionUsers.updateOne(filter, { $set: updateUser });
 
             if (result.modifiedCount !== 1) {
-                createError(`no update possible with the given information for user with ID: ${id}.
-                    Make sure information you provide is new.`, 400);
+                createError(`no update possible with the given information for user with ID: ${id}.`
+                    + " Make sure information you provide is new.", 400);
             }
 
             result = await db.collectionUsers.findOne(filter);
@@ -139,22 +145,22 @@ const userModel = {
             }
 
 
-            const allowedProperties = ["firstName", "lastName",
-                "email", "password", "role"];
+            const allowedProperties = ["firstname", "lastname",
+                "email", "password", "role", "balance"];
             const reqProperties = Object.keys(body);
             const isInvalidUpdate = reqProperties.some(property =>
                 !allowedProperties.includes(property));
 
            if (isInvalidUpdate) {
-               createError(`invalid update property key. This API only allow
-                    updates of already existing properties.`, 400);
+               createError("invalid update property key. This API only allow"
+                    + " updates of already existing properties.", 400);
            }
 
             result = await db.collectionUsers.updateOne(filter, { $set: body });
 
             if (result.modifiedCount !== 1) {
-                createError(`no update possible with the given information for user with ID: ${id}.
-                    Make sure information you provide is new.`, 400);
+                createError(`no update possible with the given information for user with ID: ${id}.`
+                    + " Make sure information you provide is new.", 400);
             }
 
             return;
@@ -197,7 +203,7 @@ const userModel = {
             result = await db.collectionUsers.deleteOne(filter);
 
             if (result.deletedCount !== 1) {
-                createError(`Fail. No delete possible with the given information for user with ID: ${id}.`, 400);
+                createError(`fail. No delete possible with the given information for user with ID: ${id}.`, 400);
             }
 
             return;
@@ -207,19 +213,21 @@ const userModel = {
     },
 
     createUser: async function createUser(body) {
-        if (!body.firstName || !body.lastName || !body.email || !body.role) {
-            createError("firstName, lastName, email and role are required.", 400);
+        if (!body.firstname || !body.lastname || !body.email || !body.role) {
+            createError("firstname, lastname, email and role are required.", 400);
         }
 
         const db = await database.getDb();
 
         try {
             const newUser = {
-                firstName: body.firstName,
-                lastName: body.lastName,
+                firstname: body.firstname,
+                lastname: body.lastname,
                 email: body.email,
-                password: body.password,
-                role: body.role
+                password_hash: body.password,
+                role: body.role,
+                balance: body.balance,
+                trip_history: []
             };
 
             const email = newUser.email;
@@ -243,7 +251,7 @@ const userModel = {
     //     try {
     //         const newUser = {
     //             email: email,
-    //             password: hashedPassword,
+    //             password_hash: hashedPassword,
     //         };
 
     //         await db.collectionUsers.insertOne(newUser);
