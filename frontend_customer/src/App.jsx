@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 //import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
+//import "react-toastify/dist/ReactToastify.css";
+
 import LoginButton from "./components/LoginButton";
 import Navbar from "./components/Navbar";
 import Home from "./pages/Home";

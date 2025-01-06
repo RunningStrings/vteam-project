@@ -1,9 +1,11 @@
-import { useState, useEffect } from "react";
-import { apiKey, baseURL, toast } from "../components/utils.jsx";
+import { useState, useEffect  } from "react";
+import { apiKey, baseURL } from "../components/utils.jsx";
+import { ToastContainer, toast } from "react-toastify";
+
 
 async function updateUserBalance(userId, newBalance) {
   const endpoint = `${baseURL}/users/${userId}`;
-  const body = { "balance": newBalance+"" };
+  const body = { "balance": newBalance };
 
   try {
     const response = await fetch(endpoint, {
@@ -19,34 +21,56 @@ async function updateUserBalance(userId, newBalance) {
       throw new Error(`Error: ${response.status} ${response.statusText}`);
     }
 
-    const data = await response.json();
-    toast("Balance successfully updated!");
-    return data;
+    // Hantera tomt svar (t.ex., 204 No Content)
+    const contentType = response.headers.get("content-type");
+    if (contentType && contentType.includes("application/json")) {
+      const data = await response.json();
+      console.log("Response data:", data);
+      toast("Pengarna är insatta på kontot!");
+      return data;
+    } else {
+      console.warn("No JSON content in response.");
+      toast("Pengarna är insatta på kontot!");
+      return null;
+    }
   } catch (error) {
-    toast("An error occurred while updating balance.");
+    toast("Ett problem uppstod när pengarna sattes in");
     console.error("Error updating balance:", error);
   }
 }
-
 function DynamicForm() {
   const [selectedOption, setSelectedOption] = useState("");
   const [users, setUsers] = useState([]);
   const [balance, setBalance] = useState("");
 
+  const showToast = () => {
+    toast.success("This is a success toast!", {
+      position: toast.POSITION.TOP_RIGHT, // Customize position
+    });
+  };
+
+
   useEffect(() => {
-    fetch(`${baseURL}/users`,{
+    fetch(`${baseURL}/users`, {
       headers: {
         "Content-Type": "application/json",
-        //"x-api-key": apiKey,
+        //"x-api-key": apiKey, // Om API-nyckel behövs
       },
     })
       .then((response) => {
         if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
+          throw new Error(`HTTP error! Status: ${response.status}`);
         }
         return response.json();
       })
-      .then((data) => setUsers(data.data || []))
+      .then((data) => {
+        if (data?.data) {
+          setUsers(data.data);
+        } else {
+          console.warn("No users found in response.");
+          setUsers([]);
+        }
+      })
       .catch((error) => console.error("Error fetching users:", error));
   }, []);
 
@@ -56,18 +80,32 @@ function DynamicForm() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    const userId = "6775634df665dfbf9f5bf389"; // Ersätt med riktig användar-ID
-    updateUserBalance(userId, balance);
+
+    if (!balance) {
+      toast("Please enter a valid balance.");
+      return;
+    }
+
+    const userId = "6775634df665dfbf9f5bf389"; // Uppdatera med dynamiskt användar-ID om möjligt
+    updateUserBalance(userId, balance)
+      .then((data) => {
+        if (data) {
+          console.log("Update successful:", data);
+          toast.success("This is a success message!");
+        }
+      })
+      .catch((error) => {
+        console.error("Update failed:", error);
+      });
   };
 
   return (
     <div className="App" style={{ marginLeft: "220px", padding: "20px" }}>
       <h2>Betalning</h2>
-      <p>Du kan ha olika typer av betalning.</p>
-      <p>Antingen betalar du direkt med kreditkort eller så väljer du månadsinbetalning.</p>
+      <p>Välj din betalningstyp:</p>
       <form className="form" onSubmit={handleSubmit}>
         <div className="form__group">
-          <label htmlFor="category" className="form__label">Välj typ av betalning:</label>
+          <label htmlFor="category" className="form__label">Betalningstyp:</label>
           <select
             id="category"
             name="category"
@@ -81,6 +119,7 @@ function DynamicForm() {
           </select>
         </div>
 
+        {/* Dynamiska fält */}
         {selectedOption === "onetime" && (
           <div>
             <div className="form__group">
@@ -90,11 +129,12 @@ function DynamicForm() {
             <div className="form__group">
               <label htmlFor="saldo" className="form__label">Belopp:</label>
               <input
-                type="text"
+                type="number"
                 id="saldo"
                 name="saldo"
                 className="form__input"
                 onChange={(e) => setBalance(e.target.value)}
+                value={balance}
               />
             </div>
           </div>
@@ -109,11 +149,12 @@ function DynamicForm() {
             <div className="form__group">
               <label htmlFor="money" className="form__label">Belopp:</label>
               <input
-                type="text"
+                type="number"
                 id="money"
                 name="money"
                 className="form__input"
                 onChange={(e) => setBalance(e.target.value)}
+                value={balance}
               />
             </div>
           </div>
@@ -121,8 +162,20 @@ function DynamicForm() {
 
         <button type="submit" className="form__button">Skicka</button>
       </form>
+      <ToastContainer 
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
     </div>
   );
 }
 
 export default DynamicForm;
+

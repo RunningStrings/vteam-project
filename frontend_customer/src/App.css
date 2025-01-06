@@ -40,3 +40,15 @@
 .read-the-docs {
   color: #888;
 }
+
+/* Example: Customize toast container */
+.Toastify__toast-container {
+  font-size: 16px;
+}
+
+.Toastify__toast--success {
+  background-color: #4caf50;
+}
+.Toastify__toast--error {
+  background-color: #f44336;
+}

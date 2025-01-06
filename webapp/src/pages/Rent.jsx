@@ -1,13 +1,13 @@
 import { useState, useEffect } from 'react';
 
 const Home = () => {
-  
+  let sessionId=sessionStorage.getItem('bikeid');
 
   
   function Bikes() {
     const [bikes, setBikes] = useState([]);
-    let sessionId=sessionStorage.getItem('bikeid');
-    console.log(sessionId);
+    
+    
     useEffect(() => {
       // Fetch users from the backend API
       fetch('/users')

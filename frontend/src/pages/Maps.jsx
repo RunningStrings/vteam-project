@@ -38,14 +38,6 @@ import { useMap } from "../hooks";
       console.error('Error fetching cities:', error);
     });
 
-
-
-
-    /*fetch('/cities')
-      .then(response => response.json())
-      .then(data => setCities(data))
-      .catch(error => console.error('Error fetching cities:', error));
-*/
     // Fetch parkings from the backend API
     fetch('/parking_zones')
     .then((response) => {
@@ -61,18 +53,6 @@ import { useMap } from "../hooks";
       console.error('Error fetching parkerings:', error);
     });
 
-
-
-
-
-
-
-/*
-    fetch('/parking_zones')
-      .then(response => response.json())
-      .then(data => setParking(data))
-      .catch(error => console.error('Error fetching parking:', error));
-*/
     // Fetch stations from the backend API
     fetch('/charging_stations')
     .then((response) => {
@@ -174,15 +154,7 @@ for (let index = 0; index < cities.length; index++) {
 
 
 {cities.map((city, index) => (
-  //if(city.geometry && city.geometry.coordinates && city.geometry.coordinates.length > 0) {
-    // Transform GeoJSON-style coordinates ([longitude, latitude]) to Leaflet-compatible ([latitude, longitude])
-    //const positions = city.geometry.coordinates[0].map(([longitude, latitude]) => [latitude, longitude]);
-      //L.marker({station.location.coordinates}, {icon: stationIcon}).addTo(map);
-  //L.polygon({city.geometry.coordinates}).addTo(L.map);
-        //if(city.geometry.coordinates!=0) {
-          //positions = city.geometry.coordinates[0].map(([longitude, latitude]) => [latitude, longitude]);    
         <Polygon
-          
         positions={city.geometry.coordinates} //LatLng.wrap(
           key={index}
           color="blue"

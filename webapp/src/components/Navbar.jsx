@@ -5,7 +5,7 @@ export default function Navbar() {
     <nav className="nav">
       <ul className="green-button" id="buttons">
         <li><CustomLink to="/"><ion-icon name="home-outline"></ion-icon>Hem</CustomLink></li>
-        <li><CustomLink to="/Rent"><ion-icon name="bike-outline"></ion-icon>Hyra</CustomLink></li>
+
         <li><CustomLink to="/User">Användare</CustomLink></li>
         <li><CustomLink to="/Maps">Karta</CustomLink></li>
       </ul>
@@ -26,6 +26,4 @@ function CustomLink({ to, children, ...props }) {
   )
 }
 
-/*<Link to="/" className="site-title">
-Site Name
-</Link>*/
+//        <li><CustomLink to="/Rent"><ion-icon name="bike-outline"></ion-icon>Hyra</CustomLink></li>
