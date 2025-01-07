@@ -87,7 +87,7 @@ const userModel = {
 
             if (!result) {
                 createError(`user with ID: ${id} cannot be found`, 404);
-            }    
+            }
 
             const allowedProperties = ["firstname", "lastname",
                 "email", "password", "role", "balance", "trip_history"];
@@ -118,10 +118,11 @@ const userModel = {
 
             result = await db.collectionUsers.updateOne(filter, { $set: updateUser });
 
-            if (result.modifiedCount !== 1) {
-                createError(`no update possible with the given information for user with ID: ${id}.`
-                    + " Make sure information you provide is new.", 400);
-            }
+            // PUT is idempotent!!!
+            // if (result.modifiedCount !== 1) {
+            //     createError(`no update possible with the given information for user with ID: ${id}.`
+            //         + " Make sure information you provide is new.", 400);
+            // }
 
             result = await db.collectionUsers.findOne(filter);
 
@@ -177,11 +178,11 @@ const userModel = {
                     + " Make sure information you provide is new.", 400);
             }
 
-            return;
+            // return;
 
-            // result = await db.collectionUsers.findOne(filter);
+            result = await db.collectionUsers.findOne(filter);
 
-            // return result;
+            return result;
         } finally {
             await db.client.close();
         }
