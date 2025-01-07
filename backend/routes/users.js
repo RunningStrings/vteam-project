@@ -111,9 +111,11 @@ router
     })
     .patch(async (req, res, next) => {
         try {
-            await userModel.updateUserById(req.params.id, req.body);
+            const result = await userModel.updateUserById(req.params.id, req.body);
             res.set('Location', `/users/${req.params.id}`);         
-            res.status(204).send()
+            res.status(200).json({
+                data: result
+            });
             // const result = await userModel.updateUserById(req.params.id, req.body);
             // res.status(200).json({
             //     data: result

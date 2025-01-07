@@ -87,13 +87,23 @@ const userModel = {
 
             if (!result) {
                 createError(`user with ID: ${id} cannot be found`, 404);
-            }    
+            }
+
+            const allowedProperties = ["firstname", "lastname",
+                "email", "password", "role", "balance", "trip_history"];
+            const reqProperties = Object.keys(body);
+            const isInvalidUpdate = reqProperties.some(property =>
+                !allowedProperties.includes(property));
+
+           if (isInvalidUpdate) {
+               createError("invalid update property key. This API only allow"
+                    + " updates of already existing properties.", 400);
+           }
 
             const updateUser = {
                 firstname: body.firstname,
                 lastname: body.lastname,
                 email: body.email,
-                password_hash: body.password,
                 role: body.role,
                 balance: body.balance,
             };
@@ -102,12 +112,17 @@ const userModel = {
                 updateUser.trip_history = body.trip_history;
             }
 
+            if (body.password) {
+                updateUser.password_hash = body.password;
+            }
+
             result = await db.collectionUsers.updateOne(filter, { $set: updateUser });
 
-            if (result.modifiedCount !== 1) {
-                createError(`no update possible with the given information for user with ID: ${id}.`
-                    + " Make sure information you provide is new.", 400);
-            }
+            // PUT is idempotent!!!
+            // if (result.modifiedCount !== 1) {
+            //     createError(`no update possible with the given information for user with ID: ${id}.`
+            //         + " Make sure information you provide is new.", 400);
+            // }
 
             result = await db.collectionUsers.findOne(filter);
 
@@ -146,7 +161,7 @@ const userModel = {
 
 
             const allowedProperties = ["firstname", "lastname",
-                "email", "password", "role", "balance"];
+                "email", "password", "role", "balance", "trip_history"];
             const reqProperties = Object.keys(body);
             const isInvalidUpdate = reqProperties.some(property =>
                 !allowedProperties.includes(property));
@@ -163,11 +178,11 @@ const userModel = {
                     + " Make sure information you provide is new.", 400);
             }
 
-            return;
+            // return;
 
-            // result = await db.collectionUsers.findOne(filter);
+            result = await db.collectionUsers.findOne(filter);
 
-            // return result;
+            return result;
         } finally {
             await db.client.close();
         }
