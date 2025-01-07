@@ -5,6 +5,7 @@
  *
  */
 import express from 'express';
+import cors from 'cors';
 import allRoutes from './routes/index.js';
 import errorMiddleware from './middlewares/errorMiddleware.js';
 import logIncomingToConsole from './middlewares/index.js';
@@ -14,6 +15,7 @@ const PORT = process.env.PORT || 5000;
 const pathV1 = "/api/v1";
 
 app.use(express.json());
+app.use(cors());
 app.use(logIncomingToConsole);
 app.use(errorMiddleware);
 allRoutes(app, pathV1);
