@@ -70,6 +70,18 @@ class BikeBrain {
     }
 
     /**
+     * Updates the bike's status and adjusts the bike light accordingly.
+     * Logs the status update to the console.
+     * 
+     * @param {string} newStatus - The new status to set for the bike.
+     */
+    updateStatus(newStatus) {
+        this.status = newStatus;
+        this.bikeLight(newStatus);
+        console.log(`Bike ${this.id} status updated to '${newStatus}'`);
+    }
+
+    /**
      * Updates the bike's location and sends it to the server.
      * @param {number} lat - The latitude of the bike's new location.
      * @param {number} lon - The longitude of the bike's new location.
@@ -135,7 +147,7 @@ class BikeBrain {
 
                 // Set status to 'maintenance' when battery is drained
                 if (this.batteryLevel === 0) {
-                    this.status = 'maintenance';
+                    this.updateStatus('maintenance');
                     console.log(`Bike ${this.id} in need of maintenance due to 0% battery`);
                 }
             } else {
@@ -143,7 +155,7 @@ class BikeBrain {
                 // is 20% or lower
                 if (this.batteryLevel < 20) {
                     console.warn(`Bike ${this.id} has low battery (${this.batteryLevel}%)`);
-                    this.status = 'maintenance';
+                    this.updateStatus('maintenance');
                     console.log(`Bike ${this.id} status changed to 'maintenance' due to low battery`)
                 }
             }
@@ -250,9 +262,9 @@ class BikeBrain {
                 console.log(`Bike ${this.id} speed: ${this.speed}`);
             } else {
                 clearInterval(decelerationInterval);
-                this.status = 'maintenance';
+                this.updateStatus('maintenance');
                 console.log(`Bike ${this.id} has been stopped and is now in maintenance mode.`);
-                this.bikeLight(this.status);
+                // this.bikeLight(this.status);
             }
         }, intervalTime);
     }
@@ -281,10 +293,10 @@ class BikeBrain {
             console.log('Trip already in progress');
             return;
         }
-        this.status = 'in-use';
+        this.updateStatus('in-use');
         this.startTrip(customerId);
         console.log(`Bike ${this.id} has been rented`);
-        this.bikeLight(this.status);
+        // this.bikeLight(this.status);
     }
 
     /**
@@ -307,17 +319,17 @@ class BikeBrain {
      * Stops the rental by changing the bike's status to 'available' and ending the current trip.
      * If the bike is not in use, the rental cannot be stopped.
      * 
-     * @returns Returns a message if the bike's status is not 'in-use'.
+     * @returns {void } Returns a message if the bike's status is not 'in-use'.
      */
     stopRental() {
         if (this.status !== 'in-use') {
             console.log('Bike not in use');
             return;
         }
-        this.status = 'available';
+        this.updateStatus('available');
         this.stopTrip();
         console.log(`Bike ${this.id} has been returned`);
-        this.bikeLight(this.status);
+        // this.bikeLight(this.status);
     }
 
     /**
