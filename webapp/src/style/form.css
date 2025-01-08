@@ -1,0 +1,33 @@
+.form {
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 1px solid #d3d3d3;
+    border-radius: 1.5rem;
+    width: 100%;
+    font-size: larger;
+  
+  }
+
+  .form__group {
+    width: 100%;
+  }
+
+.form__input {
+    width: 80%;
+    margin-left: 30px;
+    margin-right: 30px;
+    height: 30px;
+    font-size: larger;
+}
+
+.form__label {
+  font-weight: bolder;
+}
+
+
+  .full_width {
+    width: 100%;
+  }
+
+  .button {
+    width: 100%;
+  }

@@ -1,26 +1,102 @@
 import { useState, useEffect } from 'react';
+import { apiKey, baseURL } from "../components/utils.jsx";
+//import { ToastContainer, toast } from "react-toastify";
 import React from "react";
 
+let userId = "";
 const initialFormValues = {
-  
+
   id: "",
   firstname: "",
   lastname: "",
   email: "",
   password: "",
-  saldo: "",
-  phone: "",
-  admin: "no"
+  balnce: "",
+  admin: ""
 
 }
 
+async function updateUser(firstName, lastName, email, role, balance) {
+  const endpoint = `${baseURL}/users/${userId}`;
+  const body = {
+    "firstname": firstName,
+    "lastname": lastName,
+    "email": email,
+    "role": role,
+    "balance": balance,
+    "password_hash": "",
+  };
+
+
+  try {
+    const response = await fetch(endpoint, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+        //"x-api-key": apiKey, // Aktivera vid behov
+      },
+      body: JSON.stringify(body),
+    });
+
+    if (!response.ok) {
+      throw new Error(`Error: ${response.status} ${response.statusText}`);
+    }
+
+    // Kontrollera om svaret innehåller JSON
+    const contentType = response.headers.get("content-type");
+    if (contentType && contentType.includes("application/json")) {
+      const data = await response.json();
+      /* toast.success("Du är nu uppdaterat en användare!", {
+        onClose: () => {
+          // Navigate or perform any action after the toast disappears
+          navigate("/");
+        },
+        autoClose: 3000, // Auto close after 3 seconds
+      });*/
+
+
+
+
+      //console.log("Response data:", data);
+      alert("Användaren har uppdaterats!");
+      return data;
+    } else {
+      /*toast.success("Du är nu updaterat en användare!", {
+        onClose: () => {
+          // Navigate or perform any action after the toast disappears
+          navigate("/");
+        },
+        autoClose: 3000, // Auto close after 3 seconds
+      });*/
+
+
+
+
+      //console.warn("No JSON content in response.");
+      alert("Användaren har uppdaterats");
+      return null;
+    }
+  } catch (error) {
+    alert("Ett problem uppstod när användaren skapades.");
+    console.error("Error creating user:", error);
+  }
+}
+
+
+
+
+
 function User() {
   const [formData, setFormData] = useState(initialFormValues);
+  const [users, setUsers] = useState([]); // Deklarerar users
+  const [selectedUserId, setSelectedUserId] = useState([]); // Deklarerar users
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
-    console.log(formData);
-    setFormData(initialFormValues);
+    //console.log(formData);
+    const { firstname, lastname, email, role, balance } = formData;
+    updateUser(firstname, lastname, email, role, balance);
+    //setFormData(initialFormValues);
   };
 
   const handleChange = (evt) => {
@@ -28,177 +104,182 @@ function User() {
     setFormData({ ...formData, [name]: value });
   };
 
+  useEffect(() => {
+    // Fetch users from the backend API
+    fetch('/users')
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        return response.json();
+      })
+      .then((responseData) => {
+        setUsers(responseData.data); // Store all users
+        const emailFromSession = sessionStorage.getItem('email'); // Get email from sessionStorage
+        if (emailFromSession) {
+          const matchedUser = responseData.data.find((user) => user.email === emailFromSession);
+          if (matchedUser) {
+            console.log(matchedUser);
+            userId = matchedUser._id;
+            //sessionStorage.setItem("userId","_id")
+            setFormData(matchedUser); // Populate the form with the matched user's data
+          }
+        }
+      })
+      .catch((error) => {
+        console.error('Error fetching users:', error);
+      });
+  }, []);
+
+  const handleUserSelect = (evt) => {
+    const userId = evt.target.value;
+    setSelectedUserId(userId);
+    const user = users.find((u) => u.id === userId);
+    if (user) {
+      setFormData(user); // Populate formData with the selected user's data
+    }
+  };
+
   return (
     <div className="App" style={{ marginLeft: "220px", padding: "20px" }}>
       <h2>En användare</h2>
       <form className="form" onSubmit={handleSubmit}>
-      
-        <div className="form__group">
-          <label htmlFor="id" className="form__label">
-            Id
-          </label>
-          <input 
-          type="number" 
-          id="id" 
-          name="id" 
-          className="form__input" 
-          onChange={(e) =>
-            setFormData({ ...formData, id: e.target.value})
-          }
-           />
-        </div>
+
         <div className="form__group">
           <label htmlFor="firstname" className="form__label">
             Förnamn
           </label>
-          <input 
-          type="text" 
-          id="firstname" 
-          name="firstname" 
-          className="form__input" 
-          onChange={(e) =>
+          <input
+            type="text"
+            id="firstname"
+            name="firstname"
+            value={formData.firstname}
+            className="form__input"
+            onChange={handleChange}
+          /*onChange={(e) =>
             setFormData({ ...formData, firstname: e.target.value})
-          }
-           />
+          }*/
+          />
         </div>
         <div className="form__group">
           <label htmlFor="lastname" className="form__label">
             Efternamn
           </label>
-          <input 
-          type="text" 
-          id="lastname" 
-          name="lastname" 
-          className="form__input" 
-          onChange={(e) =>
+          <input
+            type="text"
+            id="lastname"
+            name="lastname"
+            value={formData.lastname}
+            className="form__input"
+            onChange={handleChange}
+          /*onChange={(e) =>
             setFormData({ ...formData, lastname: e.target.value})
-          }
-           />
+          }*/
+          />
         </div>
         <div className="form__group">
           <label htmlFor="email" className="form__label">
             E-post
           </label>
-          <input 
-          type="email" 
-          id="email" 
-          name="email" 
-          className="form__input" 
-          onChange={(e) =>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            value={formData.email}
+            className="form__input"
+            onChange={handleChange}
+          /*onChange={(e) =>
             setFormData({ ...formData, email: e.target.value})
-          }
-           />
+          }*/
+          />
         </div>
         <div className="form__group">
-          <label htmlFor="phone" className="form__label">
-            Telefon
+          <label htmlFor="trips" className="form__label">
+            Resehistorik
           </label>
           <input
-            type="tel"
-            id="phone"
-            name="phone"
+            type="text"
+            id="trips"
+            name="trips"
+            value={formData.trips}
             className="form__input"
-            onChange={(e) =>
-              setFormData({ ...formData, phone: e.target.value})
-            }
+            onChange={handleChange}
+          /*onChange={(e) =>
+            setFormData({ ...formData, trips: e.target.value})
+          }*/
           />
         </div>
 
         <div className="form__group">
-          <label htmlFor="saldo" className="form__label">
+          <label htmlFor="balance" className="form__label">
             Saldo
           </label>
           <input
             type="number"
-            id="saldo"
-            name="saldo"
+            id="balance"
+            name="balance"
+            value={formData.balance}
             className="form__input"
-            onChange={(e) =>
-              setFormData({ ...formData, saldo: e.target.value})
-            }
+            onChange={handleChange}
+          /*onChange={(e) =>
+            setFormData({ ...formData, balance: e.target.value})
+          }*/
           />
         </div>
         <div className="form__group">
-          <label htmlFor="admin" className="form__label">
-            Administratör
+          <label htmlFor="role" className="form__label">
+            Roll
           </label>
           <select
-            name="admin"
-            id="admin"
+            name="role"
+            id="role"
             className="form__select"
-            defaultValue="no"
-            onChange={(e) =>
-              setFormData({ ...formData, admin: e.target.value})
-            }
+            value={formData.role}
+            onChange={handleChange}
+          /*onChange={(e) =>
+            setFormData({ ...formData, role: e.target.value})
+          }*/
           >
-            <option value="no">Nej</option>
-            <option value="yes">Ja</option>
+            <option value="city_manager">Stadschef</option>
+            <option value="admin">Administratör</option>
+            <option value="customer">Kund</option>
           </select>
         </div>
         <button className="button" type="submit">
           Submit
         </button>
       </form>
+
     </div>
   );
 };
 
+export default User;
+
+/*  <ToastContainer 
+  position="top-right"
+  autoClose={5000}
+  hideProgressBar={false}
+  newestOnTop={false}
+  closeOnClick
+  rtl={false}
+  pauseOnFocusLoss
+  draggable
+  pauseOnHover
+/>*/
 
 
-/*function User() {
-  const [users, setUsers] = useState([]);
-  const [bikes, setBikes] = useState([]);
-
-  useEffect(() => {
-    // Fetch users from the backend API
-    fetch('/users')
-      .then(response => response.json())
-      .then(data => setUsers(data))
-      .catch(error => console.error('Error fetching users:', error));
-
-    // Fetch bikes from the backend API
-    fetch('/bikes')
-      .then(response => response.json())
-      .then(data => setBikes(data))
-      .catch(error => console.error('Error fetching bikes:', error));
-  }, []);
-
-  return (
-    <div className="App" style={{ marginLeft: "220px", padding: "20px" }}>
-      <h2>En Användare</h2>
-      <table>
-        <thead>
-          <tr>
-            <th>Kundnummer</th>
-            <th>Namn</th>
-            <th>Telefonnummer</th>
-            <th>E-post</th>
-            <th>Saldo</th>
-          </tr>
-        </thead>
-        <tbody>
-        {users.map((user, index) => (
-            <tr key={index}>
-            <td>xxxx</td>
-            <td>{user.name}</td>
-            <td>555-545434</td>
-            <td>{user.email}</td>
-            <td>542 kr</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
-  );
-}*/
-
-/*const Users = () => {
-    return (
-      <div style={{ marginLeft: "220px", padding: "20px" }}>
-        <h1>Användare</h1>
-        <p>Welcome to the home page.</p>
-      </div>
-    );
-  };*/
+/*function search(data) {
+  let number=0;
+  let sessionId=sessionStorage.getItem('email');
+  console.log(sessionId);
   
-  export default User;
+  for (let i=0; i<data.length; i++) {
+  
+    //console.log(data[i].email);
+    
+    if(data[i].id == sessionId)
+      number=i;
+}
+  return number;
+}*/
