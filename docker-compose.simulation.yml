@@ -1,0 +1,15 @@
+services:
+  bike-simulation:
+    build:
+      context: ./bike-brain
+      dockerfile: Dockerfile
+    networks:
+      - app-network
+    environment:
+      - BIKE_COUNT=200
+    depends_on:
+      - backend
+    scale: 15
+
+networks:
+  app-network:
