@@ -206,18 +206,29 @@ class BikeBrain {
      *                          - 'charge': Sets the bike to 'charging' status.
      */
     controlBike(action) {
-        if (action === 'stop') {
-            console.log(`Stopping bike ${this.id}. Speed will gradually decrease to 0.`);
-            this.graduallyStopBike();
-        } else if (action === 'make-available') {
-            this.status = 'available';
-            console.log(`Bike ${this.id} is now available for rental.`);
-        } else if (action === 'maintenance') {
-            this.status = 'maintenance';
-            console.log(`Bike ${this.id} is in maintenance mode.`);
-        } else if (action === 'charge') {
-            this.status = 'charging';
-            console.log(`Bike ${this.id} is charging`);
+        const validActions = ['stop', 'make-available', 'maintenance', 'charge'];
+        if (!validActions.includes(action)) {
+            console.error(`Invalid action '${action}' for bike ${this.id}`);
+            return;
+        }
+
+        switch (action) {
+            case 'stop':
+                console.log(`Stopping bike ${this.id}. Speed will gradually decrease to 0.`);
+                this.graduallyStopBike();
+                break;
+            case 'make-available':
+                this.status = 'available';
+                console.log(`Bike ${this.id} is now available for rental.`);
+                break;
+            case 'maintenance':
+                this.status = 'maintenance';
+                console.log(`Bike ${this.id} is in maintenance mode.`);
+                break;
+            case 'charge':
+                this.status = 'charging';
+                console.log(`Bike ${this.id} is charging`);
+                break;
         }
         this.bikeLight(this.status);
     }
