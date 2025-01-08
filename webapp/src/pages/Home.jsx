@@ -1,6 +1,6 @@
 const Home = () => {
     return (
-      <div>
+      <div className="container">
         <h2>Svenska Elsparkcyklar AB</h2>
         <br></br>
         <p>Välkommen till oss. Vi sätter jorden i rullning.</p>

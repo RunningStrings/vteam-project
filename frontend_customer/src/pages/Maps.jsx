@@ -6,20 +6,13 @@ import L, { LatLng } from "leaflet";
 
 import { useMap } from "../hooks";
 
-/*function Maps() {
-  const [charging_stations, setStations] = useState([]);
-  const [bikes, setBikes] = useState([]);
-  const [cities, setCities] = useState([]);
-
-
-  }*/
-  const Maps = () => {
+const Maps = () => {
 
     
     const [bikes, setBikes] = useState([]);
     const [cities, setCities] = useState([]);
     const [stations, setStations] = useState([]);
-    const [parkings, setParking] = useState([]);
+    const [parkings, setParkings] = useState([]);
 
   useEffect(() => {
      // Fetch cities from the backend API

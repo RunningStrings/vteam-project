@@ -8,6 +8,7 @@ import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
 import Trips from "./pages/Trips";
 import User from "./pages/User";
+import NewUser from "./pages/NewUser";
 import Maps from "./pages/Maps";
 import Support from "./pages/Support";
 import Payment from "./pages/Payment";
@@ -26,6 +27,7 @@ const App = () => {
             <Route path="/" element={<Home />} />
             <Route path="/trips" element={<Trips />} />
             <Route path="/user" element={<User />} />
+            <Route path="/newuser" element={<NewUser />} />
             <Route path="/maps" element={<Maps />} />
             <Route path="/support" element={<Support />} />
             <Route path="/payment" element={<Payment />} />

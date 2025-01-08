@@ -1,14 +1,8 @@
 import { useState, useEffect } from 'react';
-import { useNavigate} from 'react-router-dom';
-
-
 
 function Users() {
   const [parkings, setParkings] = useState([]);
 
-  const navigate = useNavigate();
-
- 
   
   useEffect(() => {
 

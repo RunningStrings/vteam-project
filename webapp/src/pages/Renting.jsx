@@ -6,7 +6,7 @@ const Home = () => {
   let sessionId=sessionStorage.getItem('bikeid');
 
   const navigate = useNavigate();
-  
+
   function Bikes() {
     const [bikes, setBikes] = useState([]);
   
@@ -28,31 +28,27 @@ const Home = () => {
   
     }, []);
 
-
-  }  
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    sessionStorage.setItem("renting", sessionId);
-    toast.success("Du hyr nu cykel: "+ sessionId, {
-      onClose: () => {
-        // Navigate or perform any action after the toast disappears
-        navigate("/renting");
-      },
-      autoClose: 3000, // Auto close after 3 seconds
-    });
+  }
+    const handleSubmit = (event) => {
+      event.preventDefault();
+      sessionStorage.setItem("renting", -1);
+      toast.success("Du har nu lämnat tillbaka: "+ sessionId, {
+        onClose: () => {
+          // Navigate or perform any action after the toast disappears
+          navigate("/");
+        },
+        autoClose: 3000, // Auto close after 3 seconds
+      });
 
   };
 
-
-
-
+    
   
   return (
-      <div className="full_width"  onSubmit={handleSubmit}>
-        <h2>Hyr en elsparkcykel</h2>
+      <div className="full_width">
+        <h2>Lämna tillbaka en elsparkcykel</h2>
         <br></br>
-        <form className="form">
+        <form className="form"  onSubmit={handleSubmit}>
       
       <div className="form__group">
         <label htmlFor="id" className="form__label">
@@ -64,13 +60,14 @@ const Home = () => {
         name="id"
         className="form__input"
         defaultValue={sessionId} 
+        readOnly
         //onChange={(e) =>
         //  setFormData({ ...formData, id: e.target.value})
         //}
          />
       </div>
       <button className="full-button blue-button" type="submit">
-          Submit
+          Lämna tillbaka
         </button>
         </form>
         <ToastContainer 
@@ -83,7 +80,8 @@ const Home = () => {
         pauseOnFocusLoss
         draggable
         pauseOnHover
-      />      
+      />
+       <img src="./src/assets/scooter.gif" width="420" height="320"></img>     
       </div>
     );
   };

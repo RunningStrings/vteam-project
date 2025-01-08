@@ -35,6 +35,14 @@ const Navbar = () => {
             </Link>
         </li>
         <li className="navbar-item flexbox-left">
+            <Link to="/payment" className="navbar-item-inner flexbox-left">
+            <div className="navbar-item-inner-icon-wrapper flexbox">
+                <ion-icon name="card-outline"></ion-icon>
+            </div>
+            <span className="link-text">Betalning</span>
+            </Link>
+        </li>
+        <li className="navbar-item flexbox-left">
             <Link to="/trips" className="navbar-item-inner flexbox-left">
             <div className="navbar-item-inner-icon-wrapper flexbox">
                 <ion-icon name="book-outline"></ion-icon>
@@ -60,14 +68,6 @@ const Navbar = () => {
             </Link>
         </li>
     
-        <li className="navbar-item flexbox-left">
-            <Link to="/payment" className="navbar-item-inner flexbox-left">
-            <div className="navbar-item-inner-icon-wrapper flexbox">
-                <ion-icon name="card-outline"></ion-icon>
-            </div>
-            <span className="link-text">Betalning</span>
-            </Link>
-        </li>
     
       </ul>
         <ul className="navbar-items flexbox-col">
