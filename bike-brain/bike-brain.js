@@ -40,7 +40,11 @@ class BikeBrain {
         });
 
         this.socket.on('connect_error', (error) => {
-            console.error(`Connection error for bike ${this.id}:`, error);
+            console.error(`Connection error for bike ${this.id}:`, error.message);
+        });
+
+        this.socket.on('reconnect', (attemptNumber) => {
+            console.log(`Bike ${this.id} reconnected to the server after ${attemptNumber} attempts`);
         });
     }
 
