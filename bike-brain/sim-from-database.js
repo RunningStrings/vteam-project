@@ -1,36 +1,38 @@
-import BikeBrain from "./bike-brain";
-import { MongoClient } from "mongodb";
+import axios from "axios";
+import BikeBrain from "./bike-brain.js";
 import io from 'socket.io-client';
 
-const socket = io('http://backend:5001');
+const socket = io('http://localhost:5001');
 
-// MongoDB path/database/collection
-const MONGO_URI = ;
-const DATABASE_NAME = ;
-const COLLECTION_NAME = collectionBikes;
+const API_URL = 'http://localhost:5000/api/v1/bikes';
+
 const BATCH_SIZE = 200;
 
 const loadBikesFromDatabase = async () => {
-    const client = new MongoClient(MONGO_URI);
     const bikes = [];
     let offset = 0; // Used to track how many records have been processed
 
     try {
-        await client.connect();
-        const db = client.db(DATABASE_NAME);
-        const collectionBikes = db.collection(COLLECTION_NAME);
-
-        // Create cursor
-        const cursor = collectionBikes.find().batchSize(BATCH_SIZE);
-
         // Fetch bikes in batches
         while (true) {
-            const batch = await cursor.limit(BATCH_SIZE).skip(offset).toArray();
+            const response = await axios.get(API_URL, {
+                params: { offset, limit: BATCH_SIZE }
+            });
+
+            console.log('API Response:', JSON.stringify(response.data, null, 2));
+
+            const batch = response.data?.data?.result;
+            console.log(batch);
+
+            if (!Array.isArray(batch)) {
+                console.error('Expected an array in response.data.result, but got:', batch);
+                break;  // Exit the loop if data isn't as expected
+            }
 
             if (batch.length === 0) break;
 
             batch.forEach(doc => {
-                const bike = new BikeBrain(doc.id, doc.city, doc.latitude, doc.longitude);
+                const bike = new BikeBrain(doc._id, doc.city_id, doc.location, doc.status);
                 bikes.push(bike);
             });
 
@@ -45,9 +47,36 @@ const loadBikesFromDatabase = async () => {
     } catch (error) {
         console.error("Error loading bikes from database:", error);
         process.exit(1);
-    } finally {
-        await client.close();
     }
+};
+
+const calcBatteryDepletion = (bike) => {
+    let depletionRate = 0;
+
+    switch (bike.status) {
+        case 'in-use':
+            depletionRate = 2 + Math.random() * 3;
+            break;
+        case 'available':
+            depletionRate = 0.5 + Math.random() * 1;
+            break;
+        case 'charging':
+            depletionRate = -3 - Math.random() * 2;
+            break;
+        case 'maintenance':
+            depletionRate = 0;
+            break;
+        default:
+            depletionRate = 0.2;
+    }
+
+    const speedFactor = bike.speed * 0.05;
+
+    const randomFactor = Math.random() * 0.5;
+
+    const newBatteryLevel = bike.batteryLevel - depletionRate - speedFactor - randomFactor;
+
+    return Math.max(0, Math.min(100, newBatteryLevel));
 };
 
 const simulateBikeUpdates = (bikes) => {
@@ -56,11 +85,12 @@ const simulateBikeUpdates = (bikes) => {
         const batch = bikes.slice(i, i + BATCH_SIZE);
         batch.forEach((bike) => {
             bike.updateLocation(
-                bike.location.coordinates[0] + (Math.random() - 0.5) * 0.001,
-                bike.location.coordinates[1] + (Math.random() - 0.5) * 0.001
+                bike.location.lat + (Math.random() - 0.5) * 0.001,
+                bike.location.lon + (Math.random() - 0.5) * 0.001
             );
-            bike.updateSpeed(Math.floor(Math.random() * 30));
-            bike.updateBattery(bike.batteryLevel - Math.random() * 5);
+            bike.updateSpeed(Math.floor(Math.random() * 20));
+            const newBatteryLevel = calcBatteryDepletion(bike);
+            bike.updateBattery(newBatteryLevel);
 
             if (Math.random() > 0.9) {
                 bike.startRental(`customer${Math.floor(Math.random()) * 1000}`);
@@ -97,7 +127,7 @@ const simulateBikeUpdates = (bikes) => {
 const runSimulation = async () => {
     const bikes = await loadBikesFromDatabase();
 
-    const intervalId = setInterval(() => simulateBikeUpdates(bikes), 1000);
+    const intervalId = setInterval(() => simulateBikeUpdates(bikes), 3000);
 
     process.on('SIGINT', () => {
         clearInterval(intervalId);
