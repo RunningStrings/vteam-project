@@ -123,22 +123,22 @@ class BikeBrain {
     handleBatteryWarnings() {
         if (this.batteryLevel < 20) {
             if (this.status === 'in-use') {
-                if (batteryLevel <= 10) {
-                    console.warn(`Bike ${this.id} has low battery (${batteryLevel}%)`);
-                } else if (batteryLevel < 20) {
-                    console.warn(`Bike ${this.id} has low battery (${batteryLevel})`);
+                if (this.batteryLevel <= 10) {
+                    console.warn(`Bike ${this.id} has low battery (${this.batteryLevel}%)`);
+                } else if (this.batteryLevel < 20) {
+                    console.warn(`Bike ${this.id} has low battery (${this.batteryLevel})`);
                 }
 
                 // Set status to 'maintenance' when battery is drained
-                if (batteryLevel === 0) {
+                if (this.batteryLevel === 0) {
                     this.status = 'maintenance';
                     console.log(`Bike ${this.id} in need of maintenance due to 0% battery`);
                 }
             } else {
                 // If bike is not in use, set status to 'maintenance' if battery level
                 // is 20% or lower
-                if (batteryLevel < 20) {
-                    console.warn(`Bike ${this.id} has low battery (${batteryLevel}%)`);
+                if (this.batteryLevel < 20) {
+                    console.warn(`Bike ${this.id} has low battery (${this.batteryLevel}%)`);
                     this.status = 'maintenance';
                     console.log(`Bike ${this.id} status changed to 'maintenance' due to low battery`)
                 }
