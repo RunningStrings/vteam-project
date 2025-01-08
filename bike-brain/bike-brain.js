@@ -159,6 +159,7 @@ class BikeBrain {
             startLocation: { lat: this.location.coordinates[0], lon: this.location.coordinates[1] },
             startTime: startTime,
         };
+        // this.sendMessage('log-trip)
         console.log(`Trip started for customer ${customerId} at ${startTime}`);
     }
 
