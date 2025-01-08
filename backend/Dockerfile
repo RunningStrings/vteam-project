@@ -7,6 +7,6 @@ RUN npm install
 
 COPY . .
 
-EXPOSE 5000
+EXPOSE 5000 5001
 
 # CMD ["npm", "start"] # This is handled in docker-compose.yml, after seeding

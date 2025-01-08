@@ -3,8 +3,13 @@ services:
         build:
             context: ./backend
             dockerfile: Dockerfile
+        environment:
+            - MONGO_DSN=${MONGO_DSN}
+            - MONGO_URI=${MONGO_URI}
+            # - NODE_ENV=simulation # Test for data generation for simulation
         ports:
             - "5000:5000"
+            - "5001:5001"
         networks:
             - app-network
         volumes:
@@ -14,7 +19,7 @@ services:
             - mongodb # Make sure the database is built
         command:
             > # Run seeding script to populate the database first, then start the server
-            sh -c "node seed.js && node index.js"
+            sh -c "node ./data-generation/index.js && node ./database-config/seed.js && npm run nodemon"
 
     frontend:
         build:
@@ -33,13 +38,44 @@ services:
         depends_on:
             - backend # Make sure that the backend is built and running
 
+    frontend_customer:
+        build:
+            context: ./frontend_customer
+            dockerfile: Dockerfile
+        ports:
+            - "1337:1337" # Changed to Vite default port
+        networks:
+            - app-network
+        volumes:
+            - ./frontend_customer:/app
+            - /app/node_modules # Persist node_modules inside container to avoid overwriting
+        # Uncomment the lines below if file watching is not working as expected!
+        # environment:
+        #     - CHOKIDAR_USEPOLLING=true
+        depends_on:
+            - backend # Make sure that the backend is built and running
+
+    webapp:
+        build:
+            context: ./webapp
+            dockerfile: Dockerfile
+        ports:
+            - "3000:3000" # Changed to Vite default port
+        networks:
+            - app-network
+        volumes:
+            - ./webapp:/app
+            - /app/node_modules # Persist node_modules inside container to avoid overwriting
+        # Uncomment the lines below if file watching is not working as expected!
+        # environment:
+        #     - CHOKIDAR_USEPOLLING=true
+        depends_on:
+            - backend # Make sure that the backend is built and running
+
     mongodb: # Need to create.env
         image: mongo
         environment:
             - MONGO_DATA_DIR=/data/db
-            # !! Need to be updated
-            #- MONGO_DSN=${MONGO_DSN}
-            #- MONGO_URI=${MONGO_URI}
         volumes:
             - ./data/db:/data/db
         ports:

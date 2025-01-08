@@ -1,0 +1,598 @@
+[
+  {
+    "id": 52,
+    "name": "Skolgränden",
+    "city_name": "Stockholm",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        59.314889039057164,
+        18.073417845239817
+      ]
+    },
+    "bikes": [
+      52,
+      201,
+      350,
+      499
+    ],
+    "capacity": 45
+  },
+  {
+    "id": 53,
+    "name": "Villaallén",
+    "city_name": "Stockholm",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        59.31711185088369,
+        18.075944333191643
+      ]
+    },
+    "bikes": [
+      53,
+      202,
+      351,
+      500
+    ],
+    "capacity": 29
+  },
+  {
+    "id": 54,
+    "name": "Ringgärdet",
+    "city_name": "Stockholm",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        59.32011253394472,
+        18.070546464330732
+      ]
+    },
+    "bikes": [
+      54,
+      203,
+      352
+    ],
+    "capacity": 13
+  },
+  {
+    "id": 55,
+    "name": "Holmqvists Väg",
+    "city_name": "Stockholm",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        59.31758335845632,
+        18.06210110605224
+      ]
+    },
+    "bikes": [
+      55,
+      204,
+      353
+    ],
+    "capacity": 49
+  },
+  {
+    "id": 56,
+    "name": "Norra Granvägen",
+    "city_name": "Stockholm",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        59.30771987226652,
+        18.073286333275433
+      ]
+    },
+    "bikes": [
+      56,
+      205,
+      354
+    ],
+    "capacity": 44
+  },
+  {
+    "id": 57,
+    "name": "Sjögrens Gata",
+    "city_name": "Stockholm",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        59.31271698108628,
+        18.0544523939663
+      ]
+    },
+    "bikes": [
+      57,
+      206,
+      355
+    ],
+    "capacity": 37
+  },
+  {
+    "id": 58,
+    "name": "Jörgens Gata",
+    "city_name": "Stockholm",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        59.322650960797716,
+        18.06977987714606
+      ]
+    },
+    "bikes": [
+      58,
+      207,
+      356
+    ],
+    "capacity": 49
+  },
+  {
+    "id": 59,
+    "name": "Östra Ekvägen",
+    "city_name": "Stockholm",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        59.32982283157591,
+        18.04509360314384
+      ]
+    },
+    "bikes": [
+      59,
+      208,
+      357
+    ],
+    "capacity": 38
+  },
+  {
+    "id": 60,
+    "name": "Ringgränden",
+    "city_name": "Stockholm",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        59.336197859270015,
+        18.063225229070298
+      ]
+    },
+    "bikes": [
+      60,
+      209,
+      358
+    ],
+    "capacity": 19
+  },
+  {
+    "id": 61,
+    "name": "Dahlbergs Väg",
+    "city_name": "Stockholm",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        59.339633404044434,
+        18.038516717486374
+      ]
+    },
+    "bikes": [
+      61,
+      210,
+      359
+    ],
+    "capacity": 49
+  },
+  {
+    "id": 62,
+    "name": "Lunds Väg",
+    "city_name": "Stockholm",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        59.33320068920813,
+        18.095441828850795
+      ]
+    },
+    "bikes": [
+      62,
+      211,
+      360
+    ],
+    "capacity": 47
+  },
+  {
+    "id": 63,
+    "name": "Södra Ekgatan",
+    "city_name": "Stockholm",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        59.34055587403026,
+        18.09266425122823
+      ]
+    },
+    "bikes": [
+      63,
+      212,
+      361
+    ],
+    "capacity": 42
+  },
+  {
+    "id": 64,
+    "name": "Bäckallén",
+    "city_name": "Stockholm",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        59.34406726513723,
+        18.083086435024825
+      ]
+    },
+    "bikes": [
+      64,
+      213,
+      362
+    ],
+    "capacity": 16
+  },
+  {
+    "id": 65,
+    "name": "Parkgärdet",
+    "city_name": "Stockholm",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        59.34307967911681,
+        18.052861665033788
+      ]
+    },
+    "bikes": [
+      65,
+      214,
+      363
+    ],
+    "capacity": 12
+  },
+  {
+    "id": 66,
+    "name": "Mikaelas Väg",
+    "city_name": "Stockholm",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        59.36547950622665,
+        18.008025283594208
+      ]
+    },
+    "bikes": [
+      66,
+      215,
+      364
+    ],
+    "capacity": 48
+  },
+  {
+    "id": 67,
+    "name": "Skolgränden Station",
+    "city_name": "Stockholm",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        59.36345245217532,
+        17.972399667976077
+      ]
+    },
+    "bikes": [
+      67,
+      216,
+      365
+    ],
+    "capacity": 45
+  },
+  {
+    "id": 68,
+    "name": "Villaallén Stop",
+    "city_name": "Stockholm",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        59.35727569891941,
+        18.001045796553484
+      ]
+    },
+    "bikes": [
+      68,
+      217,
+      366
+    ],
+    "capacity": 29
+  },
+  {
+    "id": 69,
+    "name": "Ringgärdet Terminal",
+    "city_name": "Stockholm",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        59.34531581315903,
+        18.040159688841783
+      ]
+    },
+    "bikes": [
+      69,
+      218,
+      367
+    ],
+    "capacity": 13
+  },
+  {
+    "id": 70,
+    "name": "Holmqvists Väg Station",
+    "city_name": "Stockholm",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        59.345506221821665,
+        18.049389008673927
+      ]
+    },
+    "bikes": [
+      70,
+      219,
+      368
+    ],
+    "capacity": 49
+  },
+  {
+    "id": 71,
+    "name": "Norra Granvägen Stop",
+    "city_name": "Stockholm",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        59.308101001981555,
+        18.08858546310799
+      ]
+    },
+    "bikes": [
+      71,
+      220,
+      369
+    ],
+    "capacity": 44
+  },
+  {
+    "id": 72,
+    "name": "Sjögrens Gata Terminal",
+    "city_name": "Stockholm",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        59.31452075189529,
+        18.09526597355662
+      ]
+    },
+    "bikes": [
+      72,
+      221,
+      370
+    ],
+    "capacity": 37
+  },
+  {
+    "id": 73,
+    "name": "Jörgens Gata Station",
+    "city_name": "Stockholm",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        59.31884266578044,
+        18.047769040652753
+      ]
+    },
+    "bikes": [
+      73,
+      222,
+      371
+    ],
+    "capacity": 49
+  },
+  {
+    "id": 74,
+    "name": "Östra Ekvägen Stop",
+    "city_name": "Stockholm",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        59.30753494174425,
+        18.111243921708024
+      ]
+    },
+    "bikes": [
+      74,
+      223,
+      372
+    ],
+    "capacity": 38
+  },
+  {
+    "id": 75,
+    "name": "Ringgränden Terminal",
+    "city_name": "Stockholm",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        59.312635018844446,
+        18.11148237364256
+      ]
+    },
+    "bikes": [
+      75,
+      224,
+      373
+    ],
+    "capacity": 19
+  },
+  {
+    "id": 76,
+    "name": "Dahlbergs Väg Stop",
+    "city_name": "Stockholm",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        59.31263558669596,
+        18.126015574714387
+      ]
+    },
+    "bikes": [
+      76,
+      225,
+      374
+    ],
+    "capacity": 49
+  },
+  {
+    "id": 77,
+    "name": "Lunds Väg Terminal",
+    "city_name": "Stockholm",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        59.33232099971599,
+        18.029239927952347
+      ]
+    },
+    "bikes": [
+      77,
+      226,
+      375
+    ],
+    "capacity": 47
+  },
+  {
+    "id": 78,
+    "name": "Södra Ekgatan Station",
+    "city_name": "Stockholm",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        59.32795586582881,
+        18.034605318095885
+      ]
+    },
+    "bikes": [
+      78,
+      227,
+      376
+    ],
+    "capacity": 42
+  },
+  {
+    "id": 79,
+    "name": "Hästhagen Terminal",
+    "city_name": "Stockholm",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        59.32445290307561,
+        18.098797583847897
+      ]
+    },
+    "bikes": [
+      79,
+      228,
+      377
+    ],
+    "capacity": 30
+  },
+  {
+    "id": 80,
+    "name": "Bäckallén Stop",
+    "city_name": "Stockholm",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        59.334975518098844,
+        18.055888605143537
+      ]
+    },
+    "bikes": [
+      80,
+      229,
+      378
+    ],
+    "capacity": 16
+  },
+  {
+    "id": 81,
+    "name": "Parkgärdet Terminal",
+    "city_name": "Stockholm",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        59.336804447480176,
+        18.04526160790914
+      ]
+    },
+    "bikes": [
+      81,
+      230,
+      379
+    ],
+    "capacity": 12
+  },
+  {
+    "id": 82,
+    "name": "Mikaelas Väg Station",
+    "city_name": "Stockholm",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        59.338194110138915,
+        18.053155222730624
+      ]
+    },
+    "bikes": [
+      82,
+      231,
+      380
+    ],
+    "capacity": 48
+  },
+  {
+    "id": 83,
+    "name": "Kungsbroplatsen",
+    "city_name": "Stockholm",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        59.34142300133024,
+        18.066149054697263
+      ]
+    },
+    "bikes": [
+      83,
+      232,
+      381
+    ],
+    "capacity": 40
+  },
+  {
+    "id": 84,
+    "name": "Slottshagen",
+    "city_name": "Stockholm",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        59.34483320091982,
+        18.06334140271116
+      ]
+    },
+    "bikes": [
+      84,
+      233,
+      382
+    ],
+    "capacity": 35
+  }
+]

@@ -1,0 +1,272 @@
+[
+  {
+    "id": 85,
+    "name": "Östra Ekallén",
+    "city_name": "Linköping",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        58.41008444940047,
+        15.630650587546711
+      ]
+    },
+    "bikes": [
+      85,
+      234,
+      383
+    ],
+    "capacity": 26
+  },
+  {
+    "id": 86,
+    "name": "Johnnys Väg",
+    "city_name": "Linköping",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        58.41212773283911,
+        15.633532985284688
+      ]
+    },
+    "bikes": [
+      86,
+      235,
+      384
+    ],
+    "capacity": 18
+  },
+  {
+    "id": 87,
+    "name": "Idrottsgatan",
+    "city_name": "Linköping",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        58.40919146536652,
+        15.638120423195119
+      ]
+    },
+    "bikes": [
+      87,
+      236,
+      385
+    ],
+    "capacity": 24
+  },
+  {
+    "id": 88,
+    "name": "Marcuss Gata",
+    "city_name": "Linköping",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        58.40292223401036,
+        15.64819036239021
+      ]
+    },
+    "bikes": [
+      88,
+      237,
+      386
+    ],
+    "capacity": 44
+  },
+  {
+    "id": 89,
+    "name": "Norra Björkallén",
+    "city_name": "Linköping",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        58.40422316264332,
+        15.636868424066932
+      ]
+    },
+    "bikes": [
+      89,
+      238,
+      387
+    ],
+    "capacity": 16
+  },
+  {
+    "id": 90,
+    "name": "Leifs Väg",
+    "city_name": "Linköping",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        58.40180489757287,
+        15.628644458688285
+      ]
+    },
+    "bikes": [
+      90,
+      239,
+      388
+    ],
+    "capacity": 45
+  },
+  {
+    "id": 91,
+    "name": "Ringgärdet",
+    "city_name": "Linköping",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        58.41614557116975,
+        15.615232969224877
+      ]
+    },
+    "bikes": [
+      91,
+      240,
+      389
+    ],
+    "capacity": 33
+  },
+  {
+    "id": 92,
+    "name": "Storgatan",
+    "city_name": "Linköping",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        58.409583036855366,
+        15.612672045330584
+      ]
+    },
+    "bikes": [
+      92,
+      241,
+      390
+    ],
+    "capacity": 20
+  },
+  {
+    "id": 93,
+    "name": "Nybergs Gata",
+    "city_name": "Linköping",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        58.40561732770678,
+        15.623573225674448
+      ]
+    },
+    "bikes": [
+      93,
+      242,
+      391
+    ],
+    "capacity": 18
+  },
+  {
+    "id": 94,
+    "name": "Daniels Väg",
+    "city_name": "Linköping",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        58.4084466632155,
+        15.621440145137484
+      ]
+    },
+    "bikes": [
+      94,
+      243,
+      392
+    ],
+    "capacity": 38
+  },
+  {
+    "id": 95,
+    "name": "Fabriksgränden",
+    "city_name": "Linköping",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        58.407556546612,
+        15.644779018476129
+      ]
+    },
+    "bikes": [
+      95,
+      244,
+      393
+    ],
+    "capacity": 17
+  },
+  {
+    "id": 96,
+    "name": "Övre Kvarngränden",
+    "city_name": "Linköping",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        58.40063341929911,
+        15.629884338203283
+      ]
+    },
+    "bikes": [
+      96,
+      245,
+      394
+    ],
+    "capacity": 11
+  },
+  {
+    "id": 97,
+    "name": "Villagärdet",
+    "city_name": "Linköping",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        58.4025308454664,
+        15.618185751525601
+      ]
+    },
+    "bikes": [
+      97,
+      246,
+      395
+    ],
+    "capacity": 18
+  },
+  {
+    "id": 98,
+    "name": "Jakobssons Gata",
+    "city_name": "Linköping",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        58.41192121342925,
+        15.600777682205944
+      ]
+    },
+    "bikes": [
+      98,
+      247,
+      396
+    ],
+    "capacity": 48
+  },
+  {
+    "id": 99,
+    "name": "Östra Storgärdet",
+    "city_name": "Linköping",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        58.41599972365506,
+        15.62108494544998
+      ]
+    },
+    "bikes": [
+      99,
+      248,
+      397
+    ],
+    "capacity": 12
+  }
+]

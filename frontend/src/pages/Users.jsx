@@ -5,12 +5,13 @@ import { useNavigate} from 'react-router-dom';
 
 function Users() {
   const [users, setUsers] = useState([]);
-  const [bikes, setBikes] = useState([]);
-  const [cities, setCities] = useState([]);
+  //const [bikes, setBikes] = useState([]);
+  //const [cities, setCities] = useState([]);
 
   const navigate = useNavigate();
 
-  function handleClick() {
+  function handleClick(email) {
+    sessionStorage.setItem("email",email)
     navigate('/user');
   }
   
@@ -20,45 +21,43 @@ function Users() {
   useEffect(() => {
     // Fetch users from the backend API
     fetch('/users')
-      .then(response => response.json())
-      .then(data => setUsers(data))
-      .catch(error => console.error('Error fetching users:', error));
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      return response.json();
+    })
+    .then((responseData) => {
+      setUsers(responseData.data); // Ensure this is the correct data structure
+    })
+    .catch((error) => {
+      console.error('Error fetching users:', error);
+    });
+   
 
-    // Fetch bikes from the backend API
-    fetch('/bikes')
-      .then(response => response.json())
-      .then(data => setBikes(data))
-      .catch(error => console.error('Error fetching bikes:', error));
 
-    // Fetch cities from the backend API
-    fetch('/cities')
-      .then(response => response.json())
-      .then(data => setCities(data))
-      .catch(error => console.error('Error fetching cities:', error));
 
     }, []);
 
   return (
-    <div className="App" style={{ marginLeft: "220px", padding: "20px" }}>
+    <div className="App" style={{ marginLeft: "200px", padding: "20px" }}>
       <h2>Användare</h2>
       <table>
         <thead>
           <tr>
+          <th>E-post</th>
             <th>Förnamn</th>
             <th>Efternamn</th>
-            <th>Telefonnummer</th>
-            <th>E-post</th>
             <th>Saldo</th>
             <th>Roll</th>
           </tr>
         </thead>
         <tbody>
         {users.map((user, index) => (
-            <tr key={index} onClick={() => {handleClick()}}>
+            <tr key={index}>
+            <td onClick={() => {handleClick(user.email)}} style={{ cursor: "pointer", color: "blue" }}>{user.email}</td>
             <td>{user.firstname}</td>
             <td>{user.lastname}</td>
-            <td>555-545434</td>
-            <td>{user.email}</td>
             <td>{user.balance}</td>
             <td>{user.role}</td>
             </tr>
@@ -66,9 +65,7 @@ function Users() {
         </tbody>
       </table>
 
-      {cities.map((city, index) => (
-            <div key={index}>{city.name}</div>
-          ))}
+     
 
 
 

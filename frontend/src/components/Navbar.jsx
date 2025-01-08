@@ -26,13 +26,20 @@ const Navbar = () => {
             </Link>
         </li>
     
-        
         <li className="navbar-item flexbox-left">
             <Link to="/bikes" className="navbar-item-inner flexbox-left">
             <div className="navbar-item-inner-icon-wrapper flexbox">
-                <ion-icon name="bicycle-outline"></ion-icon>
+                <ion-icon name="bicycle"></ion-icon>
             </div>
             <span className="link-text">Cyklar</span>
+            </Link>
+        </li>        
+        <li className="navbar-item flexbox-left">
+            <Link to="/bike" className="navbar-item-inner flexbox-left">
+            <div className="navbar-item-inner-icon-wrapper flexbox">
+                <ion-icon name="bicycle-outline"></ion-icon>
+            </div>
+            <span className="link-text">Cykel</span>
             </Link>
         </li>
         <li className="navbar-item flexbox-left">
@@ -41,6 +48,14 @@ const Navbar = () => {
                 <ion-icon name="flag-outline"></ion-icon>
             </div>
             <span className="link-text">Stationer</span>
+            </Link>
+        </li>
+        <li className="navbar-item flexbox-left">
+            <Link to="/parkings" className="navbar-item-inner flexbox-left">
+            <div className="navbar-item-inner-icon-wrapper flexbox">
+                <ion-icon name="scan-circle-outline"></ion-icon>
+            </div>
+            <span className="link-text">Parkeringar</span>
             </Link>
         </li>
         <li className="navbar-item flexbox-left">
