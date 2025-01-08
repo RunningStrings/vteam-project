@@ -277,7 +277,7 @@ class BikeBrain {
      * @return {boolean} - True if the rental is blocked, otherwise false.
      */
     isRentalBlocked() {
-        if (this.status === 'avaliable' && this.batteryLevel <= 20) {
+        if (this.status === 'available' && this.batteryLevel <= 20) {
             console.log(`Bike not available for rental due to low battery (${this.batteryLevel}%)`);
             return true;
         }
