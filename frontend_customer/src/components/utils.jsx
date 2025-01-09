@@ -1,5 +1,5 @@
 const apiKey = "";
-const baseURL = "http://localhost:5000";
+const baseURL = "http://localhost:5000/api/v1";
 
 function toast(message) {
    /* const toast = document.getElementsByClassName("toast")[0];

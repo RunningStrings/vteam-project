@@ -70,7 +70,7 @@ const Home = () => {
          />
       </div>
       <button className="full-button blue-button" type="submit">
-          Submit
+          Hyr cykel
         </button>
         </form>
         <ToastContainer 

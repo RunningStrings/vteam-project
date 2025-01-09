@@ -67,7 +67,10 @@ const Home = () => {
          />
       </div>
       <button className="full-button blue-button" type="submit">
-          Lämna tillbaka
+          Fri parkering
+        </button>
+        <button className="full-button blue-button" type="submit">
+          Ej fri parkering
         </button>
         </form>
         <ToastContainer 
