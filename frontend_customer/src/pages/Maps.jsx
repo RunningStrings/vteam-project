@@ -1,5 +1,5 @@
 /* global L */
-import { MapContainer, TileLayer, Marker, Popup, Polygon } from "react-leaflet";
+import { MapContainer, TileLayer, Marker, Popup, Polygon, Circle } from "react-leaflet";
 import { useState, useEffect } from 'react';
 import MarkerClusterGroup from "@changey/react-leaflet-markercluster";
 import L, { LatLng } from "leaflet";
@@ -172,12 +172,13 @@ for (let index = 0; index < cities.length; index++) {
       ))}
 
 {parkings.map((parking, index) => (
-        <Polygon
-        positions={parking.location.coordinates} //LatLng.wrap(
+        <Circle
+        center={parking.location.coordinates} //LatLng.wrap(
           key={index}
           color="red"
           fillColor="red"
           fill="true"
+          radius="10"
           >
           
           
@@ -185,7 +186,7 @@ for (let index = 0; index < cities.length; index++) {
         
          <br />
           </Popup>
-        </Polygon>
+        </Circle>
       //}
   
       ))}

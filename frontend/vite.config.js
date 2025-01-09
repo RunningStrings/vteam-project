@@ -6,11 +6,11 @@ export default defineConfig({
   plugins: [react()],
   server: {
     proxy: {
-      '/users': 'http://backend:5000',
-      '/bikes': 'http://backend:5000',
-      '/cities': 'http://backend:5000',
-      '/charging_stations': 'http://backend:5000',
-      '/parking_zones': 'http://backend:5000',
+      '/users': 'http://backend:5000/api/v1',
+      '/bikes': 'http://backend:5000/api/v1',
+      '/cities': 'http://backend:5000/api/v1',
+      '/charging_stations': 'http://backend:5000/api/v1',
+      '/parking_zones': 'http://backend:5000/api/v1',
     },
   },
 });
