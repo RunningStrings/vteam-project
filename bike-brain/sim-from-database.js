@@ -15,7 +15,7 @@ const loadBikesFromDatabase = async () => {
     try {
         // Fetch bikes in batches
         while (true) {
-            const response = await axios.get(API_URL, {
+            const response = await axios.get(`${API_URL}/bikes`, {
                 params: { offset, limit: BATCH_SIZE }
             });
 
@@ -50,6 +50,20 @@ const loadBikesFromDatabase = async () => {
     }
 };
 
+// Load users from database
+const loadUsersFromDatabase = async () => {
+    try {
+        const response = await axios.get(`${API_URL}/users`);
+
+        const users = response.data?.data || [];
+
+        return users.filter(user => user.role === 'customer');
+    } catch (error) {
+        console.error("Error loading users from database:", error);
+        process.exit(1);
+    }
+};
+
 const calcBatteryDepletion = (bike) => {
     let depletionRate = 0;
 
@@ -79,7 +93,14 @@ const calcBatteryDepletion = (bike) => {
     return Math.max(0, Math.min(100, newBatteryLevel));
 };
 
-const simulateBikeUpdates = (bikes) => {
+const simulateBikeUpdates = (bikes, customers) => {
+    if (customers.length === 0) {
+        console.error('The customers array is empty.');
+        return;
+    } else {
+        console.log(`There are ${customers.length} customers available for rentals.`);
+    }
+
     // Batch process bikes to (hopefully) improve performance
     for (let i = 0; i < bikes.length; i += BATCH_SIZE) {
         const batch = bikes.slice(i, i + BATCH_SIZE);
@@ -97,8 +118,12 @@ const simulateBikeUpdates = (bikes) => {
             bike.updateBattery(newBatteryLevel);
 
             if (Math.random() > 0.9 && (!bike.tripCurrent || !bike.tripCurrent.is_active)) {
-                bike.startRental(`customer${Math.floor(Math.random()) * 1000}`);
+                const customer = customers[Math.floor(Math.random() * customers.length)];
+                if (customer) {
+                    bike.startRental(customer._id);
+                }
             }
+
             if (Math.random() > 0.95 && bike.tripCurrent && bike.tripCurrent.is_active) {
                 bike.stopRental();
             }
@@ -130,8 +155,10 @@ const simulateBikeUpdates = (bikes) => {
 // Simulation runs until stopped with CTRL+c
 const runSimulation = async () => {
     const bikes = await loadBikesFromDatabase();
+    const customers = await loadUsersFromDatabase();
+    console.log("Loaded customers", customers.length, "customers");
 
-    const intervalId = setInterval(() => simulateBikeUpdates(bikes), 3000);
+    const intervalId = setInterval(() => simulateBikeUpdates(bikes, customers), 3000);
 
     process.on('SIGINT', () => {
         clearInterval(intervalId);
