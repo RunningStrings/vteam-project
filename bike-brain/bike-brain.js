@@ -25,7 +25,7 @@ class BikeBrain {
         this.localTripLog = [];
         this.tripCurrent = null;
 
-        this.socket = io('http://localhost:5001');
+        this.socket = io('http://localhost:5000');
 
         this.socket.on('connect', () => {
             console.log(`Bike ${this.id} connected to the server`);
