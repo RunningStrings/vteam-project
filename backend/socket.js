@@ -6,8 +6,11 @@ export const initializeSocket = (server) => {
             origin: "*",
             methods: ["GET", "POST"],
         },
+<<<<<<< HEAD
         allowEIO3: true,
         perMessageDeflate: false,
+=======
+>>>>>>> 1eb612b (Add cors to socket.io instance)
     });
 
     io.on('connection', (socket) => {
