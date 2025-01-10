@@ -37,6 +37,7 @@ class BikeBrain {
         this.tripCurrent = null;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
         this.updateInterval = null;
         this.previousLocation = null;
         this.previousSpeed = null;
@@ -45,6 +46,9 @@ class BikeBrain {
 =======
         this.socket = io('http://localhost:5001');
 >>>>>>> cbe8471 (Refactor handling of location and battery in BikeBrain class)
+=======
+        this.socket = io('http://localhost:5000');
+>>>>>>> 4fd4528 (Change Socket.IO port to 5000)
 
         this.socket.on('connect', () => {
             console.log(`Bike ${this.id} connected to the server`);
