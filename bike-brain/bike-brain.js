@@ -22,7 +22,7 @@ class BikeBrain {
         this.status = status; // available, in-use, charging, maintenance
         this.battery = 100;
         this.speed = 0;
-        this.tripLog = [];
+        this.localTripLog = [];
         this.tripCurrent = null;
 
         this.socket = io('http://localhost:5001');
@@ -180,6 +180,7 @@ class BikeBrain {
     startTrip(customerId) {
         const startTime = new Date();
         this.tripCurrent = {
+            tripId: `trip-${this.id}-${startTime.getTime()}`, // Unique, local trip ID base on bike and start time.
             customerId: customerId,
             bikeId: this.id,
             city_name: this.city_name,
@@ -187,7 +188,13 @@ class BikeBrain {
             startTime: startTime,
             is_active: true,
         };
-        // this.sendMessage('log-trip)
+        
+        this.sendMessage('log-trip', {
+            tripLog: this.tripCurrent,
+        });
+
+        console.log('Sending trip data to server:', this.tripCurrent);
+
         console.log(`Trip started for customer ${customerId} at ${startTime}`);
     }
 
@@ -197,25 +204,25 @@ class BikeBrain {
      */
     stopTrip() {
         const stopTime = new Date();
-        if (this.tripCurrent) {
+        if (this.tripCurrent && this.tripCurrent.is_active) {
             this.tripCurrent.stopLocation = this.location;
             this.tripCurrent.stopTime = stopTime;
             const duration = (stopTime - this.tripCurrent.startTime) / (1000 * 60); // Duration in minutes
             this.tripCurrent.duration = duration;
             this.tripCurrent.is_active = false;
 
-            this.tripLog.push(this.tripCurrent);
+            this.localTripLog.push(this.tripCurrent);
 
             // Limit local trip log to last 100 trips
-            if (this.tripLog.length > 100) {
-                this.tripLog.shift(); // Remove the oldest trip
+            if (this.localTripLog.length > 100) {
+                this.localTripLog.shift(); // Remove the oldest trip
             }
 
             console.log(`Trip ended for customer ${this.tripCurrent.customerId} at ${stopTime}`, this.tripCurrent.is_active);
 
             // Send only current trip to the server
             this.sendMessage('log-trip', {
-                tripLog: this.tripCurrent,
+                localTripLog: this.tripCurrent,
             });
         }
         this.tripCurrent = null;
