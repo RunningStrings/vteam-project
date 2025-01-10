@@ -32,7 +32,7 @@ const loadBikesFromDatabase = async () => {
             if (batch.length === 0) break;
 
             batch.forEach(doc => {
-                const bike = new BikeBrain(doc._id, doc.city_id, doc.location, doc.status);
+                const bike = new BikeBrain(doc._id, doc.id, doc.city_name, doc.location, doc.status);
                 bikes.push(bike);
             });
 
@@ -74,7 +74,7 @@ const calcBatteryDepletion = (bike) => {
 
     const randomFactor = Math.random() * 0.5;
 
-    const newBatteryLevel = bike.batteryLevel - depletionRate - speedFactor - randomFactor;
+    const newBatteryLevel = bike.battery - depletionRate - speedFactor - randomFactor;
 
     return Math.max(0, Math.min(100, newBatteryLevel));
 };
@@ -84,18 +84,22 @@ const simulateBikeUpdates = (bikes) => {
     for (let i = 0; i < bikes.length; i += BATCH_SIZE) {
         const batch = bikes.slice(i, i + BATCH_SIZE);
         batch.forEach((bike) => {
-            bike.updateLocation(
-                bike.location.lat + (Math.random() - 0.5) * 0.001,
-                bike.location.lon + (Math.random() - 0.5) * 0.001
-            );
-            bike.updateSpeed(Math.floor(Math.random() * 20));
+            if (bike.tripCurrent && bike.tripCurrent.is_active) {
+                const newLat = bike.location.coordinates[0] + (Math.random() - 0.5) * 0.001;
+                const newLon = bike.location.coordinates[1] + (Math.random() - 0.5) * 0.001;
+
+                bike.updateLocation({ lat: newLat, lon: newLon });
+
+                bike.updateSpeed(Math.floor(Math.random() * 20));
+            }
+
             const newBatteryLevel = calcBatteryDepletion(bike);
             bike.updateBattery(newBatteryLevel);
 
-            if (Math.random() > 0.9) {
+            if (Math.random() > 0.9 && (!bike.tripCurrent || !bike.tripCurrent.is_active)) {
                 bike.startRental(`customer${Math.floor(Math.random()) * 1000}`);
             }
-            if (Math.random() > 0.95) {
+            if (Math.random() > 0.95 && bike.tripCurrent && bike.tripCurrent.is_active) {
                 bike.stopRental();
             }
         });
@@ -103,7 +107,7 @@ const simulateBikeUpdates = (bikes) => {
         socket.emit('batch-update', batch.map(bike => bike.getBikeData()));
     }
 
-    const activeRentals = bikes.filter((bike) => bike.status === 'in-use').length;
+    const activeRentals = bikes.filter((bike) => bike.tripCurrent && bike.tripCurrent.is_active).length;
     console.log(`Active rentals: ${activeRentals}`);
 };
 
