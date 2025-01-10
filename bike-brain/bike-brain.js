@@ -338,7 +338,12 @@ class BikeBrain {
         const startTime = new Date();
 
         this.tripCurrent = {
+<<<<<<< HEAD
             // tripId: `trip-${this.id}-${startTime.getTime()}`, // Unique, local trip ID base on bike and start time.
+=======
+            tripId: `trip-${this.id}-${startTime.getTime()}`, // Unique, local trip ID base on bike and start time.
+            customerId: customerId,
+>>>>>>> 14c0af1 (Change BikeBrain tripLog to localTripLog to indicate local storage for each instance.)
             bikeId: this.id,
 <<<<<<< HEAD
             customerId: customerId,
@@ -358,6 +363,7 @@ class BikeBrain {
 >>>>>>> cbe8471 (Refactor handling of location and battery in BikeBrain class)
         };
         
+<<<<<<< HEAD
         // this.sendMessage('log-trip', {
         //     tripLog: this.tripCurrent,
         // });
@@ -403,6 +409,11 @@ class BikeBrain {
         }
 
         // await axios.post(`${API_URL}/trips`, { params: { limit: 1 } });
+=======
+        this.sendMessage('log-trip', {
+            tripLog: this.tripCurrent,
+        });
+>>>>>>> 14c0af1 (Change BikeBrain tripLog to localTripLog to indicate local storage for each instance.)
 
         console.log('Sending trip data to server:', this.tripCurrent);
 
@@ -418,8 +429,12 @@ class BikeBrain {
         console.log('Wake up babe, new trip ID just dropped:', this.tripCurrent.bikeId, this.tripCurrent.tripId);
         const stopTime = new Date();
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
         if (this.tripCurrent) {
+=======
+        if (this.tripCurrent && this.tripCurrent.is_active) {
+>>>>>>> 14c0af1 (Change BikeBrain tripLog to localTripLog to indicate local storage for each instance.)
             this.tripCurrent.stopLocation = this.location;
             this.tripCurrent.stopTime = stopTime;
             const duration = (stopTime - this.tripCurrent.startTime) / (1000 * 60); // Duration in minutes
@@ -427,6 +442,7 @@ class BikeBrain {
             this.tripCurrent.is_active = false;
 >>>>>>> cbe8471 (Refactor handling of location and battery in BikeBrain class)
 
+<<<<<<< HEAD
         if (this.tripCurrent && this.tripCurrent.is_active) {
             this.tripCurrent.stopLocation = this.location;
             this.tripCurrent.stopTime = stopTime;
@@ -444,6 +460,8 @@ class BikeBrain {
             //     this.tripCurrent.stopValidParking = false;
             // }
 
+=======
+>>>>>>> 14c0af1 (Change BikeBrain tripLog to localTripLog to indicate local storage for each instance.)
             this.localTripLog.push(this.tripCurrent);
 
             // Limit local trip log to last 100 trips
@@ -453,6 +471,7 @@ class BikeBrain {
 
             console.log(`Trip ended for customer ${this.tripCurrent.customerId} at ${stopTime}`, this.tripCurrent.is_active);
 
+<<<<<<< HEAD
             const tripId = this.tripCurrent.tripId;
 
             if (!tripId) {
@@ -487,6 +506,12 @@ class BikeBrain {
             // this.sendMessage('log-trip', {
             //     tripLog: this.tripCurrent,
             // });
+=======
+            // Send only current trip to the server
+            this.sendMessage('log-trip', {
+                localTripLog: this.tripCurrent,
+            });
+>>>>>>> 14c0af1 (Change BikeBrain tripLog to localTripLog to indicate local storage for each instance.)
         }
         this.tripCurrent = null;
     }
