@@ -2,7 +2,7 @@ import axios from "axios";
 import BikeBrain from "./bike-brain.js";
 import io from 'socket.io-client';
 
-const socket = io('http://localhost:5001');
+const socket = io('http://localhost:5000');
 
 const API_URL = 'http://localhost:5000/api/v1';
 
@@ -23,11 +23,6 @@ const loadBikesFromDatabase = async () => {
 
             const batch = response.data?.data?.result;
             console.log(batch);
-
-            if (!Array.isArray(batch)) {
-                console.error('Expected an array in response.data.result, but got:', batch);
-                break;  // Exit the loop if data isn't as expected
-            }
 
             if (batch.length === 0) break;
 
@@ -135,22 +130,6 @@ const simulateBikeUpdates = (bikes, customers) => {
     const activeRentals = bikes.filter((bike) => bike.tripCurrent && bike.tripCurrent.is_active).length;
     console.log(`Active rentals: ${activeRentals}`);
 };
-
-// // Simulation runs for 30 seconds
-// const runSimulation = async () => {
-//     const bikes = await loadBikesFromDatabase();
-
-//     const intervalId = setInterval(() => simulateBikeUpdates(bikes), 1000);
-
-//     setTimeout(() => {
-//         clearInterval(intervalId);
-//         console.log('Simulation ended.');
-
-//         bikes.slice(0, 5).forEach((bike) => console.log(bike.id, bike.getBikeData()));
-
-//         process.exit(0);
-//     }, 30000);
-// };
 
 // Simulation runs until stopped with CTRL+c
 const runSimulation = async () => {
