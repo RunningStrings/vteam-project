@@ -50,6 +50,7 @@ app.get('/docs', (req, res) => {
     res.redirect("https://documenter.getpostman.com/view/40462903/2sAYQdj9je");
 });
 
+<<<<<<< HEAD
 // app.get('/github/oauth2/callback', (req, res) => {
     //     res.send('Hello from the Backend!');
     // });
@@ -127,4 +128,10 @@ app.use(errorMiddleware);
 // Updated to use the same port and server instance for both server and Socket.IO.
 server.listen(PORT, () => {
     console.log(`Server and Socket.IO are running on port ${PORT}`);
+=======
+// Using separate port to make it easier to see bike-brain communication.
+// Can be removed when not needed (socket runs on the regular backend port).
+server.listen(5001, () => {
+    console.log('Socket.IO server is running on http://localhost:5001');
+>>>>>>> a9fc965 (Update backend/index.js to align with most recent version.)
 });
