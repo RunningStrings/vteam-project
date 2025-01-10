@@ -6,4 +6,4 @@ COPY . .
 
 RUN npm install
 
-CMD ["node", "sim-multi.js"]
+CMD ["node", "sim-from-database.js"]
