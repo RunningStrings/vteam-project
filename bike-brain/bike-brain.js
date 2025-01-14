@@ -25,7 +25,7 @@ class BikeBrain {
         this.localTripLog = [];
         this.tripCurrent = null;
 
-        this.socket = io('http://localhost:5000');
+        this.socket = io('http://backend:5000');
 
         this.socket.on('connect', () => {
             console.log(`Bike ${this.id} connected to the server`);
@@ -65,7 +65,7 @@ class BikeBrain {
      */
     sendMessage(event, data) {
         this.socket.emit(event, {
-            bikeId: this.id,
+            id: this.id,
             ...data,
         });
     }
@@ -103,7 +103,6 @@ class BikeBrain {
 
         // Send the updated location to the server
         this.sendMessage('update-location', {
-            id: this.id,
             location: this.location,
         });
     }
@@ -149,11 +148,13 @@ class BikeBrain {
      */
     handleBatteryWarnings() {
         if (this.battery < 20) {
+            if (this.status === 'maintenance') return;
+
             if (this.status === 'in-use') {
                 if (this.battery <= 10) {
-                    console.warn(`Bike ${this.id} has low battery (${this.battery}%)`);
+                    console.log(`Bike ${this.id} has low battery (${this.battery}%)`);
                 } else if (this.battery < 20) {
-                    console.warn(`Bike ${this.id} has low battery (${this.battery})`);
+                    console.log(`Bike ${this.id} has low battery (${this.battery})`);
                 }
 
                 // Set status to 'maintenance' when battery is drained
@@ -161,14 +162,12 @@ class BikeBrain {
                     this.updateStatus('maintenance');
                     console.log(`Bike ${this.id} in need of maintenance due to 0% battery`);
                 }
-            } else {
                 // If bike is not in use, set status to 'maintenance' if battery level
                 // is 20% or lower
-                if (this.battery < 20) {
-                    console.warn(`Bike ${this.id} has low battery (${this.battery}%)`);
-                    this.updateStatus('maintenance');
-                    console.log(`Bike ${this.id} status changed to 'maintenance' due to low battery`)
-                }
+            } else if (this.battery < 20) {
+                console.log(`Bike ${this.id} has low battery (${this.battery}%)`);
+                this.updateStatus('maintenance');
+                console.log(`Bike ${this.id} status changed to 'maintenance' due to low battery`)
             }
         }
     }
@@ -179,6 +178,7 @@ class BikeBrain {
      */
     startTrip(customerId) {
         const startTime = new Date();
+
         this.tripCurrent = {
             tripId: `trip-${this.id}-${startTime.getTime()}`, // Unique, local trip ID base on bike and start time.
             customerId: customerId,
@@ -187,6 +187,8 @@ class BikeBrain {
             startLocation: this.location,
             startTime: startTime,
             is_active: true,
+            startValidParking: Math.random() > 0.5,
+            stopValidParking: null,
         };
         
         this.sendMessage('log-trip', {
@@ -211,6 +213,14 @@ class BikeBrain {
             this.tripCurrent.duration = duration;
             this.tripCurrent.is_active = false;
 
+            this.tripCurrent.stopValidParking = Math.random() > 0.5;
+
+            // // Verify that stopValidParking is set via the update method.
+            // // Default to 'false'.
+            // if (typeof this.tripCurrent.stopValidParking !== 'boolean') {
+            //     this.tripCurrent.stopValidParking = false;
+            // }
+
             this.localTripLog.push(this.tripCurrent);
 
             // Limit local trip log to last 100 trips
@@ -226,6 +236,21 @@ class BikeBrain {
             });
         }
         this.tripCurrent = null;
+    }
+
+    /**
+     * Updates the validity of parking when the current trip has ended.
+     * @param {boolean} isValid - Whether the stop parking is valid.
+     */
+    updateStopValidParking(isValid) {
+        if (!this.tripCurrent || this.tripCurrent.is_active) {
+            console.error("Cannot update stop parking validity: no completed trip found.");
+            return;
+        }
+
+        this.tripCurrent.stopValidParking = isValid;
+
+        console.log(`Stop parking validity updated to ${isValid} for trip ${this.tripCurrent.tripId}`)
     }
 
     /**
