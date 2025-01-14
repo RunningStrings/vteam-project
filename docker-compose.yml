@@ -84,6 +84,19 @@ services:
         networks:
             - app-network
 
+    simulation:
+        build:
+            context: ./bike-brain
+            dockerfile: Dockerfile
+        networks:
+            - app-network
+        depends_on:
+            - backend
+        stdin_open: true
+        tty: true
+        command: /bin/sh
+        # command: node sim-from-database.js
+
 networks:
     app-network:
         driver: bridge
