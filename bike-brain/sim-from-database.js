@@ -1,12 +1,47 @@
+import readline from "readline/promises";
+import { stdin as input, stdout as output } from "process";
 import axios from "axios";
 import BikeBrain from "./bike-brain.js";
 import io from 'socket.io-client';
+import dotenv from 'dotenv';
 
-const socket = io('http://localhost:5000');
+const socket = io('http://backend:5000');
 
-const API_URL = 'http://localhost:5000/api/v1';
+dotenv.config();
+
+const API_URL = 'http://backend:5000/api/v1';
 
 const BATCH_SIZE = 200;
+
+const MIN_TRIP_DURATION = 1000;
+
+const rl = readline.createInterface({ input, output });
+
+// const startId = parseInt(process.env.BIKE_ID_START, 10);
+// const endId = parseInt(process.env.BIKE_ID_EMD, 10);
+
+// if (!startId || !endId) {
+//     console.error("Error: BIKE_START_ID and BIKE_END_ID env variables are required.");
+//     process.exit(1);
+// }
+
+// console.log(`Processing bikes from ${startId} to ${endId}`);
+
+const waitForBackend = async () => {
+    let retries = 5;
+    while (retries > 0) {
+        try {
+            await axios.get(`${API_URL}/bikes`, { params: { limit: 1 } });
+            console.log("Backend is ready.");
+            return;
+        } catch {
+            console.log("Waiting for backend...");
+            retries--;
+            await new Promise((res) => setTimeout(res, 5000));
+        }
+    }
+    throw new Error("Backend not reachable after multiple attempts.");
+};
 
 const loadBikesFromDatabase = async () => {
     const bikes = [];
@@ -24,7 +59,12 @@ const loadBikesFromDatabase = async () => {
             const batch = response.data?.data?.result;
             console.log(batch);
 
-            if (batch.length === 0) break;
+            if (!batch || batch.length === 0) break;
+
+            // // Filter bikes to match the range specified by the env variables
+            // const filteredBatch = batch.filter(bike =>
+            //     bike.id >= startId && bike.id <= endId
+            // );
 
             batch.forEach(doc => {
                 const bike = new BikeBrain(doc._id, doc.id, doc.city_name, doc.location, doc.status);
@@ -64,24 +104,24 @@ const calcBatteryDepletion = (bike) => {
 
     switch (bike.status) {
         case 'in-use':
-            depletionRate = 2 + Math.random() * 3;
+            depletionRate = 1 + Math.random() * 1.5;
             break;
         case 'available':
-            depletionRate = 0.5 + Math.random() * 1;
+            depletionRate = 0.2 + Math.random() * 0.5;
             break;
         case 'charging':
-            depletionRate = -3 - Math.random() * 2;
+            depletionRate = -5 - Math.random() * 2;
             break;
         case 'maintenance':
             depletionRate = 0;
             break;
         default:
-            depletionRate = 0.2;
+            depletionRate = 0.1;
     }
 
-    const speedFactor = bike.speed * 0.05;
+    const speedFactor = bike.speed > 0 ? bike.speed * 0.02 : 0;
 
-    const randomFactor = Math.random() * 0.5;
+    const randomFactor = Math.random() * 0.2;
 
     const newBatteryLevel = bike.battery - depletionRate - speedFactor - randomFactor;
 
@@ -119,7 +159,12 @@ const simulateBikeUpdates = (bikes, customers) => {
                 }
             }
 
-            if (Math.random() > 0.95 && bike.tripCurrent && bike.tripCurrent.is_active) {
+            if (
+                Math.random() > 0.95 &&
+                bike.tripCurrent && 
+                bike.tripCurrent.is_active &&
+                Date.now() - bike.tripCurrent.startRental >= MIN_TRIP_DURATION
+            ) {
                 bike.stopRental();
             }
         });
@@ -131,19 +176,37 @@ const simulateBikeUpdates = (bikes, customers) => {
     console.log(`Active rentals: ${activeRentals}`);
 };
 
-// Simulation runs until stopped with CTRL+c
-const runSimulation = async () => {
-    const bikes = await loadBikesFromDatabase();
-    const customers = await loadUsersFromDatabase();
-    console.log("Loaded customers", customers.length, "customers");
+// Simulation runs until stopped with ctrl + c.
+// Trying to implement better stop commands, work in progress.
+const startSimulation = async () => {
+    try {
+        await waitForBackend();
 
-    const intervalId = setInterval(() => simulateBikeUpdates(bikes, customers), 3000);
+        const bikes = await loadBikesFromDatabase();
+        const customers = await loadUsersFromDatabase();
 
-    process.on('SIGINT', () => {
-        clearInterval(intervalId);
-        console.log('Simulation ended.');
-        process.exit(0);
-    });
+        console.log("Simulation started. Type ctrl + c to stop.");
+
+        let intervalId = setInterval(() => simulateBikeUpdates(bikes, customers), 3000);
+
+        while (true) {
+            const command = await rl.question("simulation> ");
+            switch (command.trim().toLowerCase()) {
+                case "exit":
+                case "quit":
+                case "q":
+                    clearInterval(intervalId);
+                    console.log("Simulation ended.");
+                    rl.close();
+                    process.exit(0);
+                default:
+                    console.log(`Unknown command: ${command}`);
+            }
+        }
+    } catch (error) {
+        console.error("Failed to start the simulation:", error);
+        process.exit(1);
+    }
 };
 
-runSimulation();
+startSimulation();
