@@ -6,6 +6,7 @@ import { ObjectId } from 'mongodb';
 import { createError } from './utils/createError.js'
 
 const bikeModel = {
+<<<<<<< HEAD
     fetchAllBikes: async function fetchAllBikes(limit, offset, city_name) {
         const db = await database.getDb();
 
@@ -24,8 +25,24 @@ const bikeModel = {
                 .skip(offset || 0)
                 .limit(limit || 0)
                 .toArray();
+=======
+    fetchAllBikes: async function fetchAllBikes(limit, offset) {
+        const db = await database.getDb();
 
-            return result;
+        try {
+            // Get the total number of bikes in the collection
+            const totalCount = await db.collectionBikes.countDocuments();
+>>>>>>> ba4fbcf (Add implementation of offset and limit to allow for basic batch handling when loading bikes.)
+
+            // Add .skip(offset) and .limit(limit) to handle batch loading of bikes
+            const result = await db.collectionBikes
+                .find()
+                .skip(offset || 0)   // Skip records based on offset, default to 0
+                .limit(limit || totalCount)   // Limit records based on limit, default to totalCount
+                .toArray();
+
+            // Return the total number of bikes for pagination
+            return { result, totalCount };
         } finally {
             await db.client.close();
         }
