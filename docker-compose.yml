@@ -93,8 +93,11 @@ services:
         build:
             context: ./bike-brain
             dockerfile: Dockerfile
+<<<<<<< HEAD
         environment:
             - BIKE_TOKEN=${BIKE_TOKEN}
+=======
+>>>>>>> 9149a7a (Add simulation service)
         networks:
             - app-network
         depends_on:
