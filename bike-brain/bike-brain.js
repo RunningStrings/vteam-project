@@ -38,6 +38,7 @@ class BikeBrain {
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         this.updateInterval = null;
         this.previousLocation = null;
         this.previousSpeed = null;
@@ -49,6 +50,9 @@ class BikeBrain {
 =======
         this.socket = io('http://localhost:5000');
 >>>>>>> 4fd4528 (Change Socket.IO port to 5000)
+=======
+        this.socket = io('http://backend:5000');
+>>>>>>> fbea3b2 (Refactoring and and parking validity)
 
         this.socket.on('connect', () => {
             console.log(`Bike ${this.id} connected to the server`);
@@ -243,7 +247,6 @@ class BikeBrain {
 
         // Send the updated location to the server
         this.sendMessage('update-location', {
-            id: this.id,
             location: this.location,
         });
 >>>>>>> cbe8471 (Refactor handling of location and battery in BikeBrain class)
@@ -293,6 +296,7 @@ class BikeBrain {
     handleBatteryWarnings() {
         if (this.battery < 20) {
 <<<<<<< HEAD
+<<<<<<< HEAD
             if (this.status === 'maintenance') return;
 
             if (this.status === 'in-use') {
@@ -301,12 +305,20 @@ class BikeBrain {
                 } else if (this.battery < 20) {
                     console.log(`Bike ${this.id} has low battery (${this.battery})`);
 =======
+=======
+            if (this.status === 'maintenance') return;
+
+>>>>>>> fbea3b2 (Refactoring and and parking validity)
             if (this.status === 'in-use') {
                 if (this.battery <= 10) {
-                    console.warn(`Bike ${this.id} has low battery (${this.battery}%)`);
+                    console.log(`Bike ${this.id} has low battery (${this.battery}%)`);
                 } else if (this.battery < 20) {
+<<<<<<< HEAD
                     console.warn(`Bike ${this.id} has low battery (${this.battery})`);
 >>>>>>> cbe8471 (Refactor handling of location and battery in BikeBrain class)
+=======
+                    console.log(`Bike ${this.id} has low battery (${this.battery})`);
+>>>>>>> fbea3b2 (Refactoring and and parking validity)
                 }
 
                 // Set status to 'maintenance' when battery is drained
@@ -317,10 +329,14 @@ class BikeBrain {
                 // If bike is not in use, set status to 'maintenance' if battery level
                 // is 20% or lower
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> fbea3b2 (Refactoring and and parking validity)
             } else if (this.battery < 20) {
                 console.log(`Bike ${this.id} has low battery (${this.battery}%)`);
                 this.updateStatus('maintenance');
                 console.log(`Bike ${this.id} status changed to 'maintenance' due to low battery`)
+<<<<<<< HEAD
 =======
                 if (this.battery < 20) {
                     console.warn(`Bike ${this.id} has low battery (${this.battery}%)`);
@@ -328,6 +344,8 @@ class BikeBrain {
                     console.log(`Bike ${this.id} status changed to 'maintenance' due to low battery`)
                 }
 >>>>>>> cbe8471 (Refactor handling of location and battery in BikeBrain class)
+=======
+>>>>>>> fbea3b2 (Refactoring and and parking validity)
             }
         }
     }
@@ -364,7 +382,12 @@ class BikeBrain {
             startLocation: this.location,
             startTime: startTime,
             is_active: true,
+<<<<<<< HEAD
 >>>>>>> cbe8471 (Refactor handling of location and battery in BikeBrain class)
+=======
+            startValidParking: Math.random() > 0.5,
+            stopValidParking: null,
+>>>>>>> fbea3b2 (Refactoring and and parking validity)
         };
         
 <<<<<<< HEAD
@@ -447,6 +470,7 @@ class BikeBrain {
 >>>>>>> cbe8471 (Refactor handling of location and battery in BikeBrain class)
 
 <<<<<<< HEAD
+<<<<<<< HEAD
         if (this.tripCurrent && this.tripCurrent.is_active) {
             this.tripCurrent.stopLocation = this.location;
             this.tripCurrent.stopTime = stopTime;
@@ -456,6 +480,8 @@ class BikeBrain {
 
             // This line is replaced with the commented out code below when
             // frontend implements updateStopValidParking.
+=======
+>>>>>>> fbea3b2 (Refactoring and and parking validity)
             this.tripCurrent.stopValidParking = Math.random() > 0.5;
 
             // // Verify that stopValidParking is set via the update method.
@@ -464,8 +490,11 @@ class BikeBrain {
             //     this.tripCurrent.stopValidParking = false;
             // }
 
+<<<<<<< HEAD
 =======
 >>>>>>> 14c0af1 (Change BikeBrain tripLog to localTripLog to indicate local storage for each instance.)
+=======
+>>>>>>> fbea3b2 (Refactoring and and parking validity)
             this.localTripLog.push(this.tripCurrent);
 
             // Limit local trip log to last 100 trips
