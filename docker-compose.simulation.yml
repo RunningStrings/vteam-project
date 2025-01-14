@@ -7,8 +7,14 @@ services:
       - app-network
     environment:
       - BIKE_COUNT=200
+      # # Start and end IDs will be injected dynamically via the script
+      # - BIKE_ID_START=${BIKE_ID_START}
+      # - BIKE_ID_END=${BIKE_ID_END}
     depends_on:
       - backend
+    # # Run 15 containers without using the script
+    # deploy:
+    #   replicas: 15
     scale: 15
 
 networks:

@@ -44,43 +44,23 @@ const waitForBackend = async () => {
 };
 
 const loadBikesFromDatabase = async () => {
-    const bikes = [];
-    let offset = 0; // Used to track how many records have been processed
-
     try {
-        // Fetch bikes in batches
-        while (true) {
-            const response = await axios.get(`${API_URL}/bikes`, {
-                params: { offset, limit: BATCH_SIZE }
-            });
+        const response = await axios.get(`${API_URL}/bikes`, {
+            params: { limit: 4 }
+        });
 
-            console.log('API Response:', JSON.stringify(response.data, null, 2));
+        const bikeData = response.data?.data?.result?.[3];
 
-            const batch = response.data?.data?.result;
-            console.log(batch);
-
-            if (!batch || batch.length === 0) break;
-
-            // // Filter bikes to match the range specified by the env variables
-            // const filteredBatch = batch.filter(bike =>
-            //     bike.id >= startId && bike.id <= endId
-            // );
-
-            batch.forEach(doc => {
-                const bike = new BikeBrain(doc._id, doc.id, doc.city_name, doc.location, doc.status);
-                bikes.push(bike);
-            });
-
-            // Log bike creation progress
-            offset += BATCH_SIZE; // Increment for the next batch
-            console.log(`${bikes.length} bikes have been loaded`);
+        if (!bikeData) {
+            console.error("No bikes found in the database.");
+            process.exit(1);
         }
 
-        // When all bikes have been loaded
-        console.log(`${bikes.length} bikes have been loaded from the database.`);
-        return bikes;
+        const bike = new BikeBrain(bikeData._id, bikeData.id, bikeData.city_name, bikeData.location, bikeData.status);
+        console.log("Loaded single bike:", bike);
+        return bike;
     } catch (error) {
-        console.error("Error loading bikes from database:", error);
+        console.error("Error loading bike from database:", error);
         process.exit(1);
     }
 };
@@ -128,66 +108,56 @@ const calcBatteryDepletion = (bike) => {
     return Math.max(0, Math.min(100, newBatteryLevel));
 };
 
-const simulateBikeUpdates = (bikes, customers) => {
+const simulateBikeUpdates = (bike, customers) => {
     if (customers.length === 0) {
-        console.error('The customers array is empty.');
+        console.error("The customers array is empty.");
         return;
-    } else {
-        console.log(`There are ${customers.length} customers available for rentals.`);
     }
 
-    // Batch process bikes to (hopefully) improve performance
-    for (let i = 0; i < bikes.length; i += BATCH_SIZE) {
-        const batch = bikes.slice(i, i + BATCH_SIZE);
-        batch.forEach((bike) => {
-            if (bike.tripCurrent && bike.tripCurrent.is_active) {
-                const newLat = bike.location.coordinates[0] + (Math.random() - 0.5) * 0.001;
-                const newLon = bike.location.coordinates[1] + (Math.random() - 0.5) * 0.001;
+    if (bike.tripCurrent && bike.tripCurrent.is_active) {
+        const newLat = bike.location.coordinates[0] + (Math.random() - 0.5) * 0.001;
+        const newLon = bike.location.coordinates[1] + (Math.random() - 0.5) * 0.001;
+        bike.updateLocation({ lat: newLat, lon: newLon });
+        bike.updateSpeed(Math.floor(Math.random() * 20));
+    }
 
-                bike.updateLocation({ lat: newLat, lon: newLon });
+    const newBatteryLevel = calcBatteryDepletion(bike);
+    bike.updateBattery(newBatteryLevel);
 
-                bike.updateSpeed(Math.floor(Math.random() * 20));
-            }
+    // Start a rental if no active rental exists
+    if (!bike.tripCurrent || !bike.tripCurrent.is_active) {
+        const customer = customers[Math.floor(Math.random() * customers.length)];
+        if (customer) {
+            bike.startRental(customer._id);
 
-            const newBatteryLevel = calcBatteryDepletion(bike);
-            bike.updateBattery(newBatteryLevel);
-
-            if (Math.random() > 0.9 && (!bike.tripCurrent || !bike.tripCurrent.is_active)) {
-                const customer = customers[Math.floor(Math.random() * customers.length)];
-                if (customer) {
-                    bike.startRental(customer._id);
+            // Schedule rental to stop after 30 seconds
+            setTimeout(() => {
+                if (bike.tripCurrent && bike.tripCurrent.is_active) {
+                    console.log("Stopping rental automatically after 30 seconds...");
+                    bike.stopRental();
+                    console.log("Exiting simulation...");
+                    process.exit(0);
                 }
-            }
-
-            if (
-                Math.random() > 0.95 &&
-                bike.tripCurrent && 
-                bike.tripCurrent.is_active &&
-                Date.now() - bike.tripCurrent.startRental >= MIN_TRIP_DURATION
-            ) {
-                bike.stopRental();
-            }
-        });
-
-        socket.emit('batch-update', batch.map(bike => bike.getBikeData()));
+            }, 30000);
+        }
     }
 
-    const activeRentals = bikes.filter((bike) => bike.tripCurrent && bike.tripCurrent.is_active).length;
-    console.log(`Active rentals: ${activeRentals}`);
+    socket.emit("bike-update", bike.getBikeData());
+    console.log(`Updated bike data:`, bike.getBikeData());
 };
 
-// Simulation runs until stopped with ctrl + c.
-// Trying to implement better stop commands, work in progress.
+
+// Simulation runs until stopped with 'exit', 'quit', or 'q'
 const startSimulation = async () => {
     try {
         await waitForBackend();
 
-        const bikes = await loadBikesFromDatabase();
+        const bike = await loadBikesFromDatabase();
         const customers = await loadUsersFromDatabase();
 
-        console.log("Simulation started. Type ctrl + c to stop.");
+        console.log("Simulation started for a single bike. Type 'exit', 'quit', or 'q' to stop.");
 
-        let intervalId = setInterval(() => simulateBikeUpdates(bikes, customers), 3000);
+        let intervalId = setInterval(() => simulateBikeUpdates(bike, customers), 3000);
 
         while (true) {
             const command = await rl.question("simulation> ");
