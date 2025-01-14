@@ -471,6 +471,7 @@ class BikeBrain {
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         if (this.tripCurrent && this.tripCurrent.is_active) {
             this.tripCurrent.stopLocation = this.location;
             this.tripCurrent.stopTime = stopTime;
@@ -482,6 +483,10 @@ class BikeBrain {
             // frontend implements updateStopValidParking.
 =======
 >>>>>>> fbea3b2 (Refactoring and and parking validity)
+=======
+            // This line is replaced with the commented out code below when
+            // frontend implements updateStopValidParking.
+>>>>>>> 2520d19 (Add comment about parking to stopTrip)
             this.tripCurrent.stopValidParking = Math.random() > 0.5;
 
             // // Verify that stopValidParking is set via the update method.
