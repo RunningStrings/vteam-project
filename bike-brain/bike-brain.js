@@ -213,6 +213,8 @@ class BikeBrain {
             this.tripCurrent.duration = duration;
             this.tripCurrent.is_active = false;
 
+            // This line is replaced with the commented out code below when
+            // frontend implements updateStopValidParking.
             this.tripCurrent.stopValidParking = Math.random() > 0.5;
 
             // // Verify that stopValidParking is set via the update method.
