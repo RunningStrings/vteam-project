@@ -15,4 +15,10 @@ export default defineConfig({
       '/parking_zones': 'http://backend:5000/api/v1',
     },
   },
+  test: {
+    globals: true,
+    environment: "jsdom",
+    setupFiles: "./src/test/setup.js",
+    include: ["**/*.{test,spec}.?(c|m)[jt]s?(x)"],
+  },
 });
