@@ -9,15 +9,27 @@ const router = express.Router();
 
 router
     .route("/")
+<<<<<<< HEAD
     .get(tokenMiddleware, async (req, res, next) => {
         const { limit, offset, city_name } = req.query;
+=======
+    .get(async (req, res, next) => {
+        // Add limit and offset to handle batch loading of bikes
+        const { limit, offset } = req.query; // Extract limit and offset from req.query
+>>>>>>> 3eeb12d (Add limit and offset for basic batch handling when loading bikes.)
         try {
             const parsedLimit = limit ? parseInt(limit, 10) : undefined;
             const parsedOffset = offset ? parseInt(offset, 10) : undefined;
 
+<<<<<<< HEAD
             const result = await bikeModel.fetchAllBikes(parsedLimit, parsedOffset, city_name);
+=======
+            // Pass parsed values limit and offset to fetchAllBikes
+            const result = await bikeModel.fetchAllBikes(parsedLimit, parsedOffset);
+>>>>>>> 3eeb12d (Add limit and offset for basic batch handling when loading bikes.)
             res.status(200).json({
-                data: result
+                data: result,
+
             });
         } catch (error) {
             console.error('Error get bikes:', error);
