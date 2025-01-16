@@ -84,10 +84,10 @@ const calcBatteryDepletion = (bike) => {
 
     switch (bike.status) {
         case 'in-use':
-            depletionRate = 1 + Math.random() * 1.5;
+            depletionRate = 1 + Math.random() * 1.1;
             break;
         case 'available':
-            depletionRate = 0.2 + Math.random() * 0.5;
+            depletionRate = 0.1 + Math.random() * 0.5;
             break;
         case 'charging':
             depletionRate = -5 - Math.random() * 2;
@@ -96,12 +96,12 @@ const calcBatteryDepletion = (bike) => {
             depletionRate = 0;
             break;
         default:
-            depletionRate = 0.1;
+            depletionRate = 0.01;
     }
 
-    const speedFactor = bike.speed > 0 ? bike.speed * 0.02 : 0;
+    const speedFactor = bike.speed > 0 ? bike.speed * 0.01 : 0;
 
-    const randomFactor = Math.random() * 0.2;
+    const randomFactor = Math.random() * 0.1;
 
     const newBatteryLevel = bike.battery - depletionRate - speedFactor - randomFactor;
 
@@ -112,6 +112,11 @@ const simulateBikeUpdates = (bike, customers) => {
     if (customers.length === 0) {
         console.error("The customers array is empty.");
         return;
+    }
+
+    if (bike.status !== 'available') {
+        console.log(`Bike status is '${bike.status}. Making it available...`);
+        bike.controlBike('make-available');
     }
 
     if (bike.tripCurrent && bike.tripCurrent.is_active) {
