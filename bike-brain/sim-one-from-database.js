@@ -58,6 +58,10 @@ const loadBikesFromDatabase = async () => {
 
         const bike = new BikeBrain(bikeData._id, bikeData.id, bikeData.city_name, bikeData.location, bikeData.status);
         console.log("Loaded single bike:", bike);
+        if (bike.status !== 'available') {
+            console.log(`Bike status is '${bike.status}. Making it available...`);
+            bike.controlBike('make-available');
+        }
         return bike;
     } catch (error) {
         console.error("Error loading bike from database:", error);
@@ -112,11 +116,6 @@ const simulateBikeUpdates = (bike, customers) => {
     if (customers.length === 0) {
         console.error("The customers array is empty.");
         return;
-    }
-
-    if (bike.status !== 'available') {
-        console.log(`Bike status is '${bike.status}. Making it available...`);
-        bike.controlBike('make-available');
     }
 
     if (bike.tripCurrent && bike.tripCurrent.is_active) {
