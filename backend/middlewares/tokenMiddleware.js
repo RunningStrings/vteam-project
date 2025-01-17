@@ -2,50 +2,45 @@
 // dotenv.config();
 
 // import jwt from 'jsonwebtoken';
+import { createError } from '../models/utils/createError.js'
+import tokenService from '../services/tokenService.js'
 
 // const secret = process.env.JWT_SECRET;
 
-// const tokenMiddleware = (req, res, next) => {
-//     const token = req.headers['x-access-token'];
+const tokenMiddleware = (req, res, next) => {
+    const token = req.headers['x-access-token'];
 
-//     if (!token) {
-//         return res.status(401).json({ message: "Unauthorized. No token found."});
-//     }
+    if (!token) {
+        createError("unauthorized. No token found.", 401)
+    }
 
-//     jwt.verify(token, secret, function(error, decoded) {
-//         if (error) {
-//             return res.status(400).json({ message: "Bad Request. Invalid token."});
-//         }
-//         req.user = {};
+    try {
+        const userToken = tokenService.verifyToken(token);
+        req.token = userToken;
+        next();
+    } catch (error) {
+        createError("unauthorized. Invalid token.", 401);
+    };
+};
 
-//         req.user.email = decoded.email;
+const adminTokenMiddleware = (req, res, next) => {
+    const token = req.headers['x-access-token'];
 
-//         next();
-//     });
-// };
+    if (!token) {
+        createError("unauthorized. No token found.", 401)
+    }
 
-// export default tokenMiddleware;
+    try {
+        const adminToken = tokenService.verifyToken(token);
+        req.token = adminToken;
+    } catch (error) {
+        createError("unauthorized. Invalid token.", 401);
+    };
 
+    if (req.token.role !== 'admin') {
+        createError("you need admin privileges for this route", 403);
+    }
+    next();
+};
 
-
-
-
-// import { verifyJWT } from '../services/tokenService.js';
-
-// const authenticateJWT = (req, res, next) => {
-//   const token = req.header('Authorization')?.split(' ')[1]; // Expecting "Bearer <token>"
-
-//   if (!token) {
-//     return res.status(403).json({ message: 'No token provided' });
-//   }
-
-//   try {
-//     const user = verifyJWT(token);  // This will verify the token
-//     req.user = user;
-//     next();
-//   } catch (error) {
-//     res.status(403).json({ message: 'Invalid or expired token' });
-//   }
-// };
-
-// export default authenticateJWT;
+export { tokenMiddleware, adminTokenMiddleware };
