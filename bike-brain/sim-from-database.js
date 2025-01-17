@@ -13,7 +13,7 @@ const API_URL = 'http://backend:5000/api/v1';
 
 const BATCH_SIZE = 200;
 
-const MIN_TRIP_DURATION = 1000;
+const MIN_TRIP_DURATION = 10000;
 
 const rl = readline.createInterface({ input, output });
 
@@ -99,6 +99,30 @@ const loadUsersFromDatabase = async () => {
     }
 };
 
+const simulateBikeMovement = (bike, startLocation, endLocation, startTime, endTime, steps) => {
+    console.log(`startLocation: ${JSON.stringify(startLocation)}`);
+    console.log(`endLocation: ${JSON.stringify(endLocation)}`);
+
+    const totalDuration = endTime - startTime;
+    const timeStep = totalDuration / steps;
+    const distanceStepX = (endLocation.lat - startLocation.lat) / steps;
+    const distanceStepY = (endLocation.lon - startLocation.lon) / steps;
+
+    for (let i = 0; i <= steps; i ++) {
+        const currentTime = new Date(startTime.getTime() + i * timeStep);
+        const currentLocation = {
+            lat: startLocation.lat + i * distanceStepX,
+            lon: startLocation.lon + i * distanceStepY
+        };
+
+        const formattedLocation = [currentLocation.lat, currentLocation.lon];
+
+        console.log("Hey-diddley-ho", formattedLocation);
+        bike.updateLocation([currentLocation.lat, currentLocation.lon]);
+        console.log(`Time: ${currentTime}, Location: (${currentLocation.x}, ${currentLocation.y})`);
+    }
+};
+
 const calcBatteryDepletion = (bike) => {
     let depletionRate = 0;
 
@@ -141,16 +165,34 @@ const simulateBikeUpdates = (bikes, customers) => {
         const batch = bikes.slice(i, i + BATCH_SIZE);
         batch.forEach((bike) => {
             if (bike.tripCurrent && bike.tripCurrent.is_active) {
-                const newLat = bike.location.coordinates[0] + (Math.random() - 0.5) * 0.001;
-                const newLon = bike.location.coordinates[1] + (Math.random() - 0.5) * 0.001;
+                if (Date.now() - bike.tripCurrent.startTime >= MIN_TRIP_DURATION) {
+                // if (bike.tripCurrent && bike.tripCurrent.is_active) {
+                    bike.stopRental();
+                } else {
+                    const newLat = bike.location.coordinates[0] + (Math.random() - 0.5) * 0.001;
+                    const newLon = bike.location.coordinates[1] + (Math.random() - 0.5) * 0.001;
 
-                bike.updateLocation({ lat: newLat, lon: newLon });
+                    bike.updateLocation({ lat: newLat, lon: newLon });
+                }
+                
 
-                bike.updateSpeed(Math.floor(Math.random() * 20));
+                // const startLocation = bike.location.coordinates;
+                // const endLocation = {
+                //     lat: startLocation[0] + (Math.random() - 0.5) * 0.01,
+                //     lon: startLocation[1] + (Math.random() - 0.5) * 0.01
+                // };
+                // console.log(`startLocation: ${JSON.stringify(startLocation)}`);
+                // console.log(`endLocation: ${JSON.stringify(endLocation)}`);
+                // const startTime = new Date();
+                // const endTime = new Date(startTime.getTime() + 60000); // Simulate for 1 minute
+                // const steps = 10;
+
+                // simulateBikeMovement(bike, startLocation, endLocation, startTime, endTime, steps);
+                // bike.updateSpeed(Math.floor(Math.random() * 20));
             }
 
-            const newBatteryLevel = calcBatteryDepletion(bike);
-            bike.updateBattery(newBatteryLevel);
+            // const newBatteryLevel = calcBatteryDepletion(bike);
+            // bike.updateBattery(newBatteryLevel);
 
             if (Math.random() > 0.9 && (!bike.tripCurrent || !bike.tripCurrent.is_active)) {
                 const customer = customers[Math.floor(Math.random() * customers.length)];
@@ -159,21 +201,25 @@ const simulateBikeUpdates = (bikes, customers) => {
                 }
             }
 
-            if (
-                Math.random() > 0.95 &&
-                bike.tripCurrent && 
-                bike.tripCurrent.is_active &&
-                Date.now() - bike.tripCurrent.startRental >= MIN_TRIP_DURATION
-            ) {
-                bike.stopRental();
-            }
+            // if (
+            //     bike.tripCurrent &&
+            //     bike.tripCurrent.is_active &&
+            //     Date.now() - bike.tripCurrent.startRental >= MIN_TRIP_DURATION
+            // ) {
+            //     bike.stopRental();
+            // }
         });
 
         socket.emit('batch-update', batch.map(bike => bike.getBikeData()));
     }
+    try {
+        const activeRentals = bikes.filter((bike) => bike.tripCurrent && bike.tripCurrent.is_active).length;
+        console.log(`Active rentals: ${activeRentals}`);
+    } catch (error) {
+        console.error("Error during simulation update:", error);
+    }
 
-    const activeRentals = bikes.filter((bike) => bike.tripCurrent && bike.tripCurrent.is_active).length;
-    console.log(`Active rentals: ${activeRentals}`);
+    
 };
 
 // Simulation runs until stopped with ctrl + c.
