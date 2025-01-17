@@ -20,7 +20,7 @@ const userModel = {
 
     fetchUserById: async function fetchUserById(id) {
         if (!ObjectId.isValid(id)) {
-            createError("ID format is invalid", 400)
+            createError("ID format is invalid", 400);
             // return res.status(400).json({ errorMessage: "ID format is invalid" });
         }
 
@@ -49,6 +49,18 @@ const userModel = {
                 // }
                 // );
             }
+
+            return result;
+        } finally {
+            await db.client.close();
+        }
+    },
+
+    fetchUserByGithubId: async function fetchUserByGithubId(id) {
+        const db = await database.getDb();
+
+        try {
+            const result = await db.collectionUsers.findOne(id);
 
             return result;
         } finally {
@@ -242,18 +254,29 @@ const userModel = {
                 password_hash: body.password,
                 role: body.role,
                 balance: body.balance,
-                trip_history: []
+                trip_history: [],
+                githubId: body.githubId,
+                username: body.username
             };
-
+            console.log("newUser:", newUser, "END.");
             const email = newUser.email;
-            const duplicateUser = await db.collectionUsers.findOne({email});
 
-            if (duplicateUser) {
-                createError("User with this email already exists.", 400)
+            if (email !== "No Email") {
+                const duplicateUser = await db.collectionUsers.findOne({email});
+    
+                if (duplicateUser) {
+                    createError("User with this email already exists.", 400)
+                }
             }
 
-            const result = await db.collectionUsers.insertOne(newUser);
-            
+            let result = await db.collectionUsers.insertOne(newUser);
+
+            const filter = {
+                _id: result.insertedId
+                };
+
+            result = await db.collectionUsers.findOne(filter);
+
             return result;
         } finally {
             await db.client.close();
