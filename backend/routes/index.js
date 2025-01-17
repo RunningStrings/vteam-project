@@ -7,13 +7,7 @@ import { router as bikeRouter } from './bikes.js';
 import { router as stationRouter } from './chargingStations.js';
 import { router as zoneRouter } from './parkingZones.js';
 import { router as tripRouter } from './trips.js';
-
-// import userRouter from 'userRouter.js';
-// import cityRouter from 'cityRouter.js';
-// import bikeRouter from './routers/bikeRouter.js';
-// import stationRouter from './routers/stationRouter.js';
-// import zoneRouter from './routers/zoneRouter.js';
-// import tripRouter from './routers/tripRouter.js';
+import { router as loginRouter } from './login.js';
 
 const allRoutes = (app, version) => {
   const routes = [
@@ -22,7 +16,8 @@ const allRoutes = (app, version) => {
     { path: "/bikes", router: bikeRouter },
     { path: "/charging_stations", router: stationRouter },
     { path: "/parking_zones", router: zoneRouter },
-    { path: "/trips", router: tripRouter }
+    { path: "/trips", router: tripRouter },
+    { path: "/login", router: loginRouter }
   ];
 
   routes.forEach(route => {
