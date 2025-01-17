@@ -16,7 +16,7 @@ router
             });
         } catch (error) {
             console.error('Error get parking_zones:', error);
-            next(error)
+            next(error);
         }
     })
     .post(async (req, res, next) => {
@@ -41,7 +41,7 @@ router
             });
         } catch (error) {
             console.error('Error get one zone:', error);
-            next(error)
+            next(error);
         }
     })
     .put(async (req, res, next) => {

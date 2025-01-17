@@ -10,6 +10,6 @@ const errorMiddleware = (error, req, res, next) => {
             }
         ]
     });
-  };
+};
 
 export default errorMiddleware;

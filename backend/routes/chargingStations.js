@@ -16,7 +16,7 @@ router
             });
         } catch (error) {
             console.error('Error get charging_stations:', error);
-            next(error)
+            next(error);
         }
     })
     .post(async (req, res, next) => {
@@ -41,7 +41,7 @@ router
             });
         } catch (error) {
             console.error('Error get one station:', error);
-            next(error)
+            next(error);
         }
     })
     .put(async (req, res, next) => {
