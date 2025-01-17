@@ -1,48 +1,44 @@
 import { useState, useEffect } from 'react';
-import { useNavigate} from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 function Bikes() {
   const [bikes, setBikes] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(null);
   const navigate = useNavigate();
-  //const [isLoading, setIsLoading] = useState(true);
 
-  function handleClick(bike_id,bike_coords) {
-    sessionStorage.setItem("bike",bike_id)
-    sessionStorage.setItem("bike_coords",bike_coords)
+  function handleClick(bike_id, bike_coords) {
+    sessionStorage.setItem("bike", JSON.stringify({ id: bike_id, coordinates: bike_coords }));
     navigate('/bike');
   }
 
-
-
   useEffect(() => {
+    setIsLoading(true);
+    fetch('/bikes')
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        return response.json();
+      })
+      .then((responseData) => {
+        console.log('API response:', responseData);
+        setBikes(responseData.data.result);
+        setIsLoading(false);
+      })
+      .catch((error) => {
+        setError(error.message);
+        setIsLoading(false);
+      });
+  }, []);
 
-fetch('/bikes')
-  .then((response) => {
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    return response.json();
-  })
-  .then((responseData) => {
-    setBikes(responseData.data); // Ensure this is the correct data structure
-  })
-  .catch((error) => {
-    console.error('Error fetching bikes:', error);
-  });
-});   
-    /*  if (isLoading) {
-        return <p>Loading...</p>;
-      }*/
+  if (isLoading) {
+    return <p>Loading...</p>;
+  }
 
-
-
-
-    // Fetch bikes from the backend API
-/*    fetch('/bikes')
-      .then(response => response.json())
-      .then(data => setBikes(data))
-      .catch(error => console.error('Error fetching bikes:', error));
-  }, []);*/
+  if (error) {
+    return <p>Error: {error}</p>;
+  }
 
   return (
     <div className="App" style={{ marginLeft: "220px", padding: "20px" }}>
@@ -59,14 +55,16 @@ fetch('/bikes')
           </tr>
         </thead>
         <tbody>
-        {bikes.map((bike, index) => (
-            <tr key={index}>
-            <td onClick={() => {handleClick(bike.id,bike.location.coordinates)}} style={{ cursor: "pointer", color: "blue" }}>{bike.id}</td>
-            <td>{bike.city_name}</td>
-            <td>{bike.location.coordinates}</td>
-            <td>{bike.battery}</td>
-            <td>{bike.status}</td>
-            <td>{bike.speed}</td>
+        {Array.isArray(bikes) && bikes.map((bike) => (
+            <tr key={bike.id}>
+              <td onClick={() => handleClick(bike.id, bike.location.coordinates)} style={{ cursor: "pointer", color: "blue" }}>
+                {bike.id}
+              </td>
+              <td>{bike.city_name}</td>
+              <td>{bike.location.coordinates.join(", ")}</td>
+              <td>{bike.battery}</td>
+              <td>{bike.status}</td>
+              <td>{bike.speed}</td>
             </tr>
           ))}
         </tbody>
@@ -75,25 +73,4 @@ fetch('/bikes')
   );
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-/*const Bikes = () => {
-    return (
-      <div style={{ marginLeft: "220px", padding: "20px" }}>
-        <h1>Cykelsida</h1>
-        <p>Welcome to the home page.</p>
-      </div>
-    );
-  };*/
-  
-  export default Bikes;
+export default Bikes;
