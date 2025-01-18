@@ -28,6 +28,7 @@ class BikeBrain {
 
         this.updateInterval = null;
         this.previousLocation = null;
+        this.startUpdates(10000); // Base interval for updates
 
         this.socket = io('http://backend:5000');
 
