@@ -122,11 +122,11 @@ const simulateBikeUpdates = (bike, customers) => {
         const newLat = bike.location.coordinates[0] + (Math.random() - 0.5) * 0.001;
         const newLon = bike.location.coordinates[1] + (Math.random() - 0.5) * 0.001;
         bike.updateLocation({ lat: newLat, lon: newLon });
-        bike.updateSpeed(Math.floor(Math.random() * 20));
+        // bike.updateSpeed(Math.floor(Math.random() * 20));
     }
 
-    const newBatteryLevel = calcBatteryDepletion(bike);
-    bike.updateBattery(newBatteryLevel);
+    // const newBatteryLevel = calcBatteryDepletion(bike);
+    // bike.updateBattery(newBatteryLevel);
 
     // Start a rental if no active rental exists
     if (!bike.tripCurrent || !bike.tripCurrent.is_active) {
