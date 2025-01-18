@@ -125,11 +125,11 @@ class BikeBrain {
         ) {
             this.updateLocation(currentLocation);
 
-            // If bike is not rented and location has changed
-            if (this.status !== 'in-use') {
-                console.log(`Bike ${this.id}: Movement detected, increasing update frequency`);
-                this.startUpdates(30000);
-            }
+            // // If bike is not rented and location has changed
+            // if (this.status !== 'in-use') {
+            //     console.log(`Bike ${this.id}: Movement detected, increasing update frequency`);
+            //     this.startUpdates(30000);
+            // }
         } else if (this.status !== 'in-use') {
             // If bike is not rented and location has not changed
             console.log(`Bike ${this.id}: No movement detected, reverting to low frequency`);
@@ -142,19 +142,26 @@ class BikeBrain {
      * @param {Object} location - The new location of the bike, containing `lat` and `lon` properties.
      */
     updateLocation(location) {
-        if (typeof location.lat !== 'number' || typeof location.lon !== 'number') {
-            console.error(`Invalid coordinates provided: ${location}`);
+        // const [lat, lon] = location.coordinates || [];
+
+        // if (typeof lat !== 'number' || typeof lon !== 'number') {
+        //     console.error(`Invalid coordinates provided: ${JSON.stringify(location)}`);
+        //     return;
+        // }
+        if (!Array.isArray(location.coordinates) || location.coordinates.length !== 2) {
+            console.error(`Invalid coordinated provided: ${JSON.stringify(location)}`);
             return;
         }
 
+        const [lat, lon] = location.coordinates;
         // Update the 'coordinates' array in the 'location' object
         this.location = {
             type: 'Point',
-            coordinates: [location.lat, location.lon],
+            coordinates: [lat, lon],
         };
 
         // Log the updated location to the console
-        console.log(`Bike ID ${this.id} updated location to:`, this.location.coordinates, this.tripCurrent.is_active);
+        console.log(`Bike ID ${this.id} updated location to:`, this.location.coordinates);
 
         // Send the updated location to the server
         this.sendMessage('update-location', {
