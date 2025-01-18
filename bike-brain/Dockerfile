@@ -9,4 +9,4 @@ RUN npm install
 RUN apt-get update && apt-get install -y tini && apt-get clean
 ENTRYPOINT [ "/usr/bin/tini", "--"]
 
-CMD ["node", "cli.js"]
+CMD ["/bin/sh"]
