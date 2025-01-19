@@ -76,6 +76,20 @@ class BikeBrain {
     }
 
     /**
+     * Send a combined update for location, speed, and battery to the server.
+     */
+    sendCombinedUpdate() {
+        const data = {
+            location: this.location,
+            speed: this.speed,
+            battery: this.battery,
+        };
+
+        this.sendMessage('update-bike-data', data);
+        console.log(`Bike ${this.id}: Update sent`, data);
+    }
+
+    /**
      * Start periodic updates.
      * @param {number} interval - Update interval in milliseconds.
      */
@@ -83,7 +97,7 @@ class BikeBrain {
         if (this.updateInterval) clearInterval(this.updateInterval);
 
         this.updateInterval = setInterval(() => {
-            this.checkAndUpdateLocation();
+            this.sendCombinedUpdate();
         }, interval);
 
         console.log(`Bike ${this.id}: Location updates started every ${interval / 1000} seconds`);
@@ -115,27 +129,44 @@ class BikeBrain {
     /**
      * Check if the bikes's location has changed and update accordingly.
      */
+    // checkAndUpdateLocation() {
+    //     const currentLocation = this.location;
+
+    //     if (
+    //         !this.previousLocation ||
+    //         this.previousLocation.coordinates[0] !== currentLocation.coordinates[0] ||
+    //         this.previousLocation.coordinates[1] !== currentLocation.coordinates[1]
+    //     ) {
+    //         this.updateLocation(currentLocation);
+
+    //         // // If bike is not rented and location has changed
+    //         // if (this.status !== 'in-use') {
+    //         //     console.log(`Bike ${this.id}: Movement detected, increasing update frequency`);
+    //         //     this.startUpdates(30000);
+    //         // }
+    //     } else if (this.status !== 'in-use') {
+    //         // If bike is not rented and location has not changed
+    //         console.log(`Bike ${this.id}: No movement detected, reverting to low frequency`);
+    //         this.startUpdates(300000);
+    //     }
+    // }
     checkAndUpdateLocation() {
         const currentLocation = this.location;
-
+    
         if (
             !this.previousLocation ||
             this.previousLocation.coordinates[0] !== currentLocation.coordinates[0] ||
             this.previousLocation.coordinates[1] !== currentLocation.coordinates[1]
         ) {
-            this.updateLocation(currentLocation);
-
-            // // If bike is not rented and location has changed
-            // if (this.status !== 'in-use') {
-            //     console.log(`Bike ${this.id}: Movement detected, increasing update frequency`);
-            //     this.startUpdates(30000);
-            // }
+            this.previousLocation = { ...currentLocation };
+            console.log(`Bike ${this.id}: Movement detected, increasing update frequency`);
+            this.startUpdates(10000); // High frequency
         } else if (this.status !== 'in-use') {
-            // If bike is not rented and location has not changed
-            console.log(`Bike ${this.id}: No movement detected, reverting to low frequency`);
-            this.startUpdates(300000);
+            console.log(`Bike ${this.id}: No movement detected, reducing update frequency`);
+            this.startUpdates(300000); // Low frequency
         }
     }
+    
 
     /**
      * Updates the bike's location and sends it to the server.
@@ -163,10 +194,10 @@ class BikeBrain {
         // Log the updated location to the console
         console.log(`Bike ID ${this.id} updated location to:`, this.location.coordinates);
 
-        // Send the updated location to the server
-        this.sendMessage('update-location', {
-            location: this.location,
-        });
+        // // Send the updated location to the server
+        // this.sendMessage('update-location', {
+        //     location: this.location,
+        // });
     }
 
     /**
@@ -190,9 +221,10 @@ class BikeBrain {
      */
     updateSpeed(speed) {
         this.speed = speed;
-        this.sendMessage('update-speed', {
-            speed: this.speed
-        });
+        console.log(`Bike ${this.id}: Speed updated to`, this.speed);
+        // this.sendMessage('update-speed', {
+        //     speed: this.speed
+        // });
     }
 
     /**
@@ -209,9 +241,10 @@ class BikeBrain {
             return;
         }
         this.battery = battery;
-        this.sendMessage('update-battery', {
-            battery: this.battery
-        });
+        console.log(`Bike ${this.id}: Battery updated to`, this.battery);
+        // this.sendMessage('update-battery', {
+        //     battery: this.battery
+        // });
 
         // Call method to handle warnings
         this.handleBatteryWarnings();
