@@ -10,7 +10,7 @@ services:
             - CLIENT_SECRET=${CLIENT_SECRET}
             - REDIRECT_URI=${REDIRECT_URI}
             - JWT_SECRET=${JWT_SECRET}
-            # - NODE_ENV=simulation # Test for data generation for simulation
+            - NODE_ENV=simulation # Test for data generation for simulation
         ports:
             - "5000:5000"
             - "5001:5001"
@@ -87,6 +87,19 @@ services:
         command: mongod --bind_ip_all
         networks:
             - app-network
+
+    simulation:
+        build:
+            context: ./bike-brain
+            dockerfile: Dockerfile
+        networks:
+            - app-network
+        depends_on:
+            - backend
+        stdin_open: true
+        tty: true
+        command: /bin/sh
+        # command: node sim-from-database.js
 
 networks:
     app-network:

@@ -22,6 +22,7 @@ import jwt from 'jsonwebtoken';
 const app = express();
 const PORT = process.env.PORT || 5000;
 const pathV1 = "/api/v1";
+// Create and expose an HTTP server to enable Socket.IO to connect.
 const server = http.createServer(app);
 
 app.use(express.json());
@@ -33,7 +34,11 @@ app.use(passport.initialize());
 // passport.serializeUser((user, done) => done(null, user));
 // passport.deserializeUser((user, done) => done(null, user));
 allRoutes(app, pathV1);
-initializeSocket();
+
+// The variable 'io' is used indirectly to hold the Socket.IO server instance,
+// and is necessary for websocket functionality. Passing server as a parameter
+// attaches Socket.IO to the backend server.
+const io = initializeSocket(server);
 
 app.get('/', (req, res, next) => {
     res.status(200).json({
@@ -67,12 +72,11 @@ app.get(
 );
 
 app.use(errorMiddleware);
-app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}`);
-});
+// app.listen(PORT, () => {
+//     console.log(`Server is running on port ${PORT}`);
+// });
 
-// Using separate port to make it easier to see bike-brain communication.
-// Can be removed when not needed (socket runs on the regular backend port).
-server.listen(5001, () => {
-    console.log('Socket.IO server is running on http://localhost:5001');
+// Updated to use the same port and server instance for both server and Socket.IO.
+server.listen(PORT, () => {
+    console.log(`Server and Socket.IO are running on port ${PORT}`);
 });

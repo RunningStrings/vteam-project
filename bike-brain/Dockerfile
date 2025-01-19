@@ -6,4 +6,7 @@ COPY . .
 
 RUN npm install
 
-CMD ["node", "sim-multi.js"]
+RUN apt-get update && apt-get install -y tini && apt-get clean
+ENTRYPOINT [ "/usr/bin/tini", "--"]
+
+CMD ["/bin/sh"]

@@ -1,6 +1,7 @@
 "use strict";
 
 import io from 'socket.io-client'
+// import haversine from './helpers.js';
 
 /**
  * Represents an electric bike, tracking its state, location, and trips,
@@ -11,20 +12,25 @@ class BikeBrain {
      * Create a new BikeBrain instance.
      * @param {string} id - The bike ID.
      * @param {string} cityId - The city ID.
-     * @param {number} lat - The bike's starting latitude.
-     * @param {number} lon - The bike's starting longitude.
+     * @param {Object} location - The bike's location.
+     * @param {string} status - The bike's status.
      */
-    constructor(id, cityId, lat, lon) {
-        this.id = id;
-        this.cityId = cityId;
-        this.location = {type: 'Point', coordinates: [lat, lon] };
-        this.status = 'available'; // available, in-use, charging, maintenance
-        this.batteryLevel = 100;
+    constructor(mongodb_id, custom_id, city_name, location, status = 'available') {
+        this._id = mongodb_id;
+        this.id = custom_id;
+        this.city_name = city_name;
+        this.location = {type: 'Point', coordinates: location.coordinates};
+        this.status = status; // available, in-use, charging, maintenance
+        this.battery = 100;
         this.speed = 0;
-        this.tripLog = [];
+        this.localTripLog = [];
         this.tripCurrent = null;
 
-        this.socket = io('http://backend:5001');
+        this.updateInterval = null;
+        this.previousLocation = null;
+        this.startUpdates(10000); // Base interval for updates
+
+        this.socket = io('http://backend:5000');
 
         this.socket.on('connect', () => {
             console.log(`Bike ${this.id} connected to the server`);
@@ -64,9 +70,34 @@ class BikeBrain {
      */
     sendMessage(event, data) {
         this.socket.emit(event, {
-            bikeId: this.id,
+            id: this.id,
             ...data,
         });
+    }
+
+    /**
+     * Start periodic updates.
+     * @param {number} interval - Update interval in milliseconds.
+     */
+    startUpdates(interval) {
+        if (this.updateInterval) clearInterval(this.updateInterval);
+
+        this.updateInterval = setInterval(() => {
+            this.checkAndUpdateLocation();
+        }, interval);
+
+        console.log(`Bike ${this.id}: Location updates started every ${interval / 1000} seconds`);
+    }
+
+    /**
+     * Stop periodic updates.
+     */
+    stopUpdates() {
+        if (this.updateInterval) {
+            clearInterval(this.updateInterval);
+            this.updateInterval = null;
+            console.log(`Bike ${this.id}: Updates stopped`);
+        }
     }
 
     /**
@@ -82,19 +113,75 @@ class BikeBrain {
     }
 
     /**
-     * Updates the bike's location and sends it to the server.
-     * @param {number} lat - The latitude of the bike's new location.
-     * @param {number} lon - The longitude of the bike's new location.
+     * Check if the bikes's location has changed and update accordingly.
      */
-    updateLocation(lat, lon) {
-        if (typeof lat !== 'number' || typeof lon !== 'number') {
-            console.error("Invalid coordinates provided");
+    checkAndUpdateLocation() {
+        const currentLocation = this.location;
+
+        if (
+            !this.previousLocation ||
+            this.previousLocation.coordinates[0] !== currentLocation.coordinates[0] ||
+            this.previousLocation.coordinates[1] !== currentLocation.coordinates[1]
+        ) {
+            this.updateLocation(currentLocation);
+
+            // // If bike is not rented and location has changed
+            // if (this.status !== 'in-use') {
+            //     console.log(`Bike ${this.id}: Movement detected, increasing update frequency`);
+            //     this.startUpdates(30000);
+            // }
+        } else if (this.status !== 'in-use') {
+            // If bike is not rented and location has not changed
+            console.log(`Bike ${this.id}: No movement detected, reverting to low frequency`);
+            this.startUpdates(300000);
+        }
+    }
+
+    /**
+     * Updates the bike's location and sends it to the server.
+     * @param {Object} location - The new location of the bike, containing `lat` and `lon` properties.
+     */
+    updateLocation(location) {
+        // const [lat, lon] = location.coordinates || [];
+
+        // if (typeof lat !== 'number' || typeof lon !== 'number') {
+        //     console.error(`Invalid coordinates provided: ${JSON.stringify(location)}`);
+        //     return;
+        // }
+        if (!Array.isArray(location.coordinates) || location.coordinates.length !== 2) {
+            console.error(`Invalid coordinated provided: ${JSON.stringify(location)}`);
             return;
         }
-        this.location.coordinates = [lat, lon];
+
+        const [lat, lon] = location.coordinates;
+        // Update the 'coordinates' array in the 'location' object
+        this.location = {
+            type: 'Point',
+            coordinates: [lat, lon],
+        };
+
+        // Log the updated location to the console
+        console.log(`Bike ID ${this.id} updated location to:`, this.location.coordinates);
+
+        // Send the updated location to the server
         this.sendMessage('update-location', {
-            location: this.location
+            location: this.location,
         });
+    }
+
+    /**
+     * Check if the bike's speed has changed and update accordingly
+     */
+    checkAndUpdateSpeed(newSpeed) {
+        const currentSpeed = this.speed;
+
+        if (
+            !this.previousSpeed ||
+            this.previousSpeed !== newSpeed
+        ) {
+            this.updateSpeed(newSpeed);
+            this.previousSpeed = newSpeed;
+        }
     }
 
     /**
@@ -116,14 +203,14 @@ class BikeBrain {
      * battery level is 20% or lower.
      * @param {number} batteryLevel - The current battery level of the bike (1-100).
      */
-    updateBattery(batteryLevel) {
-        if (batteryLevel < 0 || batteryLevel > 100) {
+    updateBattery(battery) {
+        if (battery < 0 || battery > 100) {
             console.error("Battery level must be between 0 and 100");
             return;
         }
-        this.batteryLevel = batteryLevel;
+        this.battery = battery;
         this.sendMessage('update-battery', {
-            batteryLevel: this.batteryLevel
+            battery: this.battery
         });
 
         // Call method to handle warnings
@@ -137,27 +224,27 @@ class BikeBrain {
      * Handles battery warnings and status changes based on battery level.
      */
     handleBatteryWarnings() {
-        if (this.batteryLevel < 20) {
+        if (this.battery < 20) {
+            if (this.status === 'maintenance') return;
+
             if (this.status === 'in-use') {
-                if (this.batteryLevel <= 10) {
-                    console.warn(`Bike ${this.id} has low battery (${this.batteryLevel}%)`);
-                } else if (this.batteryLevel < 20) {
-                    console.warn(`Bike ${this.id} has low battery (${this.batteryLevel})`);
+                if (this.battery <= 10) {
+                    console.log(`Bike ${this.id} has low battery (${this.battery}%)`);
+                } else if (this.battery < 20) {
+                    console.log(`Bike ${this.id} has low battery (${this.battery})`);
                 }
 
                 // Set status to 'maintenance' when battery is drained
-                if (this.batteryLevel === 0) {
+                if (this.battery === 0) {
                     this.updateStatus('maintenance');
                     console.log(`Bike ${this.id} in need of maintenance due to 0% battery`);
                 }
-            } else {
                 // If bike is not in use, set status to 'maintenance' if battery level
                 // is 20% or lower
-                if (this.batteryLevel < 20) {
-                    console.warn(`Bike ${this.id} has low battery (${this.batteryLevel}%)`);
-                    this.updateStatus('maintenance');
-                    console.log(`Bike ${this.id} status changed to 'maintenance' due to low battery`)
-                }
+            } else if (this.battery < 20) {
+                console.log(`Bike ${this.id} has low battery (${this.battery}%)`);
+                this.updateStatus('maintenance');
+                console.log(`Bike ${this.id} status changed to 'maintenance' due to low battery`)
             }
         }
     }
@@ -168,14 +255,25 @@ class BikeBrain {
      */
     startTrip(customerId) {
         const startTime = new Date();
+
         this.tripCurrent = {
+            tripId: `trip-${this.id}-${startTime.getTime()}`, // Unique, local trip ID base on bike and start time.
             customerId: customerId,
             bikeId: this.id,
-            cityId: this.cityId,
-            startLocation: { lat: this.location.coordinates[0], lon: this.location.coordinates[1] },
+            city_name: this.city_name,
+            startLocation: this.location,
             startTime: startTime,
+            is_active: true,
+            startValidParking: Math.random() > 0.5,
+            stopValidParking: null,
         };
-        // this.sendMessage('log-trip)
+        
+        this.sendMessage('log-trip', {
+            tripLog: this.tripCurrent,
+        });
+
+        console.log('Sending trip data to server:', this.tripCurrent);
+
         console.log(`Trip started for customer ${customerId} at ${startTime}`);
     }
 
@@ -184,28 +282,55 @@ class BikeBrain {
      * current trip to the server, and resets the trip state.
      */
     stopTrip() {
+        console.log('stopTrip called');
         const stopTime = new Date();
-        if (this.tripCurrent) {
-            this.tripCurrent.stopLocation = { lat: this.location.coordinates[0], lon: this.location.coordinates[1] };
+        if (this.tripCurrent && this.tripCurrent.is_active) {
+            this.tripCurrent.stopLocation = this.location;
             this.tripCurrent.stopTime = stopTime;
             const duration = (stopTime - this.tripCurrent.startTime) / (1000 * 60); // Duration in minutes
             this.tripCurrent.duration = duration;
+            this.tripCurrent.is_active = false;
 
-            this.tripLog.push(this.tripCurrent);
+            // This line is replaced with the commented out code below when
+            // frontend implements updateStopValidParking.
+            this.tripCurrent.stopValidParking = Math.random() > 0.5;
+
+            // // Verify that stopValidParking is set via the update method.
+            // // Default to 'false'.
+            // if (typeof this.tripCurrent.stopValidParking !== 'boolean') {
+            //     this.tripCurrent.stopValidParking = false;
+            // }
+
+            this.localTripLog.push(this.tripCurrent);
 
             // Limit local trip log to last 100 trips
-            if (this.tripLog.length > 100) {
-                this.tripLog.shift(); // Remove the oldest trip
+            if (this.localTripLog.length > 100) {
+                this.localTripLog.shift(); // Remove the oldest trip
             }
 
-            console.log(`Trip ended for customer ${this.tripCurrent.customerId} at ${stopTime}`);
+            console.log(`Trip ended for customer ${this.tripCurrent.customerId} at ${stopTime}`, this.tripCurrent.is_active);
 
             // Send only current trip to the server
             this.sendMessage('log-trip', {
-                tripLog: this.tripCurrent,
+                localTripLog: this.tripCurrent,
             });
         }
         this.tripCurrent = null;
+    }
+
+    /**
+     * Updates the validity of parking when the current trip has ended.
+     * @param {boolean} isValid - Whether the stop parking is valid.
+     */
+    updateStopValidParking(isValid) {
+        if (!this.tripCurrent || this.tripCurrent.is_active) {
+            console.error("Cannot update stop parking validity: no completed trip found.");
+            return;
+        }
+
+        this.tripCurrent.stopValidParking = isValid;
+
+        console.log(`Stop parking validity updated to ${isValid} for trip ${this.tripCurrent.tripId}`)
     }
 
     /**
@@ -305,11 +430,11 @@ class BikeBrain {
      */
     isRentalBlocked() {
         if (this.status === 'available' && this.batteryLevel <= 20) {
-            console.log(`Bike not available for rental due to low battery (${this.batteryLevel}%)`);
+            console.log(`Bike ${this.id} not available for rental due to low battery (${this.batteryLevel}%)`);
             return true;
         }
         if (!(this.status === 'available' || (this.status === 'charging' && this.batteryLevel >= 50))) {
-            console.log('Bike not available for rental');
+            console.log(`Bike ${this.id} not available for rental`);
             return true;
         }
         return false;
@@ -323,7 +448,7 @@ class BikeBrain {
      */
     stopRental() {
         if (this.status !== 'in-use') {
-            console.log('Bike not in use');
+            console.log(`Bike ${this.id} not in use`);
             return;
         }
         this.updateStatus('available');
@@ -368,10 +493,10 @@ class BikeBrain {
      */
     getBikeData() {
         return {
-            city_id: this.cityId,
+            city_id: this.city_name,
             location: this.location,
             status: this.status,
-            battery_level: this.batteryLevel,
+            battery: this.battery,
             speed: this.speed
         };
     }
