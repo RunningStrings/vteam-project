@@ -185,10 +185,10 @@ const userModel = {
 
             result = await db.collectionUsers.updateOne(filter, { $set: body });
 
-            if (result.modifiedCount !== 1) {
-                createError(`no update possible with the given information for user with ID: ${id}.`
-                    + " Make sure information you provide is new.", 400);
-            }
+            // if (result.modifiedCount !== 1) {
+            //     createError(`no update possible with the given information for user with ID: ${id}.`
+            //         + " Make sure information you provide is new.", 400);
+            // }
 
             // return;
 
