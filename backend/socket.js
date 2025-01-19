@@ -12,6 +12,13 @@ export const initializeSocket = (server) => {
         console.log('A bike connected:', socket.id);
 
         // Listen for events from the bike
+        socket.on('update-bike-data', (data) => {
+            const { id, location, speed, battery } = data;
+            console.log(`Bike ${id} data update:`, { location, speed, battery });
+
+            io.emit('bike-update', data);
+        });
+
         socket.on('update-location', (data) => {
             console.log('Location update:', data);
             io.emit('bike-update-location', data); // Frontend listens for this event
