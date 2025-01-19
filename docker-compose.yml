@@ -6,6 +6,10 @@ services:
         environment:
             - MONGO_DSN=${MONGO_DSN}
             - MONGO_URI=${MONGO_URI}
+            - CLIENT_ID=${CLIENT_ID}
+            - CLIENT_SECRET=${CLIENT_SECRET}
+            - REDIRECT_URI=${REDIRECT_URI}
+            - JWT_SECRET=${JWT_SECRET}
             - NODE_ENV=simulation # Test for data generation for simulation
         ports:
             - "5000:5000"

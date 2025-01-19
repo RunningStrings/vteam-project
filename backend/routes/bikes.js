@@ -23,7 +23,7 @@ router
             });
         } catch (error) {
             console.error('Error get bikes:', error);
-            next(error)
+            next(error);
         }
     })
     .post(async (req, res, next) => {
@@ -48,7 +48,7 @@ router
             });
         } catch (error) {
             console.error('Error get one bike:', error);
-            next(error)
+            next(error);
         }
     })
     .put(async (req, res, next) => {

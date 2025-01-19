@@ -16,7 +16,7 @@ router
             });
         } catch (error) {
             console.error('Error get cities:', error);
-            next(error)
+            next(error);
         }
     })
     .post(async (req, res, next) => {
@@ -41,7 +41,7 @@ router
             });
         } catch (error) {
             console.error('Error get one city:', error);
-            next(error)
+            next(error);
         }
     })
     .put(async (req, res, next) => {
