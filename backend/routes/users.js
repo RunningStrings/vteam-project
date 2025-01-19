@@ -2,8 +2,6 @@
  * Route for users.
  */
 import express from 'express';
-// import database from '../database.js';
-// import { ObjectId } from 'mongodb';
 import userModel from "../models/userModel.js";
 import { createError } from '../models/utils/createError.js'
 import { tokenMiddleware, adminTokenMiddleware } from '../middlewares/tokenMiddleware.js';
@@ -12,7 +10,7 @@ const router = express.Router();
 
 router
     .route("/")
-    .get(adminTokenMiddleware, async (req, res, next) => {
+    .get(async (req, res, next) => {
         try {
             const result = await userModel.fetchAllUsers();
             res.status(200).json({
