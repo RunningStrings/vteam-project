@@ -10,18 +10,14 @@ const bikeModel = {
         const db = await database.getDb();
 
         try {
-            // Get the total number of bikes in the collection
-            const totalCount = await db.collectionBikes.countDocuments();
 
-            // Add .skip(offset) and .limit(limit) to handle batch loading of bikes
             const result = await db.collectionBikes
                 .find()
-                .skip(offset || 0)   // Skip records based on offset, default to 0
-                .limit(limit || totalCount)   // Limit records based on limit, default to totalCount
+                .skip(offset || 0)
+                .limit(limit || 0)
                 .toArray();
 
-            // Return the total number of bikes for pagination
-            return { result, totalCount };
+            return result;
         } finally {
             await db.client.close();
         }
