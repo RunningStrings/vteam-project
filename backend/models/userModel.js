@@ -250,8 +250,8 @@ const userModel = {
     },
 
     createUser: async function createUser(body) {
-        if (!body.firstname || !body.lastname || !body.email || !body.role) {
-            createError("firstname, lastname, email and role are required.", 400);
+        if (!body.email || !body.role) {
+            createError("email and role are required.", 400);
         }
 
         const db = await database.getDb();
