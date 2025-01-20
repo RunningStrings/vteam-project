@@ -37,7 +37,7 @@ const adminTokenMiddleware = (req, res, next) => {
         createError("unauthorized. Invalid token.", 401);
     };
 
-    if (req.token.role !== 'admin') {
+    if (req.token.user.role !== 'admin') {
         createError("you need admin privileges for this route", 403);
     }
     next();

@@ -1,6 +1,7 @@
 "use strict";
 
 import io from 'socket.io-client'
+// import haversine from './helpers.js';
 
 /**
  * Represents an electric bike, tracking its state, location, and trips,
@@ -25,7 +26,7 @@ class BikeBrain {
         this.localTripLog = [];
         this.tripCurrent = null;
 
-        this.socket = io('http://backend:5000');
+        this.socket = io('http://backend:5001');
 
         this.socket.on('connect', () => {
             console.log(`Bike ${this.id} connected to the server`);
@@ -71,6 +72,31 @@ class BikeBrain {
     }
 
     /**
+     * Start periodic updates.
+     * @param {number} interval - Update interval in milliseconds.
+     */
+    startUpdates(interval) {
+        if (this.updateInterval) clearInterval(this.updateInterval);
+
+        this.updateInterval = setInterval(() => {
+            this.checkAndUpdateLocation();
+        }, interval);
+
+        console.log(`Bike ${this.id}: Location updates started every ${interval / 1000} seconds`);
+    }
+
+    /**
+     * Stop periodic updates.
+     */
+    stopUpdates() {
+        if (this.updateInterval) {
+            clearInterval(this.updateInterval);
+            this.updateInterval = null;
+            console.log(`Bike ${this.id}: Updates stopped`);
+        }
+    }
+
+    /**
      * Updates the bike's status and adjusts the bike light accordingly.
      * Logs the status update to the console.
      * 
@@ -83,28 +109,58 @@ class BikeBrain {
     }
 
     /**
+     * Check if the bikes's location has changed and update accordingly.
+     */
+    checkAndUpdateLocation() {
+        const currentLocation = this.location;
+
+        if (
+            !this.previousLocation ||
+            this.previousLocation.coordinates[0] !== currentLocation.coordinates[0] ||
+            this.previousLocation.coordinates[1] !== currentLocation.coordinates[1]
+        ) {
+            this.updateLocation(currentLocation);
+
+            // // If bike is not rented and location has changed
+            // if (this.status !== 'in-use') {
+            //     console.log(`Bike ${this.id}: Movement detected, increasing update frequency`);
+            //     this.startUpdates(30000);
+            // }
+        } else if (this.status !== 'in-use') {
+            // If bike is not rented and location has not changed
+            console.log(`Bike ${this.id}: No movement detected, reverting to low frequency`);
+            this.startUpdates(300000);
+        }
+    }
+
+    /**
      * Updates the bike's location and sends it to the server.
      * @param {Object} location - The new location of the bike, containing `lat` and `lon` properties.
      */
-    updateLocation(location) {
-        if (typeof location.lat !== 'number' || typeof location.lon !== 'number') {
+    updateLocation(lat, lon) {
+        if (typeof lat !== 'number' || typeof lon !== 'number') {
             console.error("Invalid coordinates provided");
             return;
         }
-
-        // Update the 'coordinates' array in the 'location' object
-        this.location = {
-            type: 'Point',
-            coordinates: [location.lat, location.lon],
-        };
-
-        // Log the updated location to the console
-        console.log(`Bike ID ${this.id} updated location to:`, this.location.coordinates, this.tripCurrent.is_active);
-
-        // Send the updated location to the server
+        this.location.coordinates = [lat, lon];
         this.sendMessage('update-location', {
             location: this.location,
         });
+    }
+
+    /**
+     * Check if the bike's speed has changed and update accordingly
+     */
+    checkAndUpdateSpeed(newSpeed) {
+        const currentSpeed = this.speed;
+
+        if (
+            !this.previousSpeed ||
+            this.previousSpeed !== newSpeed
+        ) {
+            this.updateSpeed(newSpeed);
+            this.previousSpeed = newSpeed;
+        }
     }
 
     /**
@@ -205,6 +261,7 @@ class BikeBrain {
      * current trip to the server, and resets the trip state.
      */
     stopTrip() {
+        console.log('stopTrip called');
         const stopTime = new Date();
         if (this.tripCurrent && this.tripCurrent.is_active) {
             this.tripCurrent.stopLocation = this.location;

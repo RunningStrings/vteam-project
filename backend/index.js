@@ -61,23 +61,23 @@ app.get(
         failureRedirect: '/',
         session: false
     }), (req, res, next) => {
-        const user = req.user;
-        const token = tokenService.generateToken(user);
+        const userObject = req.user;
+        const token = tokenService.generateToken(userObject);
         res.status(200).json({
             data: {
-                token: token
+                token: token,
+                role: userObject.user.role
             }
         });
     }
 );
 
 app.use(errorMiddleware);
-app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}`);
-});
+// app.listen(PORT, () => {
+//     console.log(`Server is running on port ${PORT}`);
+// });
 
-// Using separate port to make it easier to see bike-brain communication.
-// Can be removed when not needed (socket runs on the regular backend port).
-server.listen(5001, () => {
-    console.log('Socket.IO server is running on http://localhost:5001');
+// Updated to use the same port and server instance for both server and Socket.IO.
+server.listen(PORT, () => {
+    console.log(`Server and Socket.IO are running on port ${PORT}`);
 });
