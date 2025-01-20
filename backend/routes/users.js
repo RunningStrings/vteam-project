@@ -12,7 +12,7 @@ router
     .route("/")
     .get(async (req, res, next) => {
         try {
-            const result = await userModel.fetchAllUsers();
+            const result = await userModel.fetchAllUsers(req.query);
             res.status(200).json({
                 data: result
             });

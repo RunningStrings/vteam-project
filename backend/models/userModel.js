@@ -6,11 +6,21 @@ import { ObjectId } from 'mongodb';
 import { createError } from './utils/createError.js'
 
 const userModel = {
-    fetchAllUsers: async function fetchAllUsers() {
+    fetchAllUsers: async function fetchAllUsers(query) {
         const db = await database.getDb();
 
         try {
-            const result = await db.collectionUsers.find().toArray();
+            const { role } = query;
+            const filter = {
+                $and: [
+                    {
+                        $or: [
+                            role ? { role: { $regex: new RegExp(role, 'i') } } : {}
+                        ]
+                    },
+                    ]
+            };
+            const result = await db.collectionUsers.find(filter).toArray();
 
             return result;
         } finally {
@@ -282,23 +292,6 @@ const userModel = {
             await db.client.close();
         }
     }
-
-    // createUser: async function createUser(email, hashedPassword) {
-    //     const db = await database.getDb();
-
-    //     try {
-    //         const newUser = {
-    //             email: email,
-    //             password_hash: hashedPassword,
-    //         };
-
-    //         await db.collectionUsers.insertOne(newUser);
-    //     } catch (error) {
-    //         throw new Error(error.message ? error.message : "Database error");
-    //     } finally {
-    //         await db.client.close();
-    //     }
-    // }
 };
 
 export default userModel;
