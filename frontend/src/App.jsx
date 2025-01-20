@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import LoginButton from "./components/LoginButton";
 import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
+import NewUser from "./pages/NewUser";
 import Bikes from "./pages/Bikes";
 import Bike from "./pages/Bike";
 import Parkings from "./pages/Parkings";
@@ -26,6 +27,7 @@ const App = () => {
         <div style={{ flex: 1, marginLeft: "120px", padding: "20px" }}>
           <Routes>
             <Route path="/" element={<Home />} />
+            <Route path="/newuser" element={<NewUser />} />
             <Route path="/bikes" element={<Bikes />} />
             <Route path="/bike" element={<Bike />} />
             <Route path="/stations" element={<Stations />} />
