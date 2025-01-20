@@ -1,4174 +1,4182 @@
 [
   {
     "role": "customer",
-    "firstname": "Caroline",
-    "lastname": "Larsson Ekström",
-    "email": "Caroline_LarssonEkstrom@hotmail.com",
+    "firstname": "Åke",
+    "lastname": "Nordin",
+    "email": "Ake_Nordin28@hotmail.com",
     "password_hash": "",
-    "balance": 277,
+    "balance": 178,
     "trip_history": []
   },
   {
     "role": "city_manager",
-    "firstname": "Thomas",
-    "lastname": "Abrahamsson",
-    "email": "Thomas.Abrahamsson@gmail.com",
+    "firstname": "Sonja",
+    "lastname": "Nilsson",
+    "email": "Sonja_Nilsson@gmail.com",
     "password_hash": "",
     "trip_history": []
   },
   {
     "role": "city_manager",
-    "firstname": "Cecilia",
-    "lastname": "Danielsson",
-    "email": "Cecilia.Danielsson@hotmail.com",
+    "firstname": "Henrik",
+    "lastname": "Karlsson Lundgren",
+    "email": "Henrik_KarlssonLundgren@yahoo.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "city_manager",
+    "firstname": "Susanne",
+    "lastname": "Samuelsson",
+    "email": "Susanne.Samuelsson@gmail.com",
     "password_hash": "",
     "trip_history": []
   },
   {
     "role": "admin",
-    "firstname": "Marie",
-    "lastname": "Lund",
-    "email": "Marie_Lund45@gmail.com",
+    "firstname": "Albin",
+    "lastname": "Nyström",
+    "email": "Albin.Nystrom@hotmail.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "city_manager",
+    "firstname": "Tobias",
+    "lastname": "Lundberg Holmberg",
+    "email": "Tobias_LundbergHolmberg@hotmail.com",
     "password_hash": "",
     "trip_history": []
   },
   {
     "role": "admin",
-    "firstname": "Roger",
-    "lastname": "Larsson",
-    "email": "Roger_Larsson@gmail.com",
+    "firstname": "Ellen",
+    "lastname": "Jakobsson Berg",
+    "email": "Ellen_JakobssonBerg@hotmail.com",
     "password_hash": "",
     "trip_history": []
   },
   {
-    "role": "customer",
-    "firstname": "Kerstin",
-    "lastname": "Andersson",
-    "email": "Kerstin.Andersson11@yahoo.com",
+    "role": "city_manager",
+    "firstname": "Henrik",
+    "lastname": "Arvidsson",
+    "email": "Henrik.Arvidsson98@yahoo.com",
     "password_hash": "",
-    "balance": 185,
+    "trip_history": []
+  },
+  {
+    "role": "city_manager",
+    "firstname": "Margareta",
+    "lastname": "Wallin",
+    "email": "Margareta_Wallin98@yahoo.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "admin",
+    "firstname": "Linnéa",
+    "lastname": "Nilsson",
+    "email": "Linnea.Nilsson@hotmail.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "admin",
+    "firstname": "Karolina",
+    "lastname": "Martinsson",
+    "email": "Karolina_Martinsson92@yahoo.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "city_manager",
+    "firstname": "Kevin",
+    "lastname": "Persson",
+    "email": "Kevin_Persson@yahoo.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "admin",
+    "firstname": "Klara",
+    "lastname": "Lund Ali",
+    "email": "Klara_LundAli72@hotmail.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "admin",
+    "firstname": "John",
+    "lastname": "Henriksson",
+    "email": "John_Henriksson20@gmail.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "city_manager",
+    "firstname": "Olle",
+    "lastname": "Wallin",
+    "email": "Olle.Wallin@hotmail.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "city_manager",
+    "firstname": "Liam",
+    "lastname": "Mohamed Björklund",
+    "email": "Liam.MohamedBjorklund@yahoo.com",
+    "password_hash": "",
     "trip_history": []
   },
   {
     "role": "admin",
     "firstname": "Magnus",
-    "lastname": "Lindberg Strömberg",
-    "email": "Magnus_LindbergStromberg39@hotmail.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "customer",
-    "firstname": "Sara",
-    "lastname": "Ekström",
-    "email": "Sara_Ekstrom@gmail.com",
-    "password_hash": "",
-    "balance": 796,
-    "trip_history": []
-  },
-  {
-    "role": "city_manager",
-    "firstname": "Agnes",
-    "lastname": "Gustafsson",
-    "email": "Agnes_Gustafsson@hotmail.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "admin",
-    "firstname": "Alva",
-    "lastname": "Berggren",
-    "email": "Alva.Berggren@gmail.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "admin",
-    "firstname": "Oskar",
-    "lastname": "Pålsson",
-    "email": "Oskar_Palsson@gmail.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "customer",
-    "firstname": "Christoffer",
-    "lastname": "Holm",
-    "email": "Christoffer.Holm97@hotmail.com",
-    "password_hash": "",
-    "balance": 934,
-    "trip_history": []
-  },
-  {
-    "role": "customer",
-    "firstname": "Lennart",
-    "lastname": "Berg",
-    "email": "Lennart.Berg@gmail.com",
-    "password_hash": "",
-    "balance": 557,
-    "trip_history": []
-  },
-  {
-    "role": "city_manager",
-    "firstname": "Sebastian",
-    "lastname": "Holm",
-    "email": "Sebastian.Holm@hotmail.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "customer",
-    "firstname": "Felix",
-    "lastname": "Holm Lindholm",
-    "email": "Felix_HolmLindholm@yahoo.com",
-    "password_hash": "",
-    "balance": 442,
-    "trip_history": []
-  },
-  {
-    "role": "customer",
-    "firstname": "Rebecca",
-    "lastname": "Henriksson Lindström",
-    "email": "Rebecca_HenrikssonLindstrom84@gmail.com",
-    "password_hash": "",
-    "balance": 324,
-    "trip_history": []
-  },
-  {
-    "role": "customer",
-    "firstname": "Liam",
-    "lastname": "Gustafsson",
-    "email": "Liam_Gustafsson@hotmail.com",
-    "password_hash": "",
-    "balance": 133,
-    "trip_history": []
-  },
-  {
-    "role": "admin",
-    "firstname": "Sofie",
-    "lastname": "Pålsson",
-    "email": "Sofie_Palsson79@yahoo.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "customer",
-    "firstname": "Felix",
-    "lastname": "Jönsson Sundberg",
-    "email": "Felix.JonssonSundberg@gmail.com",
-    "password_hash": "",
-    "balance": 978,
-    "trip_history": []
-  },
-  {
-    "role": "city_manager",
-    "firstname": "Gustav",
-    "lastname": "Bengtsson Lund",
-    "email": "Gustav_BengtssonLund@yahoo.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "city_manager",
-    "firstname": "Jonathan",
-    "lastname": "Wikström",
-    "email": "Jonathan.Wikstrom37@gmail.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "customer",
-    "firstname": "Kurt",
-    "lastname": "Sundberg",
-    "email": "Kurt.Sundberg@hotmail.com",
-    "password_hash": "",
-    "balance": 501,
-    "trip_history": []
-  },
-  {
-    "role": "admin",
-    "firstname": "Christian",
-    "lastname": "Lindgren",
-    "email": "Christian.Lindgren@yahoo.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "city_manager",
-    "firstname": "Kent",
-    "lastname": "Lundqvist",
-    "email": "Kent_Lundqvist90@hotmail.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "admin",
-    "firstname": "Karl",
-    "lastname": "Holmgren",
-    "email": "Karl_Holmgren43@gmail.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "city_manager",
-    "firstname": "Alice",
-    "lastname": "Martinsson",
-    "email": "Alice_Martinsson@yahoo.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "customer",
-    "firstname": "Jonas",
-    "lastname": "Mohamed",
-    "email": "Jonas.Mohamed@gmail.com",
-    "password_hash": "",
-    "balance": 771,
-    "trip_history": []
-  },
-  {
-    "role": "admin",
-    "firstname": "Rickard",
-    "lastname": "Pettersson",
-    "email": "Rickard.Pettersson93@gmail.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "admin",
-    "firstname": "Adam",
-    "lastname": "Martinsson Månsson",
-    "email": "Adam.MartinssonMansson@yahoo.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "city_manager",
-    "firstname": "Åsa",
-    "lastname": "Viklund Sandström",
-    "email": "Asa.ViklundSandstrom60@hotmail.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "customer",
-    "firstname": "Ulf",
-    "lastname": "Öberg Fredriksson",
-    "email": "Ulf_ObergFredriksson@hotmail.com",
-    "password_hash": "",
-    "balance": 240,
-    "trip_history": []
-  },
-  {
-    "role": "city_manager",
-    "firstname": "Marcus",
-    "lastname": "Fransson",
-    "email": "Marcus.Fransson5@gmail.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "admin",
-    "firstname": "Pia",
-    "lastname": "Johansson",
-    "email": "Pia_Johansson@yahoo.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "customer",
-    "firstname": "Max",
-    "lastname": "Månsson",
-    "email": "Max_Mansson@hotmail.com",
-    "password_hash": "",
-    "balance": 46,
-    "trip_history": []
-  },
-  {
-    "role": "customer",
-    "firstname": "Helen",
-    "lastname": "Nordin Berggren",
-    "email": "Helen.NordinBerggren80@yahoo.com",
-    "password_hash": "",
-    "balance": 273,
-    "trip_history": []
-  },
-  {
-    "role": "city_manager",
-    "firstname": "Linnéa",
-    "lastname": "Svensson",
-    "email": "Linnea_Svensson88@yahoo.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "customer",
-    "firstname": "Alexander",
-    "lastname": "Olofsson",
-    "email": "Alexander.Olofsson@gmail.com",
-    "password_hash": "",
-    "balance": 482,
-    "trip_history": []
-  },
-  {
-    "role": "customer",
-    "firstname": "Yvonne",
     "lastname": "Holmqvist",
-    "email": "Yvonne.Holmqvist31@hotmail.com",
-    "password_hash": "",
-    "balance": 592,
-    "trip_history": []
-  },
-  {
-    "role": "admin",
-    "firstname": "Gun",
-    "lastname": "Ali Isaksson",
-    "email": "Gun.AliIsaksson24@gmail.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "city_manager",
-    "firstname": "Anette",
-    "lastname": "Mattsson Isaksson",
-    "email": "Anette.MattssonIsaksson@hotmail.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "city_manager",
-    "firstname": "Ann",
-    "lastname": "Engström",
-    "email": "Ann.Engstrom49@gmail.com",
+    "email": "Magnus_Holmqvist6@yahoo.com",
     "password_hash": "",
     "trip_history": []
   },
   {
     "role": "admin",
-    "firstname": "Karin",
-    "lastname": "Danielsson",
-    "email": "Karin_Danielsson54@hotmail.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "customer",
-    "firstname": "Emelie",
-    "lastname": "Berg",
-    "email": "Emelie_Berg95@gmail.com",
-    "password_hash": "",
-    "balance": 201,
-    "trip_history": []
-  },
-  {
-    "role": "customer",
-    "firstname": "Gustav",
-    "lastname": "Gunnarsson",
-    "email": "Gustav_Gunnarsson@hotmail.com",
-    "password_hash": "",
-    "balance": 218,
-    "trip_history": []
-  },
-  {
-    "role": "admin",
-    "firstname": "David",
-    "lastname": "Jonsson",
-    "email": "David_Jonsson56@yahoo.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "city_manager",
-    "firstname": "Cecilia",
-    "lastname": "Engström",
-    "email": "Cecilia_Engstrom96@hotmail.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "city_manager",
-    "firstname": "Astrid",
-    "lastname": "Eliasson Hedlund",
-    "email": "Astrid.EliassonHedlund81@yahoo.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "city_manager",
-    "firstname": "Yvonne",
-    "lastname": "Pålsson",
-    "email": "Yvonne.Palsson32@hotmail.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "customer",
-    "firstname": "Pontus",
-    "lastname": "Holmqvist",
-    "email": "Pontus_Holmqvist@hotmail.com",
-    "password_hash": "",
-    "balance": 244,
-    "trip_history": []
-  },
-  {
-    "role": "admin",
-    "firstname": "Mohamed",
-    "lastname": "Jonsson",
-    "email": "Mohamed_Jonsson43@gmail.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "customer",
-    "firstname": "Marcus",
-    "lastname": "Berggren",
-    "email": "Marcus.Berggren@hotmail.com",
-    "password_hash": "",
-    "balance": 506,
-    "trip_history": []
-  },
-  {
-    "role": "city_manager",
-    "firstname": "Ann-Christin",
-    "lastname": "Dahl",
-    "email": "Ann-Christin.Dahl10@gmail.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "admin",
-    "firstname": "Marie",
-    "lastname": "Gustafsson",
-    "email": "Marie.Gustafsson@hotmail.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "city_manager",
-    "firstname": "Mikael",
-    "lastname": "Holmqvist",
-    "email": "Mikael_Holmqvist48@yahoo.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "admin",
-    "firstname": "Leif",
-    "lastname": "Söderberg",
-    "email": "Leif.Soderberg@hotmail.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "admin",
-    "firstname": "Samuel",
-    "lastname": "Lundgren",
-    "email": "Samuel_Lundgren12@hotmail.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "admin",
-    "firstname": "Robert",
-    "lastname": "Åkesson",
-    "email": "Robert.Akesson@yahoo.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "city_manager",
-    "firstname": "Leo",
-    "lastname": "Falk",
-    "email": "Leo.Falk@hotmail.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "admin",
-    "firstname": "Hans",
-    "lastname": "Lundström",
-    "email": "Hans_Lundstrom@hotmail.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "customer",
-    "firstname": "Jimmy",
-    "lastname": "Ali",
-    "email": "Jimmy.Ali@gmail.com",
-    "password_hash": "",
-    "balance": 682,
-    "trip_history": []
-  },
-  {
-    "role": "admin",
-    "firstname": "Caroline",
-    "lastname": "Sandström",
-    "email": "Caroline_Sandstrom@gmail.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "customer",
     "firstname": "Arvid",
-    "lastname": "Holmgren Larsson",
-    "email": "Arvid.HolmgrenLarsson16@yahoo.com",
-    "password_hash": "",
-    "balance": 378,
-    "trip_history": []
-  },
-  {
-    "role": "customer",
-    "firstname": "Moa",
-    "lastname": "Ström",
-    "email": "Moa_Strom89@yahoo.com",
-    "password_hash": "",
-    "balance": 988,
-    "trip_history": []
-  },
-  {
-    "role": "admin",
-    "firstname": "Ulf",
-    "lastname": "Eklund",
-    "email": "Ulf_Eklund@gmail.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "city_manager",
-    "firstname": "Samuel",
-    "lastname": "Gunnarsson",
-    "email": "Samuel_Gunnarsson@yahoo.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "admin",
-    "firstname": "Sofie",
-    "lastname": "Hermansson",
-    "email": "Sofie_Hermansson@gmail.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "city_manager",
-    "firstname": "Annika",
-    "lastname": "Andreasson",
-    "email": "Annika.Andreasson42@gmail.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "city_manager",
-    "firstname": "Anneli",
-    "lastname": "Bergman Samuelsson",
-    "email": "Anneli.BergmanSamuelsson@yahoo.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "admin",
-    "firstname": "Oskar",
-    "lastname": "Norberg",
-    "email": "Oskar.Norberg@yahoo.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "city_manager",
-    "firstname": "Pontus",
-    "lastname": "Dahl Forsberg",
-    "email": "Pontus_DahlForsberg@yahoo.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "city_manager",
-    "firstname": "Ella",
-    "lastname": "Eriksson",
-    "email": "Ella.Eriksson96@gmail.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "admin",
-    "firstname": "Josef",
-    "lastname": "Forsberg Andreasson",
-    "email": "Josef.ForsbergAndreasson51@hotmail.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "admin",
-    "firstname": "Henrik",
-    "lastname": "Mohamed",
-    "email": "Henrik_Mohamed18@yahoo.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "admin",
-    "firstname": "Camilla",
-    "lastname": "Hansson Pålsson",
-    "email": "Camilla_HanssonPalsson88@hotmail.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "admin",
-    "firstname": "Pontus",
-    "lastname": "Blomqvist",
-    "email": "Pontus.Blomqvist@hotmail.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "customer",
-    "firstname": "Britt-Marie",
-    "lastname": "Mårtensson Martinsson",
-    "email": "Britt-Marie_MartenssonMartinsson60@yahoo.com",
-    "password_hash": "",
-    "balance": 629,
-    "trip_history": []
-  },
-  {
-    "role": "admin",
-    "firstname": "Kurt",
-    "lastname": "Fransson",
-    "email": "Kurt_Fransson41@gmail.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "admin",
-    "firstname": "Birgitta",
-    "lastname": "Mårtensson",
-    "email": "Birgitta.Martensson@gmail.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "admin",
-    "firstname": "Oskar",
-    "lastname": "Danielsson",
-    "email": "Oskar_Danielsson90@hotmail.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "customer",
-    "firstname": "Jonathan",
-    "lastname": "Wikström",
-    "email": "Jonathan_Wikstrom@yahoo.com",
-    "password_hash": "",
-    "balance": 233,
-    "trip_history": []
-  },
-  {
-    "role": "city_manager",
-    "firstname": "Josef",
-    "lastname": "Blom",
-    "email": "Josef.Blom@gmail.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "admin",
-    "firstname": "Maria",
-    "lastname": "Berggren",
-    "email": "Maria.Berggren81@yahoo.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "city_manager",
-    "firstname": "Helena",
-    "lastname": "Viklund",
-    "email": "Helena.Viklund@yahoo.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "customer",
-    "firstname": "Britt",
-    "lastname": "Lind",
-    "email": "Britt.Lind@gmail.com",
-    "password_hash": "",
-    "balance": 387,
-    "trip_history": []
-  },
-  {
-    "role": "customer",
-    "firstname": "Inger",
-    "lastname": "Dahl Viklund",
-    "email": "Inger_DahlViklund@yahoo.com",
-    "password_hash": "",
-    "balance": 424,
-    "trip_history": []
-  },
-  {
-    "role": "customer",
-    "firstname": "Matilda",
-    "lastname": "Mohamed",
-    "email": "Matilda.Mohamed@yahoo.com",
-    "password_hash": "",
-    "balance": 412,
-    "trip_history": []
-  },
-  {
-    "role": "customer",
-    "firstname": "Sofia",
-    "lastname": "Sundberg",
-    "email": "Sofia_Sundberg@hotmail.com",
-    "password_hash": "",
-    "balance": 975,
-    "trip_history": []
-  },
-  {
-    "role": "admin",
-    "firstname": "Isabelle",
-    "lastname": "Bengtsson",
-    "email": "Isabelle.Bengtsson44@hotmail.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "customer",
-    "firstname": "Kent",
-    "lastname": "Öberg",
-    "email": "Kent.Oberg78@gmail.com",
-    "password_hash": "",
-    "balance": 526,
-    "trip_history": []
-  },
-  {
-    "role": "admin",
-    "firstname": "Lisbeth",
-    "lastname": "Jansson",
-    "email": "Lisbeth_Jansson77@yahoo.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "city_manager",
-    "firstname": "Agnes",
-    "lastname": "Wikström",
-    "email": "Agnes_Wikstrom9@gmail.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "city_manager",
-    "firstname": "Lennart",
-    "lastname": "Magnusson",
-    "email": "Lennart.Magnusson65@yahoo.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "customer",
-    "firstname": "Andreas",
-    "lastname": "Dahl",
-    "email": "Andreas.Dahl29@hotmail.com",
-    "password_hash": "",
-    "balance": 860,
-    "trip_history": []
-  },
-  {
-    "role": "city_manager",
-    "firstname": "Gun",
-    "lastname": "Lundin",
-    "email": "Gun_Lundin96@hotmail.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "city_manager",
-    "firstname": "Jan",
-    "lastname": "Blom",
-    "email": "Jan.Blom81@yahoo.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "customer",
-    "firstname": "Maja",
-    "lastname": "Månsson Dahl",
-    "email": "Maja.ManssonDahl@yahoo.com",
-    "password_hash": "",
-    "balance": 134,
-    "trip_history": []
-  },
-  {
-    "role": "admin",
-    "firstname": "Kevin",
-    "lastname": "Andreasson",
-    "email": "Kevin_Andreasson@gmail.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "customer",
-    "firstname": "Gunilla",
-    "lastname": "Wikström",
-    "email": "Gunilla.Wikstrom78@gmail.com",
-    "password_hash": "",
-    "balance": 366,
-    "trip_history": []
-  },
-  {
-    "role": "city_manager",
-    "firstname": "Emelie",
-    "lastname": "Lindgren",
-    "email": "Emelie.Lindgren57@hotmail.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "city_manager",
-    "firstname": "Johnny",
-    "lastname": "Lindberg",
-    "email": "Johnny_Lindberg@yahoo.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "admin",
-    "firstname": "Josefin",
-    "lastname": "Ek Håkansson",
-    "email": "Josefin_EkHakansson@hotmail.com",
+    "lastname": "Öberg Lindberg",
+    "email": "Arvid_ObergLindberg@yahoo.com",
     "password_hash": "",
     "trip_history": []
   },
   {
     "role": "admin",
     "firstname": "Lucas",
-    "lastname": "Lundgren Dahlberg",
-    "email": "Lucas.LundgrenDahlberg81@gmail.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "admin",
-    "firstname": "Susanne",
-    "lastname": "Bengtsson Blomqvist",
-    "email": "Susanne_BengtssonBlomqvist@yahoo.com",
+    "lastname": "Blom Hermansson",
+    "email": "Lucas_BlomHermansson92@hotmail.com",
     "password_hash": "",
     "trip_history": []
   },
   {
     "role": "customer",
-    "firstname": "Göran",
-    "lastname": "Fredriksson Lindström",
-    "email": "Goran.FredrikssonLindstrom@yahoo.com",
+    "firstname": "Torbjörn",
+    "lastname": "Johansson",
+    "email": "Torbjorn.Johansson@gmail.com",
     "password_hash": "",
-    "balance": 859,
+    "balance": 490,
     "trip_history": []
   },
   {
-    "role": "city_manager",
-    "firstname": "Mattias",
-    "lastname": "Eliasson",
-    "email": "Mattias_Eliasson23@hotmail.com",
+    "role": "admin",
+    "firstname": "Anita",
+    "lastname": "Åkesson",
+    "email": "Anita.Akesson50@gmail.com",
     "password_hash": "",
     "trip_history": []
   },
   {
     "role": "admin",
-    "firstname": "Håkan",
-    "lastname": "Lundgren Eklund",
-    "email": "Hakan.LundgrenEklund92@yahoo.com",
+    "firstname": "Elin",
+    "lastname": "Andersson",
+    "email": "Elin.Andersson@yahoo.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "admin",
+    "firstname": "Jonathan",
+    "lastname": "Abrahamsson",
+    "email": "Jonathan.Abrahamsson@hotmail.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "admin",
+    "firstname": "Johanna",
+    "lastname": "Holm",
+    "email": "Johanna_Holm@hotmail.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "admin",
+    "firstname": "Elsa",
+    "lastname": "Löfgren",
+    "email": "Elsa_Lofgren@hotmail.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "admin",
+    "firstname": "Yvonne",
+    "lastname": "Hassan",
+    "email": "Yvonne_Hassan38@gmail.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "admin",
+    "firstname": "Peter",
+    "lastname": "Olofsson",
+    "email": "Peter_Olofsson63@hotmail.com",
     "password_hash": "",
     "trip_history": []
   },
   {
     "role": "customer",
-    "firstname": "Jan",
-    "lastname": "Pettersson",
-    "email": "Jan_Pettersson86@hotmail.com",
+    "firstname": "Lovisa",
+    "lastname": "Ahmed",
+    "email": "Lovisa_Ahmed@hotmail.com",
     "password_hash": "",
-    "balance": 752,
+    "balance": 673,
     "trip_history": []
   },
   {
     "role": "admin",
-    "firstname": "Sandra",
-    "lastname": "Bergman Holm",
-    "email": "Sandra.BergmanHolm13@hotmail.com",
+    "firstname": "Dennis",
+    "lastname": "Sjögren",
+    "email": "Dennis.Sjogren87@yahoo.com",
     "password_hash": "",
     "trip_history": []
   },
   {
-    "role": "city_manager",
-    "firstname": "Olivia",
-    "lastname": "Eliasson Mårtensson",
-    "email": "Olivia.EliassonMartensson6@gmail.com",
+    "role": "customer",
+    "firstname": "Hans",
+    "lastname": "Andreasson",
+    "email": "Hans_Andreasson@yahoo.com",
     "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "city_manager",
-    "firstname": "Mikael",
-    "lastname": "Larsson",
-    "email": "Mikael_Larsson@hotmail.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "city_manager",
-    "firstname": "Gun",
-    "lastname": "Nyström",
-    "email": "Gun.Nystrom@hotmail.com",
-    "password_hash": "",
+    "balance": 328,
     "trip_history": []
   },
   {
     "role": "admin",
-    "firstname": "Nathalie",
-    "lastname": "Ekström",
-    "email": "Nathalie.Ekstrom@gmail.com",
+    "firstname": "Hans",
+    "lastname": "Holmberg",
+    "email": "Hans.Holmberg@yahoo.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "city_manager",
+    "firstname": "Anita",
+    "lastname": "Strömberg",
+    "email": "Anita_Stromberg@hotmail.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "city_manager",
+    "firstname": "Frida",
+    "lastname": "Lundström",
+    "email": "Frida_Lundstrom57@yahoo.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "customer",
+    "firstname": "Ann-Christin",
+    "lastname": "Lundin",
+    "email": "Ann-Christin_Lundin63@gmail.com",
+    "password_hash": "",
+    "balance": 516,
+    "trip_history": []
+  },
+  {
+    "role": "admin",
+    "firstname": "Birgitta",
+    "lastname": "Ali",
+    "email": "Birgitta_Ali@hotmail.com",
     "password_hash": "",
     "trip_history": []
   },
   {
     "role": "customer",
     "firstname": "Agneta",
-    "lastname": "Ahmed Claesson",
-    "email": "Agneta_AhmedClaesson87@hotmail.com",
-    "password_hash": "",
-    "balance": 860,
-    "trip_history": []
-  },
-  {
-    "role": "admin",
-    "firstname": "Leo",
-    "lastname": "Håkansson Lundin",
-    "email": "Leo_HakanssonLundin@gmail.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "customer",
-    "firstname": "Arvid",
-    "lastname": "Ali Sjögren",
-    "email": "Arvid.AliSjogren@yahoo.com",
-    "password_hash": "",
-    "balance": 517,
-    "trip_history": []
-  },
-  {
-    "role": "city_manager",
-    "firstname": "Adam",
-    "lastname": "Lind",
-    "email": "Adam_Lind42@yahoo.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "admin",
-    "firstname": "Felicia",
-    "lastname": "Nyberg",
-    "email": "Felicia_Nyberg@yahoo.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "city_manager",
-    "firstname": "Karin",
-    "lastname": "Hassan",
-    "email": "Karin_Hassan98@hotmail.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "customer",
-    "firstname": "Emelie",
-    "lastname": "Mattsson",
-    "email": "Emelie_Mattsson@gmail.com",
-    "password_hash": "",
-    "balance": 665,
-    "trip_history": []
-  },
-  {
-    "role": "customer",
-    "firstname": "Britt",
-    "lastname": "Falk",
-    "email": "Britt_Falk@hotmail.com",
-    "password_hash": "",
-    "balance": 42,
-    "trip_history": []
-  },
-  {
-    "role": "city_manager",
-    "firstname": "Kent",
-    "lastname": "Söderberg",
-    "email": "Kent_Soderberg@hotmail.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "city_manager",
-    "firstname": "Jörgen",
-    "lastname": "Mårtensson",
-    "email": "Jorgen_Martensson@yahoo.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "customer",
-    "firstname": "Sebastian",
-    "lastname": "Åberg",
-    "email": "Sebastian_Aberg89@yahoo.com",
-    "password_hash": "",
-    "balance": 331,
-    "trip_history": []
-  },
-  {
-    "role": "admin",
-    "firstname": "Kjell",
     "lastname": "Ekström",
-    "email": "Kjell_Ekstrom@gmail.com",
+    "email": "Agneta_Ekstrom16@gmail.com",
     "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "admin",
-    "firstname": "Charlotte",
-    "lastname": "Lundgren",
-    "email": "Charlotte_Lundgren37@hotmail.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "admin",
-    "firstname": "Thomas",
-    "lastname": "Söderberg",
-    "email": "Thomas_Soderberg@yahoo.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "city_manager",
-    "firstname": "Berit",
-    "lastname": "Henriksson",
-    "email": "Berit_Henriksson@yahoo.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "admin",
-    "firstname": "Helen",
-    "lastname": "Jönsson",
-    "email": "Helen.Jonsson@hotmail.com",
-    "password_hash": "",
+    "balance": 110,
     "trip_history": []
   },
   {
     "role": "customer",
-    "firstname": "Gunnar",
-    "lastname": "Månsson Mattsson",
-    "email": "Gunnar_ManssonMattsson4@gmail.com",
-    "password_hash": "",
-    "balance": 696,
-    "trip_history": []
-  },
-  {
-    "role": "admin",
-    "firstname": "Sebastian",
-    "lastname": "Ström Nordström",
-    "email": "Sebastian.StromNordstrom@hotmail.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "city_manager",
-    "firstname": "Karin",
-    "lastname": "Lundberg",
-    "email": "Karin_Lundberg91@yahoo.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "customer",
-    "firstname": "Magnus",
-    "lastname": "Öberg Lindqvist",
-    "email": "Magnus_ObergLindqvist9@yahoo.com",
-    "password_hash": "",
-    "balance": 105,
-    "trip_history": []
-  },
-  {
-    "role": "customer",
-    "firstname": "Helena",
+    "firstname": "Jessica",
     "lastname": "Andreasson",
-    "email": "Helena.Andreasson@yahoo.com",
+    "email": "Jessica.Andreasson23@hotmail.com",
     "password_hash": "",
-    "balance": 731,
+    "balance": 495,
     "trip_history": []
   },
   {
-    "role": "city_manager",
-    "firstname": "Linnéa",
-    "lastname": "Isaksson",
-    "email": "Linnea_Isaksson27@yahoo.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "customer",
-    "firstname": "Marcus",
-    "lastname": "Åberg",
-    "email": "Marcus.Aberg92@gmail.com",
-    "password_hash": "",
-    "balance": 449,
-    "trip_history": []
-  },
-  {
-    "role": "customer",
-    "firstname": "Sofia",
-    "lastname": "Björklund",
-    "email": "Sofia_Bjorklund@hotmail.com",
-    "password_hash": "",
-    "balance": 401,
-    "trip_history": []
-  },
-  {
-    "role": "city_manager",
-    "firstname": "Rickard",
-    "lastname": "Axelsson",
-    "email": "Rickard_Axelsson@hotmail.com",
+    "role": "admin",
+    "firstname": "Marianne",
+    "lastname": "Berg",
+    "email": "Marianne_Berg@gmail.com",
     "password_hash": "",
     "trip_history": []
   },
   {
     "role": "customer",
     "firstname": "Magnus",
-    "lastname": "Lind Blom",
-    "email": "Magnus_LindBlom@yahoo.com",
+    "lastname": "Nilsson Berg",
+    "email": "Magnus_NilssonBerg@gmail.com",
     "password_hash": "",
-    "balance": 739,
-    "trip_history": []
-  },
-  {
-    "role": "city_manager",
-    "firstname": "Ann",
-    "lastname": "Ali",
-    "email": "Ann.Ali12@gmail.com",
-    "password_hash": "",
+    "balance": 509,
     "trip_history": []
   },
   {
     "role": "customer",
-    "firstname": "Katarina",
-    "lastname": "Lindström",
-    "email": "Katarina.Lindstrom20@yahoo.com",
-    "password_hash": "",
-    "balance": 261,
-    "trip_history": []
-  },
-  {
-    "role": "customer",
-    "firstname": "Lucas",
-    "lastname": "Mårtensson",
-    "email": "Lucas.Martensson@yahoo.com",
-    "password_hash": "",
-    "balance": 51,
-    "trip_history": []
-  },
-  {
-    "role": "customer",
-    "firstname": "Claes",
-    "lastname": "Isaksson Nordin",
-    "email": "Claes.IsakssonNordin17@yahoo.com",
-    "password_hash": "",
-    "balance": 115,
-    "trip_history": []
-  },
-  {
-    "role": "customer",
-    "firstname": "Ebba",
-    "lastname": "Lindgren",
-    "email": "Ebba_Lindgren53@gmail.com",
-    "password_hash": "",
-    "balance": 900,
-    "trip_history": []
-  },
-  {
-    "role": "customer",
-    "firstname": "Rebecca",
-    "lastname": "Karlsson",
-    "email": "Rebecca.Karlsson18@yahoo.com",
-    "password_hash": "",
-    "balance": 196,
-    "trip_history": []
-  },
-  {
-    "role": "customer",
-    "firstname": "Magnus",
-    "lastname": "Lindholm Hassan",
-    "email": "Magnus.LindholmHassan63@hotmail.com",
-    "password_hash": "",
-    "balance": 306,
-    "trip_history": []
-  },
-  {
-    "role": "city_manager",
-    "firstname": "Anita",
-    "lastname": "Dahlberg",
-    "email": "Anita.Dahlberg@gmail.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "admin",
-    "firstname": "Patrik",
-    "lastname": "Nyström",
-    "email": "Patrik_Nystrom38@gmail.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "admin",
-    "firstname": "Viktor",
-    "lastname": "Holmqvist",
-    "email": "Viktor.Holmqvist7@gmail.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "admin",
-    "firstname": "Ingrid",
-    "lastname": "Berg Martinsson",
-    "email": "Ingrid.BergMartinsson@yahoo.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "admin",
-    "firstname": "Thomas",
-    "lastname": "Mohamed",
-    "email": "Thomas_Mohamed@hotmail.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "admin",
-    "firstname": "Jenny",
-    "lastname": "Lindberg",
-    "email": "Jenny.Lindberg@hotmail.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "customer",
-    "firstname": "Samuel",
-    "lastname": "Mårtensson",
-    "email": "Samuel_Martensson4@gmail.com",
-    "password_hash": "",
-    "balance": 896,
-    "trip_history": []
-  },
-  {
-    "role": "customer",
-    "firstname": "Margareta",
-    "lastname": "Eriksson Strömberg",
-    "email": "Margareta_ErikssonStromberg@hotmail.com",
-    "password_hash": "",
-    "balance": 600,
-    "trip_history": []
-  },
-  {
-    "role": "city_manager",
-    "firstname": "Tommy",
-    "lastname": "Berggren",
-    "email": "Tommy_Berggren@gmail.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "customer",
-    "firstname": "Moa",
-    "lastname": "Henriksson",
-    "email": "Moa.Henriksson@yahoo.com",
-    "password_hash": "",
-    "balance": 668,
-    "trip_history": []
-  },
-  {
-    "role": "admin",
-    "firstname": "Ann-Marie",
-    "lastname": "Martinsson Ahmed",
-    "email": "Ann-Marie_MartinssonAhmed@yahoo.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "admin",
-    "firstname": "Åke",
-    "lastname": "Martinsson",
-    "email": "Ake_Martinsson@yahoo.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "admin",
-    "firstname": "Julia",
-    "lastname": "Axelsson",
-    "email": "Julia.Axelsson81@gmail.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "customer",
-    "firstname": "Anette",
-    "lastname": "Gustafsson",
-    "email": "Anette_Gustafsson@hotmail.com",
-    "password_hash": "",
-    "balance": 511,
-    "trip_history": []
-  },
-  {
-    "role": "customer",
-    "firstname": "Viktor",
-    "lastname": "Bergqvist",
-    "email": "Viktor.Bergqvist79@yahoo.com",
-    "password_hash": "",
-    "balance": 871,
-    "trip_history": []
-  },
-  {
-    "role": "admin",
-    "firstname": "Elsa",
-    "lastname": "Gustafsson",
-    "email": "Elsa.Gustafsson66@hotmail.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "customer",
-    "firstname": "Sara",
-    "lastname": "Sundberg",
-    "email": "Sara_Sundberg@yahoo.com",
-    "password_hash": "",
-    "balance": 577,
-    "trip_history": []
-  },
-  {
-    "role": "admin",
-    "firstname": "Sandra",
-    "lastname": "Axelsson",
-    "email": "Sandra.Axelsson23@yahoo.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "customer",
-    "firstname": "Louise",
-    "lastname": "Abrahamsson",
-    "email": "Louise_Abrahamsson@hotmail.com",
-    "password_hash": "",
-    "balance": 622,
-    "trip_history": []
-  },
-  {
-    "role": "city_manager",
-    "firstname": "Ida",
-    "lastname": "Henriksson",
-    "email": "Ida_Henriksson58@gmail.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "city_manager",
-    "firstname": "Lisa",
-    "lastname": "Löfgren Karlsson",
-    "email": "Lisa_LofgrenKarlsson@yahoo.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "admin",
-    "firstname": "Rebecca",
-    "lastname": "Gunnarsson",
-    "email": "Rebecca.Gunnarsson10@yahoo.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "customer",
-    "firstname": "Anders",
-    "lastname": "Engström Lindgren",
-    "email": "Anders.EngstromLindgren9@yahoo.com",
-    "password_hash": "",
-    "balance": 910,
-    "trip_history": []
-  },
-  {
-    "role": "admin",
-    "firstname": "Lovisa",
-    "lastname": "Mohamed",
-    "email": "Lovisa.Mohamed7@hotmail.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "city_manager",
-    "firstname": "Viktor",
-    "lastname": "Henriksson",
-    "email": "Viktor_Henriksson@yahoo.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "city_manager",
-    "firstname": "Patrik",
-    "lastname": "Pålsson",
-    "email": "Patrik_Palsson@hotmail.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "admin",
-    "firstname": "Therese",
-    "lastname": "Lundin",
-    "email": "Therese_Lundin62@hotmail.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "customer",
-    "firstname": "Therese",
-    "lastname": "Lundin",
-    "email": "Therese.Lundin45@hotmail.com",
-    "password_hash": "",
-    "balance": 124,
-    "trip_history": []
-  },
-  {
-    "role": "admin",
-    "firstname": "Mohamed",
-    "lastname": "Bergqvist",
-    "email": "Mohamed_Bergqvist@hotmail.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "city_manager",
-    "firstname": "Anders",
-    "lastname": "Mårtensson",
-    "email": "Anders_Martensson73@gmail.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "admin",
-    "firstname": "Christoffer",
-    "lastname": "Nordin Björklund",
-    "email": "Christoffer.NordinBjorklund75@hotmail.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "city_manager",
-    "firstname": "Viktoria",
-    "lastname": "Jonsson",
-    "email": "Viktoria.Jonsson@gmail.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "admin",
-    "firstname": "Jakob",
-    "lastname": "Öberg",
-    "email": "Jakob.Oberg54@gmail.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "admin",
-    "firstname": "Elsa",
-    "lastname": "Gunnarsson",
-    "email": "Elsa.Gunnarsson@gmail.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "city_manager",
-    "firstname": "Sebastian",
-    "lastname": "Hansson",
-    "email": "Sebastian.Hansson84@hotmail.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "customer",
-    "firstname": "Kenneth",
-    "lastname": "Blom Mohamed",
-    "email": "Kenneth_BlomMohamed@hotmail.com",
-    "password_hash": "",
-    "balance": 982,
-    "trip_history": []
-  },
-  {
-    "role": "customer",
-    "firstname": "Gabriel",
-    "lastname": "Viklund",
-    "email": "Gabriel.Viklund71@hotmail.com",
-    "password_hash": "",
-    "balance": 776,
-    "trip_history": []
-  },
-  {
-    "role": "admin",
-    "firstname": "Britt-Marie",
-    "lastname": "Öberg",
-    "email": "Britt-Marie.Oberg56@gmail.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "admin",
-    "firstname": "Robert",
-    "lastname": "Sjögren",
-    "email": "Robert.Sjogren74@hotmail.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "customer",
-    "firstname": "Tobias",
-    "lastname": "Sundberg",
-    "email": "Tobias_Sundberg65@yahoo.com",
-    "password_hash": "",
-    "balance": 517,
-    "trip_history": []
-  },
-  {
-    "role": "admin",
-    "firstname": "Rebecca",
-    "lastname": "Öberg",
-    "email": "Rebecca_Oberg@hotmail.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "customer",
-    "firstname": "Göran",
-    "lastname": "Holmberg Söderberg",
-    "email": "Goran.HolmbergSoderberg@yahoo.com",
-    "password_hash": "",
-    "balance": 53,
-    "trip_history": []
-  },
-  {
-    "role": "admin",
-    "firstname": "Inger",
-    "lastname": "Åkesson",
-    "email": "Inger_Akesson2@yahoo.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "admin",
-    "firstname": "Britt",
-    "lastname": "Lundgren",
-    "email": "Britt_Lundgren@gmail.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "customer",
-    "firstname": "Joakim",
-    "lastname": "Holm",
-    "email": "Joakim.Holm@gmail.com",
-    "password_hash": "",
-    "balance": 841,
-    "trip_history": []
-  },
-  {
-    "role": "customer",
-    "firstname": "Jimmy",
-    "lastname": "Mohamed",
-    "email": "Jimmy_Mohamed@yahoo.com",
-    "password_hash": "",
-    "balance": 247,
-    "trip_history": []
-  },
-  {
-    "role": "customer",
-    "firstname": "Karin",
-    "lastname": "Lundin Olofsson",
-    "email": "Karin_LundinOlofsson@hotmail.com",
-    "password_hash": "",
-    "balance": 484,
-    "trip_history": []
-  },
-  {
-    "role": "admin",
-    "firstname": "Frida",
-    "lastname": "Ström",
-    "email": "Frida.Strom61@hotmail.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "admin",
-    "firstname": "Lena",
-    "lastname": "Wallin",
-    "email": "Lena.Wallin76@yahoo.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "city_manager",
-    "firstname": "Emma",
-    "lastname": "Sjögren Söderberg",
-    "email": "Emma_SjogrenSoderberg68@yahoo.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "customer",
-    "firstname": "Niklas",
-    "lastname": "Persson",
-    "email": "Niklas.Persson@hotmail.com",
-    "password_hash": "",
-    "balance": 282,
-    "trip_history": []
-  },
-  {
-    "role": "admin",
-    "firstname": "Barbro",
-    "lastname": "Martinsson",
-    "email": "Barbro_Martinsson76@hotmail.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "admin",
-    "firstname": "Samuel",
-    "lastname": "Eklund Henriksson",
-    "email": "Samuel.EklundHenriksson11@hotmail.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "admin",
-    "firstname": "Lisa",
-    "lastname": "Mattsson",
-    "email": "Lisa_Mattsson32@yahoo.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "city_manager",
-    "firstname": "Linn",
-    "lastname": "Åberg",
-    "email": "Linn.Aberg@hotmail.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "city_manager",
-    "firstname": "Thomas",
-    "lastname": "Lundström",
-    "email": "Thomas.Lundstrom44@hotmail.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "customer",
-    "firstname": "Karin",
-    "lastname": "Eklund",
-    "email": "Karin.Eklund7@hotmail.com",
-    "password_hash": "",
-    "balance": 341,
-    "trip_history": []
-  },
-  {
-    "role": "customer",
-    "firstname": "Lennart",
-    "lastname": "Ström",
-    "email": "Lennart.Strom32@hotmail.com",
-    "password_hash": "",
-    "balance": 358,
-    "trip_history": []
-  },
-  {
-    "role": "admin",
-    "firstname": "Per",
-    "lastname": "Olsson Martinsson",
-    "email": "Per.OlssonMartinsson90@hotmail.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "city_manager",
-    "firstname": "Berit",
-    "lastname": "Olsson",
-    "email": "Berit_Olsson@yahoo.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "city_manager",
-    "firstname": "Ellen",
-    "lastname": "Hellström Lindholm",
-    "email": "Ellen_HellstromLindholm@hotmail.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "city_manager",
-    "firstname": "Isabelle",
-    "lastname": "Sandström",
-    "email": "Isabelle_Sandstrom69@yahoo.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "city_manager",
-    "firstname": "Christian",
-    "lastname": "Gunnarsson",
-    "email": "Christian_Gunnarsson2@hotmail.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "customer",
-    "firstname": "Simon",
-    "lastname": "Lindgren",
-    "email": "Simon.Lindgren76@gmail.com",
-    "password_hash": "",
-    "balance": 321,
-    "trip_history": []
-  },
-  {
-    "role": "admin",
-    "firstname": "Simon",
-    "lastname": "Åberg Norberg",
-    "email": "Simon.AbergNorberg9@gmail.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "city_manager",
-    "firstname": "Magnus",
-    "lastname": "Lundqvist Danielsson",
-    "email": "Magnus.LundqvistDanielsson@yahoo.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "admin",
-    "firstname": "Christer",
-    "lastname": "Pettersson",
-    "email": "Christer.Pettersson@hotmail.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "admin",
-    "firstname": "Mohamed",
-    "lastname": "Danielsson Arvidsson",
-    "email": "Mohamed.DanielssonArvidsson30@hotmail.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "city_manager",
     "firstname": "Pernilla",
-    "lastname": "Lindholm",
-    "email": "Pernilla_Lindholm51@gmail.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "city_manager",
-    "firstname": "Ulf",
-    "lastname": "Hansen",
-    "email": "Ulf_Hansen87@hotmail.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "customer",
-    "firstname": "Charlotte",
     "lastname": "Björk",
-    "email": "Charlotte.Bjork70@hotmail.com",
-    "password_hash": "",
-    "balance": 2,
-    "trip_history": []
-  },
-  {
-    "role": "admin",
-    "firstname": "Nina",
-    "lastname": "Sundberg",
-    "email": "Nina_Sundberg9@gmail.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "customer",
-    "firstname": "Oskar",
-    "lastname": "Holmgren",
-    "email": "Oskar_Holmgren16@yahoo.com",
-    "password_hash": "",
-    "balance": 193,
-    "trip_history": []
-  },
-  {
-    "role": "customer",
-    "firstname": "Linus",
-    "lastname": "Eriksson",
-    "email": "Linus_Eriksson@gmail.com",
+    "email": "Pernilla_Bjork2@hotmail.com",
     "password_hash": "",
     "balance": 148,
     "trip_history": []
   },
   {
     "role": "city_manager",
-    "firstname": "Gabriel",
-    "lastname": "Blom",
-    "email": "Gabriel.Blom@gmail.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "admin",
-    "firstname": "Sebastian",
-    "lastname": "Lindholm Lundgren",
-    "email": "Sebastian.LindholmLundgren@yahoo.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "customer",
-    "firstname": "Britt-Marie",
-    "lastname": "Strömberg",
-    "email": "Britt-Marie_Stromberg92@hotmail.com",
-    "password_hash": "",
-    "balance": 491,
-    "trip_history": []
-  },
-  {
-    "role": "customer",
-    "firstname": "Anna",
-    "lastname": "Öberg Johansson",
-    "email": "Anna.ObergJohansson@hotmail.com",
-    "password_hash": "",
-    "balance": 655,
-    "trip_history": []
-  },
-  {
-    "role": "customer",
-    "firstname": "Kent",
-    "lastname": "Isaksson",
-    "email": "Kent_Isaksson81@hotmail.com",
-    "password_hash": "",
-    "balance": 799,
-    "trip_history": []
-  },
-  {
-    "role": "admin",
-    "firstname": "Simon",
-    "lastname": "Berg",
-    "email": "Simon.Berg22@hotmail.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "city_manager",
-    "firstname": "Inger",
-    "lastname": "Holm Holmberg",
-    "email": "Inger.HolmHolmberg@yahoo.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "customer",
-    "firstname": "Sofia",
-    "lastname": "Ekström",
-    "email": "Sofia.Ekstrom@hotmail.com",
-    "password_hash": "",
-    "balance": 215,
-    "trip_history": []
-  },
-  {
-    "role": "customer",
-    "firstname": "Karolina",
-    "lastname": "Olsson",
-    "email": "Karolina.Olsson@yahoo.com",
-    "password_hash": "",
-    "balance": 161,
-    "trip_history": []
-  },
-  {
-    "role": "admin",
-    "firstname": "Åke",
-    "lastname": "Hermansson",
-    "email": "Ake_Hermansson@gmail.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "admin",
-    "firstname": "Berit",
-    "lastname": "Ek",
-    "email": "Berit_Ek@gmail.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "admin",
-    "firstname": "Ingrid",
-    "lastname": "Sjögren",
-    "email": "Ingrid.Sjogren61@yahoo.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "admin",
-    "firstname": "Monica",
-    "lastname": "Holmgren",
-    "email": "Monica_Holmgren8@yahoo.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "city_manager",
-    "firstname": "Carina",
-    "lastname": "Hansen",
-    "email": "Carina_Hansen82@gmail.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "admin",
-    "firstname": "Leif",
-    "lastname": "Olofsson",
-    "email": "Leif.Olofsson89@yahoo.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "customer",
-    "firstname": "Alice",
-    "lastname": "Ali",
-    "email": "Alice.Ali@hotmail.com",
-    "password_hash": "",
-    "balance": 62,
-    "trip_history": []
-  },
-  {
-    "role": "admin",
-    "firstname": "Claes",
-    "lastname": "Blom",
-    "email": "Claes_Blom@hotmail.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "admin",
-    "firstname": "David",
-    "lastname": "Söderberg",
-    "email": "David_Soderberg1@yahoo.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "city_manager",
-    "firstname": "Emelie",
-    "lastname": "Jonsson",
-    "email": "Emelie_Jonsson@hotmail.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "customer",
-    "firstname": "Lena",
-    "lastname": "Magnusson",
-    "email": "Lena_Magnusson84@yahoo.com",
-    "password_hash": "",
-    "balance": 879,
-    "trip_history": []
-  },
-  {
-    "role": "admin",
-    "firstname": "Niklas",
-    "lastname": "Berggren",
-    "email": "Niklas_Berggren@gmail.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "customer",
-    "firstname": "Malin",
-    "lastname": "Lund",
-    "email": "Malin.Lund35@hotmail.com",
-    "password_hash": "",
-    "balance": 666,
-    "trip_history": []
-  },
-  {
-    "role": "city_manager",
-    "firstname": "Nils",
-    "lastname": "Håkansson",
-    "email": "Nils_Hakansson@yahoo.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "customer",
-    "firstname": "Mohamed",
-    "lastname": "Hansson",
-    "email": "Mohamed_Hansson71@hotmail.com",
-    "password_hash": "",
-    "balance": 432,
-    "trip_history": []
-  },
-  {
-    "role": "admin",
-    "firstname": "Anneli",
-    "lastname": "Gustafsson Isaksson",
-    "email": "Anneli.GustafssonIsaksson58@yahoo.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "city_manager",
-    "firstname": "Isak",
-    "lastname": "Eriksson",
-    "email": "Isak.Eriksson@yahoo.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "city_manager",
-    "firstname": "Inger",
-    "lastname": "Engström",
-    "email": "Inger_Engstrom@gmail.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "admin",
-    "firstname": "Isak",
-    "lastname": "Eliasson Mårtensson",
-    "email": "Isak.EliassonMartensson@gmail.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "admin",
-    "firstname": "Jesper",
-    "lastname": "Isaksson",
-    "email": "Jesper.Isaksson@hotmail.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "city_manager",
-    "firstname": "Kenneth",
-    "lastname": "Andersson",
-    "email": "Kenneth.Andersson59@hotmail.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "customer",
-    "firstname": "Per",
-    "lastname": "Lindholm Jonsson",
-    "email": "Per.LindholmJonsson@hotmail.com",
-    "password_hash": "",
-    "balance": 780,
-    "trip_history": []
-  },
-  {
-    "role": "admin",
-    "firstname": "Mona",
-    "lastname": "Sandström",
-    "email": "Mona.Sandstrom@gmail.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "admin",
-    "firstname": "Sofie",
-    "lastname": "Björklund",
-    "email": "Sofie.Bjorklund@gmail.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "city_manager",
-    "firstname": "Agnes",
-    "lastname": "Arvidsson",
-    "email": "Agnes_Arvidsson@yahoo.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "city_manager",
-    "firstname": "Malin",
-    "lastname": "Olsson",
-    "email": "Malin.Olsson59@yahoo.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "city_manager",
-    "firstname": "Emma",
-    "lastname": "Fransson",
-    "email": "Emma.Fransson@hotmail.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "city_manager",
-    "firstname": "Emelie",
-    "lastname": "Ek Löfgren",
-    "email": "Emelie_EkLofgren@hotmail.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "city_manager",
-    "firstname": "Emilia",
-    "lastname": "Falk",
-    "email": "Emilia_Falk4@hotmail.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "city_manager",
-    "firstname": "Britt-Marie",
-    "lastname": "Fredriksson",
-    "email": "Britt-Marie_Fredriksson@hotmail.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "city_manager",
-    "firstname": "Moa",
-    "lastname": "Holmgren Håkansson",
-    "email": "Moa.HolmgrenHakansson@hotmail.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "city_manager",
-    "firstname": "Pia",
-    "lastname": "Eklund Olofsson",
-    "email": "Pia_EklundOlofsson@gmail.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "customer",
-    "firstname": "Monica",
-    "lastname": "Jonsson",
-    "email": "Monica_Jonsson@gmail.com",
-    "password_hash": "",
-    "balance": 309,
-    "trip_history": []
-  },
-  {
-    "role": "admin",
-    "firstname": "Helen",
-    "lastname": "Lind",
-    "email": "Helen_Lind43@gmail.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "admin",
-    "firstname": "Lena",
-    "lastname": "Hedlund Larsson",
-    "email": "Lena.HedlundLarsson@hotmail.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "admin",
-    "firstname": "Karolina",
-    "lastname": "Viklund",
-    "email": "Karolina_Viklund@yahoo.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "admin",
-    "firstname": "Malin",
-    "lastname": "Sjögren",
-    "email": "Malin_Sjogren@yahoo.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "city_manager",
-    "firstname": "Elin",
-    "lastname": "Jansson",
-    "email": "Elin.Jansson65@hotmail.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "customer",
-    "firstname": "Rebecca",
-    "lastname": "Ekström",
-    "email": "Rebecca_Ekstrom@yahoo.com",
-    "password_hash": "",
-    "balance": 558,
-    "trip_history": []
-  },
-  {
-    "role": "customer",
-    "firstname": "Robin",
-    "lastname": "Jonsson",
-    "email": "Robin.Jonsson@yahoo.com",
-    "password_hash": "",
-    "balance": 152,
-    "trip_history": []
-  },
-  {
-    "role": "city_manager",
-    "firstname": "Anders",
-    "lastname": "Hansen",
-    "email": "Anders_Hansen@hotmail.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "admin",
-    "firstname": "Annika",
-    "lastname": "Lindberg",
-    "email": "Annika.Lindberg49@gmail.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "admin",
-    "firstname": "Leo",
-    "lastname": "Lundberg Bergman",
-    "email": "Leo_LundbergBergman@yahoo.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "city_manager",
-    "firstname": "Marie",
-    "lastname": "Ekström Jönsson",
-    "email": "Marie_EkstromJonsson32@gmail.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "admin",
-    "firstname": "Leo",
-    "lastname": "Hassan",
-    "email": "Leo.Hassan6@yahoo.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "city_manager",
-    "firstname": "William",
-    "lastname": "Dahlberg Berglund",
-    "email": "William.DahlbergBerglund@gmail.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "admin",
     "firstname": "Eva",
-    "lastname": "Nyström",
-    "email": "Eva.Nystrom15@yahoo.com",
+    "lastname": "Jonsson",
+    "email": "Eva_Jonsson21@hotmail.com",
     "password_hash": "",
     "trip_history": []
   },
   {
     "role": "admin",
-    "firstname": "Anna",
-    "lastname": "Axelsson",
-    "email": "Anna_Axelsson94@hotmail.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "admin",
-    "firstname": "Caroline",
-    "lastname": "Fredriksson Pettersson",
-    "email": "Caroline.FredrikssonPettersson73@gmail.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "city_manager",
-    "firstname": "Karin",
-    "lastname": "Håkansson",
-    "email": "Karin_Hakansson51@hotmail.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "city_manager",
-    "firstname": "Bengt",
-    "lastname": "Mårtensson Hermansson",
-    "email": "Bengt_MartenssonHermansson6@yahoo.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "admin",
-    "firstname": "Nils",
-    "lastname": "Nordström",
-    "email": "Nils_Nordstrom@hotmail.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "customer",
-    "firstname": "Felix",
-    "lastname": "Blom",
-    "email": "Felix_Blom@hotmail.com",
-    "password_hash": "",
-    "balance": 913,
-    "trip_history": []
-  },
-  {
-    "role": "city_manager",
-    "firstname": "Cecilia",
-    "lastname": "Holmgren",
-    "email": "Cecilia_Holmgren@hotmail.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "city_manager",
-    "firstname": "Mattias",
-    "lastname": "Lund",
-    "email": "Mattias_Lund0@gmail.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "customer",
-    "firstname": "Jenny",
-    "lastname": "Nyberg",
-    "email": "Jenny.Nyberg17@gmail.com",
-    "password_hash": "",
-    "balance": 391,
-    "trip_history": []
-  },
-  {
-    "role": "admin",
-    "firstname": "Olof",
-    "lastname": "Strömberg",
-    "email": "Olof_Stromberg@hotmail.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "customer",
-    "firstname": "Jimmy",
-    "lastname": "Eliasson Lundström",
-    "email": "Jimmy_EliassonLundstrom@hotmail.com",
-    "password_hash": "",
-    "balance": 483,
-    "trip_history": []
-  },
-  {
-    "role": "city_manager",
-    "firstname": "Rolf",
-    "lastname": "Hermansson Claesson",
-    "email": "Rolf.HermanssonClaesson14@gmail.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "customer",
-    "firstname": "Bengt",
-    "lastname": "Sjöberg",
-    "email": "Bengt.Sjoberg@hotmail.com",
-    "password_hash": "",
-    "balance": 539,
-    "trip_history": []
-  },
-  {
-    "role": "admin",
-    "firstname": "Sofia",
-    "lastname": "Ekström",
-    "email": "Sofia.Ekstrom@yahoo.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "customer",
-    "firstname": "Jonas",
-    "lastname": "Forsberg Löfgren",
-    "email": "Jonas_ForsbergLofgren16@yahoo.com",
-    "password_hash": "",
-    "balance": 725,
-    "trip_history": []
-  },
-  {
-    "role": "customer",
-    "firstname": "William",
-    "lastname": "Claesson",
-    "email": "William_Claesson@gmail.com",
-    "password_hash": "",
-    "balance": 528,
-    "trip_history": []
-  },
-  {
-    "role": "customer",
-    "firstname": "Lisbeth",
-    "lastname": "Larsson",
-    "email": "Lisbeth_Larsson12@gmail.com",
-    "password_hash": "",
-    "balance": 929,
-    "trip_history": []
-  },
-  {
-    "role": "city_manager",
-    "firstname": "Emma",
-    "lastname": "Falk Eklund",
-    "email": "Emma_FalkEklund@gmail.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "customer",
-    "firstname": "Edvin",
-    "lastname": "Nordström",
-    "email": "Edvin_Nordstrom@hotmail.com",
-    "password_hash": "",
-    "balance": 890,
-    "trip_history": []
-  },
-  {
-    "role": "city_manager",
-    "firstname": "Ann-Marie",
-    "lastname": "Nyberg",
-    "email": "Ann-Marie.Nyberg41@yahoo.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "city_manager",
-    "firstname": "Robert",
-    "lastname": "Mattsson Falk",
-    "email": "Robert.MattssonFalk@hotmail.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "city_manager",
-    "firstname": "Lucas",
-    "lastname": "Holm",
-    "email": "Lucas_Holm@gmail.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "admin",
-    "firstname": "Kenneth",
-    "lastname": "Hassan Hansson",
-    "email": "Kenneth.HassanHansson@gmail.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "city_manager",
-    "firstname": "Daniel",
-    "lastname": "Hansson",
-    "email": "Daniel.Hansson@hotmail.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "customer",
-    "firstname": "Linn",
-    "lastname": "Svensson",
-    "email": "Linn_Svensson@hotmail.com",
-    "password_hash": "",
-    "balance": 562,
-    "trip_history": []
-  },
-  {
-    "role": "customer",
-    "firstname": "Stig",
-    "lastname": "Claesson",
-    "email": "Stig.Claesson@hotmail.com",
-    "password_hash": "",
-    "balance": 736,
-    "trip_history": []
-  },
-  {
-    "role": "customer",
-    "firstname": "Marcus",
-    "lastname": "Jansson",
-    "email": "Marcus.Jansson@gmail.com",
-    "password_hash": "",
-    "balance": 926,
-    "trip_history": []
-  },
-  {
-    "role": "city_manager",
-    "firstname": "Anton",
-    "lastname": "Falk",
-    "email": "Anton_Falk18@hotmail.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "city_manager",
-    "firstname": "Ann",
-    "lastname": "Ali",
-    "email": "Ann_Ali45@hotmail.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "customer",
-    "firstname": "Lars",
-    "lastname": "Engström Bergqvist",
-    "email": "Lars_EngstromBergqvist@gmail.com",
-    "password_hash": "",
-    "balance": 175,
-    "trip_history": []
-  },
-  {
-    "role": "admin",
-    "firstname": "Stig",
-    "lastname": "Ekström",
-    "email": "Stig_Ekstrom@gmail.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "city_manager",
-    "firstname": "Albin",
-    "lastname": "Hedlund Löfgren",
-    "email": "Albin.HedlundLofgren33@hotmail.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "customer",
-    "firstname": "Gabriel",
-    "lastname": "Svensson Holm",
-    "email": "Gabriel_SvenssonHolm74@gmail.com",
-    "password_hash": "",
-    "balance": 643,
-    "trip_history": []
-  },
-  {
-    "role": "city_manager",
-    "firstname": "Torbjörn",
-    "lastname": "Bergström",
-    "email": "Torbjorn_Bergstrom38@gmail.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "customer",
-    "firstname": "Oliver",
-    "lastname": "Månsson",
-    "email": "Oliver.Mansson61@gmail.com",
-    "password_hash": "",
-    "balance": 831,
-    "trip_history": []
-  },
-  {
-    "role": "admin",
-    "firstname": "Ella",
-    "lastname": "Holmberg",
-    "email": "Ella_Holmberg96@yahoo.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "admin",
-    "firstname": "Siv",
-    "lastname": "Lundin",
-    "email": "Siv_Lundin@hotmail.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "city_manager",
-    "firstname": "Felix",
-    "lastname": "Blomqvist",
-    "email": "Felix.Blomqvist95@hotmail.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "customer",
-    "firstname": "Bengt",
-    "lastname": "Viklund",
-    "email": "Bengt.Viklund@yahoo.com",
-    "password_hash": "",
-    "balance": 265,
-    "trip_history": []
-  },
-  {
-    "role": "customer",
-    "firstname": "Birgitta",
-    "lastname": "Lundin",
-    "email": "Birgitta_Lundin@yahoo.com",
-    "password_hash": "",
-    "balance": 269,
-    "trip_history": []
-  },
-  {
-    "role": "customer",
-    "firstname": "Felicia",
-    "lastname": "Holmqvist Holm",
-    "email": "Felicia.HolmqvistHolm37@hotmail.com",
-    "password_hash": "",
-    "balance": 454,
-    "trip_history": []
-  },
-  {
-    "role": "city_manager",
-    "firstname": "Ann-Marie",
-    "lastname": "Abrahamsson Svensson",
-    "email": "Ann-Marie.AbrahamssonSvensson@yahoo.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "city_manager",
-    "firstname": "Britt-Marie",
-    "lastname": "Nilsson",
-    "email": "Britt-Marie_Nilsson69@yahoo.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "admin",
-    "firstname": "Erik",
-    "lastname": "Månsson",
-    "email": "Erik_Mansson39@yahoo.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "customer",
-    "firstname": "Mats",
-    "lastname": "Dahlberg",
-    "email": "Mats_Dahlberg39@hotmail.com",
-    "password_hash": "",
-    "balance": 594,
-    "trip_history": []
-  },
-  {
-    "role": "city_manager",
-    "firstname": "Charlotte",
-    "lastname": "Fransson",
-    "email": "Charlotte.Fransson@hotmail.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "admin",
-    "firstname": "Jesper",
-    "lastname": "Eliasson",
-    "email": "Jesper.Eliasson@hotmail.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "customer",
-    "firstname": "Alice",
-    "lastname": "Henriksson Martinsson",
-    "email": "Alice_HenrikssonMartinsson13@yahoo.com",
-    "password_hash": "",
-    "balance": 274,
-    "trip_history": []
-  },
-  {
-    "role": "customer",
-    "firstname": "Therese",
-    "lastname": "Björklund Holmqvist",
-    "email": "Therese_BjorklundHolmqvist35@yahoo.com",
-    "password_hash": "",
-    "balance": 457,
-    "trip_history": []
-  },
-  {
-    "role": "admin",
-    "firstname": "Alexandra",
-    "lastname": "Björklund",
-    "email": "Alexandra_Bjorklund72@yahoo.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "customer",
-    "firstname": "Lena",
-    "lastname": "Holmberg",
-    "email": "Lena_Holmberg@yahoo.com",
-    "password_hash": "",
-    "balance": 546,
-    "trip_history": []
-  },
-  {
-    "role": "admin",
-    "firstname": "Torbjörn",
-    "lastname": "Sandström Eliasson",
-    "email": "Torbjorn_SandstromEliasson@yahoo.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "city_manager",
-    "firstname": "Lars",
-    "lastname": "Karlsson",
-    "email": "Lars.Karlsson@gmail.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "city_manager",
-    "firstname": "Torbjörn",
-    "lastname": "Danielsson Andersson",
-    "email": "Torbjorn.DanielssonAndersson19@hotmail.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "city_manager",
-    "firstname": "Josef",
-    "lastname": "Nilsson",
-    "email": "Josef_Nilsson60@hotmail.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "customer",
-    "firstname": "Bengt",
-    "lastname": "Magnusson Nordström",
-    "email": "Bengt_MagnussonNordstrom@hotmail.com",
-    "password_hash": "",
-    "balance": 903,
-    "trip_history": []
-  },
-  {
-    "role": "customer",
-    "firstname": "Bengt",
-    "lastname": "Abrahamsson Hellström",
-    "email": "Bengt.AbrahamssonHellstrom@hotmail.com",
-    "password_hash": "",
-    "balance": 507,
-    "trip_history": []
-  },
-  {
-    "role": "admin",
-    "firstname": "Robert",
-    "lastname": "Lund",
-    "email": "Robert.Lund@hotmail.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "city_manager",
-    "firstname": "Margareta",
-    "lastname": "Lindberg Ström",
-    "email": "Margareta_LindbergStrom34@hotmail.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "admin",
-    "firstname": "Joakim",
-    "lastname": "Mattsson",
-    "email": "Joakim_Mattsson65@hotmail.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "city_manager",
-    "firstname": "Martin",
-    "lastname": "Blomqvist",
-    "email": "Martin_Blomqvist89@yahoo.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "admin",
-    "firstname": "Oliver",
-    "lastname": "Isaksson",
-    "email": "Oliver.Isaksson62@hotmail.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "city_manager",
-    "firstname": "Johanna",
-    "lastname": "Danielsson",
-    "email": "Johanna_Danielsson@hotmail.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "customer",
-    "firstname": "Sofia",
-    "lastname": "Jansson Henriksson",
-    "email": "Sofia.JanssonHenriksson1@yahoo.com",
-    "password_hash": "",
-    "balance": 229,
-    "trip_history": []
-  },
-  {
-    "role": "city_manager",
-    "firstname": "Leif",
-    "lastname": "Mohamed",
-    "email": "Leif_Mohamed48@gmail.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "city_manager",
-    "firstname": "Linn",
-    "lastname": "Viklund",
-    "email": "Linn.Viklund@gmail.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "customer",
-    "firstname": "Henrik",
-    "lastname": "Holmgren Gunnarsson",
-    "email": "Henrik_HolmgrenGunnarsson@yahoo.com",
-    "password_hash": "",
-    "balance": 411,
-    "trip_history": []
-  },
-  {
-    "role": "customer",
-    "firstname": "Bengt",
-    "lastname": "Sandström Martinsson",
-    "email": "Bengt.SandstromMartinsson@gmail.com",
-    "password_hash": "",
-    "balance": 931,
-    "trip_history": []
-  },
-  {
-    "role": "city_manager",
-    "firstname": "Robin",
-    "lastname": "Lindberg",
-    "email": "Robin_Lindberg65@hotmail.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "customer",
-    "firstname": "Arvid",
-    "lastname": "Lindberg",
-    "email": "Arvid_Lindberg49@gmail.com",
-    "password_hash": "",
-    "balance": 667,
-    "trip_history": []
-  },
-  {
-    "role": "customer",
-    "firstname": "William",
-    "lastname": "Isaksson",
-    "email": "William_Isaksson1@gmail.com",
-    "password_hash": "",
-    "balance": 997,
-    "trip_history": []
-  },
-  {
-    "role": "customer",
-    "firstname": "Ulf",
-    "lastname": "Danielsson",
-    "email": "Ulf.Danielsson45@hotmail.com",
-    "password_hash": "",
-    "balance": 119,
-    "trip_history": []
-  },
-  {
-    "role": "city_manager",
-    "firstname": "Nina",
-    "lastname": "Berglund Engström",
-    "email": "Nina_BerglundEngstrom@gmail.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "customer",
-    "firstname": "Louise",
-    "lastname": "Eklund",
-    "email": "Louise.Eklund@yahoo.com",
-    "password_hash": "",
-    "balance": 151,
-    "trip_history": []
-  },
-  {
-    "role": "customer",
-    "firstname": "Jimmy",
-    "lastname": "Nordström",
-    "email": "Jimmy.Nordstrom54@hotmail.com",
-    "password_hash": "",
-    "balance": 854,
-    "trip_history": []
-  },
-  {
-    "role": "admin",
-    "firstname": "Emma",
-    "lastname": "Olsson Söderberg",
-    "email": "Emma.OlssonSoderberg94@yahoo.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "admin",
-    "firstname": "Ebba",
-    "lastname": "Berg",
-    "email": "Ebba.Berg@yahoo.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "city_manager",
-    "firstname": "Katarina",
-    "lastname": "Björk",
-    "email": "Katarina.Bjork@gmail.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "admin",
-    "firstname": "Pernilla",
-    "lastname": "Lundberg Lundström",
-    "email": "Pernilla.LundbergLundstrom41@yahoo.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "admin",
-    "firstname": "Ann-Marie",
-    "lastname": "Björk",
-    "email": "Ann-Marie.Bjork30@yahoo.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "customer",
-    "firstname": "Therese",
-    "lastname": "Karlsson Nordström",
-    "email": "Therese_KarlssonNordstrom@gmail.com",
-    "password_hash": "",
-    "balance": 760,
-    "trip_history": []
-  },
-  {
-    "role": "admin",
-    "firstname": "Pernilla",
-    "lastname": "Öberg",
-    "email": "Pernilla_Oberg@yahoo.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "admin",
-    "firstname": "Linda",
-    "lastname": "Hermansson",
-    "email": "Linda_Hermansson57@hotmail.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "admin",
-    "firstname": "Hugo",
-    "lastname": "Lundqvist",
-    "email": "Hugo_Lundqvist@yahoo.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "customer",
-    "firstname": "Frida",
-    "lastname": "Persson",
-    "email": "Frida_Persson78@yahoo.com",
-    "password_hash": "",
-    "balance": 42,
-    "trip_history": []
-  },
-  {
-    "role": "admin",
-    "firstname": "Nina",
-    "lastname": "Nordin Berglund",
-    "email": "Nina_NordinBerglund@hotmail.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "admin",
-    "firstname": "Roger",
-    "lastname": "Holmqvist Sjögren",
-    "email": "Roger_HolmqvistSjogren5@hotmail.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "customer",
-    "firstname": "Hugo",
-    "lastname": "Olofsson",
-    "email": "Hugo.Olofsson37@gmail.com",
-    "password_hash": "",
-    "balance": 359,
-    "trip_history": []
-  },
-  {
-    "role": "city_manager",
-    "firstname": "Bengt",
-    "lastname": "Hermansson Björklund",
-    "email": "Bengt_HermanssonBjorklund@gmail.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "customer",
-    "firstname": "Joel",
-    "lastname": "Pålsson",
-    "email": "Joel_Palsson71@hotmail.com",
-    "password_hash": "",
-    "balance": 808,
-    "trip_history": []
-  },
-  {
-    "role": "city_manager",
-    "firstname": "Jonathan",
-    "lastname": "Bengtsson",
-    "email": "Jonathan_Bengtsson97@hotmail.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "admin",
-    "firstname": "Johanna",
-    "lastname": "Gunnarsson",
-    "email": "Johanna.Gunnarsson@yahoo.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "customer",
-    "firstname": "Madeleine",
-    "lastname": "Mohamed",
-    "email": "Madeleine_Mohamed27@yahoo.com",
-    "password_hash": "",
-    "balance": 127,
-    "trip_history": []
-  },
-  {
-    "role": "city_manager",
-    "firstname": "Margareta",
-    "lastname": "Lund Dahl",
-    "email": "Margareta_LundDahl7@gmail.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "city_manager",
-    "firstname": "Helen",
-    "lastname": "Lundström",
-    "email": "Helen.Lundstrom@yahoo.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "city_manager",
-    "firstname": "Kjell",
-    "lastname": "Björklund",
-    "email": "Kjell.Bjorklund95@hotmail.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "customer",
-    "firstname": "Alva",
-    "lastname": "Olofsson",
-    "email": "Alva_Olofsson@gmail.com",
-    "password_hash": "",
-    "balance": 574,
-    "trip_history": []
-  },
-  {
-    "role": "customer",
-    "firstname": "Åke",
-    "lastname": "Andersson",
-    "email": "Ake.Andersson@gmail.com",
-    "password_hash": "",
-    "balance": 319,
-    "trip_history": []
-  },
-  {
-    "role": "city_manager",
-    "firstname": "Niklas",
-    "lastname": "Björk",
-    "email": "Niklas_Bjork16@yahoo.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "city_manager",
-    "firstname": "Jonas",
-    "lastname": "Håkansson",
-    "email": "Jonas.Hakansson@gmail.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "customer",
-    "firstname": "Britt",
-    "lastname": "Norberg",
-    "email": "Britt_Norberg77@gmail.com",
-    "password_hash": "",
-    "balance": 559,
-    "trip_history": []
-  },
-  {
-    "role": "admin",
-    "firstname": "Jesper",
-    "lastname": "Sjöberg",
-    "email": "Jesper_Sjoberg48@yahoo.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "customer",
-    "firstname": "Robin",
-    "lastname": "Samuelsson Berg",
-    "email": "Robin.SamuelssonBerg@yahoo.com",
-    "password_hash": "",
-    "balance": 121,
-    "trip_history": []
-  },
-  {
-    "role": "city_manager",
-    "firstname": "Frida",
-    "lastname": "Martinsson Björklund",
-    "email": "Frida_MartinssonBjorklund96@yahoo.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "customer",
-    "firstname": "Lisbeth",
-    "lastname": "Mohamed",
-    "email": "Lisbeth.Mohamed29@hotmail.com",
-    "password_hash": "",
-    "balance": 707,
-    "trip_history": []
-  },
-  {
-    "role": "customer",
-    "firstname": "Margareta",
-    "lastname": "Ekström",
-    "email": "Margareta_Ekstrom38@hotmail.com",
-    "password_hash": "",
-    "balance": 470,
-    "trip_history": []
-  },
-  {
-    "role": "customer",
-    "firstname": "Gunnar",
-    "lastname": "Hedlund",
-    "email": "Gunnar_Hedlund37@gmail.com",
-    "password_hash": "",
-    "balance": 697,
-    "trip_history": []
-  },
-  {
-    "role": "city_manager",
-    "firstname": "Tommy",
-    "lastname": "Eklund",
-    "email": "Tommy_Eklund@hotmail.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "admin",
-    "firstname": "Ida",
-    "lastname": "Söderberg",
-    "email": "Ida_Soderberg62@hotmail.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "customer",
-    "firstname": "Annika",
-    "lastname": "Björk Olsson",
-    "email": "Annika.BjorkOlsson@hotmail.com",
-    "password_hash": "",
-    "balance": 584,
-    "trip_history": []
-  },
-  {
-    "role": "city_manager",
-    "firstname": "Mats",
-    "lastname": "Berglund",
-    "email": "Mats_Berglund@hotmail.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "customer",
-    "firstname": "Rolf",
-    "lastname": "Gunnarsson",
-    "email": "Rolf.Gunnarsson2@gmail.com",
-    "password_hash": "",
-    "balance": 62,
-    "trip_history": []
-  },
-  {
-    "role": "customer",
-    "firstname": "Sofia",
-    "lastname": "Sandberg",
-    "email": "Sofia_Sandberg18@gmail.com",
-    "password_hash": "",
-    "balance": 599,
-    "trip_history": []
-  },
-  {
-    "role": "city_manager",
-    "firstname": "Åsa",
-    "lastname": "Fredriksson",
-    "email": "Asa_Fredriksson@gmail.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "admin",
-    "firstname": "Kjell",
-    "lastname": "Holmberg Eriksson",
-    "email": "Kjell.HolmbergEriksson67@yahoo.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "customer",
-    "firstname": "Ludvig",
-    "lastname": "Bergström",
-    "email": "Ludvig.Bergstrom64@hotmail.com",
-    "password_hash": "",
-    "balance": 24,
-    "trip_history": []
-  },
-  {
-    "role": "city_manager",
-    "firstname": "Sven",
-    "lastname": "Pettersson",
-    "email": "Sven_Pettersson17@gmail.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "city_manager",
-    "firstname": "Emelie",
-    "lastname": "Falk",
-    "email": "Emelie.Falk@yahoo.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "customer",
-    "firstname": "Hans",
-    "lastname": "Åberg Johansson",
-    "email": "Hans_AbergJohansson@hotmail.com",
-    "password_hash": "",
-    "balance": 279,
-    "trip_history": []
-  },
-  {
-    "role": "city_manager",
-    "firstname": "Gustav",
-    "lastname": "Eriksson",
-    "email": "Gustav.Eriksson91@yahoo.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "city_manager",
-    "firstname": "Christer",
-    "lastname": "Jönsson",
-    "email": "Christer_Jonsson16@gmail.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "customer",
-    "firstname": "Oliver",
-    "lastname": "Holmqvist",
-    "email": "Oliver_Holmqvist85@hotmail.com",
-    "password_hash": "",
-    "balance": 687,
-    "trip_history": []
-  },
-  {
-    "role": "city_manager",
-    "firstname": "Carina",
-    "lastname": "Nordström",
-    "email": "Carina_Nordstrom26@yahoo.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "city_manager",
-    "firstname": "Kurt",
-    "lastname": "Bergström",
-    "email": "Kurt.Bergstrom46@yahoo.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "admin",
-    "firstname": "Viktor",
-    "lastname": "Ekström",
-    "email": "Viktor.Ekstrom@yahoo.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "admin",
-    "firstname": "Axel",
-    "lastname": "Forsberg",
-    "email": "Axel_Forsberg36@hotmail.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "city_manager",
-    "firstname": "Stig",
-    "lastname": "Lindqvist",
-    "email": "Stig.Lindqvist@yahoo.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "admin",
-    "firstname": "Mats",
-    "lastname": "Björk",
-    "email": "Mats_Bjork@gmail.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "admin",
-    "firstname": "Åke",
-    "lastname": "Hansen",
-    "email": "Ake.Hansen77@hotmail.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "admin",
-    "firstname": "Margareta",
-    "lastname": "Gustafsson",
-    "email": "Margareta_Gustafsson@hotmail.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "city_manager",
-    "firstname": "Camilla",
-    "lastname": "Hedlund",
-    "email": "Camilla_Hedlund82@yahoo.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "admin",
-    "firstname": "Sebastian",
-    "lastname": "Lundberg",
-    "email": "Sebastian.Lundberg70@hotmail.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "customer",
-    "firstname": "Anette",
-    "lastname": "Lundström",
-    "email": "Anette.Lundstrom31@yahoo.com",
-    "password_hash": "",
-    "balance": 838,
-    "trip_history": []
-  },
-  {
-    "role": "city_manager",
-    "firstname": "Mohamed",
-    "lastname": "Fransson",
-    "email": "Mohamed.Fransson@gmail.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "admin",
-    "firstname": "Berit",
-    "lastname": "Ali Henriksson",
-    "email": "Berit_AliHenriksson@gmail.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "admin",
-    "firstname": "Mikael",
-    "lastname": "Fransson",
-    "email": "Mikael.Fransson@hotmail.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "admin",
-    "firstname": "Olivia",
-    "lastname": "Nordin",
-    "email": "Olivia.Nordin52@yahoo.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "city_manager",
-    "firstname": "Bo",
-    "lastname": "Forsberg",
-    "email": "Bo.Forsberg10@gmail.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "customer",
-    "firstname": "Lisa",
-    "lastname": "Sundberg",
-    "email": "Lisa_Sundberg@hotmail.com",
-    "password_hash": "",
-    "balance": 136,
-    "trip_history": []
-  },
-  {
-    "role": "city_manager",
-    "firstname": "Edvin",
-    "lastname": "Arvidsson",
-    "email": "Edvin.Arvidsson@yahoo.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "customer",
-    "firstname": "Mikaela",
-    "lastname": "Abrahamsson",
-    "email": "Mikaela.Abrahamsson@hotmail.com",
-    "password_hash": "",
-    "balance": 212,
-    "trip_history": []
-  },
-  {
-    "role": "city_manager",
-    "firstname": "Patrik",
-    "lastname": "Ekström",
-    "email": "Patrik_Ekstrom@hotmail.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "admin",
-    "firstname": "Linnéa",
-    "lastname": "Håkansson",
-    "email": "Linnea_Hakansson17@yahoo.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "customer",
-    "firstname": "Lina",
-    "lastname": "Fransson",
-    "email": "Lina_Fransson@gmail.com",
-    "password_hash": "",
-    "balance": 793,
-    "trip_history": []
-  },
-  {
-    "role": "customer",
-    "firstname": "Gustav",
-    "lastname": "Isaksson Öberg",
-    "email": "Gustav_IsakssonOberg68@yahoo.com",
-    "password_hash": "",
-    "balance": 276,
-    "trip_history": []
-  },
-  {
-    "role": "admin",
-    "firstname": "Arvid",
-    "lastname": "Lind",
-    "email": "Arvid_Lind47@gmail.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "admin",
-    "firstname": "Therese",
-    "lastname": "Lundström Nyberg",
-    "email": "Therese.LundstromNyberg30@hotmail.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "city_manager",
-    "firstname": "Gabriel",
-    "lastname": "Hassan",
-    "email": "Gabriel.Hassan79@gmail.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "admin",
-    "firstname": "Sofia",
-    "lastname": "Wallin",
-    "email": "Sofia_Wallin36@gmail.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "city_manager",
-    "firstname": "Jan",
-    "lastname": "Löfgren",
-    "email": "Jan_Lofgren59@yahoo.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "city_manager",
-    "firstname": "Pernilla",
-    "lastname": "Bergman",
-    "email": "Pernilla_Bergman18@gmail.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "customer",
-    "firstname": "Emilia",
-    "lastname": "Ali Olofsson",
-    "email": "Emilia_AliOlofsson55@yahoo.com",
-    "password_hash": "",
-    "balance": 559,
-    "trip_history": []
-  },
-  {
-    "role": "customer",
-    "firstname": "Alexander",
-    "lastname": "Lindholm",
-    "email": "Alexander_Lindholm64@hotmail.com",
-    "password_hash": "",
-    "balance": 28,
-    "trip_history": []
-  },
-  {
-    "role": "customer",
-    "firstname": "Anette",
-    "lastname": "Hassan",
-    "email": "Anette.Hassan72@gmail.com",
-    "password_hash": "",
-    "balance": 617,
-    "trip_history": []
-  },
-  {
-    "role": "city_manager",
-    "firstname": "Kevin",
-    "lastname": "Forsberg",
-    "email": "Kevin_Forsberg87@yahoo.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "customer",
-    "firstname": "Mattias",
-    "lastname": "Johansson Pettersson",
-    "email": "Mattias.JohanssonPettersson96@gmail.com",
-    "password_hash": "",
-    "balance": 478,
-    "trip_history": []
-  },
-  {
-    "role": "admin",
-    "firstname": "Sonja",
-    "lastname": "Samuelsson",
-    "email": "Sonja_Samuelsson17@gmail.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "admin",
-    "firstname": "Gabriel",
-    "lastname": "Lindberg",
-    "email": "Gabriel_Lindberg@hotmail.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "city_manager",
-    "firstname": "Emilia",
-    "lastname": "Månsson",
-    "email": "Emilia.Mansson94@yahoo.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "city_manager",
-    "firstname": "Ludvig",
-    "lastname": "Claesson Karlsson",
-    "email": "Ludvig.ClaessonKarlsson12@gmail.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "customer",
-    "firstname": "Rolf",
-    "lastname": "Hedlund",
-    "email": "Rolf_Hedlund@yahoo.com",
-    "password_hash": "",
-    "balance": 8,
-    "trip_history": []
-  },
-  {
-    "role": "customer",
-    "firstname": "Ingrid",
-    "lastname": "Sandström",
-    "email": "Ingrid.Sandstrom0@yahoo.com",
-    "password_hash": "",
-    "balance": 70,
-    "trip_history": []
-  },
-  {
-    "role": "customer",
-    "firstname": "Felicia",
-    "lastname": "Wikström Mattsson",
-    "email": "Felicia_WikstromMattsson59@yahoo.com",
-    "password_hash": "",
-    "balance": 749,
-    "trip_history": []
-  },
-  {
-    "role": "customer",
-    "firstname": "Mohamed",
-    "lastname": "Svensson",
-    "email": "Mohamed.Svensson@gmail.com",
-    "password_hash": "",
-    "balance": 557,
-    "trip_history": []
-  },
-  {
-    "role": "customer",
-    "firstname": "Josefin",
-    "lastname": "Hansson",
-    "email": "Josefin.Hansson@gmail.com",
-    "password_hash": "",
-    "balance": 197,
-    "trip_history": []
-  },
-  {
-    "role": "city_manager",
-    "firstname": "Tobias",
-    "lastname": "Berggren Fredriksson",
-    "email": "Tobias_BerggrenFredriksson25@yahoo.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "admin",
-    "firstname": "Mona",
-    "lastname": "Andersson Lundgren",
-    "email": "Mona_AnderssonLundgren48@hotmail.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "city_manager",
-    "firstname": "Oliver",
-    "lastname": "Andersson",
-    "email": "Oliver.Andersson@yahoo.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "city_manager",
-    "firstname": "Viktoria",
-    "lastname": "Söderberg",
-    "email": "Viktoria.Soderberg@gmail.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "admin",
-    "firstname": "Ann-Christin",
-    "lastname": "Hassan",
-    "email": "Ann-Christin_Hassan10@hotmail.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "admin",
-    "firstname": "Martin",
-    "lastname": "Lind",
-    "email": "Martin_Lind7@hotmail.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "admin",
-    "firstname": "Mikaela",
-    "lastname": "Mohamed",
-    "email": "Mikaela_Mohamed@gmail.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "customer",
-    "firstname": "Arvid",
-    "lastname": "Holmqvist",
-    "email": "Arvid.Holmqvist@hotmail.com",
-    "password_hash": "",
-    "balance": 329,
-    "trip_history": []
-  },
-  {
-    "role": "customer",
-    "firstname": "Josefin",
-    "lastname": "Holmgren",
-    "email": "Josefin.Holmgren73@gmail.com",
-    "password_hash": "",
-    "balance": 619,
-    "trip_history": []
-  },
-  {
-    "role": "customer",
-    "firstname": "Amanda",
-    "lastname": "Karlsson",
-    "email": "Amanda.Karlsson11@gmail.com",
-    "password_hash": "",
-    "balance": 973,
-    "trip_history": []
-  },
-  {
-    "role": "customer",
-    "firstname": "Jimmy",
-    "lastname": "Hassan",
-    "email": "Jimmy.Hassan8@hotmail.com",
-    "password_hash": "",
-    "balance": 92,
-    "trip_history": []
-  },
-  {
-    "role": "customer",
-    "firstname": "Adam",
-    "lastname": "Nyberg",
-    "email": "Adam.Nyberg3@gmail.com",
-    "password_hash": "",
-    "balance": 203,
-    "trip_history": []
-  },
-  {
-    "role": "customer",
-    "firstname": "Leif",
-    "lastname": "Ali Eriksson",
-    "email": "Leif.AliEriksson50@yahoo.com",
-    "password_hash": "",
-    "balance": 776,
-    "trip_history": []
-  },
-  {
-    "role": "customer",
-    "firstname": "Britt-Marie",
-    "lastname": "Lundin",
-    "email": "Britt-Marie.Lundin@hotmail.com",
-    "password_hash": "",
-    "balance": 593,
-    "trip_history": []
-  },
-  {
-    "role": "admin",
-    "firstname": "Anita",
-    "lastname": "Olsson",
-    "email": "Anita_Olsson@gmail.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "city_manager",
-    "firstname": "Charlotte",
-    "lastname": "Gunnarsson",
-    "email": "Charlotte.Gunnarsson@yahoo.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "customer",
-    "firstname": "Elsa",
-    "lastname": "Hedlund",
-    "email": "Elsa_Hedlund39@yahoo.com",
-    "password_hash": "",
-    "balance": 765,
-    "trip_history": []
-  },
-  {
-    "role": "customer",
-    "firstname": "Mikael",
-    "lastname": "Blom",
-    "email": "Mikael_Blom@hotmail.com",
-    "password_hash": "",
-    "balance": 793,
-    "trip_history": []
-  },
-  {
-    "role": "city_manager",
-    "firstname": "Nils",
-    "lastname": "Dahl",
-    "email": "Nils_Dahl56@yahoo.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "customer",
     "firstname": "Ulrika",
-    "lastname": "Sandström Henriksson",
-    "email": "Ulrika.SandstromHenriksson@hotmail.com",
-    "password_hash": "",
-    "balance": 247,
-    "trip_history": []
-  },
-  {
-    "role": "city_manager",
-    "firstname": "Maja",
-    "lastname": "Magnusson",
-    "email": "Maja_Magnusson@hotmail.com",
+    "lastname": "Axelsson Bengtsson",
+    "email": "Ulrika_AxelssonBengtsson72@hotmail.com",
     "password_hash": "",
     "trip_history": []
   },
   {
-    "role": "city_manager",
-    "firstname": "Sven",
-    "lastname": "Wallin Hedlund",
-    "email": "Sven.WallinHedlund71@gmail.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "city_manager",
-    "firstname": "Astrid",
-    "lastname": "Bengtsson",
-    "email": "Astrid.Bengtsson@hotmail.com",
+    "role": "admin",
+    "firstname": "Sandra",
+    "lastname": "Wikström Sandberg",
+    "email": "Sandra.WikstromSandberg@yahoo.com",
     "password_hash": "",
     "trip_history": []
   },
   {
     "role": "city_manager",
     "firstname": "Ali",
-    "lastname": "Eliasson",
-    "email": "Ali_Eliasson25@gmail.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "admin",
-    "firstname": "Joakim",
-    "lastname": "Berggren",
-    "email": "Joakim.Berggren@gmail.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "admin",
-    "firstname": "Tobias",
-    "lastname": "Nordin",
-    "email": "Tobias.Nordin67@gmail.com",
+    "lastname": "Lundström Wikström",
+    "email": "Ali_LundstromWikstrom@hotmail.com",
     "password_hash": "",
     "trip_history": []
   },
   {
     "role": "customer",
-    "firstname": "Lennart",
-    "lastname": "Claesson",
-    "email": "Lennart_Claesson45@gmail.com",
+    "firstname": "Viktor",
+    "lastname": "Dahl",
+    "email": "Viktor.Dahl@gmail.com",
     "password_hash": "",
-    "balance": 538,
-    "trip_history": []
-  },
-  {
-    "role": "customer",
-    "firstname": "Alexander",
-    "lastname": "Viklund",
-    "email": "Alexander_Viklund@yahoo.com",
-    "password_hash": "",
-    "balance": 900,
-    "trip_history": []
-  },
-  {
-    "role": "customer",
-    "firstname": "Gustav",
-    "lastname": "Bergqvist",
-    "email": "Gustav_Bergqvist@yahoo.com",
-    "password_hash": "",
-    "balance": 660,
-    "trip_history": []
-  },
-  {
-    "role": "admin",
-    "firstname": "Ida",
-    "lastname": "Ekström",
-    "email": "Ida_Ekstrom@hotmail.com",
-    "password_hash": "",
+    "balance": 119,
     "trip_history": []
   },
   {
     "role": "city_manager",
-    "firstname": "Lisbeth",
-    "lastname": "Hansson Björk",
-    "email": "Lisbeth.HanssonBjork68@yahoo.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "city_manager",
-    "firstname": "Sonja",
-    "lastname": "Svensson",
-    "email": "Sonja.Svensson@hotmail.com",
+    "firstname": "Carina",
+    "lastname": "Månsson",
+    "email": "Carina.Mansson80@yahoo.com",
     "password_hash": "",
     "trip_history": []
   },
   {
     "role": "customer",
-    "firstname": "Alexandra",
-    "lastname": "Söderberg",
-    "email": "Alexandra_Soderberg@hotmail.com",
+    "firstname": "Sandra",
+    "lastname": "Holmberg",
+    "email": "Sandra.Holmberg@hotmail.com",
     "password_hash": "",
-    "balance": 902,
-    "trip_history": []
-  },
-  {
-    "role": "city_manager",
-    "firstname": "Pontus",
-    "lastname": "Lundgren",
-    "email": "Pontus.Lundgren@hotmail.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "city_manager",
-    "firstname": "Mats",
-    "lastname": "Sandberg",
-    "email": "Mats.Sandberg@gmail.com",
-    "password_hash": "",
+    "balance": 13,
     "trip_history": []
   },
   {
     "role": "customer",
-    "firstname": "Ulla",
-    "lastname": "Mattsson",
-    "email": "Ulla.Mattsson6@yahoo.com",
+    "firstname": "Thomas",
+    "lastname": "Olsson Hellström",
+    "email": "Thomas.OlssonHellstrom59@yahoo.com",
     "password_hash": "",
-    "balance": 274,
+    "balance": 618,
+    "trip_history": []
+  },
+  {
+    "role": "customer",
+    "firstname": "Mikael",
+    "lastname": "Berg Wallin",
+    "email": "Mikael.BergWallin90@gmail.com",
+    "password_hash": "",
+    "balance": 174,
+    "trip_history": []
+  },
+  {
+    "role": "customer",
+    "firstname": "Ingrid",
+    "lastname": "Lundström",
+    "email": "Ingrid_Lundstrom@gmail.com",
+    "password_hash": "",
+    "balance": 436,
     "trip_history": []
   },
   {
     "role": "city_manager",
     "firstname": "Nina",
-    "lastname": "Hellström Danielsson",
-    "email": "Nina_HellstromDanielsson@gmail.com",
+    "lastname": "Holmberg",
+    "email": "Nina_Holmberg93@gmail.com",
     "password_hash": "",
     "trip_history": []
   },
   {
     "role": "admin",
-    "firstname": "Daniel",
-    "lastname": "Lindholm Fransson",
-    "email": "Daniel_LindholmFransson89@hotmail.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "admin",
-    "firstname": "Fredrik",
-    "lastname": "Bergström",
-    "email": "Fredrik.Bergstrom48@yahoo.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "admin",
-    "firstname": "Lina",
-    "lastname": "Bengtsson Jakobsson",
-    "email": "Lina_BengtssonJakobsson14@yahoo.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "admin",
-    "firstname": "Karin",
-    "lastname": "Hedlund Isaksson",
-    "email": "Karin.HedlundIsaksson@gmail.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "admin",
-    "firstname": "Gustav",
-    "lastname": "Hansen",
-    "email": "Gustav.Hansen89@gmail.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "admin",
-    "firstname": "Anette",
-    "lastname": "Berglund",
-    "email": "Anette.Berglund45@hotmail.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "customer",
-    "firstname": "Gustav",
-    "lastname": "Magnusson",
-    "email": "Gustav.Magnusson@hotmail.com",
-    "password_hash": "",
-    "balance": 744,
-    "trip_history": []
-  },
-  {
-    "role": "admin",
-    "firstname": "Emilia",
-    "lastname": "Nyström",
-    "email": "Emilia_Nystrom67@hotmail.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "customer",
-    "firstname": "Kenneth",
-    "lastname": "Hermansson",
-    "email": "Kenneth_Hermansson96@yahoo.com",
-    "password_hash": "",
-    "balance": 624,
-    "trip_history": []
-  },
-  {
-    "role": "admin",
-    "firstname": "Emma",
-    "lastname": "Hermansson Claesson",
-    "email": "Emma.HermanssonClaesson@hotmail.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "admin",
-    "firstname": "Karin",
-    "lastname": "Lundgren",
-    "email": "Karin_Lundgren44@hotmail.com",
+    "firstname": "Mikael",
+    "lastname": "Nyberg",
+    "email": "Mikael.Nyberg@gmail.com",
     "password_hash": "",
     "trip_history": []
   },
   {
     "role": "city_manager",
-    "firstname": "Madeleine",
-    "lastname": "Lind",
-    "email": "Madeleine_Lind40@hotmail.com",
+    "firstname": "Rickard",
+    "lastname": "Sandberg",
+    "email": "Rickard_Sandberg@yahoo.com",
     "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "city_manager",
-    "firstname": "Karin",
-    "lastname": "Jönsson",
-    "email": "Karin.Jonsson40@gmail.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "customer",
-    "firstname": "Ellen",
-    "lastname": "Lundström Mårtensson",
-    "email": "Ellen.LundstromMartensson47@hotmail.com",
-    "password_hash": "",
-    "balance": 570,
     "trip_history": []
   },
   {
     "role": "admin",
-    "firstname": "Johnny",
-    "lastname": "Danielsson Viklund",
-    "email": "Johnny_DanielssonViklund@gmail.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "city_manager",
-    "firstname": "Joel",
-    "lastname": "Mårtensson Wikström",
-    "email": "Joel.MartenssonWikstrom@gmail.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "city_manager",
-    "firstname": "Magnus",
-    "lastname": "Hansen",
-    "email": "Magnus.Hansen23@yahoo.com",
-    "password_hash": "",
-    "trip_history": []
-  },
-  {
-    "role": "city_manager",
-    "firstname": "Frida",
-    "lastname": "Magnusson Arvidsson",
-    "email": "Frida_MagnussonArvidsson@yahoo.com",
+    "firstname": "Nina",
+    "lastname": "Åberg",
+    "email": "Nina.Aberg@hotmail.com",
     "password_hash": "",
     "trip_history": []
   },
   {
     "role": "customer",
     "firstname": "Isabelle",
-    "lastname": "Karlsson",
-    "email": "Isabelle.Karlsson@gmail.com",
+    "lastname": "Isaksson Söderberg",
+    "email": "Isabelle_IsakssonSoderberg@gmail.com",
     "password_hash": "",
-    "balance": 115,
+    "balance": 902,
+    "trip_history": []
+  },
+  {
+    "role": "admin",
+    "firstname": "Cecilia",
+    "lastname": "Olofsson",
+    "email": "Cecilia.Olofsson91@gmail.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "city_manager",
+    "firstname": "Ann-Christin",
+    "lastname": "Lundqvist",
+    "email": "Ann-Christin.Lundqvist22@hotmail.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "customer",
+    "firstname": "Tobias",
+    "lastname": "Andreasson",
+    "email": "Tobias.Andreasson@yahoo.com",
+    "password_hash": "",
+    "balance": 265,
+    "trip_history": []
+  },
+  {
+    "role": "admin",
+    "firstname": "Alexander",
+    "lastname": "Sjöberg",
+    "email": "Alexander.Sjoberg82@hotmail.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "admin",
+    "firstname": "Ann",
+    "lastname": "Åkesson",
+    "email": "Ann_Akesson96@gmail.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "customer",
+    "firstname": "Camilla",
+    "lastname": "Ali Ahmed",
+    "email": "Camilla.AliAhmed@yahoo.com",
+    "password_hash": "",
+    "balance": 935,
+    "trip_history": []
+  },
+  {
+    "role": "admin",
+    "firstname": "Britt-Marie",
+    "lastname": "Jönsson",
+    "email": "Britt-Marie_Jonsson@hotmail.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "city_manager",
+    "firstname": "Ali",
+    "lastname": "Sundberg",
+    "email": "Ali_Sundberg43@hotmail.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "customer",
+    "firstname": "Christian",
+    "lastname": "Mohamed Björk",
+    "email": "Christian_MohamedBjork@yahoo.com",
+    "password_hash": "",
+    "balance": 396,
+    "trip_history": []
+  },
+  {
+    "role": "admin",
+    "firstname": "Maja",
+    "lastname": "Hansen",
+    "email": "Maja_Hansen@gmail.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "city_manager",
+    "firstname": "Stig",
+    "lastname": "Björklund Sandström",
+    "email": "Stig.BjorklundSandstrom16@yahoo.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "customer",
+    "firstname": "Max",
+    "lastname": "Danielsson",
+    "email": "Max.Danielsson93@gmail.com",
+    "password_hash": "",
+    "balance": 573,
+    "trip_history": []
+  },
+  {
+    "role": "customer",
+    "firstname": "Rickard",
+    "lastname": "Bengtsson Ekström",
+    "email": "Rickard_BengtssonEkstrom30@gmail.com",
+    "password_hash": "",
+    "balance": 848,
+    "trip_history": []
+  },
+  {
+    "role": "admin",
+    "firstname": "Christer",
+    "lastname": "Björk",
+    "email": "Christer_Bjork10@gmail.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "customer",
+    "firstname": "Erik",
+    "lastname": "Pettersson",
+    "email": "Erik.Pettersson@yahoo.com",
+    "password_hash": "",
+    "balance": 700,
+    "trip_history": []
+  },
+  {
+    "role": "admin",
+    "firstname": "Klara",
+    "lastname": "Strömberg",
+    "email": "Klara.Stromberg57@hotmail.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "admin",
+    "firstname": "Matilda",
+    "lastname": "Johansson",
+    "email": "Matilda_Johansson39@hotmail.com",
+    "password_hash": "",
     "trip_history": []
   },
   {
     "role": "customer",
     "firstname": "Sofia",
-    "lastname": "Gunnarsson",
-    "email": "Sofia.Gunnarsson92@hotmail.com",
+    "lastname": "Svensson",
+    "email": "Sofia_Svensson@yahoo.com",
     "password_hash": "",
-    "balance": 841,
+    "balance": 651,
+    "trip_history": []
+  },
+  {
+    "role": "customer",
+    "firstname": "Samuel",
+    "lastname": "Lind Claesson",
+    "email": "Samuel.LindClaesson@hotmail.com",
+    "password_hash": "",
+    "balance": 22,
+    "trip_history": []
+  },
+  {
+    "role": "customer",
+    "firstname": "Kjell",
+    "lastname": "Lindström",
+    "email": "Kjell.Lindstrom57@gmail.com",
+    "password_hash": "",
+    "balance": 449,
+    "trip_history": []
+  },
+  {
+    "role": "admin",
+    "firstname": "Marcus",
+    "lastname": "Andreasson",
+    "email": "Marcus.Andreasson@gmail.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "admin",
+    "firstname": "Anna",
+    "lastname": "Ali",
+    "email": "Anna_Ali84@gmail.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "customer",
+    "firstname": "Hanna",
+    "lastname": "Öberg",
+    "email": "Hanna.Oberg1@yahoo.com",
+    "password_hash": "",
+    "balance": 834,
     "trip_history": []
   },
   {
     "role": "city_manager",
-    "firstname": "Britt-Marie",
+    "firstname": "Cecilia",
+    "lastname": "Sandström",
+    "email": "Cecilia_Sandstrom64@gmail.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "customer",
+    "firstname": "Stefan",
+    "lastname": "Holmqvist Björklund",
+    "email": "Stefan_HolmqvistBjorklund81@yahoo.com",
+    "password_hash": "",
+    "balance": 35,
+    "trip_history": []
+  },
+  {
+    "role": "admin",
+    "firstname": "Linn",
+    "lastname": "Löfgren",
+    "email": "Linn_Lofgren@yahoo.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "admin",
+    "firstname": "Ella",
+    "lastname": "Hassan Ek",
+    "email": "Ella_HassanEk@gmail.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "customer",
+    "firstname": "David",
+    "lastname": "Persson",
+    "email": "David_Persson56@yahoo.com",
+    "password_hash": "",
+    "balance": 278,
+    "trip_history": []
+  },
+  {
+    "role": "admin",
+    "firstname": "Jonathan",
+    "lastname": "Isaksson Berggren",
+    "email": "Jonathan_IsakssonBerggren@gmail.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "admin",
+    "firstname": "Margareta",
+    "lastname": "Dahlberg",
+    "email": "Margareta.Dahlberg99@gmail.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "customer",
+    "firstname": "Matilda",
+    "lastname": "Norberg",
+    "email": "Matilda_Norberg@hotmail.com",
+    "password_hash": "",
+    "balance": 708,
+    "trip_history": []
+  },
+  {
+    "role": "customer",
+    "firstname": "Jesper",
+    "lastname": "Dahlberg",
+    "email": "Jesper.Dahlberg31@gmail.com",
+    "password_hash": "",
+    "balance": 200,
+    "trip_history": []
+  },
+  {
+    "role": "city_manager",
+    "firstname": "Klara",
+    "lastname": "Forsberg Olsson",
+    "email": "Klara.ForsbergOlsson54@gmail.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "customer",
+    "firstname": "Christoffer",
+    "lastname": "Mattsson",
+    "email": "Christoffer.Mattsson54@yahoo.com",
+    "password_hash": "",
+    "balance": 632,
+    "trip_history": []
+  },
+  {
+    "role": "city_manager",
+    "firstname": "Gunnar",
+    "lastname": "Lundqvist Holmqvist",
+    "email": "Gunnar.LundqvistHolmqvist90@gmail.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "admin",
+    "firstname": "Emelie",
+    "lastname": "Andreasson",
+    "email": "Emelie.Andreasson@hotmail.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "city_manager",
+    "firstname": "Lina",
+    "lastname": "Isaksson",
+    "email": "Lina_Isaksson31@gmail.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "admin",
+    "firstname": "Roger",
     "lastname": "Strömberg",
-    "email": "Britt-Marie_Stromberg61@hotmail.com",
+    "email": "Roger.Stromberg@gmail.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "admin",
+    "firstname": "Kerstin",
+    "lastname": "Forsberg",
+    "email": "Kerstin_Forsberg@yahoo.com",
     "password_hash": "",
     "trip_history": []
   },
   {
     "role": "city_manager",
-    "firstname": "Jörgen",
-    "lastname": "Eriksson",
-    "email": "Jorgen.Eriksson@yahoo.com",
+    "firstname": "Yvonne",
+    "lastname": "Wallin",
+    "email": "Yvonne_Wallin11@gmail.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "customer",
+    "firstname": "Emilia",
+    "lastname": "Blomqvist",
+    "email": "Emilia.Blomqvist3@hotmail.com",
+    "password_hash": "",
+    "balance": 100,
+    "trip_history": []
+  },
+  {
+    "role": "admin",
+    "firstname": "Mikaela",
+    "lastname": "Svensson",
+    "email": "Mikaela.Svensson@yahoo.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "city_manager",
+    "firstname": "Robin",
+    "lastname": "Strömberg",
+    "email": "Robin.Stromberg62@yahoo.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "customer",
+    "firstname": "Patrik",
+    "lastname": "Dahl",
+    "email": "Patrik_Dahl21@hotmail.com",
+    "password_hash": "",
+    "balance": 743,
+    "trip_history": []
+  },
+  {
+    "role": "admin",
+    "firstname": "Susanne",
+    "lastname": "Henriksson Sjöberg",
+    "email": "Susanne.HenrikssonSjoberg@hotmail.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "customer",
+    "firstname": "Jessica",
+    "lastname": "Wikström Bengtsson",
+    "email": "Jessica_WikstromBengtsson1@hotmail.com",
+    "password_hash": "",
+    "balance": 188,
+    "trip_history": []
+  },
+  {
+    "role": "city_manager",
+    "firstname": "Caroline",
+    "lastname": "Jansson",
+    "email": "Caroline.Jansson@yahoo.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "city_manager",
+    "firstname": "Pernilla",
+    "lastname": "Lund",
+    "email": "Pernilla.Lund@yahoo.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "customer",
+    "firstname": "Louise",
+    "lastname": "Engström",
+    "email": "Louise_Engstrom@gmail.com",
+    "password_hash": "",
+    "balance": 542,
+    "trip_history": []
+  },
+  {
+    "role": "customer",
+    "firstname": "Ulrika",
+    "lastname": "Norberg",
+    "email": "Ulrika.Norberg@gmail.com",
+    "password_hash": "",
+    "balance": 67,
+    "trip_history": []
+  },
+  {
+    "role": "admin",
+    "firstname": "Susanne",
+    "lastname": "Falk",
+    "email": "Susanne.Falk@hotmail.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "customer",
+    "firstname": "Rebecca",
+    "lastname": "Holmberg",
+    "email": "Rebecca.Holmberg@yahoo.com",
+    "password_hash": "",
+    "balance": 929,
+    "trip_history": []
+  },
+  {
+    "role": "admin",
+    "firstname": "Axel",
+    "lastname": "Jansson",
+    "email": "Axel.Jansson@yahoo.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "city_manager",
+    "firstname": "Björn",
+    "lastname": "Gunnarsson Jansson",
+    "email": "Bjorn.GunnarssonJansson@hotmail.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "admin",
+    "firstname": "Lisa",
+    "lastname": "Berggren",
+    "email": "Lisa_Berggren@yahoo.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "customer",
+    "firstname": "Josef",
+    "lastname": "Mattsson",
+    "email": "Josef.Mattsson@gmail.com",
+    "password_hash": "",
+    "balance": 903,
+    "trip_history": []
+  },
+  {
+    "role": "admin",
+    "firstname": "Pernilla",
+    "lastname": "Bergström",
+    "email": "Pernilla_Bergstrom90@yahoo.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "city_manager",
+    "firstname": "Ali",
+    "lastname": "Wikström",
+    "email": "Ali_Wikstrom35@yahoo.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "admin",
+    "firstname": "Jimmy",
+    "lastname": "Hassan",
+    "email": "Jimmy.Hassan@yahoo.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "city_manager",
+    "firstname": "Birgitta",
+    "lastname": "Karlsson Holmberg",
+    "email": "Birgitta_KarlssonHolmberg@hotmail.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "city_manager",
+    "firstname": "Dennis",
+    "lastname": "Bengtsson",
+    "email": "Dennis.Bengtsson@hotmail.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "city_manager",
+    "firstname": "Torbjörn",
+    "lastname": "Svensson",
+    "email": "Torbjorn_Svensson@hotmail.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "admin",
+    "firstname": "Ali",
+    "lastname": "Sundberg",
+    "email": "Ali_Sundberg52@gmail.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "customer",
+    "firstname": "Nathalie",
+    "lastname": "Bergman",
+    "email": "Nathalie.Bergman79@yahoo.com",
+    "password_hash": "",
+    "balance": 334,
+    "trip_history": []
+  },
+  {
+    "role": "customer",
+    "firstname": "Klara",
+    "lastname": "Bergqvist Olsson",
+    "email": "Klara.BergqvistOlsson@gmail.com",
+    "password_hash": "",
+    "balance": 987,
+    "trip_history": []
+  },
+  {
+    "role": "admin",
+    "firstname": "Berit",
+    "lastname": "Forsberg Gunnarsson",
+    "email": "Berit.ForsbergGunnarsson64@yahoo.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "customer",
+    "firstname": "Christoffer",
+    "lastname": "Larsson",
+    "email": "Christoffer_Larsson@yahoo.com",
+    "password_hash": "",
+    "balance": 87,
+    "trip_history": []
+  },
+  {
+    "role": "customer",
+    "firstname": "Alexander",
+    "lastname": "Lindström",
+    "email": "Alexander.Lindstrom62@hotmail.com",
+    "password_hash": "",
+    "balance": 798,
+    "trip_history": []
+  },
+  {
+    "role": "customer",
+    "firstname": "Therese",
+    "lastname": "Nyberg",
+    "email": "Therese.Nyberg@hotmail.com",
+    "password_hash": "",
+    "balance": 631,
+    "trip_history": []
+  },
+  {
+    "role": "admin",
+    "firstname": "Olle",
+    "lastname": "Sandström",
+    "email": "Olle.Sandstrom55@hotmail.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "customer",
+    "firstname": "Oliver",
+    "lastname": "Lundgren",
+    "email": "Oliver.Lundgren73@gmail.com",
+    "password_hash": "",
+    "balance": 64,
+    "trip_history": []
+  },
+  {
+    "role": "admin",
+    "firstname": "Viktor",
+    "lastname": "Sjögren",
+    "email": "Viktor.Sjogren@hotmail.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "city_manager",
+    "firstname": "Ali",
+    "lastname": "Mårtensson Nordin",
+    "email": "Ali.MartenssonNordin@yahoo.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "customer",
+    "firstname": "Liam",
+    "lastname": "Sjögren",
+    "email": "Liam_Sjogren@gmail.com",
+    "password_hash": "",
+    "balance": 510,
+    "trip_history": []
+  },
+  {
+    "role": "admin",
+    "firstname": "Moa",
+    "lastname": "Ali",
+    "email": "Moa_Ali12@hotmail.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "customer",
+    "firstname": "Mikael",
+    "lastname": "Lindgren",
+    "email": "Mikael.Lindgren@gmail.com",
+    "password_hash": "",
+    "balance": 660,
+    "trip_history": []
+  },
+  {
+    "role": "customer",
+    "firstname": "Felix",
+    "lastname": "Olofsson",
+    "email": "Felix_Olofsson@gmail.com",
+    "password_hash": "",
+    "balance": 1,
+    "trip_history": []
+  },
+  {
+    "role": "customer",
+    "firstname": "Hans",
+    "lastname": "Dahl",
+    "email": "Hans_Dahl@yahoo.com",
+    "password_hash": "",
+    "balance": 944,
+    "trip_history": []
+  },
+  {
+    "role": "admin",
+    "firstname": "Sandra",
+    "lastname": "Berg",
+    "email": "Sandra_Berg33@gmail.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "customer",
+    "firstname": "Joakim",
+    "lastname": "Bergström Gunnarsson",
+    "email": "Joakim_BergstromGunnarsson35@yahoo.com",
+    "password_hash": "",
+    "balance": 563,
+    "trip_history": []
+  },
+  {
+    "role": "customer",
+    "firstname": "Ingrid",
+    "lastname": "Holmgren",
+    "email": "Ingrid.Holmgren@gmail.com",
+    "password_hash": "",
+    "balance": 264,
+    "trip_history": []
+  },
+  {
+    "role": "city_manager",
+    "firstname": "Alexandra",
+    "lastname": "Månsson",
+    "email": "Alexandra.Mansson@yahoo.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "customer",
+    "firstname": "Barbro",
+    "lastname": "Fransson",
+    "email": "Barbro_Fransson31@yahoo.com",
+    "password_hash": "",
+    "balance": 438,
+    "trip_history": []
+  },
+  {
+    "role": "city_manager",
+    "firstname": "Maria",
+    "lastname": "Martinsson",
+    "email": "Maria.Martinsson@yahoo.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "customer",
+    "firstname": "Lucas",
+    "lastname": "Ekström Lindberg",
+    "email": "Lucas.EkstromLindberg@gmail.com",
+    "password_hash": "",
+    "balance": 19,
+    "trip_history": []
+  },
+  {
+    "role": "customer",
+    "firstname": "Therese",
+    "lastname": "Berglund Nordin",
+    "email": "Therese.BerglundNordin84@yahoo.com",
+    "password_hash": "",
+    "balance": 260,
+    "trip_history": []
+  },
+  {
+    "role": "city_manager",
+    "firstname": "Yvonne",
+    "lastname": "Lund",
+    "email": "Yvonne.Lund48@yahoo.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "customer",
+    "firstname": "Camilla",
+    "lastname": "Axelsson",
+    "email": "Camilla_Axelsson77@gmail.com",
+    "password_hash": "",
+    "balance": 643,
+    "trip_history": []
+  },
+  {
+    "role": "admin",
+    "firstname": "Anna",
+    "lastname": "Mårtensson",
+    "email": "Anna.Martensson@gmail.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "city_manager",
+    "firstname": "Erik",
+    "lastname": "Lundgren",
+    "email": "Erik.Lundgren17@hotmail.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "city_manager",
+    "firstname": "Torbjörn",
+    "lastname": "Andersson",
+    "email": "Torbjorn.Andersson@gmail.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "customer",
+    "firstname": "Annika",
+    "lastname": "Johansson",
+    "email": "Annika_Johansson@hotmail.com",
+    "password_hash": "",
+    "balance": 431,
+    "trip_history": []
+  },
+  {
+    "role": "admin",
+    "firstname": "Felix",
+    "lastname": "Henriksson",
+    "email": "Felix_Henriksson@yahoo.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "city_manager",
+    "firstname": "Astrid",
+    "lastname": "Mårtensson Samuelsson",
+    "email": "Astrid_MartenssonSamuelsson86@yahoo.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "admin",
+    "firstname": "Ludvig",
+    "lastname": "Lund",
+    "email": "Ludvig_Lund@gmail.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "customer",
+    "firstname": "Sara",
+    "lastname": "Sjöberg",
+    "email": "Sara.Sjoberg@yahoo.com",
+    "password_hash": "",
+    "balance": 631,
+    "trip_history": []
+  },
+  {
+    "role": "admin",
+    "firstname": "Sonja",
+    "lastname": "Åkesson",
+    "email": "Sonja.Akesson8@yahoo.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "customer",
+    "firstname": "Ulrika",
+    "lastname": "Ali",
+    "email": "Ulrika.Ali@yahoo.com",
+    "password_hash": "",
+    "balance": 93,
+    "trip_history": []
+  },
+  {
+    "role": "admin",
+    "firstname": "Karolina",
+    "lastname": "Lundin",
+    "email": "Karolina_Lundin35@gmail.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "customer",
+    "firstname": "Alva",
+    "lastname": "Martinsson",
+    "email": "Alva.Martinsson@yahoo.com",
+    "password_hash": "",
+    "balance": 165,
+    "trip_history": []
+  },
+  {
+    "role": "city_manager",
+    "firstname": "Isabelle",
+    "lastname": "Wallin",
+    "email": "Isabelle_Wallin@yahoo.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "customer",
+    "firstname": "Daniel",
+    "lastname": "Wallin",
+    "email": "Daniel_Wallin43@yahoo.com",
+    "password_hash": "",
+    "balance": 580,
+    "trip_history": []
+  },
+  {
+    "role": "city_manager",
+    "firstname": "Pontus",
+    "lastname": "Pettersson Öberg",
+    "email": "Pontus.PetterssonOberg@hotmail.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "admin",
+    "firstname": "Lars",
+    "lastname": "Månsson",
+    "email": "Lars_Mansson47@gmail.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "admin",
+    "firstname": "Kenneth",
+    "lastname": "Bergqvist Björk",
+    "email": "Kenneth_BergqvistBjork58@yahoo.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "customer",
+    "firstname": "Sara",
+    "lastname": "Ali Lindqvist",
+    "email": "Sara.AliLindqvist44@hotmail.com",
+    "password_hash": "",
+    "balance": 756,
+    "trip_history": []
+  },
+  {
+    "role": "customer",
+    "firstname": "Åsa",
+    "lastname": "Arvidsson",
+    "email": "Asa_Arvidsson87@gmail.com",
+    "password_hash": "",
+    "balance": 239,
+    "trip_history": []
+  },
+  {
+    "role": "admin",
+    "firstname": "Marianne",
+    "lastname": "Håkansson",
+    "email": "Marianne_Hakansson@gmail.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "city_manager",
+    "firstname": "Ella",
+    "lastname": "Nyberg",
+    "email": "Ella_Nyberg30@yahoo.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "customer",
+    "firstname": "Emil",
+    "lastname": "Nilsson",
+    "email": "Emil.Nilsson@hotmail.com",
+    "password_hash": "",
+    "balance": 575,
+    "trip_history": []
+  },
+  {
+    "role": "city_manager",
+    "firstname": "Berit",
+    "lastname": "Lindberg",
+    "email": "Berit.Lindberg@gmail.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "city_manager",
+    "firstname": "Hans",
+    "lastname": "Hermansson",
+    "email": "Hans_Hermansson@gmail.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "customer",
+    "firstname": "Elin",
+    "lastname": "Blomqvist",
+    "email": "Elin_Blomqvist@gmail.com",
+    "password_hash": "",
+    "balance": 870,
+    "trip_history": []
+  },
+  {
+    "role": "customer",
+    "firstname": "Magnus",
+    "lastname": "Jansson",
+    "email": "Magnus_Jansson89@hotmail.com",
+    "password_hash": "",
+    "balance": 927,
+    "trip_history": []
+  },
+  {
+    "role": "city_manager",
+    "firstname": "Linda",
+    "lastname": "Danielsson",
+    "email": "Linda.Danielsson59@yahoo.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "admin",
+    "firstname": "Ellen",
+    "lastname": "Berglund Lindgren",
+    "email": "Ellen.BerglundLindgren56@yahoo.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "admin",
+    "firstname": "Sofie",
+    "lastname": "Söderberg",
+    "email": "Sofie_Soderberg@hotmail.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "customer",
+    "firstname": "Torbjörn",
+    "lastname": "Danielsson",
+    "email": "Torbjorn_Danielsson96@gmail.com",
+    "password_hash": "",
+    "balance": 730,
+    "trip_history": []
+  },
+  {
+    "role": "customer",
+    "firstname": "Lars",
+    "lastname": "Håkansson Lindberg",
+    "email": "Lars.HakanssonLindberg51@gmail.com",
+    "password_hash": "",
+    "balance": 370,
+    "trip_history": []
+  },
+  {
+    "role": "customer",
+    "firstname": "Jonathan",
+    "lastname": "Hedlund Mårtensson",
+    "email": "Jonathan.HedlundMartensson94@yahoo.com",
+    "password_hash": "",
+    "balance": 808,
+    "trip_history": []
+  },
+  {
+    "role": "customer",
+    "firstname": "Albin",
+    "lastname": "Lindholm",
+    "email": "Albin.Lindholm43@yahoo.com",
+    "password_hash": "",
+    "balance": 278,
+    "trip_history": []
+  },
+  {
+    "role": "customer",
+    "firstname": "Monica",
+    "lastname": "Hansen Nyberg",
+    "email": "Monica.HansenNyberg@gmail.com",
+    "password_hash": "",
+    "balance": 307,
+    "trip_history": []
+  },
+  {
+    "role": "city_manager",
+    "firstname": "Anneli",
+    "lastname": "Lundström",
+    "email": "Anneli_Lundstrom94@hotmail.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "admin",
+    "firstname": "Carina",
+    "lastname": "Lindström Pettersson",
+    "email": "Carina_LindstromPettersson67@gmail.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "admin",
+    "firstname": "William",
+    "lastname": "Pålsson",
+    "email": "William.Palsson70@yahoo.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "city_manager",
+    "firstname": "Stig",
+    "lastname": "Svensson",
+    "email": "Stig_Svensson@hotmail.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "customer",
+    "firstname": "Tobias",
+    "lastname": "Eliasson",
+    "email": "Tobias.Eliasson@hotmail.com",
+    "password_hash": "",
+    "balance": 483,
+    "trip_history": []
+  },
+  {
+    "role": "customer",
+    "firstname": "Ulrika",
+    "lastname": "Jönsson",
+    "email": "Ulrika.Jonsson68@gmail.com",
+    "password_hash": "",
+    "balance": 345,
+    "trip_history": []
+  },
+  {
+    "role": "city_manager",
+    "firstname": "Pia",
+    "lastname": "Nyström Jönsson",
+    "email": "Pia.NystromJonsson@hotmail.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "city_manager",
+    "firstname": "Christoffer",
+    "lastname": "Mattsson Hansson",
+    "email": "Christoffer_MattssonHansson@yahoo.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "admin",
+    "firstname": "Gunilla",
+    "lastname": "Mohamed",
+    "email": "Gunilla_Mohamed10@hotmail.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "admin",
+    "firstname": "Kenneth",
+    "lastname": "Lundberg",
+    "email": "Kenneth.Lundberg@hotmail.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "city_manager",
+    "firstname": "William",
+    "lastname": "Björklund Johansson",
+    "email": "William_BjorklundJohansson62@gmail.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "customer",
+    "firstname": "Ingrid",
+    "lastname": "Martinsson",
+    "email": "Ingrid.Martinsson47@gmail.com",
+    "password_hash": "",
+    "balance": 444,
+    "trip_history": []
+  },
+  {
+    "role": "admin",
+    "firstname": "Anita",
+    "lastname": "Jonsson",
+    "email": "Anita_Jonsson@yahoo.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "admin",
+    "firstname": "Amanda",
+    "lastname": "Norberg",
+    "email": "Amanda_Norberg13@gmail.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "customer",
+    "firstname": "Emma",
+    "lastname": "Hermansson",
+    "email": "Emma_Hermansson91@hotmail.com",
+    "password_hash": "",
+    "balance": 596,
+    "trip_history": []
+  },
+  {
+    "role": "customer",
+    "firstname": "Christoffer",
+    "lastname": "Håkansson",
+    "email": "Christoffer.Hakansson66@hotmail.com",
+    "password_hash": "",
+    "balance": 824,
+    "trip_history": []
+  },
+  {
+    "role": "customer",
+    "firstname": "Peter",
+    "lastname": "Isaksson Jonsson",
+    "email": "Peter_IsakssonJonsson@gmail.com",
+    "password_hash": "",
+    "balance": 555,
+    "trip_history": []
+  },
+  {
+    "role": "admin",
+    "firstname": "Christian",
+    "lastname": "Åberg",
+    "email": "Christian_Aberg@gmail.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "city_manager",
+    "firstname": "Olof",
+    "lastname": "Lindholm",
+    "email": "Olof_Lindholm@hotmail.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "city_manager",
+    "firstname": "Per",
+    "lastname": "Dahl",
+    "email": "Per.Dahl@hotmail.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "city_manager",
+    "firstname": "Kent",
+    "lastname": "Åberg",
+    "email": "Kent.Aberg85@yahoo.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "admin",
+    "firstname": "Monica",
+    "lastname": "Falk Hermansson",
+    "email": "Monica_FalkHermansson@yahoo.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "city_manager",
+    "firstname": "Dennis",
+    "lastname": "Jansson",
+    "email": "Dennis.Jansson@gmail.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "admin",
+    "firstname": "Gabriel",
+    "lastname": "Svensson",
+    "email": "Gabriel_Svensson@yahoo.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "admin",
+    "firstname": "Oliver",
+    "lastname": "Hellström",
+    "email": "Oliver_Hellstrom99@hotmail.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "admin",
+    "firstname": "Oliver",
+    "lastname": "Andersson",
+    "email": "Oliver_Andersson8@gmail.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "city_manager",
+    "firstname": "Jenny",
+    "lastname": "Lindström",
+    "email": "Jenny_Lindstrom@hotmail.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "admin",
+    "firstname": "Oskar",
+    "lastname": "Mohamed Pettersson",
+    "email": "Oskar_MohamedPettersson@hotmail.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "city_manager",
+    "firstname": "Johan",
+    "lastname": "Strömberg",
+    "email": "Johan_Stromberg@gmail.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "admin",
+    "firstname": "Jenny",
+    "lastname": "Wikström Gustafsson",
+    "email": "Jenny_WikstromGustafsson56@hotmail.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "admin",
+    "firstname": "Pernilla",
+    "lastname": "Nyström Forsberg",
+    "email": "Pernilla.NystromForsberg@yahoo.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "customer",
+    "firstname": "Berit",
+    "lastname": "Mohamed",
+    "email": "Berit_Mohamed0@gmail.com",
+    "password_hash": "",
+    "balance": 289,
+    "trip_history": []
+  },
+  {
+    "role": "customer",
+    "firstname": "Eva",
+    "lastname": "Olofsson",
+    "email": "Eva_Olofsson@yahoo.com",
+    "password_hash": "",
+    "balance": 779,
+    "trip_history": []
+  },
+  {
+    "role": "admin",
+    "firstname": "Stefan",
+    "lastname": "Ali Norberg",
+    "email": "Stefan_AliNorberg31@yahoo.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "city_manager",
+    "firstname": "Alva",
+    "lastname": "Martinsson",
+    "email": "Alva_Martinsson4@gmail.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "customer",
+    "firstname": "Lisbeth",
+    "lastname": "Hansson",
+    "email": "Lisbeth_Hansson75@hotmail.com",
+    "password_hash": "",
+    "balance": 591,
+    "trip_history": []
+  },
+  {
+    "role": "city_manager",
+    "firstname": "Christoffer",
+    "lastname": "Pålsson Holmgren",
+    "email": "Christoffer.PalssonHolmgren@hotmail.com",
     "password_hash": "",
     "trip_history": []
   },
   {
     "role": "customer",
     "firstname": "Sonja",
-    "lastname": "Engström",
-    "email": "Sonja.Engstrom64@gmail.com",
+    "lastname": "Holmgren",
+    "email": "Sonja_Holmgren94@yahoo.com",
     "password_hash": "",
-    "balance": 79,
+    "balance": 285,
+    "trip_history": []
+  },
+  {
+    "role": "customer",
+    "firstname": "Patrik",
+    "lastname": "Håkansson",
+    "email": "Patrik_Hakansson1@gmail.com",
+    "password_hash": "",
+    "balance": 811,
+    "trip_history": []
+  },
+  {
+    "role": "city_manager",
+    "firstname": "Håkan",
+    "lastname": "Mohamed",
+    "email": "Hakan_Mohamed@hotmail.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "customer",
+    "firstname": "Sonja",
+    "lastname": "Abrahamsson",
+    "email": "Sonja.Abrahamsson@yahoo.com",
+    "password_hash": "",
+    "balance": 141,
+    "trip_history": []
+  },
+  {
+    "role": "customer",
+    "firstname": "Sofia",
+    "lastname": "Mohamed",
+    "email": "Sofia_Mohamed@gmail.com",
+    "password_hash": "",
+    "balance": 867,
+    "trip_history": []
+  },
+  {
+    "role": "customer",
+    "firstname": "Linnéa",
+    "lastname": "Bergman Blom",
+    "email": "Linnea.BergmanBlom59@gmail.com",
+    "password_hash": "",
+    "balance": 737,
+    "trip_history": []
+  },
+  {
+    "role": "customer",
+    "firstname": "Ellen",
+    "lastname": "Sjöberg Hansson",
+    "email": "Ellen_SjobergHansson70@hotmail.com",
+    "password_hash": "",
+    "balance": 764,
+    "trip_history": []
+  },
+  {
+    "role": "admin",
+    "firstname": "Susanne",
+    "lastname": "Nordström Dahlberg",
+    "email": "Susanne_NordstromDahlberg@gmail.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "city_manager",
+    "firstname": "Ulla",
+    "lastname": "Sandberg",
+    "email": "Ulla.Sandberg@hotmail.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "admin",
+    "firstname": "Viktoria",
+    "lastname": "Pettersson",
+    "email": "Viktoria.Pettersson85@hotmail.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "city_manager",
+    "firstname": "Charlotte",
+    "lastname": "Bergström",
+    "email": "Charlotte_Bergstrom@gmail.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "admin",
+    "firstname": "Moa",
+    "lastname": "Lundberg Jönsson",
+    "email": "Moa_LundbergJonsson@hotmail.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "admin",
+    "firstname": "Åsa",
+    "lastname": "Lundin",
+    "email": "Asa.Lundin@yahoo.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "customer",
+    "firstname": "Lovisa",
+    "lastname": "Jonsson",
+    "email": "Lovisa_Jonsson68@yahoo.com",
+    "password_hash": "",
+    "balance": 276,
+    "trip_history": []
+  },
+  {
+    "role": "admin",
+    "firstname": "Jan",
+    "lastname": "Fransson",
+    "email": "Jan_Fransson66@yahoo.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "city_manager",
+    "firstname": "Elias",
+    "lastname": "Fransson",
+    "email": "Elias_Fransson42@yahoo.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "customer",
+    "firstname": "Kerstin",
+    "lastname": "Nyström",
+    "email": "Kerstin_Nystrom@yahoo.com",
+    "password_hash": "",
+    "balance": 335,
+    "trip_history": []
+  },
+  {
+    "role": "admin",
+    "firstname": "Lisbeth",
+    "lastname": "Eriksson",
+    "email": "Lisbeth.Eriksson@hotmail.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "admin",
+    "firstname": "Anita",
+    "lastname": "Jakobsson Eliasson",
+    "email": "Anita.JakobssonEliasson@gmail.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "city_manager",
+    "firstname": "Lennart",
+    "lastname": "Björk",
+    "email": "Lennart_Bjork@hotmail.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "customer",
+    "firstname": "Cecilia",
+    "lastname": "Hellström Berg",
+    "email": "Cecilia_HellstromBerg98@hotmail.com",
+    "password_hash": "",
+    "balance": 584,
+    "trip_history": []
+  },
+  {
+    "role": "customer",
+    "firstname": "Robert",
+    "lastname": "Lindberg",
+    "email": "Robert_Lindberg@gmail.com",
+    "password_hash": "",
+    "balance": 352,
+    "trip_history": []
+  },
+  {
+    "role": "city_manager",
+    "firstname": "Kent",
+    "lastname": "Andersson",
+    "email": "Kent_Andersson@gmail.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "customer",
+    "firstname": "Emelie",
+    "lastname": "Jonsson",
+    "email": "Emelie_Jonsson22@gmail.com",
+    "password_hash": "",
+    "balance": 687,
+    "trip_history": []
+  },
+  {
+    "role": "admin",
+    "firstname": "Linnéa",
+    "lastname": "Karlsson",
+    "email": "Linnea.Karlsson@yahoo.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "admin",
+    "firstname": "Julia",
+    "lastname": "Månsson",
+    "email": "Julia.Mansson@yahoo.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "admin",
+    "firstname": "Jan",
+    "lastname": "Dahlberg",
+    "email": "Jan.Dahlberg85@hotmail.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "customer",
+    "firstname": "Annika",
+    "lastname": "Hedlund",
+    "email": "Annika.Hedlund@gmail.com",
+    "password_hash": "",
+    "balance": 975,
+    "trip_history": []
+  },
+  {
+    "role": "admin",
+    "firstname": "Isak",
+    "lastname": "Eliasson",
+    "email": "Isak.Eliasson52@yahoo.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "city_manager",
+    "firstname": "Matilda",
+    "lastname": "Falk",
+    "email": "Matilda.Falk87@yahoo.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "customer",
+    "firstname": "Joel",
+    "lastname": "Strömberg Hansen",
+    "email": "Joel_StrombergHansen10@yahoo.com",
+    "password_hash": "",
+    "balance": 358,
+    "trip_history": []
+  },
+  {
+    "role": "city_manager",
+    "firstname": "Jonathan",
+    "lastname": "Norberg",
+    "email": "Jonathan.Norberg@hotmail.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "customer",
+    "firstname": "Erik",
+    "lastname": "Nyberg",
+    "email": "Erik_Nyberg@gmail.com",
+    "password_hash": "",
+    "balance": 938,
+    "trip_history": []
+  },
+  {
+    "role": "customer",
+    "firstname": "Malin",
+    "lastname": "Hansen",
+    "email": "Malin_Hansen81@yahoo.com",
+    "password_hash": "",
+    "balance": 518,
+    "trip_history": []
+  },
+  {
+    "role": "customer",
+    "firstname": "Helen",
+    "lastname": "Isaksson Lundberg",
+    "email": "Helen.IsakssonLundberg6@yahoo.com",
+    "password_hash": "",
+    "balance": 247,
+    "trip_history": []
+  },
+  {
+    "role": "customer",
+    "firstname": "Moa",
+    "lastname": "Magnusson",
+    "email": "Moa_Magnusson96@hotmail.com",
+    "password_hash": "",
+    "balance": 490,
+    "trip_history": []
+  },
+  {
+    "role": "admin",
+    "firstname": "Gabriel",
+    "lastname": "Axelsson",
+    "email": "Gabriel.Axelsson@yahoo.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "city_manager",
+    "firstname": "Yvonne",
+    "lastname": "Claesson",
+    "email": "Yvonne_Claesson25@hotmail.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "city_manager",
+    "firstname": "Josef",
+    "lastname": "Sandberg",
+    "email": "Josef_Sandberg@yahoo.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "city_manager",
+    "firstname": "Ulrika",
+    "lastname": "Bengtsson",
+    "email": "Ulrika.Bengtsson11@gmail.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "admin",
+    "firstname": "Per",
+    "lastname": "Andersson",
+    "email": "Per_Andersson@yahoo.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "customer",
+    "firstname": "Ali",
+    "lastname": "Berglund",
+    "email": "Ali_Berglund62@yahoo.com",
+    "password_hash": "",
+    "balance": 357,
+    "trip_history": []
+  },
+  {
+    "role": "customer",
+    "firstname": "Jessica",
+    "lastname": "Lundqvist",
+    "email": "Jessica.Lundqvist@yahoo.com",
+    "password_hash": "",
+    "balance": 388,
+    "trip_history": []
+  },
+  {
+    "role": "customer",
+    "firstname": "Sonja",
+    "lastname": "Hassan",
+    "email": "Sonja_Hassan@hotmail.com",
+    "password_hash": "",
+    "balance": 933,
+    "trip_history": []
+  },
+  {
+    "role": "customer",
+    "firstname": "Viktoria",
+    "lastname": "Lindholm",
+    "email": "Viktoria_Lindholm@yahoo.com",
+    "password_hash": "",
+    "balance": 661,
+    "trip_history": []
+  },
+  {
+    "role": "city_manager",
+    "firstname": "Håkan",
+    "lastname": "Hedlund",
+    "email": "Hakan.Hedlund34@gmail.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "admin",
+    "firstname": "Lars",
+    "lastname": "Nilsson",
+    "email": "Lars_Nilsson@yahoo.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "customer",
+    "firstname": "Claes",
+    "lastname": "Lindberg Falk",
+    "email": "Claes_LindbergFalk@hotmail.com",
+    "password_hash": "",
+    "balance": 956,
+    "trip_history": []
+  },
+  {
+    "role": "city_manager",
+    "firstname": "Albin",
+    "lastname": "Persson",
+    "email": "Albin.Persson@gmail.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "admin",
+    "firstname": "Nathalie",
+    "lastname": "Olsson",
+    "email": "Nathalie_Olsson37@gmail.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "city_manager",
+    "firstname": "Christoffer",
+    "lastname": "Claesson",
+    "email": "Christoffer.Claesson@yahoo.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "customer",
+    "firstname": "Torbjörn",
+    "lastname": "Björklund",
+    "email": "Torbjorn_Bjorklund42@yahoo.com",
+    "password_hash": "",
+    "balance": 256,
+    "trip_history": []
+  },
+  {
+    "role": "admin",
+    "firstname": "William",
+    "lastname": "Mohamed",
+    "email": "William_Mohamed@gmail.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "city_manager",
+    "firstname": "Carina",
+    "lastname": "Lindgren",
+    "email": "Carina_Lindgren50@gmail.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "customer",
+    "firstname": "Christian",
+    "lastname": "Holm",
+    "email": "Christian_Holm23@hotmail.com",
+    "password_hash": "",
+    "balance": 167,
+    "trip_history": []
+  },
+  {
+    "role": "customer",
+    "firstname": "Olof",
+    "lastname": "Dahl",
+    "email": "Olof.Dahl6@gmail.com",
+    "password_hash": "",
+    "balance": 94,
+    "trip_history": []
+  },
+  {
+    "role": "city_manager",
+    "firstname": "Christian",
+    "lastname": "Holmqvist",
+    "email": "Christian.Holmqvist24@yahoo.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "city_manager",
+    "firstname": "Per",
+    "lastname": "Hedlund",
+    "email": "Per.Hedlund@yahoo.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "city_manager",
+    "firstname": "Kurt",
+    "lastname": "Lindström",
+    "email": "Kurt.Lindstrom91@hotmail.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "city_manager",
+    "firstname": "Henrik",
+    "lastname": "Wikström",
+    "email": "Henrik_Wikstrom13@hotmail.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "admin",
+    "firstname": "Oskar",
+    "lastname": "Fransson",
+    "email": "Oskar_Fransson7@hotmail.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "customer",
+    "firstname": "Astrid",
+    "lastname": "Arvidsson",
+    "email": "Astrid.Arvidsson@gmail.com",
+    "password_hash": "",
+    "balance": 376,
+    "trip_history": []
+  },
+  {
+    "role": "city_manager",
+    "firstname": "Caroline",
+    "lastname": "Jönsson",
+    "email": "Caroline.Jonsson88@yahoo.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "city_manager",
+    "firstname": "Kenneth",
+    "lastname": "Jonsson",
+    "email": "Kenneth.Jonsson@gmail.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "admin",
+    "firstname": "Inger",
+    "lastname": "Mattsson",
+    "email": "Inger.Mattsson35@hotmail.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "admin",
+    "firstname": "Torbjörn",
+    "lastname": "Axelsson",
+    "email": "Torbjorn.Axelsson@gmail.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "admin",
+    "firstname": "Liam",
+    "lastname": "Bengtsson",
+    "email": "Liam.Bengtsson@gmail.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "admin",
+    "firstname": "Pernilla",
+    "lastname": "Danielsson Viklund",
+    "email": "Pernilla.DanielssonViklund@yahoo.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "city_manager",
+    "firstname": "Josef",
+    "lastname": "Pålsson",
+    "email": "Josef.Palsson69@hotmail.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "admin",
+    "firstname": "Erika",
+    "lastname": "Hellström Olsson",
+    "email": "Erika.HellstromOlsson36@gmail.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "admin",
+    "firstname": "Kenneth",
+    "lastname": "Johansson",
+    "email": "Kenneth.Johansson@yahoo.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "admin",
+    "firstname": "Åke",
+    "lastname": "Eklund Gustafsson",
+    "email": "Ake_EklundGustafsson@hotmail.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "customer",
+    "firstname": "Linda",
+    "lastname": "Lundström",
+    "email": "Linda.Lundstrom16@gmail.com",
+    "password_hash": "",
+    "balance": 175,
+    "trip_history": []
+  },
+  {
+    "role": "customer",
+    "firstname": "Roger",
+    "lastname": "Hansson",
+    "email": "Roger.Hansson@yahoo.com",
+    "password_hash": "",
+    "balance": 124,
+    "trip_history": []
+  },
+  {
+    "role": "admin",
+    "firstname": "Rolf",
+    "lastname": "Lundin",
+    "email": "Rolf.Lundin82@hotmail.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "customer",
+    "firstname": "Susanne",
+    "lastname": "Lindberg",
+    "email": "Susanne.Lindberg@gmail.com",
+    "password_hash": "",
+    "balance": 143,
+    "trip_history": []
+  },
+  {
+    "role": "admin",
+    "firstname": "Jessica",
+    "lastname": "Nilsson",
+    "email": "Jessica.Nilsson88@gmail.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "admin",
+    "firstname": "Josefin",
+    "lastname": "Holm",
+    "email": "Josefin.Holm@hotmail.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "customer",
+    "firstname": "Katarina",
+    "lastname": "Dahlberg",
+    "email": "Katarina.Dahlberg@hotmail.com",
+    "password_hash": "",
+    "balance": 164,
+    "trip_history": []
+  },
+  {
+    "role": "admin",
+    "firstname": "Håkan",
+    "lastname": "Sandberg Andersson",
+    "email": "Hakan.SandbergAndersson@gmail.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "admin",
+    "firstname": "Olle",
+    "lastname": "Löfgren",
+    "email": "Olle_Lofgren49@hotmail.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "city_manager",
+    "firstname": "Inger",
+    "lastname": "Åberg",
+    "email": "Inger.Aberg@gmail.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "admin",
+    "firstname": "Göran",
+    "lastname": "Sandström",
+    "email": "Goran.Sandstrom26@gmail.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "admin",
+    "firstname": "Astrid",
+    "lastname": "Karlsson",
+    "email": "Astrid_Karlsson@hotmail.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "admin",
+    "firstname": "Lina",
+    "lastname": "Berggren Fredriksson",
+    "email": "Lina.BerggrenFredriksson@yahoo.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "city_manager",
+    "firstname": "Anna",
+    "lastname": "Berg",
+    "email": "Anna.Berg@yahoo.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "admin",
+    "firstname": "Linnéa",
+    "lastname": "Sundberg",
+    "email": "Linnea_Sundberg@yahoo.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "admin",
+    "firstname": "Birgitta",
+    "lastname": "Lindberg",
+    "email": "Birgitta_Lindberg9@yahoo.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "city_manager",
+    "firstname": "Berit",
+    "lastname": "Lindberg",
+    "email": "Berit.Lindberg98@hotmail.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "admin",
+    "firstname": "Sonja",
+    "lastname": "Lundgren Fredriksson",
+    "email": "Sonja.LundgrenFredriksson@gmail.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "customer",
+    "firstname": "John",
+    "lastname": "Håkansson",
+    "email": "John_Hakansson@hotmail.com",
+    "password_hash": "",
+    "balance": 787,
+    "trip_history": []
+  },
+  {
+    "role": "customer",
+    "firstname": "Malin",
+    "lastname": "Sandberg Nyström",
+    "email": "Malin.SandbergNystrom@yahoo.com",
+    "password_hash": "",
+    "balance": 943,
+    "trip_history": []
+  },
+  {
+    "role": "customer",
+    "firstname": "Gabriel",
+    "lastname": "Mattsson Johansson",
+    "email": "Gabriel.MattssonJohansson@gmail.com",
+    "password_hash": "",
+    "balance": 920,
+    "trip_history": []
+  },
+  {
+    "role": "admin",
+    "firstname": "Claes",
+    "lastname": "Ahmed Sandberg",
+    "email": "Claes.AhmedSandberg81@yahoo.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "city_manager",
+    "firstname": "Mattias",
+    "lastname": "Larsson",
+    "email": "Mattias_Larsson@gmail.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "admin",
+    "firstname": "Axel",
+    "lastname": "Bergström",
+    "email": "Axel_Bergstrom26@hotmail.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "customer",
+    "firstname": "Ulla",
+    "lastname": "Eliasson Bergqvist",
+    "email": "Ulla.EliassonBergqvist@gmail.com",
+    "password_hash": "",
+    "balance": 730,
+    "trip_history": []
+  },
+  {
+    "role": "city_manager",
+    "firstname": "Felix",
+    "lastname": "Wikström",
+    "email": "Felix_Wikstrom@yahoo.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "customer",
+    "firstname": "Karolina",
+    "lastname": "Persson",
+    "email": "Karolina_Persson66@hotmail.com",
+    "password_hash": "",
+    "balance": 860,
+    "trip_history": []
+  },
+  {
+    "role": "customer",
+    "firstname": "Marcus",
+    "lastname": "Sandström",
+    "email": "Marcus.Sandstrom99@yahoo.com",
+    "password_hash": "",
+    "balance": 169,
+    "trip_history": []
+  },
+  {
+    "role": "customer",
+    "firstname": "Dennis",
+    "lastname": "Henriksson",
+    "email": "Dennis.Henriksson@yahoo.com",
+    "password_hash": "",
+    "balance": 621,
+    "trip_history": []
+  },
+  {
+    "role": "city_manager",
+    "firstname": "Sonja",
+    "lastname": "Fredriksson",
+    "email": "Sonja.Fredriksson34@hotmail.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "city_manager",
+    "firstname": "Robin",
+    "lastname": "Åkesson",
+    "email": "Robin.Akesson30@yahoo.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "customer",
+    "firstname": "Ellen",
+    "lastname": "Engström",
+    "email": "Ellen_Engstrom@gmail.com",
+    "password_hash": "",
+    "balance": 963,
+    "trip_history": []
+  },
+  {
+    "role": "city_manager",
+    "firstname": "Roger",
+    "lastname": "Nilsson",
+    "email": "Roger.Nilsson@yahoo.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "city_manager",
+    "firstname": "Marie",
+    "lastname": "Persson",
+    "email": "Marie.Persson@yahoo.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "city_manager",
+    "firstname": "Ebba",
+    "lastname": "Gustafsson Lind",
+    "email": "Ebba.GustafssonLind@hotmail.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "admin",
+    "firstname": "Max",
+    "lastname": "Lundqvist",
+    "email": "Max_Lundqvist65@hotmail.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "city_manager",
+    "firstname": "Simon",
+    "lastname": "Pettersson",
+    "email": "Simon.Pettersson40@hotmail.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "customer",
+    "firstname": "Dennis",
+    "lastname": "Eriksson",
+    "email": "Dennis.Eriksson86@yahoo.com",
+    "password_hash": "",
+    "balance": 556,
+    "trip_history": []
+  },
+  {
+    "role": "city_manager",
+    "firstname": "Jesper",
+    "lastname": "Åkesson",
+    "email": "Jesper_Akesson25@hotmail.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "customer",
+    "firstname": "Ebba",
+    "lastname": "Öberg",
+    "email": "Ebba.Oberg@hotmail.com",
+    "password_hash": "",
+    "balance": 997,
+    "trip_history": []
+  },
+  {
+    "role": "customer",
+    "firstname": "Peter",
+    "lastname": "Lindberg",
+    "email": "Peter_Lindberg10@gmail.com",
+    "password_hash": "",
+    "balance": 663,
+    "trip_history": []
+  },
+  {
+    "role": "city_manager",
+    "firstname": "Dennis",
+    "lastname": "Forsberg",
+    "email": "Dennis.Forsberg58@gmail.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "city_manager",
+    "firstname": "Lennart",
+    "lastname": "Lundgren",
+    "email": "Lennart_Lundgren@gmail.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "customer",
+    "firstname": "Ludvig",
+    "lastname": "Ek",
+    "email": "Ludvig_Ek18@hotmail.com",
+    "password_hash": "",
+    "balance": 36,
+    "trip_history": []
+  },
+  {
+    "role": "admin",
+    "firstname": "Susanne",
+    "lastname": "Lind",
+    "email": "Susanne_Lind83@gmail.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "admin",
+    "firstname": "Rickard",
+    "lastname": "Bengtsson",
+    "email": "Rickard.Bengtsson@yahoo.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "admin",
+    "firstname": "Kurt",
+    "lastname": "Lundin",
+    "email": "Kurt.Lundin93@yahoo.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "admin",
+    "firstname": "Rebecca",
+    "lastname": "Sjöberg",
+    "email": "Rebecca_Sjoberg71@yahoo.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "customer",
+    "firstname": "Robin",
+    "lastname": "Lundin",
+    "email": "Robin.Lundin@gmail.com",
+    "password_hash": "",
+    "balance": 27,
+    "trip_history": []
+  },
+  {
+    "role": "city_manager",
+    "firstname": "Lucas",
+    "lastname": "Ekström",
+    "email": "Lucas_Ekstrom@gmail.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "customer",
+    "firstname": "Kurt",
+    "lastname": "Pettersson",
+    "email": "Kurt.Pettersson7@hotmail.com",
+    "password_hash": "",
+    "balance": 39,
+    "trip_history": []
+  },
+  {
+    "role": "admin",
+    "firstname": "Josefin",
+    "lastname": "Löfgren",
+    "email": "Josefin.Lofgren@hotmail.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "customer",
+    "firstname": "Lars",
+    "lastname": "Nyström",
+    "email": "Lars.Nystrom96@yahoo.com",
+    "password_hash": "",
+    "balance": 718,
+    "trip_history": []
+  },
+  {
+    "role": "city_manager",
+    "firstname": "Samuel",
+    "lastname": "Lundqvist",
+    "email": "Samuel.Lundqvist@yahoo.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "admin",
+    "firstname": "Linus",
+    "lastname": "Berggren",
+    "email": "Linus.Berggren75@hotmail.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "customer",
+    "firstname": "David",
+    "lastname": "Lindgren",
+    "email": "David_Lindgren76@yahoo.com",
+    "password_hash": "",
+    "balance": 8,
+    "trip_history": []
+  },
+  {
+    "role": "city_manager",
+    "firstname": "Julia",
+    "lastname": "Hassan",
+    "email": "Julia.Hassan0@hotmail.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "admin",
+    "firstname": "Mona",
+    "lastname": "Nordin Andreasson",
+    "email": "Mona_NordinAndreasson@hotmail.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "city_manager",
+    "firstname": "Jimmy",
+    "lastname": "Ali Nordin",
+    "email": "Jimmy_AliNordin@gmail.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "city_manager",
+    "firstname": "Caroline",
+    "lastname": "Wikström",
+    "email": "Caroline_Wikstrom@yahoo.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "customer",
+    "firstname": "Nils",
+    "lastname": "Lindberg",
+    "email": "Nils_Lindberg21@gmail.com",
+    "password_hash": "",
+    "balance": 72,
+    "trip_history": []
+  },
+  {
+    "role": "admin",
+    "firstname": "Astrid",
+    "lastname": "Sundberg Nyström",
+    "email": "Astrid.SundbergNystrom@gmail.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "admin",
+    "firstname": "Robert",
+    "lastname": "Fredriksson",
+    "email": "Robert_Fredriksson9@yahoo.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "customer",
+    "firstname": "Astrid",
+    "lastname": "Hassan",
+    "email": "Astrid_Hassan@hotmail.com",
+    "password_hash": "",
+    "balance": 525,
+    "trip_history": []
+  },
+  {
+    "role": "admin",
+    "firstname": "Oliver",
+    "lastname": "Strömberg Olsson",
+    "email": "Oliver_StrombergOlsson55@gmail.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "customer",
+    "firstname": "Fredrik",
+    "lastname": "Andersson Karlsson",
+    "email": "Fredrik_AnderssonKarlsson@gmail.com",
+    "password_hash": "",
+    "balance": 145,
+    "trip_history": []
+  },
+  {
+    "role": "city_manager",
+    "firstname": "Mikael",
+    "lastname": "Sjögren",
+    "email": "Mikael.Sjogren@yahoo.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "admin",
+    "firstname": "Gun",
+    "lastname": "Söderberg",
+    "email": "Gun.Soderberg@hotmail.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "city_manager",
+    "firstname": "Maja",
+    "lastname": "Hansson Axelsson",
+    "email": "Maja_HanssonAxelsson@gmail.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "city_manager",
+    "firstname": "Susanne",
+    "lastname": "Lundgren",
+    "email": "Susanne_Lundgren65@yahoo.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "city_manager",
+    "firstname": "Astrid",
+    "lastname": "Gustafsson Engström",
+    "email": "Astrid.GustafssonEngstrom93@hotmail.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "customer",
+    "firstname": "Simon",
+    "lastname": "Lindberg",
+    "email": "Simon_Lindberg86@yahoo.com",
+    "password_hash": "",
+    "balance": 782,
+    "trip_history": []
+  },
+  {
+    "role": "customer",
+    "firstname": "Isak",
+    "lastname": "Berg",
+    "email": "Isak.Berg58@yahoo.com",
+    "password_hash": "",
+    "balance": 781,
+    "trip_history": []
+  },
+  {
+    "role": "admin",
+    "firstname": "Malin",
+    "lastname": "Pålsson",
+    "email": "Malin.Palsson@hotmail.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "city_manager",
+    "firstname": "Helen",
+    "lastname": "Blomqvist",
+    "email": "Helen_Blomqvist@gmail.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "city_manager",
+    "firstname": "Stefan",
+    "lastname": "Blomqvist Björklund",
+    "email": "Stefan_BlomqvistBjorklund25@hotmail.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "city_manager",
+    "firstname": "David",
+    "lastname": "Isaksson",
+    "email": "David.Isaksson32@gmail.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "admin",
+    "firstname": "Dennis",
+    "lastname": "Blomqvist",
+    "email": "Dennis.Blomqvist@yahoo.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "admin",
+    "firstname": "Ebba",
+    "lastname": "Samuelsson",
+    "email": "Ebba_Samuelsson@hotmail.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "city_manager",
+    "firstname": "Kjell",
+    "lastname": "Eriksson",
+    "email": "Kjell.Eriksson@yahoo.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "admin",
+    "firstname": "Berit",
+    "lastname": "Sjögren Lundberg",
+    "email": "Berit.SjogrenLundberg@gmail.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "admin",
+    "firstname": "Viktoria",
+    "lastname": "Bergman",
+    "email": "Viktoria.Bergman@gmail.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "customer",
+    "firstname": "Oskar",
+    "lastname": "Lindberg",
+    "email": "Oskar_Lindberg@gmail.com",
+    "password_hash": "",
+    "balance": 904,
+    "trip_history": []
+  },
+  {
+    "role": "admin",
+    "firstname": "Christer",
+    "lastname": "Blom",
+    "email": "Christer.Blom@yahoo.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "admin",
+    "firstname": "Anita",
+    "lastname": "Lundqvist",
+    "email": "Anita.Lundqvist11@yahoo.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "city_manager",
+    "firstname": "Carina",
+    "lastname": "Wallin Gustafsson",
+    "email": "Carina_WallinGustafsson@yahoo.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "city_manager",
+    "firstname": "Mats",
+    "lastname": "Berggren",
+    "email": "Mats_Berggren27@yahoo.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "customer",
+    "firstname": "Robert",
+    "lastname": "Eliasson",
+    "email": "Robert_Eliasson@gmail.com",
+    "password_hash": "",
+    "balance": 699,
+    "trip_history": []
+  },
+  {
+    "role": "customer",
+    "firstname": "Kurt",
+    "lastname": "Pettersson",
+    "email": "Kurt_Pettersson@yahoo.com",
+    "password_hash": "",
+    "balance": 27,
+    "trip_history": []
+  },
+  {
+    "role": "customer",
+    "firstname": "Ann",
+    "lastname": "Eriksson",
+    "email": "Ann_Eriksson22@yahoo.com",
+    "password_hash": "",
+    "balance": 346,
+    "trip_history": []
+  },
+  {
+    "role": "admin",
+    "firstname": "Olivia",
+    "lastname": "Åkesson Åkesson",
+    "email": "Olivia.AkessonAkesson@hotmail.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "admin",
+    "firstname": "Barbro",
+    "lastname": "Sjögren",
+    "email": "Barbro_Sjogren@gmail.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "admin",
+    "firstname": "Josefin",
+    "lastname": "Lund Larsson",
+    "email": "Josefin.LundLarsson@hotmail.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "customer",
+    "firstname": "Viktoria",
+    "lastname": "Claesson",
+    "email": "Viktoria.Claesson@gmail.com",
+    "password_hash": "",
+    "balance": 322,
+    "trip_history": []
+  },
+  {
+    "role": "admin",
+    "firstname": "Rickard",
+    "lastname": "Åkesson",
+    "email": "Rickard_Akesson89@yahoo.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "customer",
+    "firstname": "Mikael",
+    "lastname": "Hansson",
+    "email": "Mikael_Hansson60@hotmail.com",
+    "password_hash": "",
+    "balance": 687,
+    "trip_history": []
+  },
+  {
+    "role": "city_manager",
+    "firstname": "Adam",
+    "lastname": "Sandström",
+    "email": "Adam.Sandstrom67@yahoo.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "customer",
+    "firstname": "Mohamed",
+    "lastname": "Falk",
+    "email": "Mohamed.Falk@hotmail.com",
+    "password_hash": "",
+    "balance": 920,
+    "trip_history": []
+  },
+  {
+    "role": "admin",
+    "firstname": "Barbro",
+    "lastname": "Holm",
+    "email": "Barbro.Holm@yahoo.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "customer",
+    "firstname": "Anna",
+    "lastname": "Pålsson",
+    "email": "Anna_Palsson@gmail.com",
+    "password_hash": "",
+    "balance": 24,
+    "trip_history": []
+  },
+  {
+    "role": "customer",
+    "firstname": "Linda",
+    "lastname": "Sjöberg",
+    "email": "Linda.Sjoberg59@hotmail.com",
+    "password_hash": "",
+    "balance": 150,
+    "trip_history": []
+  },
+  {
+    "role": "customer",
+    "firstname": "Peter",
+    "lastname": "Jakobsson",
+    "email": "Peter_Jakobsson@gmail.com",
+    "password_hash": "",
+    "balance": 532,
+    "trip_history": []
+  },
+  {
+    "role": "customer",
+    "firstname": "Isak",
+    "lastname": "Pettersson",
+    "email": "Isak.Pettersson95@hotmail.com",
+    "password_hash": "",
+    "balance": 297,
+    "trip_history": []
+  },
+  {
+    "role": "city_manager",
+    "firstname": "Johanna",
+    "lastname": "Lundqvist Hassan",
+    "email": "Johanna_LundqvistHassan@yahoo.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "admin",
+    "firstname": "Stig",
+    "lastname": "Lundgren",
+    "email": "Stig_Lundgren32@gmail.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "customer",
+    "firstname": "Stig",
+    "lastname": "Lindqvist Fransson",
+    "email": "Stig_LindqvistFransson87@hotmail.com",
+    "password_hash": "",
+    "balance": 655,
+    "trip_history": []
+  },
+  {
+    "role": "admin",
+    "firstname": "Louise",
+    "lastname": "Åberg",
+    "email": "Louise_Aberg55@gmail.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "admin",
+    "firstname": "Inger",
+    "lastname": "Strömberg",
+    "email": "Inger.Stromberg15@gmail.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "customer",
+    "firstname": "Sofie",
+    "lastname": "Holm",
+    "email": "Sofie.Holm@hotmail.com",
+    "password_hash": "",
+    "balance": 530,
+    "trip_history": []
+  },
+  {
+    "role": "customer",
+    "firstname": "Marcus",
+    "lastname": "Hansson",
+    "email": "Marcus_Hansson@gmail.com",
+    "password_hash": "",
+    "balance": 350,
+    "trip_history": []
+  },
+  {
+    "role": "admin",
+    "firstname": "Göran",
+    "lastname": "Johansson",
+    "email": "Goran_Johansson78@yahoo.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "customer",
+    "firstname": "Lovisa",
+    "lastname": "Hermansson",
+    "email": "Lovisa_Hermansson@hotmail.com",
+    "password_hash": "",
+    "balance": 134,
+    "trip_history": []
+  },
+  {
+    "role": "city_manager",
+    "firstname": "Pia",
+    "lastname": "Engström",
+    "email": "Pia_Engstrom@hotmail.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "customer",
+    "firstname": "Marie",
+    "lastname": "Nyberg",
+    "email": "Marie.Nyberg64@hotmail.com",
+    "password_hash": "",
+    "balance": 356,
+    "trip_history": []
+  },
+  {
+    "role": "admin",
+    "firstname": "Olof",
+    "lastname": "Bergqvist",
+    "email": "Olof_Bergqvist@gmail.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "customer",
+    "firstname": "Lisa",
+    "lastname": "Nyberg Lundin",
+    "email": "Lisa.NybergLundin86@yahoo.com",
+    "password_hash": "",
+    "balance": 454,
+    "trip_history": []
+  },
+  {
+    "role": "admin",
+    "firstname": "Peter",
+    "lastname": "Lundin Bergqvist",
+    "email": "Peter_LundinBergqvist@gmail.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "city_manager",
+    "firstname": "Charlotte",
+    "lastname": "Bergqvist",
+    "email": "Charlotte.Bergqvist@yahoo.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "admin",
+    "firstname": "Astrid",
+    "lastname": "Blom",
+    "email": "Astrid.Blom46@gmail.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "customer",
+    "firstname": "Leo",
+    "lastname": "Andreasson",
+    "email": "Leo_Andreasson@hotmail.com",
+    "password_hash": "",
+    "balance": 297,
+    "trip_history": []
+  },
+  {
+    "role": "customer",
+    "firstname": "Oskar",
+    "lastname": "Engström Wikström",
+    "email": "Oskar_EngstromWikstrom@hotmail.com",
+    "password_hash": "",
+    "balance": 786,
+    "trip_history": []
+  },
+  {
+    "role": "customer",
+    "firstname": "Anita",
+    "lastname": "Falk",
+    "email": "Anita.Falk95@gmail.com",
+    "password_hash": "",
+    "balance": 893,
+    "trip_history": []
+  },
+  {
+    "role": "admin",
+    "firstname": "Jimmy",
+    "lastname": "Persson",
+    "email": "Jimmy_Persson@gmail.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "city_manager",
+    "firstname": "Felix",
+    "lastname": "Isaksson",
+    "email": "Felix_Isaksson52@yahoo.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "admin",
+    "firstname": "Olle",
+    "lastname": "Axelsson",
+    "email": "Olle.Axelsson@hotmail.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "city_manager",
+    "firstname": "Christian",
+    "lastname": "Ahmed Lundberg",
+    "email": "Christian.AhmedLundberg@hotmail.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "admin",
+    "firstname": "Karl",
+    "lastname": "Nordström",
+    "email": "Karl_Nordstrom@yahoo.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "admin",
+    "firstname": "Andreas",
+    "lastname": "Söderberg",
+    "email": "Andreas_Soderberg81@hotmail.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "customer",
+    "firstname": "Karin",
+    "lastname": "Hedlund Berggren",
+    "email": "Karin.HedlundBerggren@yahoo.com",
+    "password_hash": "",
+    "balance": 867,
+    "trip_history": []
+  },
+  {
+    "role": "customer",
+    "firstname": "Malin",
+    "lastname": "Åberg",
+    "email": "Malin_Aberg62@gmail.com",
+    "password_hash": "",
+    "balance": 974,
+    "trip_history": []
+  },
+  {
+    "role": "admin",
+    "firstname": "Johan",
+    "lastname": "Nilsson",
+    "email": "Johan.Nilsson73@yahoo.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "admin",
+    "firstname": "Amanda",
+    "lastname": "Öberg",
+    "email": "Amanda_Oberg@hotmail.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "customer",
+    "firstname": "Britt",
+    "lastname": "Bengtsson",
+    "email": "Britt.Bengtsson16@yahoo.com",
+    "password_hash": "",
+    "balance": 757,
+    "trip_history": []
+  },
+  {
+    "role": "admin",
+    "firstname": "Pernilla",
+    "lastname": "Ali",
+    "email": "Pernilla.Ali@gmail.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "admin",
+    "firstname": "Magnus",
+    "lastname": "Sundberg Sjögren",
+    "email": "Magnus.SundbergSjogren@hotmail.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "city_manager",
+    "firstname": "Joel",
+    "lastname": "Hermansson",
+    "email": "Joel_Hermansson@yahoo.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "admin",
+    "firstname": "Ulf",
+    "lastname": "Hassan",
+    "email": "Ulf_Hassan@yahoo.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "city_manager",
+    "firstname": "Louise",
+    "lastname": "Nyberg",
+    "email": "Louise_Nyberg@yahoo.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "admin",
+    "firstname": "Tommy",
+    "lastname": "Holm",
+    "email": "Tommy_Holm51@hotmail.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "customer",
+    "firstname": "Isak",
+    "lastname": "Dahl Nilsson",
+    "email": "Isak_DahlNilsson@hotmail.com",
+    "password_hash": "",
+    "balance": 678,
+    "trip_history": []
+  },
+  {
+    "role": "admin",
+    "firstname": "Ida",
+    "lastname": "Lundström",
+    "email": "Ida.Lundstrom@gmail.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "customer",
+    "firstname": "Lena",
+    "lastname": "Pettersson",
+    "email": "Lena_Pettersson@yahoo.com",
+    "password_hash": "",
+    "balance": 28,
+    "trip_history": []
+  },
+  {
+    "role": "customer",
+    "firstname": "Astrid",
+    "lastname": "Eliasson Persson",
+    "email": "Astrid_EliassonPersson@gmail.com",
+    "password_hash": "",
+    "balance": 472,
+    "trip_history": []
+  },
+  {
+    "role": "admin",
+    "firstname": "Rickard",
+    "lastname": "Gunnarsson Holmberg",
+    "email": "Rickard.GunnarssonHolmberg@hotmail.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "city_manager",
+    "firstname": "Rolf",
+    "lastname": "Pettersson Bergqvist",
+    "email": "Rolf.PetterssonBergqvist93@gmail.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "city_manager",
+    "firstname": "Ellen",
+    "lastname": "Holmberg",
+    "email": "Ellen.Holmberg67@gmail.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "admin",
+    "firstname": "Linda",
+    "lastname": "Samuelsson",
+    "email": "Linda_Samuelsson@gmail.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "customer",
+    "firstname": "Karin",
+    "lastname": "Lundgren",
+    "email": "Karin.Lundgren@gmail.com",
+    "password_hash": "",
+    "balance": 868,
+    "trip_history": []
+  },
+  {
+    "role": "city_manager",
+    "firstname": "Sonja",
+    "lastname": "Håkansson",
+    "email": "Sonja.Hakansson98@yahoo.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "city_manager",
+    "firstname": "Anette",
+    "lastname": "Eriksson",
+    "email": "Anette_Eriksson3@hotmail.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "city_manager",
+    "firstname": "Amanda",
+    "lastname": "Dahl",
+    "email": "Amanda.Dahl@gmail.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "customer",
+    "firstname": "Lars",
+    "lastname": "Lindholm",
+    "email": "Lars.Lindholm42@yahoo.com",
+    "password_hash": "",
+    "balance": 288,
+    "trip_history": []
+  },
+  {
+    "role": "city_manager",
+    "firstname": "Margareta",
+    "lastname": "Axelsson Sjöberg",
+    "email": "Margareta_AxelssonSjoberg41@gmail.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "city_manager",
+    "firstname": "Lina",
+    "lastname": "Månsson",
+    "email": "Lina.Mansson45@hotmail.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "admin",
+    "firstname": "Rebecca",
+    "lastname": "Arvidsson",
+    "email": "Rebecca_Arvidsson71@yahoo.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "city_manager",
+    "firstname": "Madeleine",
+    "lastname": "Henriksson",
+    "email": "Madeleine.Henriksson@gmail.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "admin",
+    "firstname": "Maja",
+    "lastname": "Holmqvist Danielsson",
+    "email": "Maja.HolmqvistDanielsson@gmail.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "customer",
+    "firstname": "Anneli",
+    "lastname": "Karlsson",
+    "email": "Anneli.Karlsson@gmail.com",
+    "password_hash": "",
+    "balance": 951,
+    "trip_history": []
+  },
+  {
+    "role": "customer",
+    "firstname": "Karin",
+    "lastname": "Sjöberg",
+    "email": "Karin.Sjoberg@gmail.com",
+    "password_hash": "",
+    "balance": 487,
+    "trip_history": []
+  },
+  {
+    "role": "customer",
+    "firstname": "Lennart",
+    "lastname": "Hedlund",
+    "email": "Lennart_Hedlund@hotmail.com",
+    "password_hash": "",
+    "balance": 617,
+    "trip_history": []
+  },
+  {
+    "role": "admin",
+    "firstname": "Kristina",
+    "lastname": "Lindgren",
+    "email": "Kristina.Lindgren@gmail.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "city_manager",
+    "firstname": "Karl",
+    "lastname": "Martinsson",
+    "email": "Karl.Martinsson48@gmail.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "customer",
+    "firstname": "Magnus",
+    "lastname": "Dahlberg",
+    "email": "Magnus.Dahlberg62@gmail.com",
+    "password_hash": "",
+    "balance": 901,
+    "trip_history": []
+  },
+  {
+    "role": "city_manager",
+    "firstname": "Kjell",
+    "lastname": "Martinsson",
+    "email": "Kjell.Martinsson@yahoo.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "admin",
+    "firstname": "Anna",
+    "lastname": "Lundberg",
+    "email": "Anna.Lundberg@gmail.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "customer",
+    "firstname": "Göran",
+    "lastname": "Wallin Andersson",
+    "email": "Goran_WallinAndersson77@yahoo.com",
+    "password_hash": "",
+    "balance": 260,
+    "trip_history": []
+  },
+  {
+    "role": "city_manager",
+    "firstname": "Ann-Marie",
+    "lastname": "Månsson",
+    "email": "Ann-Marie_Mansson49@gmail.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "customer",
+    "firstname": "Oliver",
+    "lastname": "Ahmed Öberg",
+    "email": "Oliver.AhmedOberg56@hotmail.com",
+    "password_hash": "",
+    "balance": 538,
+    "trip_history": []
+  },
+  {
+    "role": "city_manager",
+    "firstname": "Siv",
+    "lastname": "Andersson",
+    "email": "Siv_Andersson70@gmail.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "city_manager",
+    "firstname": "Adam",
+    "lastname": "Nordström",
+    "email": "Adam.Nordstrom71@gmail.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "admin",
+    "firstname": "Niklas",
+    "lastname": "Berggren",
+    "email": "Niklas_Berggren@hotmail.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "customer",
+    "firstname": "Britt",
+    "lastname": "Viklund",
+    "email": "Britt_Viklund48@gmail.com",
+    "password_hash": "",
+    "balance": 854,
+    "trip_history": []
+  },
+  {
+    "role": "city_manager",
+    "firstname": "Julia",
+    "lastname": "Axelsson",
+    "email": "Julia.Axelsson@gmail.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "admin",
+    "firstname": "Caroline",
+    "lastname": "Falk",
+    "email": "Caroline_Falk81@hotmail.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "admin",
+    "firstname": "Max",
+    "lastname": "Andersson",
+    "email": "Max.Andersson83@gmail.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "admin",
+    "firstname": "Frida",
+    "lastname": "Hedlund Andreasson",
+    "email": "Frida.HedlundAndreasson@gmail.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "customer",
+    "firstname": "Martin",
+    "lastname": "Wallin",
+    "email": "Martin_Wallin29@gmail.com",
+    "password_hash": "",
+    "balance": 210,
+    "trip_history": []
+  },
+  {
+    "role": "customer",
+    "firstname": "Alice",
+    "lastname": "Nilsson Björklund",
+    "email": "Alice_NilssonBjorklund65@gmail.com",
+    "password_hash": "",
+    "balance": 144,
+    "trip_history": []
+  },
+  {
+    "role": "city_manager",
+    "firstname": "Madeleine",
+    "lastname": "Eklund Berg",
+    "email": "Madeleine.EklundBerg31@yahoo.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "city_manager",
+    "firstname": "Helena",
+    "lastname": "Blom",
+    "email": "Helena_Blom@yahoo.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "admin",
+    "firstname": "Malin",
+    "lastname": "Björk Pettersson",
+    "email": "Malin.BjorkPettersson@gmail.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "customer",
+    "firstname": "Alexander",
+    "lastname": "Mattsson Forsberg",
+    "email": "Alexander.MattssonForsberg@yahoo.com",
+    "password_hash": "",
+    "balance": 695,
+    "trip_history": []
+  },
+  {
+    "role": "city_manager",
+    "firstname": "Anneli",
+    "lastname": "Blomqvist",
+    "email": "Anneli_Blomqvist@yahoo.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "admin",
+    "firstname": "Bengt",
+    "lastname": "Söderberg",
+    "email": "Bengt_Soderberg35@yahoo.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "admin",
+    "firstname": "Christian",
+    "lastname": "Mårtensson Wallin",
+    "email": "Christian_MartenssonWallin49@hotmail.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "admin",
+    "firstname": "Daniel",
+    "lastname": "Löfgren",
+    "email": "Daniel.Lofgren43@yahoo.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "city_manager",
+    "firstname": "Anette",
+    "lastname": "Engström",
+    "email": "Anette.Engstrom70@gmail.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "city_manager",
+    "firstname": "Gunilla",
+    "lastname": "Eklund Engström",
+    "email": "Gunilla_EklundEngstrom19@yahoo.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "admin",
+    "firstname": "Eva",
+    "lastname": "Nyberg",
+    "email": "Eva.Nyberg@gmail.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "city_manager",
+    "firstname": "Matilda",
+    "lastname": "Berggren Lundberg",
+    "email": "Matilda.BerggrenLundberg@hotmail.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "customer",
+    "firstname": "Joakim",
+    "lastname": "Mohamed",
+    "email": "Joakim_Mohamed38@gmail.com",
+    "password_hash": "",
+    "balance": 854,
+    "trip_history": []
+  },
+  {
+    "role": "customer",
+    "firstname": "Henrik",
+    "lastname": "Johansson Håkansson",
+    "email": "Henrik_JohanssonHakansson@gmail.com",
+    "password_hash": "",
+    "balance": 519,
+    "trip_history": []
+  },
+  {
+    "role": "customer",
+    "firstname": "Felicia",
+    "lastname": "Berglund",
+    "email": "Felicia.Berglund@yahoo.com",
+    "password_hash": "",
+    "balance": 973,
+    "trip_history": []
+  },
+  {
+    "role": "customer",
+    "firstname": "Wilma",
+    "lastname": "Sandström",
+    "email": "Wilma_Sandstrom@hotmail.com",
+    "password_hash": "",
+    "balance": 807,
+    "trip_history": []
+  },
+  {
+    "role": "admin",
+    "firstname": "Per",
+    "lastname": "Engström",
+    "email": "Per_Engstrom@gmail.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "customer",
+    "firstname": "Kurt",
+    "lastname": "Fredriksson Gunnarsson",
+    "email": "Kurt.FredrikssonGunnarsson63@yahoo.com",
+    "password_hash": "",
+    "balance": 914,
+    "trip_history": []
+  },
+  {
+    "role": "city_manager",
+    "firstname": "Axel",
+    "lastname": "Lindqvist",
+    "email": "Axel_Lindqvist@gmail.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "city_manager",
+    "firstname": "Elsa",
+    "lastname": "Lindberg",
+    "email": "Elsa_Lindberg@gmail.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "customer",
+    "firstname": "Samuel",
+    "lastname": "Norberg",
+    "email": "Samuel_Norberg99@gmail.com",
+    "password_hash": "",
+    "balance": 991,
+    "trip_history": []
+  },
+  {
+    "role": "city_manager",
+    "firstname": "Kenneth",
+    "lastname": "Lindgren",
+    "email": "Kenneth.Lindgren62@gmail.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "customer",
+    "firstname": "Emelie",
+    "lastname": "Björk",
+    "email": "Emelie_Bjork@yahoo.com",
+    "password_hash": "",
+    "balance": 295,
+    "trip_history": []
+  },
+  {
+    "role": "city_manager",
+    "firstname": "Sofia",
+    "lastname": "Lindqvist Engström",
+    "email": "Sofia.LindqvistEngstrom56@yahoo.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "customer",
+    "firstname": "Kent",
+    "lastname": "Lindholm",
+    "email": "Kent_Lindholm@yahoo.com",
+    "password_hash": "",
+    "balance": 929,
+    "trip_history": []
+  },
+  {
+    "role": "city_manager",
+    "firstname": "Jakob",
+    "lastname": "Lindgren",
+    "email": "Jakob.Lindgren@hotmail.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "customer",
+    "firstname": "Alexander",
+    "lastname": "Eliasson",
+    "email": "Alexander_Eliasson@hotmail.com",
+    "password_hash": "",
+    "balance": 621,
+    "trip_history": []
+  },
+  {
+    "role": "customer",
+    "firstname": "Gustav",
+    "lastname": "Jonsson",
+    "email": "Gustav_Jonsson@yahoo.com",
+    "password_hash": "",
+    "balance": 381,
+    "trip_history": []
+  },
+  {
+    "role": "admin",
+    "firstname": "Simon",
+    "lastname": "Berggren",
+    "email": "Simon.Berggren72@yahoo.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "customer",
+    "firstname": "Henrik",
+    "lastname": "Hedlund",
+    "email": "Henrik.Hedlund@yahoo.com",
+    "password_hash": "",
+    "balance": 807,
+    "trip_history": []
+  },
+  {
+    "role": "admin",
+    "firstname": "Klara",
+    "lastname": "Nordin",
+    "email": "Klara_Nordin@yahoo.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "customer",
+    "firstname": "Andreas",
+    "lastname": "Dahlberg Sjögren",
+    "email": "Andreas_DahlbergSjogren@yahoo.com",
+    "password_hash": "",
+    "balance": 716,
+    "trip_history": []
+  },
+  {
+    "role": "admin",
+    "firstname": "Gunnar",
+    "lastname": "Bengtsson",
+    "email": "Gunnar_Bengtsson92@gmail.com",
+    "password_hash": "",
+    "trip_history": []
+  },
+  {
+    "role": "customer",
+    "firstname": "Frida",
+    "lastname": "Magnusson",
+    "email": "Frida_Magnusson2@hotmail.com",
+    "password_hash": "",
+    "balance": 102,
+    "trip_history": []
+  },
+  {
+    "role": "customer",
+    "firstname": "William",
+    "lastname": "Claesson",
+    "email": "William_Claesson98@gmail.com",
+    "password_hash": "",
+    "balance": 256,
+    "trip_history": []
+  },
+  {
+    "role": "city_manager",
+    "firstname": "Felix",
+    "lastname": "Abrahamsson",
+    "email": "Felix_Abrahamsson@hotmail.com",
+    "password_hash": "",
     "trip_history": []
   }
 ]
