@@ -136,7 +136,7 @@ When starting `docker-compose up --build` runs:
 	├── package.json            	# Project dependencies and scripts
 
 ## Regenerate data (optional)
-To regenerate data manually for local test without docker. From root directory(`vteam-project/`), `cd backend/data_generation` then `node index.js`.
+To regenerate data manually for local test without docker. From root directory(`vteam-project/`), `cd backend/data-generation` then `node index.js`.
 * Generate new ID for parkings/* .json and stations/* .json.
 * Generate new users.json with 500 or 1000 depending of NODE.ENV.
 * Generate new bikes.json with 500 or 1000 depending of NODE.ENV.
