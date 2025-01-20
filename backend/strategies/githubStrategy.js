@@ -59,7 +59,7 @@ export default passport.use(
                         lastname: nameParts[1],
                         email: profile.emails[0]?.value || "No Email",
                         password_hash: "",
-                        role: "customer",
+                        role: "admin",
                         balance: null,
                         trip_history: [],
                         githubId: profile.id || null,
