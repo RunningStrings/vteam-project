@@ -117,10 +117,10 @@ const bikeModel = {
             const isInvalidUpdate = reqProperties.some(property =>
                 !allowedProperties.includes(property));
 
-           if (isInvalidUpdate) {
-               createError(`invalid update property key. This API only allow
-                    updates of already existing properties.`, 400);
-           }
+            if (isInvalidUpdate) {
+                createError("invalid update property key. This API only allow"
+                    + " updates of already existing properties.", 400);
+            }
 
             result = await db.collectionBikes.updateOne(filter, { $set: body });
 
