@@ -206,7 +206,7 @@ const stationModel = {
             const filterStation = {
                 _id: ObjectId.createFromHexString(id)
             };
-                
+
             let resultStation = await db.collectionStations.findOne(filterStation);
 
             if (!resultStation) {
