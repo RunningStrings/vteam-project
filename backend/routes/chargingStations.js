@@ -77,4 +77,20 @@ router
         }
     });
 
+    router
+    .route("/:id/bikes")
+    .post(async (req, res, next) => {
+        try {
+            console.log(req.params.id, req.body)
+            const result = await stationModel.moveBikeToChargingStation(req.params.id, req.body);
+            // res.set('Location', `/charging_stations/${result.insertedId}`);
+            res.status(200).json({
+                data: result
+            });
+        } catch (error) {
+            console.error('Error post charging_stations/:id/bikes:', error);
+            next(error);
+        }
+    });
+
 export { router };
