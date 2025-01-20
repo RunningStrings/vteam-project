@@ -47,8 +47,8 @@ const zoneModel = {
             createError("ID format is invalid", 400);
         }
 
-        if (!body.city_id || !body.location) {
-            createError("city_id and location"
+        if (!body.city_name || !body.location || !body.name) {
+            createError("city_name, name and location"
                 + "are required properties. Use patch method instead if you only"
                 +  " want to update part of the zone resource.", 400);
         }
@@ -67,16 +67,20 @@ const zoneModel = {
             }    
 
             const updateParkingZone = {
-                city_id: body.city_id,
-                location: body.location
+                id: body.id || null,
+                name: body.name,
+                city_name: body.city_name,
+                location: body.location,
+                bikes: body.bikes || [],
+                capacity: body.capacity || null
             };
 
             result = await db.collectionParkings.updateOne(filter, { $set: updateParkingZone });
 
-            if (result.modifiedCount !== 1) {
-                createError(`no update possible with the given information for zone with ID: ${id}.`
-                + " Make sure information you provide is new.", 400);
-            }
+            // if (result.modifiedCount !== 1) {
+            //     createError(`no update possible with the given information for zone with ID: ${id}.`
+            //     + " Make sure information you provide is new.", 400);
+            // }
 
             result = await db.collectionParkings.findOne(filter);
 
@@ -104,7 +108,7 @@ const zoneModel = {
                 createError(`zone with ID: ${id} cannot be found`, 404);
             }
 
-            const allowedProperties = ["city_id", "location"];
+            const allowedProperties = ["city_name", "location", "id", "name", "location", "capacity"];
             const reqProperties = Object.keys(body);
             const isInvalidUpdate = reqProperties.some(property =>
                  !allowedProperties.includes(property));
@@ -116,10 +120,10 @@ const zoneModel = {
 
             result = await db.collectionParkings.updateOne(filter, { $set: body });
 
-            if (result.modifiedCount !== 1) {
-                createError(`no update possible with the given information for zone with ID: ${id}.`
-                + " Make sure information you provide is new.", 400);
-            }
+            // if (result.modifiedCount !== 1) {
+            //     createError(`no update possible with the given information for zone with ID: ${id}.`
+            //     + " Make sure information you provide is new.", 400);
+            // }
 
             return;
         } finally {
@@ -158,24 +162,29 @@ const zoneModel = {
     },
 
     createParkingZone: async function createParkingZone(body) {
-        if (!body.city_id || !body.location) {
-                createError(`city_id and location are required properties.`, 400);
+        if (!body.city_name || !body.location || !body.name) {
+                createError(`city_name, name and location are required properties.`, 400);
         }
 
         const db = await database.getDb();
 
         try {
             const newParkingZone = {
-                city_id: body.city_id,
-                location: body.location
+                id: body.id || null,
+                name: body.name,
+                city_name: body.city_name,
+                location: body.location,
+                bikes: body.bikes || [],
+                capacity: body.capacity || null
+
             };
 
-            // const zoneName = newParkingZone.city_id;
-            // const duplicateParkingZone = await db.collectionParkings.findOne({zoneName});
+            const zoneName = newParkingZone.name;
+            const duplicateParkingZone = await db.collectionParkings.findOne({zoneName});
 
-            // if (duplicateParkingZone) {
-            //     createError("zone with this city_id already exists.", 400);
-            // }
+            if (duplicateParkingZone) {
+                createError("zone with this name already exists.", 400);
+            }
 
             const result = await db.collectionParkings.insertOne(newParkingZone);
             
