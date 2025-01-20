@@ -5,7 +5,7 @@ const secret = process.env.JWT_SECRET || "bikeriderz12345!";
 
 const tokenService = {
     generateToken: function generateToken(user) {
-        const token = jwt.sign(user, secret, { expiresIn: '6h'});
+        const token = jwt.sign(user, secret, { expiresIn: '7d'});
         // console.log('GENERATED TOKEN ');
         // console.log(token);
         return token;
