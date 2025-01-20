@@ -61,11 +61,12 @@ app.get(
         failureRedirect: '/',
         session: false
     }), (req, res, next) => {
-        const user = req.user;
-        const token = tokenService.generateToken(user);
+        const userObject = req.user;
+        const token = tokenService.generateToken(userObject);
         res.status(200).json({
             data: {
-                token: token
+                token: token,
+                role: userObject.user.role
             }
         });
     }

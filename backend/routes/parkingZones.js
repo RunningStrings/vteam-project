@@ -3,12 +3,13 @@
  */
 import express from 'express';
 import zoneModel from "../models/zoneModel.js";
+import { tokenMiddleware, adminTokenMiddleware } from '../middlewares/tokenMiddleware.js';
 
 const router = express.Router();
 
 router
     .route("/")
-    .get(async (req, res, next) => {
+    .get(tokenMiddleware,async (req, res, next) => {
         try {
             const result = await zoneModel.fetchAllParkingZones();
             res.status(200).json({
@@ -19,7 +20,7 @@ router
             next(error);
         }
     })
-    .post(async (req, res, next) => {
+    .post(adminTokenMiddleware, async (req, res, next) => {
         try {
             const result = await zoneModel.createParkingZone(req.body);
             res.set('Location', `/parking_zones/${result.insertedId}`);
@@ -32,7 +33,7 @@ router
 
 router
     .route("/:id")
-    .get(async (req, res, next) => {
+    .get(tokenMiddleware, async (req, res, next) => {
         try {
             const result = await zoneModel.fetchParkingZoneById(req.params.id);
 
@@ -44,7 +45,7 @@ router
             next(error);
         }
     })
-    .put(async (req, res, next) => {
+    .put(adminTokenMiddleware, async (req, res, next) => {
         try {
             const result = await zoneModel.updateCompleteParkingZoneById(req.params.id, req.body);            
 
@@ -56,7 +57,7 @@ router
             next(error);
         }
     })
-    .patch(async (req, res, next) => {
+    .patch(adminTokenMiddleware, async (req, res, next) => {
         try {
             await zoneModel.updateParkingZoneById(req.params.id, req.body);
             res.set('Location', `/parking_zones/${req.params.id}`);         
@@ -66,7 +67,7 @@ router
             next(error);
         }
     })
-    .delete(async (req, res, next) => {
+    .delete(adminTokenMiddleware, async (req, res, next) => {
         try {
             await zoneModel.deleteParkingZoneById(req.params.id);
             res.status(204).send();

@@ -50,9 +50,11 @@ export default passport.use(
             }
             try {
                 if (!user) {
+                    // console.log('I dont exist: \n')
+                    // console.log(user)
                     const fullName = profile.displayName || profile.name || "Missing Missing";
                     const nameParts = fullName.split(" ");
-                    user = {
+                    const newUser = {
                         firstname: nameParts[0],
                         lastname: nameParts[1],
                         email: profile.emails[0]?.value || "No Email",
@@ -63,13 +65,15 @@ export default passport.use(
                         githubId: profile.id || null,
                         username: profile.username || null,
                     };
-                    const newSavedUser = await userModel.createUser(user);
+                    const user = await userModel.createUser(newUser);
                     // const jwt = tokenService.generateToken(newSavedUser);
-                    return done(null, { newSavedUser });
+                    return done(null, { user });
                     // return done(null, newSavedUser);
                 }
                 // user.accessToken = accessToken;
                 // const jwt = tokenService.generateToken(user);
+                // console.log('I exist: \n')
+                // console.log(user)
                 return done(null, { user });
             } catch (error) {
             console.error('Error storing user in DB:', error);
