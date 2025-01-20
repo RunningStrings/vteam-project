@@ -22,6 +22,12 @@ const Support = () => {
           <li>Du måste vara nykter.</li>
           <li>Tänk på att köra försiktigt!</li>
           </ul>
+          <h3>Priser:</h3>
+        <ul>
+          <li>Du får lägre pris om du parkerar på en parkeringsplats.</li>
+          <li>Du betalar en rörlig av beroende på tiden.</li>
+          </ul>
+
       </div>
     );
   };

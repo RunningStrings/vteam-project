@@ -14,7 +14,11 @@ const Maps = () => {
   const [stations, setStations] = useState([]);
   const [parkings, setParkings] = useState([]);
   const navigate = useNavigate();
-  const socket = io('http://localhost:5000');
+  //const socket = io('http://localhost:5000');
+  const socket = io("http://localhost:5000", {
+    //transports: ["websocket", "polling"], // Försäkra att både WebSocket och polling fungerar
+    transports: ["websocket"],
+  });
   const [loading, setLoading] = useState(true);
 
   
@@ -32,7 +36,11 @@ const Maps = () => {
  
    socket.on("update-location", (data) => {
       console.log("socket on");
+      const { lat, lon } = data.location.coordinates;
       console.log(data);
+      console.log(lat);
+      console.log(lon);
+
       
       setBikes((prevBikes) =>
         prevBikes.map((bike) =>
@@ -42,25 +50,29 @@ const Maps = () => {
     });
   
     return () => {
-      socket.off("update-location");
+      //socket.off("update-location");
       console.log("socket off");
     };
   }, []);
   
   useEffect(() => {
-    socket.on('connect', () => {
+    socket.on('connect', (data) => {
       console.log('WebSocket connected:', socket.id);
-      console.log(socket.bike);
+      console.log(socket.data);
       
     });
   
+    socket.on("connect_error", (error) => {
+      console.error("WebSocket connection error:", error);
+    });
+
     socket.on('disconnect', () => {
       console.log('WebSocket disconnected');
     });
   
-    return () => {
+/*    return () => {
       socket.disconnect();
-    };
+    };*/
   }, []);
   
   
