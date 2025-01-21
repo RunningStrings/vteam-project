@@ -5,6 +5,8 @@ import { useNavigate} from 'react-router-dom';
 
 function Users() {
   const [users, setUsers] = useState([]);
+  let token=sessionStorage.getItem('token');
+  
   //const [bikes, setBikes] = useState([]);
   //const [cities, setCities] = useState([]);
 
@@ -20,7 +22,7 @@ function Users() {
   
   useEffect(() => {
     // Fetch users from the backend API
-    fetch('/users')
+    fetch('/users',{headers: {'x-access-token': `${token}`},})
     .then((response) => {
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);

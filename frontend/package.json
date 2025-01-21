@@ -14,6 +14,7 @@
     "@changey/react-leaflet-markercluster": "^4.0.0-rc1",
     "axios": "^1.7.9",
     "bootstrap": "^5.3.3",
+    "http-proxy-middleware": "^3.0.3",
     "leaflet": "^1.9.4",
     "leaflet.markercluster": "^1.5.3",
     "react": "^18.3.1",

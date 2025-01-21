@@ -11,6 +11,10 @@ export default defineConfig({
       '/cities': 'http://backend:5000/api/v1',
       '/charging_stations': 'http://backend:5000/api/v1',
       '/parking_zones': 'http://backend:5000/api/v1',
+      '/login': {
+        target: 'http://backend:5000/api/v1',
+        changeOrigin: true,
+      },
     },
   },
   test: {

@@ -13,6 +13,7 @@ const Maps = () => {
   const [cities, setCities] = useState([]);
   const [stations, setStations] = useState([]);
   const [parkings, setParkings] = useState([]);
+  let token=sessionStorage.getItem('token');
   const navigate = useNavigate();
   //const socket = io('http://localhost:5000');
   const socket = io("http://localhost:5000", {
@@ -90,7 +91,7 @@ const Maps = () => {
   }, [socket]);*/
 
   useEffect(() => {
-    Promise.all([fetch('/cities'), fetch('/bikes'), fetch('/charging_stations'), fetch('/parking_zones')])
+    Promise.all([fetch('/cities',{headers: {'x-access-token': `${token}`},}), fetch('/bikes'), fetch('/charging_stations',{headers: {'x-access-token': `${token}`},}), fetch('/parking_zones',{headers: {'x-access-token': `${token}`},})])
       .then(([citiesRes, bikesRes, stationsRes, parkingsRes]) => 
         Promise.all([citiesRes.json(), bikesRes.json(), stationsRes.json(), parkingsRes.json()])
       )

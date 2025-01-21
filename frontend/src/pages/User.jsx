@@ -90,6 +90,7 @@ function User() {
   const [formData, setFormData] = useState(initialFormValues);
   const [users, setUsers] = useState([]); // Deklarerar users
   const [selectedUserId, setSelectedUserId] = useState([]); // Deklarerar users
+  let token=sessionStorage.getItem('token');
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
@@ -106,7 +107,7 @@ function User() {
 
   useEffect(() => {
     // Fetch users from the backend API
-    fetch('/users')
+    fetch('/users',{headers: {'x-access-token': `${token}`},})
       .then((response) => {
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
