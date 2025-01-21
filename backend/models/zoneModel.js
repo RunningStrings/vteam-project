@@ -6,11 +6,21 @@ import { ObjectId } from 'mongodb';
 import { createError } from './utils/createError.js'
 
 const zoneModel = {
-    fetchAllParkingZones: async function fetchAllParkingZones() {
+    fetchAllParkingZones: async function fetchAllParkingZones(query) {
         const db = await database.getDb();
 
         try {
-            const result = await db.collectionParkings.find().toArray();
+            const { city_name } = query;
+            const filter = {
+                $and: [
+                    {
+                        $or: [
+                            city_name ? { city_name: { $regex: new RegExp(city_name, 'i') } } : {}
+                        ]
+                    },
+                    ]
+            };
+            const result = await db.collectionParkings.find(filter).toArray();
 
             return result;
         } finally {

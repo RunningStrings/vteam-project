@@ -76,10 +76,10 @@ const tripModel = {
 
             result = await db.collectionTrips.updateOne(filter, { $set: updateTrip });
 
-            if (result.modifiedCount !== 1) {
-                createError(`no update possible with the given information for trip with ID: ${id}.
-                    Make sure information you provide is new.`, 400);
-            }
+            // if (result.modifiedCount !== 1) {
+            //     createError(`no update possible with the given information for trip with ID: ${id}.
+            //         Make sure information you provide is new.`, 400);
+            // }
 
             result = await db.collectionTrips.findOne(filter);
 
@@ -120,10 +120,10 @@ const tripModel = {
 
             result = await db.collectionTrips.updateOne(filter, { $set: body });
 
-            if (result.modifiedCount !== 1) {
-                createError(`no update possible with the given information for trip with ID: ${id}.
-                    Make sure information you provide is new.`, 400);
-            }
+            // if (result.modifiedCount !== 1) {
+            //     createError(`no update possible with the given information for trip with ID: ${id}.
+            //         Make sure information you provide is new.`, 400);
+            // }
 
             return;
         } finally {
@@ -170,7 +170,9 @@ const tripModel = {
 
         try {
             const newTrip = {
-                city_id: body.city_id,
+                bike_id: body.bike_id,
+                customer_id: body.customer_id,
+                // start: { location: body.location, }
                 location: body.location,
                 status: body.status,
                 battery_level: body.battery_level,
