@@ -21,6 +21,7 @@ class BikeBrain {
         this.city_name = city_name;
         this.location = {type: 'Point', coordinates: location.coordinates};
         this.status = status; // available, in-use, charging, maintenance
+        this.light = this.bikeLight(this.status);
         this.battery = 100;
         this.speed = 0;
         this.localTripLog = [];
@@ -28,7 +29,7 @@ class BikeBrain {
 
         this.updateInterval = null;
         this.previousLocation = null;
-        this.startUpdates(10000); // Base interval for updates
+        this.previousSpeed = null;
 
         this.socket = io('http://backend:5000');
 
@@ -52,6 +53,8 @@ class BikeBrain {
         this.socket.on('reconnect', (attemptNumber) => {
             console.log(`Bike ${this.id} reconnected to the server after ${attemptNumber} attempts`);
         });
+
+        this.startUpdates(10000); // Base interval for updates
     }
 
     /**
@@ -79,14 +82,53 @@ class BikeBrain {
      * Send a combined update for location, speed, and battery to the server.
      */
     sendCombinedUpdate() {
+        const currentLocation = { ...this.location };
+        const isMoving = this.detectMovement(currentLocation);
+
+        this.updateFrequencyBasedOnMovement(isMoving);
+
+        this.light = this.bikeLight(this.status);
+
+        this.previousLocation = currentLocation;
+
         const data = {
+            id: this.id,
             location: this.location,
             speed: this.speed,
             battery: this.battery,
+            status: this.status,
+            light: this.light,
         };
 
         this.sendMessage('update-bike-data', data);
         console.log(`Bike ${this.id}: Update sent`, data);
+    }
+
+    /**
+     * Detects if the bike is moving based on location.
+     * @param {Object} currentLocation - The bike's current location.
+     * @returns {boolean} - True if the bike is moving, otherwise false.
+     */
+    detectMovement(currentLocation) {
+        return (
+            !this.previousLocation ||
+            this.previousLocation.coordinates[0] !== currentLocation.coordinates[0] ||
+            this.previousLocation.coordinates[1] !== currentLocation.coordinates[1]
+        );
+    }
+
+    /**
+     * Adjusts update frequency based on movement.
+     * @param { boolean} isMoving - Whether the bike is moving.
+     */
+    updateFrequencyBasedOnMovement(isMoving) {
+        if (isMoving) {
+            console.log(`Bike ${this.id}: Movement detected, increasing update frequency`);
+            this.startUpdates(10000);
+        } else {
+            console.log(`Bike ${this.id}: No movement detected, reducing update frequency`);
+            this.startUpdates(300000);
+        }
     }
 
     /**
@@ -123,91 +165,41 @@ class BikeBrain {
     updateStatus(newStatus) {
         this.status = newStatus;
         this.bikeLight(newStatus);
-        console.log(`Bike ${this.id} status updated to '${newStatus}'`);
+        // console.log(`Bike ${this.id} status updated to '${newStatus}'`);
     }
-
-    /**
-     * Check if the bikes's location has changed and update accordingly.
-     */
-    // checkAndUpdateLocation() {
-    //     const currentLocation = this.location;
-
-    //     if (
-    //         !this.previousLocation ||
-    //         this.previousLocation.coordinates[0] !== currentLocation.coordinates[0] ||
-    //         this.previousLocation.coordinates[1] !== currentLocation.coordinates[1]
-    //     ) {
-    //         this.updateLocation(currentLocation);
-
-    //         // // If bike is not rented and location has changed
-    //         // if (this.status !== 'in-use') {
-    //         //     console.log(`Bike ${this.id}: Movement detected, increasing update frequency`);
-    //         //     this.startUpdates(30000);
-    //         // }
-    //     } else if (this.status !== 'in-use') {
-    //         // If bike is not rented and location has not changed
-    //         console.log(`Bike ${this.id}: No movement detected, reverting to low frequency`);
-    //         this.startUpdates(300000);
-    //     }
-    // }
-    checkAndUpdateLocation() {
-        const currentLocation = this.location;
-    
-        if (
-            !this.previousLocation ||
-            this.previousLocation.coordinates[0] !== currentLocation.coordinates[0] ||
-            this.previousLocation.coordinates[1] !== currentLocation.coordinates[1]
-        ) {
-            this.previousLocation = { ...currentLocation };
-            console.log(`Bike ${this.id}: Movement detected, increasing update frequency`);
-            this.startUpdates(10000); // High frequency
-        } else if (this.status !== 'in-use') {
-            console.log(`Bike ${this.id}: No movement detected, reducing update frequency`);
-            this.startUpdates(300000); // Low frequency
-        }
-    }
-    
 
     /**
      * Updates the bike's location and sends it to the server.
      * @param {Object} location - The new location of the bike, containing `lat` and `lon` properties.
      */
     updateLocation(location) {
-        // const [lat, lon] = location.coordinates || [];
-
-        // if (typeof lat !== 'number' || typeof lon !== 'number') {
-        //     console.error(`Invalid coordinates provided: ${JSON.stringify(location)}`);
-        //     return;
-        // }
         if (!Array.isArray(location.coordinates) || location.coordinates.length !== 2) {
             console.error(`Invalid coordinated provided: ${JSON.stringify(location)}`);
             return;
         }
 
-        const [lat, lon] = location.coordinates;
+        // const [lat, lon] = location.coordinates;
         // Update the 'coordinates' array in the 'location' object
         this.location = {
             type: 'Point',
-            coordinates: [lat, lon],
+            coordinates: location.coordinates,
         };
 
         // Log the updated location to the console
-        console.log(`Bike ID ${this.id} updated location to:`, this.location.coordinates);
-
-        // // Send the updated location to the server
-        // this.sendMessage('update-location', {
-        //     location: this.location,
-        // });
+        // console.log(`Bike ID ${this.id} updated location to:`, this.location.coordinates);
     }
 
     /**
      * Check if the bike's speed has changed and update accordingly
      */
     checkAndUpdateSpeed(newSpeed) {
+        if (this.previousSpeed === undefined) {
+            this.previousSpeed = 0;
+        }
+
         const currentSpeed = this.speed;
 
         if (
-            !this.previousSpeed ||
             this.previousSpeed !== newSpeed
         ) {
             this.updateSpeed(newSpeed);
@@ -221,10 +213,7 @@ class BikeBrain {
      */
     updateSpeed(speed) {
         this.speed = speed;
-        console.log(`Bike ${this.id}: Speed updated to`, this.speed);
-        // this.sendMessage('update-speed', {
-        //     speed: this.speed
-        // });
+        // console.log(`Bike ${this.id}: Speed updated to`, this.speed);
     }
 
     /**
@@ -241,10 +230,7 @@ class BikeBrain {
             return;
         }
         this.battery = battery;
-        console.log(`Bike ${this.id}: Battery updated to`, this.battery);
-        // this.sendMessage('update-battery', {
-        //     battery: this.battery
-        // });
+        // console.log(`Bike ${this.id}: Battery updated to`, this.battery);
 
         // Call method to handle warnings
         this.handleBatteryWarnings();
@@ -345,7 +331,7 @@ class BikeBrain {
 
             // Send only current trip to the server
             this.sendMessage('log-trip', {
-                localTripLog: this.tripCurrent,
+                tripLog: this.tripCurrent,
             });
         }
         this.tripCurrent = null;
@@ -500,17 +486,26 @@ class BikeBrain {
      *                          - 'charging' = red
      *                          - 'maintenance' = yellow
      *                          - 'in-use' = blue
+     * @returs {string} - The light color corresponding to the status.
      */
     bikeLight(status) {
-        if (status === 'available') {
-            console.log('green');
-        } else if (status === 'charging') {
-            console.log('red');
-        } else if (status === 'maintenance') {
-            console.log('yellow');
-        } else if (status === 'in-use') {
-            console.log('blue');
+        const normalizedStatus = (status || '').trim().toLowerCase();
+
+        const lightColors = {
+            available: 'green',
+            charging: 'red',
+            maintenance: 'yellow',
+            'in-use': 'blue',
+        };
+
+        const newLight = lightColors[normalizedStatus];
+        if (newLight) {
+            // console.log(`Bike ${this.id}: Light set to ${newLight}`);
+            this.light = newLight;
+        } else {
+            console.warn(`Bike ${this.id}: Invalid status '${status}' provided, no light change.`);
         }
+        return this.light;
     }
 
     /**
@@ -530,7 +525,8 @@ class BikeBrain {
             location: this.location,
             status: this.status,
             battery: this.battery,
-            speed: this.speed
+            speed: this.speed,
+            light: this.light
         };
     }
 
