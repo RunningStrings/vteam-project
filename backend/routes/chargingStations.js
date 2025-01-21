@@ -9,9 +9,9 @@ const router = express.Router();
 
 router
     .route("/")
-    .get(tokenMiddleware, async (req, res, next) => {
+    .get(async (req, res, next) => {
         try {
-            const result = await stationModel.fetchAllChargingStations();
+            const result = await stationModel.fetchAllChargingStations(req.query);
             res.status(200).json({
                 data: result
             });
@@ -33,7 +33,7 @@ router
 
 router
     .route("/:id")
-    .get(tokenMiddleware, async (req, res, next) => {
+    .get(async (req, res, next) => {
         try {
             const result = await stationModel.fetchChargingStationById(req.params.id);
 

@@ -6,22 +6,26 @@ import { ObjectId } from 'mongodb';
 import { createError } from './utils/createError.js'
 
 const bikeModel = {
-    fetchAllBikes: async function fetchAllBikes(limit, offset) {
+    fetchAllBikes: async function fetchAllBikes(limit, offset, city_name) {
         const db = await database.getDb();
 
         try {
-            // Get the total number of bikes in the collection
-            const totalCount = await db.collectionBikes.countDocuments();
-
-            // Add .skip(offset) and .limit(limit) to handle batch loading of bikes
+            const filter = {
+                $and: [
+                    {
+                        $or: [
+                            city_name ? { city_name: { $regex: new RegExp(city_name, 'i') } } : {}
+                        ]
+                    },
+                    ]
+            };
             const result = await db.collectionBikes
-                .find()
-                .skip(offset || 0)   // Skip records based on offset, default to 0
-                .limit(limit || totalCount)   // Limit records based on limit, default to totalCount
+                .find(filter)
+                .skip(offset || 0)
+                .limit(limit || 0)
                 .toArray();
 
-            // Return the total number of bikes for pagination
-            return { result, totalCount };
+            return result;
         } finally {
             await db.client.close();
         }
@@ -56,9 +60,9 @@ const bikeModel = {
             createError("ID format is invalid", 400);
         }
 
-        if (!body.city_id || !body.location || !body.status || !body.battery_level || !body.speed) {
-            createError(`city_id, location, status, speed and battery_level are required. Use patch method
-                 instead if you only want to update part of the bike resource.`, 400);
+        if (!body.city_name || !body.location || !body.status) {
+            createError("city_name, location and status are required.  Use patch method"
+                + " instead if you only want to update part of the bike resource.", 400);
         }
 
         const db = await database.getDb();
@@ -75,19 +79,20 @@ const bikeModel = {
             }    
 
             const updateBike = {
-                city_id: body.city_id,
+                id: body.id || null,
+                city_name: body.city_name,
                 location: body.location,
                 status: body.status,
-                battery_level: body.battery_level,
-                speed: body.speed
+                battery: body.battery || null,
+                speed: body.speed || null
             };
 
             result = await db.collectionBikes.updateOne(filter, { $set: updateBike });
 
-            if (result.modifiedCount !== 1) {
-                createError(`no update possible with the given information for bike with ID: ${id}.
-                    Make sure information you provide is new.`, 400);
-            }
+            // if (result.modifiedCount !== 1) {
+            //     createError(`no update possible with the given information for bike with ID: ${id}.`
+            //         + " Make sure information you provide is new.", 400);
+            // }
 
             result = await db.collectionBikes.findOne(filter);
 
@@ -115,23 +120,23 @@ const bikeModel = {
                 createError(`bike with ID: ${id} cannot be found`, 404);
             }
 
-            const allowedProperties = ["city_id", "location", "status",
-                 "battery_level", "speed"];
+            const allowedProperties = ["id", "city_name", "location", "status",
+                 "battery", "speed"];
             const reqProperties = Object.keys(body);
             const isInvalidUpdate = reqProperties.some(property =>
                 !allowedProperties.includes(property));
 
-           if (isInvalidUpdate) {
-               createError(`invalid update property key. This API only allow
-                    updates of already existing properties.`, 400);
-           }
+            if (isInvalidUpdate) {
+                createError("invalid update property key. This API only allow"
+                    + " updates of already existing properties.", 400);
+            }
 
             result = await db.collectionBikes.updateOne(filter, { $set: body });
 
-            if (result.modifiedCount !== 1) {
-                createError(`no update possible with the given information for bike with ID: ${id}.
-                    Make sure information you provide is new.`, 400);
-            }
+            // if (result.modifiedCount !== 1) {
+            //     createError(`no update possible with the given information for bike with ID: ${id}.
+            //         Make sure information you provide is new.`, 400);
+            // }
 
             return;
         } finally {
@@ -170,19 +175,20 @@ const bikeModel = {
     },
 
     createBike: async function createBike(body) {
-        if (!body.city_id || !body.location || !body.status || !body.battery_level || !body.speed) {
-            createError("city_id, location, status, speed and battery_level are required.", 400);
+        if (!body.city_name || !body.location || !body.status) {
+            createError("city_name, location and status are required.", 400);
         }
 
         const db = await database.getDb();
 
         try {
             const newBike = {
-                city_id: body.city_id,
+                id: body.id || null,
+                city_name: body.city_name,
                 location: body.location,
                 status: body.status,
-                battery_level: body.battery_level,
-                speed: body.speed
+                battery: body.battery || null,
+                speed: body.speed || null
             };
 
             // const status = newBike.status;

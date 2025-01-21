@@ -9,7 +9,7 @@ const router = express.Router();
 
 router
     .route("/")
-    .get(tokenMiddleware, async (req, res, next) => {
+    .get(async (req, res, next) => {
         try {
             const result = await cityModel.fetchAllCities();
             res.status(200).json({
@@ -33,7 +33,7 @@ router
 
 router
     .route("/:id")
-    .get(tokenMiddleware, async (req, res, next) => {
+    .get(async (req, res, next) => {
         try {
             const result = await cityModel.fetchCityById(req.params.id);
 

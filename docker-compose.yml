@@ -10,6 +10,7 @@ services:
             - CLIENT_SECRET=${CLIENT_SECRET}
             - REDIRECT_URI=${REDIRECT_URI}
             - JWT_SECRET=${JWT_SECRET}
+            - REDIRECT_URI_FRONTEND=${REDIRECT_URI_FRONTEND}
             - NODE_ENV=simulation # Test for data generation for simulation
         ports:
             - "5000:5000"

@@ -10,7 +10,7 @@ const router = express.Router();
 
 router
     .route("/")
-    .get(async (req, res, next) => {
+    .get(adminTokenMiddleware, async (req, res, next) => {
         try {
             const result = await userModel.fetchAllUsers(req.query);
             res.status(200).json({

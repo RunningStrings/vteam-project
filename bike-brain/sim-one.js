@@ -17,16 +17,6 @@ const MIN_TRIP_DURATION = 1000;
 
 const rl = readline.createInterface({ input, output });
 
-// const startId = parseInt(process.env.BIKE_ID_START, 10);
-// const endId = parseInt(process.env.BIKE_ID_EMD, 10);
-
-// if (!startId || !endId) {
-//     console.error("Error: BIKE_START_ID and BIKE_END_ID env variables are required.");
-//     process.exit(1);
-// }
-
-// console.log(`Processing bikes from ${startId} to ${endId}`);
-
 const waitForBackend = async () => {
     let retries = 5;
     while (retries > 0) {
@@ -49,7 +39,7 @@ const loadBikesFromDatabase = async () => {
             params: { limit: 4 }
         });
 
-        const bikeData = response.data?.data?.result?.[3];
+        const bikeData = response.data?.data[3];
 
         if (!bikeData) {
             console.error("No bikes found in the database.");
@@ -83,6 +73,36 @@ const loadUsersFromDatabase = async () => {
     }
 };
 
+
+const calcBatteryDepletion = (bike) => {
+    let depletionRate = 0;
+
+    switch (bike.status) {
+        case 'in-use':
+            depletionRate = 1 + Math.random() * 1.5;
+            break;
+        case 'available':
+            depletionRate = 0.2 + Math.random() * 0.5;
+            break;
+        case 'charging':
+            depletionRate = -5 - Math.random() * 2;
+            break;
+        case 'maintenance':
+            depletionRate = 0;
+            break;
+        default:
+            depletionRate = 0.1;
+    }
+
+    const speedFactor = bike.speed > 0 ? bike.speed * 0.02 : 0;
+
+    const randomFactor = Math.random() * 0.2;
+
+    const newBatteryLevel = bike.battery - depletionRate - speedFactor - randomFactor;
+
+    return Math.max(0, Math.min(100, newBatteryLevel));
+};
+
 const simulateBikeUpdates = (bike, customers) => {
     if (bike.tripCurrent && bike.tripCurrent.is_active) {
         // Update bike location and handle rental end
@@ -94,25 +114,37 @@ const simulateBikeUpdates = (bike, customers) => {
         setTimeout(() => {
             if (bike.tripCurrent && bike.tripCurrent.is_active) {
                 console.log(`Bike ${bike.id} rental ending.`);
+                bike.checkAndUpdateSpeed(0);
                 bike.stopRental();
+                // console.log(`Local tripLog: ${bike.localTripLog}`);
             }
         }, Math.random() * 30000 + 30000); // Between 30s and 60s
-    } 
+    }
+
+    const newBatteryLevel = calcBatteryDepletion(bike);
+    bike.updateBattery(newBatteryLevel);
 
     // Attempt to start a new rental using randomization
     const shouldStartNewRental = Math.random() < 0.5;
 
-    if (!bike.tripCurrent?.is_active && shouldStartNewRental) {
+    if (bike.status !== 'maintenance' && !bike.tripCurrent?.is_active && shouldStartNewRental) {
         const customer = customers[Math.floor(Math.random() * customers.length)];
         if (customer) {
             console.log(`Bike ${bike.id} starting a new rental for customer ${customer._id}`);
             bike.startRental(customer._id);
+            bike.checkAndUpdateSpeed(20);
         }
+        console.log(`tripLog: ${JSON.stringify(bike.tripCurrent)}`);
+    } else if (bike.status === 'maintenance') {
+        console.log("No bikes are available for rent.");
+        console.log("Simulation ended.");
+        rl.close();
+        process.exit(0);
     }
 
-    // Emit bike data to the backend via WebSocket
-    socket.emit("bike-update", bike.getBikeData());
-    console.log(`Updated bike data:`, bike.getBikeData());
+    // // Emit bike data to the backend via WebSocket
+    // socket.emit("bike-update", bike.getBikeData());
+    // console.log(`Updated bike data:`, bike.getBikeData());
 };
 
 

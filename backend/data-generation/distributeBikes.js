@@ -11,6 +11,7 @@ const assignBike = (item, bikeId, bikes) => {
     const bike = bikes.find((b) => b.id === bikeId);
     if (bike) {
         bike.location.coordinates = item.location.coordinates; // Update bike location
+        bike.city_name = item.city_name; // Update bike location
     }
 };
 

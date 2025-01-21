@@ -2,6 +2,12 @@
 
 ## Get started
 
+### JWT token instructions
+
+Add environment variable BIKE_TOKEN in .env in the project root, and set it to a JWT token to give each bike administrative permissions.
+
+### Run a simulation
+
 Get the system running by entering
 
 `docker-compose up --build`

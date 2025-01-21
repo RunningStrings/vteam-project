@@ -3,7 +3,7 @@
  * Stores model functions for trips route.
  */
 import database from '../database-config/database.js';
-import { ObjectId } from 'mongodb';
+import { ObjectId, Timestamp } from 'mongodb';
 import { createError } from './utils/createError.js'
 
 const tripModel = {
@@ -76,10 +76,10 @@ const tripModel = {
 
             result = await db.collectionTrips.updateOne(filter, { $set: updateTrip });
 
-            if (result.modifiedCount !== 1) {
-                createError(`no update possible with the given information for trip with ID: ${id}.
-                    Make sure information you provide is new.`, 400);
-            }
+            // if (result.modifiedCount !== 1) {
+            //     createError(`no update possible with the given information for trip with ID: ${id}.
+            //         Make sure information you provide is new.`, 400);
+            // }
 
             result = await db.collectionTrips.findOne(filter);
 
@@ -120,10 +120,10 @@ const tripModel = {
 
             result = await db.collectionTrips.updateOne(filter, { $set: body });
 
-            if (result.modifiedCount !== 1) {
-                createError(`no update possible with the given information for trip with ID: ${id}.
-                    Make sure information you provide is new.`, 400);
-            }
+            // if (result.modifiedCount !== 1) {
+            //     createError(`no update possible with the given information for trip with ID: ${id}.
+            //         Make sure information you provide is new.`, 400);
+            // }
 
             return;
         } finally {
@@ -162,27 +162,22 @@ const tripModel = {
     },
 
     createTrip: async function createTrip(body) {
-        if (!body.city_id || !body.location || !body.status || !body.battery_level || !body.speed) {
-            createError("city_id, location, status, speed and battery_level are required.", 400);
-        }
+        // if (!body.bike_id || !body.customer_id || !body.location) {
+        //     createError("city_id, location and bike_id are required.", 400);
+        // }
 
         const db = await database.getDb();
 
         try {
+            const timeNow = new Date().getTime();
             const newTrip = {
-                city_id: body.city_id,
-                location: body.location,
-                status: body.status,
-                battery_level: body.battery_level,
-                speed: body.speed
+                bike_id: body.bike_id,
+                customer_id: body.customer_id,
+                start: { location: body.location, timestamp: timeNow, free_parking: body.free_parking},
+                end: { location: null, timestamp: null, free_parking: null },
+                cost: null,
+                is_active: true
             };
-
-            // const status = newTrip.status;
-            // const duplicateTrip = await db.collectionTrips.findOne({status});
-
-            // if (duplicateTrip) {
-            //     createError("Trip with this status already exists.", 400)
-            // }
 
             const result = await db.collectionTrips.insertOne(newTrip);
             
