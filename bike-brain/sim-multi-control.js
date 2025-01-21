@@ -213,7 +213,9 @@ const simulateBikeUpdates = (bikes, customers) => {
     }
 };
 
-// Simulation runs until stopped with 'exit', 'quit', or 'q' + 'Enter'.
+// Simulation is started with 'start' or 's' + 'Enter', 
+// paused with 'pause' or 'p'and runs until 
+// stopped with 'exit', 'quit', or 'q' + 'Enter'.
 const startSimulation = async () => {
     try {
         await waitForBackend();
@@ -221,17 +223,38 @@ const startSimulation = async () => {
         const bikes = await loadBikesFromDatabase();
         const customers = await loadUsersFromDatabase();
 
-        console.log("Simulation started. Type ctrl + c to stop.");
+        console.log("Simulation ready. Type 'start' to begin.");
 
-        let intervalId = setInterval(() => simulateBikeUpdates(bikes, customers), 3000);
+        let intervalId = null;
+        let simulationRunning = false;
 
         while (true) {
             const command = await rl.question("simulation> ");
             switch (command.trim().toLowerCase()) {
-                case "exit":
+                case "start":
+                case "s":
+                    if (simulationRunning) {
+                        console.log("Simulation is already running.");
+                    } else {
+                        intervalId = setInterval(() => simulateBikeUpdates(bikes, customers), 3000);
+                        simulationRunning = true;
+                        console.log("Simulation started.");
+                    }
+                    break;
+                case "pause":
+                case "p":
+                    if (simulationRunning) {
+                        clearInterval(intervalId);
+                        simulationRunning = false;
+                        console.log("Simulation paused.");
+                    } else {
+                        console.log("Simulation is not running.");
+                    }
+                    break;
                 case "quit":
+                case "exit":
                 case "q":
-                    clearInterval(intervalId);
+                    if (intervalId) clearInterval(intervalId);
                     console.log("Simulation ended.");
                     rl.close();
                     process.exit(0);
