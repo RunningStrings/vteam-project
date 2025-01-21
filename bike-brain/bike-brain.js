@@ -1,7 +1,13 @@
 "use strict";
 
 import io from 'socket.io-client'
+import axios from 'axios';
+import dotenv from 'dotenv';
 // import haversine from './helpers.js';
+
+dotenv.config();
+
+const API_URL = 'http://backend:5000/api/v1';
 
 /**
  * Represents an electric bike, tracking its state, location, and trips,
@@ -272,29 +278,99 @@ class BikeBrain {
      * Starts a new trip for a customer.
      * @param {string} customerId - The ID of the customer renting the bike.
      */
-    startTrip(customerId) {
+    async startTrip(customerId) {
         const startTime = new Date();
 
         this.tripCurrent = {
-            tripId: `trip-${this.id}-${startTime.getTime()}`, // Unique, local trip ID base on bike and start time.
-            customerId: customerId,
+            // tripId: `trip-${this.id}-${startTime.getTime()}`, // Unique, local trip ID base on bike and start time.
             bikeId: this.id,
-            city_name: this.city_name,
+            customerId: customerId,
+            // city_name: this.city_name,
             startLocation: this.location,
             startTime: startTime,
             is_active: true,
             startValidParking: Math.random() > 0.5,
             stopValidParking: null,
+            // cost: "number"/null,
+            // p
         };
         
         this.sendMessage('log-trip', {
             tripLog: this.tripCurrent,
         });
 
+        const data = {
+            bike_id: this.id,
+            customer_id: this.customerId,
+            // start: { location: this.location, }
+            location: this.location,
+            status: this.status,
+            battery_level: this.battery,
+            speed: this.speed
+        }
+
+        // Error post trips: Error: city_id, location, status, speed and battery_level are required.
+
+
+        try {
+            // Await the axios POST request
+            const response = await axios.post(`${API_URL}/trips`, data, {
+                headers: {
+                    'Content-Type': 'application/json', // Make sure you're sending JSON data
+                    'x-access-token': process.env.BIKE_TOKEN // Optional, if needed for authentication
+                }
+            });
+    
+            // Handle the response after the POST request is successful
+            console.log('Bike data updated successfully:', response.data);
+    
+        } catch (error) {
+            // Handle errors (e.g., network errors, server errors)
+            console.error('Error sending bike data:', error.message);
+        }
+
+        // await axios.post(`${API_URL}/trips`, { params: { limit: 1 } });
+
         console.log('Sending trip data to server:', this.tripCurrent);
 
         console.log(`Trip started for customer ${customerId} at ${startTime}`);
     }
+
+    // bike_id: body.bike_id,
+    // customer_id: body.customer_id,
+    // // start: { location: body.location, }
+    // location: body.location,
+    // status: body.status,
+    // battery_level: body.battery_level,
+    // speed: body.speed
+
+    // {
+    //     "bike_id": "testObjectIdBike2",
+    //     "customer_id": "testObjectIdCustomer2",
+    //     "start": {
+    //       "location": {
+    //         "type": "point",
+    //         "coordinates": [
+    //           55.607323843656815,
+    //           13.028301726385251
+    //         ]
+    //       },
+    //       "timestamp": "1519211810362"
+    //     },
+    //     "end": {
+    //       "location": {
+    //         "type": "point",
+    //         "coordinates": [
+    //           55.61378958059842,
+    //           12.980856588823372
+    //         ]
+    //       },
+    //       "timestamp": "1519211811670"
+    //     },
+    //     "distance": "5",
+    //     "cost": "25",
+    //     "parking_type": "station"
+    // },
 
     /**
      * Ends the current trip, stores it in a local log, sends the 
