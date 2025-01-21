@@ -10,12 +10,12 @@ const router = express.Router();
 router
     .route("/")
     .get(async (req, res, next) => {
-        const { limit, offset } = req.query;
+        const { limit, offset, city_name } = req.query;
         try {
             const parsedLimit = limit ? parseInt(limit, 10) : undefined;
             const parsedOffset = offset ? parseInt(offset, 10) : undefined;
 
-            const result = await bikeModel.fetchAllBikes(parsedLimit, parsedOffset);
+            const result = await bikeModel.fetchAllBikes(parsedLimit, parsedOffset, city_name);
             res.status(200).json({
                 data: result,
 

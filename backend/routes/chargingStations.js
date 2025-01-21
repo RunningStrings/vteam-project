@@ -11,7 +11,7 @@ router
     .route("/")
     .get(tokenMiddleware, async (req, res, next) => {
         try {
-            const result = await stationModel.fetchAllChargingStations();
+            const result = await stationModel.fetchAllChargingStations(req.query);
             res.status(200).json({
                 data: result
             });
