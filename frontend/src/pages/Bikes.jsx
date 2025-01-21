@@ -23,6 +23,8 @@ function Bikes() {
       })
       .then((responseData) => {
         console.log('API response:', responseData);
+        console.log(responseData.data.result);
+        
         setBikes(responseData.data.result);
         setIsLoading(false);
       })

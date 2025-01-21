@@ -4,9 +4,10 @@ import { useNavigate} from 'react-router-dom';
 
 
 function Users() {
-  const [users, setUsers] = useState([]);
-  const [bikes, setBikes] = useState([]);
+  //const [users, setUsers] = useState([]);
+  //const [bikes, setBikes] = useState([]);
   const [stations, setStations] = useState([]);
+  let token=sessionStorage.getItem('token');
 
   const navigate = useNavigate();
 
@@ -14,7 +15,7 @@ function Users() {
   
   useEffect(() => {
     // Fetch users from the backend API
-    fetch('/users')
+   /* fetch('/users')
       .then(response => response.json())
       .then(data => setUsers(data))
       .catch(error => console.error('Error fetching users:', error));
@@ -23,10 +24,16 @@ function Users() {
     fetch('/bikes')
       .then(response => response.json())
       .then(data => setBikes(data))
-      .catch(error => console.error('Error fetching bikes:', error));
+      .catch(error => console.error('Error fetching bikes:', error));*/
 
     // Fetch stations from the backend API
-      fetch('/charging_stations')
+      fetch('/charging_stations', {
+        method: 'GET', // GET är standard, så det kan utelämnas
+        headers: {
+          'x-access-token': `${token}`, // Lägg till Authorization-headern med token
+          'Content-Type': 'application/json', // Valfritt om API:et kräver det
+        },
+      })
       .then((response) => {
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);

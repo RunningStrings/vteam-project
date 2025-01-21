@@ -2,12 +2,21 @@ import { useState, useEffect } from 'react';
 
 function Users() {
   const [parkings, setParkings] = useState([]);
+  let token=sessionStorage.getItem('token');
+  //console.log(sessionId);
 
   
   useEffect(() => {
-
+    console.log(token);
+    
     // Fetch parkings from the backend API
-    fetch('/parking_zones')
+    fetch('/parking_zones', {
+      method: 'GET', // GET är standard, så det kan utelämnas
+      headers: {
+        'x-access-token': `${token}`, // Lägg till Authorization-headern med token
+        'Content-Type': 'application/json', // Valfritt om API:et kräver det
+      },
+    })
     .then((response) => {
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
