@@ -10,7 +10,7 @@ const userModel = {
         const db = await database.getDb();
 
         try {
-            const { role } = query;
+            const { role, sortField, sortDirection } = query;
             const filter = {
                 $and: [
                     {
@@ -20,7 +20,12 @@ const userModel = {
                     },
                     ]
             };
-            const result = await db.collectionUsers.find(filter).toArray();
+            const sortObject = {};
+
+            if (sortField) {
+                sortObject[sortField] = sortDirection === 'desc' ? -1 : 1;
+            }
+            const result = await db.collectionUsers.find(filter).sort(sortObject).toArray();
 
             return result;
         } finally {
