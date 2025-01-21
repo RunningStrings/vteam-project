@@ -56,7 +56,7 @@ const loadBikesFromDatabase = async () => {
 
             console.log('API Response:', JSON.stringify(response.data, null, 2));
 
-            const batch = response.data?.data?.result;
+            const batch = response.data?.data;
             console.log(batch);
 
             if (!batch || batch.length === 0) break;
@@ -166,6 +166,7 @@ const simulateBikeUpdates = (bikes, customers) => {
             if (bike.tripCurrent && bike.tripCurrent.is_active) {
                 if (Date.now() - bike.tripCurrent.startTime >= MIN_TRIP_DURATION) {
                 // if (bike.tripCurrent && bike.tripCurrent.is_active) {
+                    bike.checkAndUpdateSpeed(0);
                     bike.stopRental();
                 } else {
                     const newLat = bike.location.coordinates[0] + (Math.random() - 0.5) * 0.001;
@@ -197,6 +198,7 @@ const simulateBikeUpdates = (bikes, customers) => {
                 const customer = customers[Math.floor(Math.random() * customers.length)];
                 if (customer) {
                     bike.startRental(customer._id);
+                    bike.checkAndUpdateSpeed(20);
                 }
             }
         });
@@ -209,8 +211,6 @@ const simulateBikeUpdates = (bikes, customers) => {
     } catch (error) {
         console.error("Error during simulation update:", error);
     }
-
-    
 };
 
 // Simulation runs until stopped with 'exit', 'quit', or 'q' + 'Enter'.
