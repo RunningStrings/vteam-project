@@ -63,8 +63,8 @@ app.get(
     }), (req, res, next) => {
         const userObject = req.user;
         const token = tokenService.generateToken(userObject);
-        if (REDIRECT_URI_FRONTEND) {
-            res.redirect(REDIRECT_URI_FRONTEND + `?token=${token}&role=${userObject.user.role}`);
+        if (process.env.REDIRECT_URI_FRONTEND) {
+            res.redirect(process.env.REDIRECT_URI_FRONTEND + `?token=${token}&role=${userObject.user.role}`);
         }
         res.status(200).json({
             data: {
