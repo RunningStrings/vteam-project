@@ -165,7 +165,7 @@ const userModel = {
 
 
             const allowedProperties = ["firstname", "lastname",
-                "email", "password", "role", "balance"];
+                "email", "monthly_paid", "role", "balance"];
             const reqProperties = Object.keys(body);
             const isInvalidUpdate = reqProperties.some(property =>
                 !allowedProperties.includes(property));
