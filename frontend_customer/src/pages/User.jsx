@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react';
 import React from "react";
 
 const initialFormValues = {
-  
   id: "",
   firstname: "",
   lastname: "",
@@ -11,17 +10,20 @@ const initialFormValues = {
   saldo: "",
   phone: "",
   admin: ""
-  
 }
 
 function User() {
   const [formData, setFormData] = useState(initialFormValues);
   const [users, setUsers] = useState([]); // Deklarerar users
+  let token=sessionStorage.getItem('token');
+  const id=sessionStorage.getItem('id');
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
     //console.log(formData);
-    setFormData(initialFormValues);
+    const { firstname, lastname, email, role, balance } = formData;
+    updateUser(firstname, lastname, email, role, balance);
+    //setFormData(initialFormValues);
   };
 
   const handleChange = (evt) => {
@@ -29,35 +31,36 @@ function User() {
     setFormData({ ...formData, [name]: value });
   };
 
-  /*useEffect(() => {
+  useEffect(() => {
     // Fetch users from the backend API
-    fetch('/users')
-      .then(response => response.json())
-      .then(data => setUsers(data))
-      .catch(error => console.error('Error fetching users:', error));
-    }, []);*/
-
-    useEffect(() => {
-      // Fetch users from the backend API
-      fetch("/users")
-        .then((response) => response.json())
-        .then((data) => {
-          setUsers(data); // Store users
-          if (data.length > 0) {
-            const firstUser = data[0]; // Assume we're using the first user for now
-            setFormData(firstUser); // Populate the form with the first user's data
-            setSelectedUserId(firstUser.id); // Set selected user ID
+    fetch('/users',{headers: {'x-access-token': `${token}`},})
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        return response.json();
+      })
+      .then((responseData) => {
+        setUsers(responseData.data); // Store all users
+        const id = sessionStorage.getItem('id'); // Get email from sessionStorage
+        if (id) {
+          const matchedUser = responseData.data.find((user) => user._id === id);
+          if (matchedUser) {
+            console.log(matchedUser);
+            //userId = matchedUser._id;
+            //sessionStorage.setItem("userId","_id")
+            setFormData(matchedUser); // Populate the form with the matched user's data
           }
-        })
-        .catch((error) => console.error("Error fetching users:", error));
-    }, []);
+        }
+      })
+      .catch((error) => {
+        console.error('Error fetching users:', error);
+      });
+  }, []);
 
 
 
   return (
-    //console.log(formData);
-    
-    
     <div className="App" style={{ marginLeft: "220px", padding: "20px" }}>
       <h2>En användare</h2>
       <form className="form" onSubmit={handleSubmit}>
@@ -122,21 +125,6 @@ function User() {
           }
            />
         </div>
-        <div className="form__group">
-          <label htmlFor="phone" className="form__label">
-            Telefon
-          </label>
-          <input
-            type="tel"
-            id="phone"
-            name="phone"
-            value={formData.phone}
-            className="form__input"
-            onChange={(e) =>
-              setFormData({ ...formData, phone: e.target.value})
-            }
-          />
-        </div>
 
         <div className="form__group">
           <label htmlFor="saldo" className="form__label">
@@ -154,20 +142,19 @@ function User() {
           />
         </div>
         <div className="form__group">
-          <label htmlFor="admin" className="form__label">
-            Administratör
+          <label htmlFor="role" className="form__label">
+            Roll
           </label>
           <select
-            name="admin"
-            id="admin"
+            name="role"
+            id="role"
             className="form__select"
-            defaultValue="no"
-            onChange={(e) =>
-              setFormData({ ...formData, admin: e.target.value})
-            }
+            value={formData.role}
+            onChange={handleChange}
           >
-            <option value="no">Nej</option>
-            <option value="yes">Ja</option>
+            <option value="city_manager">Stadschef</option>
+            <option value="admin">Administratör</option>
+            <option value="customer">Kund</option>
           </select>
         </div>
         <button className="button" type="submit">
