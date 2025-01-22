@@ -16,80 +16,44 @@ const Maps = () => {
   let token=sessionStorage.getItem('token');
   const navigate = useNavigate();
   //const socket = io('http://localhost:5000');
-  const socket = io("http://localhost:5000", {
-    //transports: ["websocket", "polling"], // Försäkra att både WebSocket och polling fungerar
-    transports: ["websocket"],
-  });
-  const [loading, setLoading] = useState(true);
 
   
-  // Handle WebSocket updates
-  useEffect(() => {
-  /*  socket.on('update-location', (data) => {
-      const { lat, lon } = data.location.coordinates;
-      console.log(lat);
-      console.log(lon);
-      
-      //marker.setlatlon([lat, lon]);
-    };
-    });*/
- 
- 
-   socket.on("update-location", (data) => {
-      console.log("socket on");
-      const { lat, lon } = data.location.coordinates;
-      console.log(data);
-      console.log(lat);
-      console.log(lon);
+    // Connect to socket
+    useEffect(() => {
+      const socket = io('http://localhost:5000', {
+          withCredentials: true,
+          transports: ['websocket'],
+      });
 
-      
-      setBikes((prevBikes) =>
-        prevBikes.map((bike) =>
-          bike.id === data.id ? { ...bike, location: data.location } : bike
-        )
-      );
-    });
-  
-    return () => {
-      //socket.off("update-location");
-      console.log("socket off");
-    };
+      // Listen for bike updates
+      socket.on("bike-update", (updatedBike) => {
+          setBikes((prevBikes) => {
+              const bikeIndex = prevBikes.findIndex((bike) => bike.id === updatedBike.id);
+
+              if (bikeIndex !== -1) {
+                  // Update the existing bike's data
+                  const updatedBikes = [...prevBikes];
+                  updatedBikes[bikeIndex] = { ...updatedBikes[bikeIndex], ...updatedBike };
+                  return updatedBikes;
+              } else {
+                  // Add the new bike if not found
+                  return [...prevBikes, updatedBike];
+              }
+          });
+      });
+
+      // Clean up the socket connection on unmount
+      return () => {
+          socket.disconnect();
+      };
   }, []);
-  
-  useEffect(() => {
-    socket.on('connect', (data) => {
-      console.log('WebSocket connected:', socket.id);
-      console.log(socket.data);
-      
-    });
-  
-    socket.on("connect_error", (error) => {
-      console.error("WebSocket connection error:", error);
-    });
 
-    socket.on('disconnect', () => {
-      console.log('WebSocket disconnected');
-    });
-  
-/*    return () => {
-      socket.disconnect();
-    };*/
-  }, []);
-  
-  
-  /*useEffect(() => {
-    const handleLocationUpdate = (data) => {
-      console.log("Updated Location:", data);
-    };
 
-    socket.on("update-location", handleLocationUpdate);
 
-    return () => {
-      // Cleanup WebSocket listener
-      socket.off("update-location", handleLocationUpdate);
-    };
-  }, [socket]);*/
 
+
+
+  
   useEffect(() => {
     Promise.all([fetch('/cities',{headers: {'x-access-token': `${token}`},}), fetch('/bikes'), fetch('/charging_stations',{headers: {'x-access-token': `${token}`},}), fetch('/parking_zones',{headers: {'x-access-token': `${token}`},})])
       .then(([citiesRes, bikesRes, stationsRes, parkingsRes]) => 
@@ -97,21 +61,17 @@ const Maps = () => {
       )
       .then(([citiesData, bikesData, stationsData, parkingsData]) => {
         setCities(citiesData.data);
-        setBikes(bikesData.data.result);
+        setBikes(bikesData.data);
         setStations(stationsData.data);
         setParkings(parkingsData.data);
-        setLoading(false);
+        //setLoading(false);
       })
       .catch((error) => {
         console.error('Error fetching data:', error);
-        setLoading(false);
+        //setLoading(false);
       });
   }, []);
   
-  if (loading) {
-    return <div>Loading...</div>;
-  }
-
 
 
   const stationIcon = new L.Icon({
@@ -161,11 +121,6 @@ const Maps = () => {
     //console.log(element);
 
   }
-  //const {position} = useMap();//L.GeoJson.coordsToLatLngs() ;
-
-  const controlBike = (bikeId, action) => {
-    socket.emit('control-bike', { bikeId, action });
-  };
 
 
 
@@ -292,12 +247,13 @@ const Maps = () => {
               icon={bike.status === "in_use" ? bikeBlue : bike.status === "available" ? bikeGreen : bike.status === "charging" ? bikeOrange : bikeRed}
             >
               <Popup>
-                Cykel nr: {index}<br />
-                Batteri: {bike.battery}% <br />
-                {bike.status}
-                <button
+                <strong>Cykel nr: {index}</strong><br />
+                <strong>Batteri: {bike.battery}% </strong><br />
+                <strong>{bike.status}</strong><br/>
+                <button className="mapbutton"
                   onClick={() => {
                     sessionStorage.setItem("bikeid", bike.id); // Spara index i sessionStorage
+                    sessionStorage.setItem("bike_id", bike._id); // Spara index i sessionStorage
                     navigate('/bike');
                   }}
                 >
@@ -320,6 +276,88 @@ const Maps = () => {
 };
 
 export default Maps;
+
+/*
+
+  // Handle WebSocket updates
+  useEffect(() => {
+  /*  socket.on('update-location', (data) => {
+      const { lat, lon } = data.location.coordinates;
+      console.log(lat);
+      console.log(lon);
+      
+      //marker.setlatlon([lat, lon]);
+    };
+    });
+ 
+ 
+    socket.on("update-location", (data) => {
+      console.log("socket on");
+      const { lat, lon } = data.location.coordinates;
+      console.log(data);
+      console.log(lat);
+      console.log(lon);
+
+      
+      setBikes((prevBikes) =>
+        prevBikes.map((bike) =>
+          bike.id === data.id ? { ...bike, location: data.location } : bike
+        )
+      );
+    });
+  
+    return () => {
+      //socket.off("update-location");
+      console.log("socket off");
+    };
+  }, []);
+  
+  useEffect(() => {
+    socket.on('connect', (data) => {
+      console.log('WebSocket connected:', socket.id);
+      console.log(socket);
+      
+    });
+  
+    socket.on("connect_error", (error) => {
+      console.error("WebSocket connection error:", error);
+    });
+
+    socket.on('disconnect', () => {
+      console.log('WebSocket disconnected');
+    });
+  
+/*    return () => {
+      socket.disconnect();
+    };
+  }, []);*/
+  
+  
+  /*useEffect(() => {
+    const handleLocationUpdate = (data) => {
+      console.log("Updated Location:", data);
+    };
+
+    socket.on("update-location", handleLocationUpdate);
+
+    return () => {
+      // Cleanup WebSocket listener
+      socket.off("update-location", handleLocationUpdate);
+    };
+  }, [socket]);*/
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

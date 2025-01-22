@@ -54,6 +54,15 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
+.mapbutton {
+  border-radius: 4px;
+  border: 1px solid;
+  padding: 0.2em 2em;
+  font-size: 1em;
+  font-weight: 600;
+  font-family: inherit;
+  height: 20px;
+}
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;

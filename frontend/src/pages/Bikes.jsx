@@ -8,7 +8,11 @@ function Bikes() {
   const navigate = useNavigate();
 
   function handleClick(bike_id, bike_coords) {
-    sessionStorage.setItem("bike", JSON.stringify({ id: bike_id, coordinates: bike_coords }));
+    //sessionStorage.setItem("bike", JSON.stringify({ id: bike_id, coordinates: bike_coords }));
+    sessionStorage.setItem("bike", bike_id);
+    sessionStorage.setItem("coordinates", bike_coords)
+    //console.log(bike_id);
+    
     navigate('/bike');
   }
 
@@ -22,10 +26,10 @@ function Bikes() {
         return response.json();
       })
       .then((responseData) => {
-        console.log('API response:', responseData);
-        console.log(responseData.data.result);
+        //console.log('API response:', responseData);
+        //console.log(responseData.data);
         
-        setBikes(responseData.data.result);
+        setBikes(responseData.data);
         setIsLoading(false);
       })
       .catch((error) => {

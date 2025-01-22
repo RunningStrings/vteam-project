@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
+import { apiKey, baseURL } from "../components/utils.jsx";
 import React from "react";
 
+let bikeId="";
 const initialFormValues = {
   
   id: "",
@@ -11,19 +13,71 @@ const initialFormValues = {
   speed: ""
 }
 
-function search(data) {
-  let number=0;
-  let sessionId=sessionStorage.getItem('bike');
-  console.log(sessionId);
-  
-  for (let i=0; i<data.length; i++) {
-  
-    //console.log(data[i].email);
-    
-    if(data[i].id == sessionId)
-      number=i;
-}
-  return number;
+async function updateBike(id, city, position, battery, status, speed) {
+  let token=sessionStorage.getItem('token');
+  const endpoint = `${baseURL}/bikes/${bikeId}`;
+  const body = {
+    "id": id,
+    "city": city,
+    "position": position,
+    "battery": battery,
+    "status": status,
+    "speed": speed,
+  };
+
+
+  try {
+    const response = await fetch(endpoint, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+        'x-access-token': `${token}`,
+      },
+      body: JSON.stringify(body),
+    });
+
+    if (!response.ok) {
+      throw new Error(`Error: ${response.status} ${response.statusText}`);
+    }
+
+    // Kontrollera om svaret innehåller JSON
+    const contentType = response.headers.get("content-type");
+    if (contentType && contentType.includes("application/json")) {
+      const data = await response.json();
+      /* toast.success("Du är nu uppdaterat en användare!", {
+        onClose: () => {
+          // Navigate or perform any action after the toast disappears
+          navigate("/");
+        },
+        autoClose: 3000, // Auto close after 3 seconds
+      });*/
+
+
+
+
+      //console.log("Response data:", data);
+      alert("Cykeln har uppdaterats!");
+      return data;
+    } else {
+      /*toast.success("Du är nu updaterat en användare!", {
+        onClose: () => {
+          // Navigate or perform any action after the toast disappears
+          navigate("/");
+        },
+        autoClose: 3000, // Auto close after 3 seconds
+      });*/
+
+
+
+
+      //console.warn("No JSON content in response.");
+      alert("Cykeln har uppdaterats");
+      return null;
+    }
+  } catch (error) {
+    alert("Ett problem uppstod när cykeln skapades.");
+    console.error("Error creating bike:", error);
+  }
 }
 
 
@@ -32,12 +86,18 @@ function Bike() {
   const [bikes, setBikes] = useState([]); // Deklarerar bikes
   const [currentIndex, setCurrentIndex] = useState(0); 
   const [selectedBikeId, setSelectedBikeId] = useState(null); 
+  let token=sessionStorage.getItem('token');
+  const bikeCoords=sessionStorage.getItem('coordinates');
+  
   //let coordsFromSession="";
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
     //console.log(formData);
-    setFormData(initialFormValues);
+    
+    const {id, city, bikeCoords, battery, status, speed } = formData;
+    updateBike(id, city, bikeCoords, battery, status, speed);
+    //setFormData(initialFormValues);
   };
 
   const handleChange = (evt) => {
@@ -45,39 +105,8 @@ function Bike() {
     setFormData({ ...formData, [name]: value });
   };
 
-  /*useEffect(() => {
-    // Fetch users from the backend API
-    fetch('/users')
-      .then(response => response.json())
-      .then(data => setUsers(data))
-      .catch(error => console.error('Error fetching users:', error));
-    }, []);*/
-
-
-
-
  useEffect(() => {
-      // Fetch users from the backend API
-      /*fetch('/bikes')
-        .then((response) => {
-          if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-          }
-          return response.json();
-        })
-        .then((responseData) => {
-          setBikes(responseData.data); // Store all users
-          const bikeFromSession = sessionStorage.getItem('bike'); // Get email from sessionStorage
-          if (bikeFromSession) {
-            const matchedBike = responseData.data.find((bike) => bike.id === bikeFromSession);
-            if (matchedBike) {
-              setFormData(matchedBike); // Populate the form with the matched bike's data
-            }
-          }
-        })        
-        .catch((error) => console.error("Error fetching bikes:", error));
-    }, []);*/
-    let isMounted = true; // Add a flag to check if the component is still mounted
+    //let isMounted = true; // Add a flag to check if the component is still mounted
 
 
     fetch('/bikes')
@@ -88,30 +117,33 @@ function Bike() {
       return response.json();
     })
     .then((responseData) => {
-      if (isMounted) {
+      //if (isMounted) {
         setBikes(responseData.data);
         const bikeFromSession = sessionStorage.getItem('bike');
+        console.log(bikeFromSession);
+        
+        //console.log("Den här: "+responseData.data.id);
+        
         //coordsFromSession = sessionStorage.getItem('bike_coords');
         if (bikeFromSession) {
-          const matchedBike = responseData.data.find((bike) => bike.id+"" === bikeFromSession);
+          const matchedBike = responseData.data.find((bike) => parseInt(bike.id) === parseInt(bikeFromSession));
           if (matchedBike) {
+            console.log(matchedBike);
+            bikeId=matchedBike.id;
+            
             setFormData(matchedBike);
           }
         }
-      }
+      //}
     })
     .catch((error) => {
-      if (isMounted) console.error("Error fetching bikes:", error);
+    console.error("Error fetching bikes:", error);
     });
 
   return () => {
-    isMounted = false; // Cleanup when the component unmounts
+    //isMounted = false; // Cleanup when the component unmounts
   };
 }, []);
-
-
-
-
 
     const handleBikeSelect = (evt) => {
       const bikeId = evt.target.value;
@@ -121,8 +153,6 @@ function Bike() {
         setFormData(bike); // Populate formData with the selected user's data
         console.log(bike.location.coordinates);
         console.log(bike);
-        
-        
       }
     };
 
@@ -134,7 +164,7 @@ function Bike() {
     
     <div className="App" style={{ marginLeft: "220px", padding: "20px" }}>
       <h2>En cykel</h2>
-      <form className="form" onSubmit={handleBikeSelect}>
+      <form className="form" onSubmit={handleSubmit}>
       
         <div className="form__group">
           <label htmlFor="id" className="form__label">
@@ -146,9 +176,7 @@ function Bike() {
           name="id"
           defaultValue={formData.id}
           className="form__input" 
-          onChange={(e) =>
-            setFormData({ ...formData, id: e.target.value})
-          }
+          onChange={handleChange}
            />
         </div>
         <div className="form__group">
@@ -161,9 +189,7 @@ function Bike() {
           name="city"
           defaultValue={formData.city_name}
           className="form__input" 
-          onChange={(e) =>
-            setFormData({ ...formData, city: e.target.value})
-          }
+          onChange={handleChange}
            />
         </div>
         <div className="form__group">
@@ -174,11 +200,9 @@ function Bike() {
           type="text" 
           id="position" 
           name="position" 
-          defaultValue={formData.id+""}//formData.location.coordinates || ""}
+          defaultValue={bikeCoords || "saknas"}
           className="form__input" 
-          onChange={(e) =>
-            setFormData({ ...formData, position: e.target.value})
-          }
+          onChange={handleChange}
            />
         </div>
         <div className="form__group">
@@ -191,9 +215,7 @@ function Bike() {
           name="battery" 
           defaultValue={formData.battery}
           className="form__input" 
-          onChange={(e) =>
-            setFormData({ ...formData, battery: e.target.value})
-          }
+          onChange={handleChange}
            />
         </div>
        
@@ -206,11 +228,9 @@ function Bike() {
             name="status"
             id="status"
             className="form__select"
-            defaultValue={formData.status}
-            onChange={(e) =>
-              setFormData({ ...formData, status: e.target.value})
-            }
-          >
+            value={formData.status}
+            onChange={handleChange}
+            >
             <option value="available">Tillgänglig</option>
             <option value="in_use">Används</option>
             <option value="charging">Laddas</option>
@@ -227,10 +247,8 @@ function Bike() {
             name="speed"
             defaultValue={formData.speed}
             className="form__input"
-            onChange={(e) =>
-              setFormData({ ...formData, speed: e.target.value})
-            }
-          />
+            onChange={handleChange}
+            />
         </div>
  
         <button className="button" type="submit">

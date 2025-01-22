@@ -13,7 +13,7 @@ import Users from "./pages/Users";
 import User from "./pages/User";
 import Maps from "./pages/Maps";
 import Support from "./pages/Support";
-import Settings from "./pages/Settings";
+//import Settings from "./pages/Settings";
 //import { useAuth0 } from "@auth0/auth0-react";
 let token=sessionStorage.getItem('token');
 
@@ -48,7 +48,6 @@ const App = () => {
             <Route path="/user" element={<User />} />
             <Route path="/maps" element={<Maps />} />
             <Route path="/support" element={<Support />} />
-            <Route path="/settings" element={<Settings />} />
           </Routes>
         </div>
       </div>
