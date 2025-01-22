@@ -107,16 +107,29 @@ const tripModel = {
                 createError(`trip with ID: ${id} cannot be found`, 404);
             }
 
-            const allowedProperties = ["city_id", "location", "status",
-                 "battery_level", "speed"];
+            // Add properties "end" and "is_active"
+            const allowedProperties = [
+                "city_id",
+                "location",
+                "status",
+                "battery_level",
+                "speed",
+                "end",
+                "is_active",
+            ];
             const reqProperties = Object.keys(body);
             const isInvalidUpdate = reqProperties.some(property =>
                 !allowedProperties.includes(property));
 
-           if (isInvalidUpdate) {
-               createError(`invalid update property key. This API only allow
-                    updates of already existing properties.`, 400);
-           }
+            if (isInvalidUpdate) {
+                createError(`invalid update property key. This API only allow
+                        updates of already existing properties.`, 400);
+            }
+
+            // Add end timestamp
+            if (body.end) {
+                body.end.timestamp = new Date().getTime();
+            }
 
             result = await db.collectionTrips.updateOne(filter, { $set: body });
 
