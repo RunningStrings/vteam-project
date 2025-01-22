@@ -20,11 +20,12 @@ const Home = () => {
     const idParam = queryParams.get('id');
     const fnameParam = queryParams.get('fname');
     
+    console.log(tokenParam);
     
-    setToken(tokenParam || '');
-    setRole(roleParam || '');
-    setId(idParam || '');
-    setFirstName(fnameParam || '');
+    setToken(tokenParam);
+    setRole(roleParam);
+    setId(idParam);
+    setFirstName(fnameParam);
     if (token) sessionStorage.setItem("token",token);
     if (role) sessionStorage.setItem("role",role);
     if (id) sessionStorage.setItem("id",id);
@@ -35,7 +36,7 @@ const Home = () => {
 
     const handleLogin = () => {
       //window.location.href = 'http://localhost:5173/newuser'; // URL till backend-servern
-      window.location.href = 'http://localhost:5000/api/v1/login';
+      window.location.href = 'http://localhost:5000/api/v1/login/?originUrl=http://localhost:5173/';
       //navigate('/newuser');
       setIsLoggedIn(true); // Uppdatera state
     };

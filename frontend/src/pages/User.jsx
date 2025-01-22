@@ -25,7 +25,7 @@ async function updateUser(firstName, lastName, email, role, balance) {
     "email": email,
     "role": role,
     "balance": balance,
-    "password_hash": "",
+    "password": "",
   };
 
 
