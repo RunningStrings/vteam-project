@@ -3,6 +3,7 @@
  */
 import express from 'express';
 import zoneModel from "../models/zoneModel.js";
+import { tokenMiddleware, adminTokenMiddleware } from '../middlewares/tokenMiddleware.js';
 
 const router = express.Router();
 
@@ -10,16 +11,16 @@ router
     .route("/")
     .get(async (req, res, next) => {
         try {
-            const result = await zoneModel.fetchAllParkingZones();
+            const result = await zoneModel.fetchAllParkingZones(req.query);
             res.status(200).json({
                 data: result
             });
         } catch (error) {
             console.error('Error get parking_zones:', error);
-            next(error)
+            next(error);
         }
     })
-    .post(async (req, res, next) => {
+    .post(adminTokenMiddleware, async (req, res, next) => {
         try {
             const result = await zoneModel.createParkingZone(req.body);
             res.set('Location', `/parking_zones/${result.insertedId}`);
@@ -41,10 +42,10 @@ router
             });
         } catch (error) {
             console.error('Error get one zone:', error);
-            next(error)
+            next(error);
         }
     })
-    .put(async (req, res, next) => {
+    .put(adminTokenMiddleware, async (req, res, next) => {
         try {
             const result = await zoneModel.updateCompleteParkingZoneById(req.params.id, req.body);            
 
@@ -56,7 +57,7 @@ router
             next(error);
         }
     })
-    .patch(async (req, res, next) => {
+    .patch(adminTokenMiddleware, async (req, res, next) => {
         try {
             await zoneModel.updateParkingZoneById(req.params.id, req.body);
             res.set('Location', `/parking_zones/${req.params.id}`);         
@@ -66,7 +67,7 @@ router
             next(error);
         }
     })
-    .delete(async (req, res, next) => {
+    .delete(adminTokenMiddleware, async (req, res, next) => {
         try {
             await zoneModel.deleteParkingZoneById(req.params.id);
             res.status(204).send();

@@ -6,11 +6,21 @@ import { ObjectId } from 'mongodb';
 import { createError } from './utils/createError.js'
 
 const stationModel = {
-    fetchAllChargingStations: async function fetchAllChargingStations() {
+    fetchAllChargingStations: async function fetchAllChargingStations(query) {
         const db = await database.getDb();
 
         try {
-            const result = await db.collectionStations.find().toArray();
+            const { city_name } = query;
+            const filter = {
+                $and: [
+                    {
+                        $or: [
+                            city_name ? { city_name: { $regex: new RegExp(city_name, 'i') } } : {}
+                        ]
+                    },
+                    ]
+            };
+            const result = await db.collectionStations.find(filter).toArray();
 
             return result;
         } finally {
@@ -47,10 +57,10 @@ const stationModel = {
             createError("ID format is invalid", 400);
         }
 
-        if (!body.city_id || !body.location || !body.bikes || !body.capacity) {
-            createError(`city_id, location, bikes and capacity are required properties.
-                 Use patch method instead if you only
-                  want to update part of the station resource.`, 400);
+        if (!body.city_name || !body.location || !body.name) {
+            createError("city_name, location and name are required properties."
+                + " Use patch method instead if you only"
+                + " want to update part of the station resource.", 400);
         }
 
         const db = await database.getDb();
@@ -67,18 +77,20 @@ const stationModel = {
             }    
 
             const updateChargingStation = {
-                city_id: body.city_id,
+                id: body.id || null,
+                name: body.name,
+                city_name: body.city_name,
                 location: body.location,
-                bikes: body.bikes,
-                capacity: body.capacity
+                bikes: body.bikes || [],
+                capacity: body.capacity || null
             };
 
             result = await db.collectionStations.updateOne(filter, { $set: updateChargingStation });
 
-            if (result.modifiedCount !== 1) {
-                createError(`no update possible with the given information for station with ID: ${id}.
-                    Make sure information you provide is new.`, 400);
-            }
+            // if (result.modifiedCount !== 1) {
+            //     createError(`no update possible with the given information for station with ID: ${id}.
+            //         Make sure information you provide is new.`, 400);
+            // }
 
             result = await db.collectionStations.findOne(filter);
 
@@ -106,23 +118,23 @@ const stationModel = {
                 createError(`station with ID: ${id} cannot be found`, 404);
             }
 
-            const allowedProperties = ["city_id", "location",
-                 "bikes", "capacity"];
+            const allowedProperties = ["city_name", "location",
+                 "bikes", "capacity", "name", "id"];
             const reqProperties = Object.keys(body);
             const isInvalidUpdate = reqProperties.some(property =>
                  !allowedProperties.includes(property));
 
             if (isInvalidUpdate) {
-                createError(`invalid update property key. This API only allow
-                     updates of already existing properties.`, 400);
+                createError("invalid update property key. This API only allow"
+                    + " updates of already existing properties.", 400);
             }
 
             result = await db.collectionStations.updateOne(filter, { $set: body });
 
-            if (result.modifiedCount !== 1) {
-                createError(`no update possible with the given information for station with ID: ${id}.
-                    Make sure information you provide is new.`, 400);
-            }
+            // if (result.modifiedCount !== 1) {
+            //     createError(`no update possible with the given information for station with ID: ${id}.
+            //         Make sure information you provide is new.`, 400);
+            // }
 
             return;
         } finally {
@@ -161,31 +173,90 @@ const stationModel = {
     },
 
     createChargingStation: async function createChargingStation(body) {
-        if (!body.city_id || !body.location || !body.bikes || !body.capacity) {
-                createError(`city_id, location, bikes and capacity
-                    are required properties.`, 400);
+        if (!body.city_name || !body.location || !body.name) {
+                createError("city_name, name and location are required properties.", 400);
         }
 
         const db = await database.getDb();
 
         try {
             const newChargingStation = {
-                city_id: body.city_id,
+                id: body.id || null,
+                name: body.name,
+                city_name: body.city_name,
                 location: body.location,
-                bikes: body.bikes,
-                capacity: body.capacity
+                bikes: body.bikes || [],
+                capacity: body.capacity || null
             };
 
-            // const stationName = newChargingStation.city_id;
-            // const duplicateChargingStation = await db.collectionStations.findOne({stationName});
+            const stationName = newChargingStation.name;
+            const duplicateChargingStation = await db.collectionStations.findOne({stationName});
 
-            // if (duplicateChargingStation) {
-            //     createError("station with this city_id already exists.", 400);
-            // }
+            if (duplicateChargingStation) {
+                createError("station with this city_name already exists.", 400);
+            }
 
             const result = await db.collectionStations.insertOne(newChargingStation);
             
             return result;
+        } finally {
+            await db.client.close();
+        }
+    },
+
+    moveBikeToChargingStation: async function moveBikeToChargingStation(id, body) {
+        if (!ObjectId.isValid(id)) {
+            createError("ID format is invalid", 400);
+        }
+
+        const db = await database.getDb();
+        // const session = db.client.startSession();
+        // session.startTransaction();
+        try {
+            const filterStation = {
+                _id: ObjectId.createFromHexString(id)
+            };
+
+            let resultStation = await db.collectionStations.findOne(filterStation);
+
+            if (!resultStation) {
+                createError(`station with ID: ${id} cannot be found`, 404);
+            }
+
+            // const allowedProperties = ["bikeId"];
+            // const reqProperties = Object.keys(bikeId);
+            // const isInvalidUpdate = reqProperties.some(property =>
+            //     !allowedProperties.includes(property));
+
+            if (!Object.keys(body).includes('bikeId')) {
+                createError("bikeId is required", 400);
+            }
+
+            const updateStation = {
+                $addToSet: { bikes: body.bikeId }
+              };
+
+            await db.collectionStations.updateOne(filterStation, updateStation);
+
+            const filterBike = {
+                id: body.bikeId
+            };
+
+            const resultBike = await db.collectionBikes.findOne(filterBike);
+
+            if (!resultBike) {
+                createError(`bike with ID: ${id} cannot be found`, 404);
+            }
+
+            const updateBike = {
+                location: resultStation.location
+            };
+
+            await db.collectionBikes.updateOne(filterBike, { $set: updateBike });
+            // await session.commitTransaction();
+            resultStation = await db.collectionStations.findOne(filterStation);
+            return resultStation;
+
         } finally {
             await db.client.close();
         }

@@ -6,7 +6,12 @@ services:
         environment:
             - MONGO_DSN=${MONGO_DSN}
             - MONGO_URI=${MONGO_URI}
-            # - NODE_ENV=simulation # Test for data generation for simulation
+            - CLIENT_ID=${CLIENT_ID}
+            - CLIENT_SECRET=${CLIENT_SECRET}
+            - REDIRECT_URI=${REDIRECT_URI}
+            - JWT_SECRET=${JWT_SECRET}
+            - REDIRECT_URI_FRONTEND=${REDIRECT_URI_FRONTEND}
+            - NODE_ENV=simulation # Test for data generation for simulation
         ports:
             - "5000:5000"
             - "5001:5001"
@@ -83,6 +88,19 @@ services:
         command: mongod --bind_ip_all
         networks:
             - app-network
+
+    simulation:
+        build:
+            context: ./bike-brain
+            dockerfile: Dockerfile
+        networks:
+            - app-network
+        depends_on:
+            - backend
+        stdin_open: true
+        tty: true
+        command: /bin/sh
+        # command: node sim-from-database.js
 
 networks:
     app-network:

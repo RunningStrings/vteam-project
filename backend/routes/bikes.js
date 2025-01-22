@@ -3,23 +3,28 @@
  */
 import express from 'express';
 import bikeModel from "../models/bikeModel.js";
+import { tokenMiddleware, adminTokenMiddleware } from '../middlewares/tokenMiddleware.js';
 
 const router = express.Router();
 
 router
     .route("/")
     .get(async (req, res, next) => {
+        const { limit, offset, city_name } = req.query;
         try {
-            const result = await bikeModel.fetchAllBikes();
+            const parsedLimit = limit ? parseInt(limit, 10) : undefined;
+            const parsedOffset = offset ? parseInt(offset, 10) : undefined;
+
+            const result = await bikeModel.fetchAllBikes(parsedLimit, parsedOffset, city_name);
             res.status(200).json({
                 data: result
             });
         } catch (error) {
             console.error('Error get bikes:', error);
-            next(error)
+            next(error);
         }
     })
-    .post(async (req, res, next) => {
+    .post(adminTokenMiddleware, async (req, res, next) => {
         try {
             const result = await bikeModel.createBike(req.body);
             res.set('Location', `/bikes/${result.insertedId}`);
@@ -32,7 +37,7 @@ router
 
 router
     .route("/:id")
-    .get(async (req, res, next) => {
+    .get(tokenMiddleware, async (req, res, next) => {
         try {
             const result = await bikeModel.fetchBikeById(req.params.id);
 
@@ -41,10 +46,10 @@ router
             });
         } catch (error) {
             console.error('Error get one bike:', error);
-            next(error)
+            next(error);
         }
     })
-    .put(async (req, res, next) => {
+    .put(adminTokenMiddleware, async (req, res, next) => {
         try {
             const result = await bikeModel.updateCompleteBikeById(req.params.id, req.body);            
 
@@ -56,7 +61,7 @@ router
             next(error);
         }
     })
-    .patch(async (req, res, next) => {
+    .patch(adminTokenMiddleware, async (req, res, next) => {
         try {
             await bikeModel.updateBikeById(req.params.id, req.body);
             res.set('Location', `/bikes/${req.params.id}`);         
@@ -66,7 +71,7 @@ router
             next(error);
         }
     })
-    .delete(async (req, res, next) => {
+    .delete(adminTokenMiddleware, async (req, res, next) => {
         try {
             await bikeModel.deleteBikeById(req.params.id);
             res.status(204).send();
