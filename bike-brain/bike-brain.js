@@ -306,7 +306,7 @@ class BikeBrain {
             status: this.status,
             battery_level: this.battery,
             speed: this.speed,
-            city_id: this.city_name,
+            city_id: this.city_id,
             free_parking: Math.random() > 0.5,
         };
         // Error post trips: Error: city_id, location, status, speed and battery_level are required.
