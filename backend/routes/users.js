@@ -12,9 +12,10 @@ router
     .route("/")
     .get(adminTokenMiddleware, async (req, res, next) => {
         try {
-            const result = await userModel.fetchAllUsers(req.query);
+            const result = await userModel.fetchAllUsers(req);
+            if (result.links.length) res.set('Link', result.links.join(', '));
             res.status(200).json({
-                data: result
+                data: result.data
             });
         } catch (error) {
             console.error('Error get users:', error);
@@ -69,7 +70,7 @@ router
     })
     .patch(tokenMiddleware, async (req, res, next) => {
         try {
-            if (req.params.id !== req.token.user._id && req.token.role !== 'admin') {
+            if (req.params.id !== req.token.user._id && req.token.user.role !== 'admin') {
                 createError(`user with ID: ${req.params.id} cannot be found`, 404);
             }
 
@@ -85,7 +86,7 @@ router
     })
     .delete(tokenMiddleware, async (req, res, next) => {
         try {
-            if (req.params.id !== req.token.user._id && req.token.role !== 'admin') {
+            if (req.params.id !== req.token.user._id && req.token.user.role !== 'admin') {
                 createError(`user with ID: ${req.params.id} cannot be found`, 404);
             }
 

@@ -1,5 +1,5 @@
 /**
- * Route for users.
+ * Route for login.
  */
 import express from 'express';
 import passport from 'passport';
@@ -9,12 +9,31 @@ import userModel from "../models/userModel.js";
 
 const router = express.Router();
 
+// router
+//     .route("/")
+//     .get(passport.authenticate('github', {
+//         scope: ['user', 'user:email'],
+//         session: false
+//     }));
+
 router
     .route("/")
-    .get(passport.authenticate('github', {
-        scope: ['user', 'user:email'],
-        session: false
-    }));
+    .get((req, res, next) => {
+        let { originUrl } = req.query;
+        console.log("originUrl");
+        console.log(originUrl);
+        if (!originUrl) {
+            originUrl = "http://localhost:1337/"
+        }
+        const stateParam = encodeURIComponent(originUrl);
+
+        passport.authenticate('github', {
+            scope: ['user', 'user:email'],
+            session: false,
+            state: stateParam  // Pass the origin as state
+        })(req, res, next);  // Call the middleware with req, res, and next
+    });
+
 
 router
     .route("/admin")

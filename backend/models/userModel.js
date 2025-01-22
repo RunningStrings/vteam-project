@@ -6,28 +6,41 @@ import { ObjectId } from 'mongodb';
 import { createError } from './utils/createError.js'
 
 const userModel = {
-    fetchAllUsers: async function fetchAllUsers(query) {
+    fetchAllUsers: async function fetchAllUsers(req) {
         const db = await database.getDb();
 
         try {
-            const { role, sortField, sortDirection } = query;
-            const filter = {
-                $and: [
-                    {
-                        $or: [
-                            role ? { role: { $regex: new RegExp(role, 'i') } } : {}
-                        ]
-                    },
-                    ]
+            const { role, sortField, sortDirection = 'asc', limit = 0, page = 1 } = req.query;
+
+            const parsedLimit = parseInt(limit, 10);
+            const parsedPage = parseInt(page, 10);
+            const offset = (parsedPage - 1) * parsedLimit;
+            const filter = role ? { role: { $regex: new RegExp(role, 'i') } } : {};
+            const sortObject = sortField ? { [sortField]: sortDirection === 'desc' ? -1 : 1 } : {};
+
+            const totalCount = await db.collectionUsers.countDocuments(filter);
+            const totalPages = parsedLimit === 0 ? 1 : Math.ceil(totalCount / parsedLimit);
+
+            const result = await db.collectionUsers
+                .find(filter)
+                .sort(sortObject)
+                .skip(offset)
+                .limit(parsedLimit)
+                .toArray();
+
+            const baseUrl = `${req.protocol}://${req.get('host')}${req.baseUrl}`;
+
+            const links = [
+                ...(parsedPage > 1 ? [`<${baseUrl}?page=${parsedPage - 1}&limit=${parsedLimit}>; rel="previous"`] : []),
+                ...(parsedPage < totalPages ? [`<${baseUrl}?page=${parsedPage + 1}&limit=${parsedLimit}>; rel="next"`] : []),
+                ...(totalPages > 1 ? [`<${baseUrl}?page=${totalPages}&limit=${parsedLimit}>; rel="last"`] : [])
+            ];
+
+            return {
+                data: result,
+                links: links
             };
-            const sortObject = {};
 
-            if (sortField) {
-                sortObject[sortField] = sortDirection === 'desc' ? -1 : 1;
-            }
-            const result = await db.collectionUsers.find(filter).sort(sortObject).toArray();
-
-            return result;
         } finally {
             await db.client.close();
         }
@@ -42,18 +55,7 @@ const userModel = {
         const db = await database.getDb();
 
         try {
-            const filter = {
-                // $and: [
-                //     // {
-                //     //     $or: [
-                //         //         { owner: user.email },
-                //         //         { collaborators: user.email }
-                //         //     ]
-                //         // },
-                //         { _id: ObjectId.createFromHexString(id) }
-                //     ]
-                _id: ObjectId.createFromHexString(id)
-            };
+            const filter = { _id: ObjectId.createFromHexString(id) };
                 
             const result = await db.collectionUsers.findOne(filter);
 
@@ -88,8 +90,8 @@ const userModel = {
             createError("ID format is invalid", 400);
         }
 
-        if (!body.firstname || !body.lastname || !body.email || !body.role || !body.balance) {
-            createError("firstname, lastname, email, balance and role are required."
+        if (!body.firstname || !body.lastname || !body.email || !body.role) {
+            createError("firstname, lastname, email and role are required."
                 + " Use patch method instead if you only want to update part of the user resource."
                 , 400);
         }
@@ -97,18 +99,7 @@ const userModel = {
         const db = await database.getDb();
 
         try {
-            const filter = {
-                // $and: [
-                //     // {
-                //     //     $or: [
-                //         //         { owner: user.email },    
-                //         //         { collaborators: user.email }
-                //         //     ]
-                //         // },
-                //         { _id: ObjectId.createFromHexString(id) }
-                //     ]
-                _id: ObjectId.createFromHexString(id)
-                };
+            const filter = { _id: ObjectId.createFromHexString(id) };
                 
             let result = await db.collectionUsers.findOne(filter);    
 
@@ -132,7 +123,7 @@ const userModel = {
                 lastname: body.lastname,
                 email: body.email,
                 role: body.role,
-                balance: body.balance,
+                balance: body.balance || null,
             };
 
             if (body.trip_history) {
@@ -144,12 +135,6 @@ const userModel = {
             }
 
             result = await db.collectionUsers.updateOne(filter, { $set: updateUser });
-
-            // PUT is idempotent!!!
-            // if (result.modifiedCount !== 1) {
-            //     createError(`no update possible with the given information for user with ID: ${id}.`
-            //         + " Make sure information you provide is new.", 400);
-            // }
 
             result = await db.collectionUsers.findOne(filter);
 
@@ -168,15 +153,6 @@ const userModel = {
 
         try {
             const filter = {
-                // $and: [
-                //     // {
-                //     //     $or: [
-                //         //         { owner: user.email },
-                //         //         { collaborators: user.email }
-                //         //     ]
-                //         // },
-                //         { _id: ObjectId.createFromHexString(id) }
-                //     ]
                 _id: ObjectId.createFromHexString(id)
                 };
                 
@@ -200,13 +176,6 @@ const userModel = {
 
             result = await db.collectionUsers.updateOne(filter, { $set: body });
 
-            // if (result.modifiedCount !== 1) {
-            //     createError(`no update possible with the given information for user with ID: ${id}.`
-            //         + " Make sure information you provide is new.", 400);
-            // }
-
-            // return;
-
             result = await db.collectionUsers.findOne(filter);
 
             return result;
@@ -223,18 +192,7 @@ const userModel = {
         const db = await database.getDb();
 
         try {
-            const filter = {
-                // $and: [
-                //     // {
-                //     //     $or: [
-                //         //         { owner: user.email },
-                //         //         { collaborators: user.email }
-                //         //     ]
-                //         // },
-                //         { _id: ObjectId.createFromHexString(id) }
-                //     ]
-                _id: ObjectId.createFromHexString(id)
-                };
+            const filter = { _id: ObjectId.createFromHexString(id) };
                 
             let result = await db.collectionUsers.findOne(filter);
 
@@ -263,12 +221,12 @@ const userModel = {
 
         try {
             const newUser = {
-                firstname: body.firstname,
-                lastname: body.lastname,
+                firstname: body.firstname || null,
+                lastname: body.lastname || null,
                 email: body.email,
-                password_hash: body.password,
+                password_hash: body.password || "",
                 role: body.role,
-                balance: body.balance,
+                balance: body.balance || null,
                 trip_history: [],
                 githubId: body.githubId,
                 username: body.username
