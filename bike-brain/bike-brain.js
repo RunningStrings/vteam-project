@@ -301,14 +301,14 @@ class BikeBrain {
 
         const data = {
             bike_id: this.id,
-            customer_id: this.customerId,
-            // start: { location: this.location, }
+            customer_id: customerId,
             location: this.location,
             status: this.status,
             battery_level: this.battery,
-            speed: this.speed
-        }
-
+            speed: this.speed,
+            city_id: this.city_name,
+            free_parking: Math.random() > 0.5,
+        };
         // Error post trips: Error: city_id, location, status, speed and battery_level are required.
 
 
@@ -318,11 +318,21 @@ class BikeBrain {
                 headers: {
                     'Content-Type': 'application/json', // Make sure you're sending JSON data
                     'x-access-token': process.env.BIKE_TOKEN // Optional, if needed for authentication
-                }
+                },
             });
-    
+            
+            console.log('BIKE_TOKEN:', process.env.BIKE_TOKEN);
+
             // Handle the response after the POST request is successful
             console.log('Bike data updated successfully:', response.data);
+
+            console.log('Server response:', response.data);
+            if (response.data?.tripId) {
+                this.tripCurrent.tripId = response.data.tripId;
+                console.log('Trip successfully created with ID:', this.tripCurrent.tripId);
+            } else {
+                console.error('Trip creation failed or tripId not found in response.');
+            }
     
         } catch (error) {
             // Handle errors (e.g., network errors, server errors)
@@ -336,49 +346,14 @@ class BikeBrain {
         console.log(`Trip started for customer ${customerId} at ${startTime}`);
     }
 
-    // bike_id: body.bike_id,
-    // customer_id: body.customer_id,
-    // // start: { location: body.location, }
-    // location: body.location,
-    // status: body.status,
-    // battery_level: body.battery_level,
-    // speed: body.speed
-
-    // {
-    //     "bike_id": "testObjectIdBike2",
-    //     "customer_id": "testObjectIdCustomer2",
-    //     "start": {
-    //       "location": {
-    //         "type": "point",
-    //         "coordinates": [
-    //           55.607323843656815,
-    //           13.028301726385251
-    //         ]
-    //       },
-    //       "timestamp": "1519211810362"
-    //     },
-    //     "end": {
-    //       "location": {
-    //         "type": "point",
-    //         "coordinates": [
-    //           55.61378958059842,
-    //           12.980856588823372
-    //         ]
-    //       },
-    //       "timestamp": "1519211811670"
-    //     },
-    //     "distance": "5",
-    //     "cost": "25",
-    //     "parking_type": "station"
-    // },
-
     /**
      * Ends the current trip, stores it in a local log, sends the 
      * current trip to the server, and resets the trip state.
      */
-    stopTrip() {
+    async stopTrip() {
         console.log('stopTrip called');
         const stopTime = new Date();
+
         if (this.tripCurrent && this.tripCurrent.is_active) {
             this.tripCurrent.stopLocation = this.location;
             this.tripCurrent.stopTime = stopTime;
@@ -404,6 +379,36 @@ class BikeBrain {
             }
 
             console.log(`Trip ended for customer ${this.tripCurrent.customerId} at ${stopTime}`, this.tripCurrent.is_active);
+
+            const tripId = this.tripCurrent.tripId;
+
+            if (!tripId) {
+                console.error('Trip ID is missing, cannot update trip.');
+                return;
+            }
+
+            const updateData = {
+                end: {
+                    location: this.tripCurrent.stopLocation,
+                    timestamp: stopTime,
+                    free_parking: this.tripCurrent.stopValidParking,
+                },
+                is_active: false,
+                // duration: duration,
+            };
+
+            try {
+                await axios.patch(`${API_URL}/trips/${tripId}`, updateData, {
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'x-access-token': process.env.BIKE_TOKEN,
+                    },
+                });
+
+                console.log('Trip updated successfully:', tripId);
+            } catch (error) {
+                console.error('Error updating trip:', error.message);
+            }
 
             // Send only current trip to the server
             this.sendMessage('log-trip', {
