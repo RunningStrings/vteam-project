@@ -17,8 +17,7 @@ router
 
             const result = await bikeModel.fetchAllBikes(parsedLimit, parsedOffset, city_name);
             res.status(200).json({
-                data: result,
-
+                data: result
             });
         } catch (error) {
             console.error('Error get bikes:', error);

@@ -61,18 +61,57 @@ app.get(
         failureRedirect: '/',
         session: false
     }), (req, res, next) => {
-        const userObject = req.user;
-        const token = tokenService.generateToken(userObject);
-        if (process.env.REDIRECT_URI_FRONTEND) {
-            res.redirect(process.env.REDIRECT_URI_FRONTEND + `?token=${token}&role=${userObject.user.role}
-                &id=${userObject.user._id}`);
+        try {
+            const userObject = req.user;
+            const token = tokenService.generateToken(userObject);
+            // res.setHeader('Authorization', `Bearer ${token}`);
+
+            const stateParam = req.query.state;
+            console.log('State received from GitHub OAuth callback:', stateParam);
+
+            // If needed, decode the state parameter
+            const decodedState = decodeURIComponent(stateParam);
+            console.log('Decoded state:', decodedState);
+
+            // if (decodedState !== undefined && decodedState !== '') {
+            //     console.log('I TRUGGER HERE')
+            // }
+            console.log(stateParam)
+            console.log(decodedState)
+            const redirectUrl = `${decodedState}?token=${token}&role=${userObject.user.role}&id=${userObject.user._id}`;
+            res.redirect(redirectUrl);
+            
+
+            // res.status(200).json({
+            //     data: {
+            //         token: token,
+            //         role: userObject.user.role
+            //     }});
+
+
+        }  catch (error) {
+            console.error('Error github', error);
+            next(error);
         }
-        res.status(200).json({
-            data: {
-                token: token,
-                role: userObject.user.role
-            }
-        });
+
+        // // Get the origin URL from the state parameter (sent earlier as a query parameter)
+        // const redirectUri = req.query.state;  // Retrieve the origin URL from the state query parameter
+
+        // // Now redirect the user to the frontend with the token, optionally adding it to the query params
+        // const redirectUrl = `${decodedState}?token=${token}&role=${userObject.user.role}&id=${userObject.user._id}`;
+
+        // res.redirect(redirectUrl);  // Redirect back to the frontend with the token
+
+        // // if (process.env.REDIRECT_URI_FRONTEND) {
+        // //     res.redirect(process.env.REDIRECT_URI_FRONTEND + `?token=${token}&role=${userObject.user.role}
+        // //         &id=${userObject.user._id}`);
+        // // }
+        // // res.status(200).json({
+        // //     data: {
+        // //         token: token,
+        // //         role: userObject.user.role
+        // //     }
+        // // });
     }
 );
 
