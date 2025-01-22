@@ -17,16 +17,6 @@ const MIN_TRIP_DURATION = 10000;
 
 const rl = readline.createInterface({ input, output });
 
-// const startId = parseInt(process.env.BIKE_ID_START, 10);
-// const endId = parseInt(process.env.BIKE_ID_EMD, 10);
-
-// if (!startId || !endId) {
-//     console.error("Error: BIKE_START_ID and BIKE_END_ID env variables are required.");
-//     process.exit(1);
-// }
-
-// console.log(`Processing bikes from ${startId} to ${endId}`);
-
 const waitForBackend = async () => {
     let retries = 5;
     while (retries > 0) {
@@ -60,11 +50,6 @@ const loadBikesFromDatabase = async () => {
             console.log(batch);
 
             if (!batch || batch.length === 0) break;
-
-            // // Filter bikes to match the range specified by the env variables
-            // const filteredBatch = batch.filter(bike =>
-            //     bike.id >= startId && bike.id <= endId
-            // );
 
             batch.forEach(doc => {
                 const bike = new BikeBrain(doc._id, doc.id, doc.city_name, doc.location, doc.status);
@@ -127,10 +112,10 @@ const calcBatteryDepletion = (bike) => {
 
     switch (bike.status) {
         case 'in-use':
-            depletionRate = 1 + Math.random() * 1.5;
+            depletionRate = 1 + Math.random() * 1;
             break;
         case 'available':
-            depletionRate = 0.2 + Math.random() * 0.5;
+            depletionRate = 0.2 + Math.random() * 0.3;
             break;
         case 'charging':
             depletionRate = -5 - Math.random() * 2;
@@ -139,12 +124,12 @@ const calcBatteryDepletion = (bike) => {
             depletionRate = 0;
             break;
         default:
-            depletionRate = 0.1;
+            depletionRate = 0.05;
     }
 
-    const speedFactor = bike.speed > 0 ? bike.speed * 0.02 : 0;
+    const speedFactor = bike.speed > 0 ? bike.speed * 0.01 : 0;
 
-    const randomFactor = Math.random() * 0.2;
+    const randomFactor = Math.random() * 0.1;
 
     const newBatteryLevel = bike.battery - depletionRate - speedFactor - randomFactor;
 
@@ -174,21 +159,6 @@ const simulateBikeUpdates = (bikes, customers) => {
 
                     bike.updateLocation({ type: 'Point', coordinates: [newLat, newLon] });
                 }
-                
-
-                // const startLocation = bike.location.coordinates;
-                // const endLocation = {
-                //     lat: startLocation[0] + (Math.random() - 0.5) * 0.01,
-                //     lon: startLocation[1] + (Math.random() - 0.5) * 0.01
-                // };
-                // console.log(`startLocation: ${JSON.stringify(startLocation)}`);
-                // console.log(`endLocation: ${JSON.stringify(endLocation)}`);
-                // const startTime = new Date();
-                // const endTime = new Date(startTime.getTime() + 60000); // Simulate for 1 minute
-                // const steps = 10;
-
-                // simulateBikeMovement(bike, startLocation, endLocation, startTime, endTime, steps);
-                // bike.updateSpeed(Math.floor(Math.random() * 20));
             }
 
             const newBatteryLevel = calcBatteryDepletion(bike);
@@ -198,7 +168,7 @@ const simulateBikeUpdates = (bikes, customers) => {
                 const customer = customers[Math.floor(Math.random() * customers.length)];
                 if (customer) {
                     bike.startRental(customer._id);
-                    bike.checkAndUpdateSpeed(20);
+                    bike.checkAndUpdateSpeed(7);
                 }
             }
         });
