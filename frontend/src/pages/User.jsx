@@ -18,6 +18,7 @@ const initialFormValues = {
 
 async function updateUser(firstName, lastName, email, role, balance) {
   const endpoint = `${baseURL}/users/${userId}`;
+  let token=sessionStorage.getItem('token');
   const body = {
     "firstname": firstName,
     "lastname": lastName,
@@ -30,10 +31,10 @@ async function updateUser(firstName, lastName, email, role, balance) {
 
   try {
     const response = await fetch(endpoint, {
-      method: "PUT",
+      method: "PATCH",
       headers: {
         "Content-Type": "application/json",
-        //"x-api-key": apiKey, // Aktivera vid behov
+        'x-access-token': `${token}`,
       },
       body: JSON.stringify(body),
     });
