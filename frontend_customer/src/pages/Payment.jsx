@@ -1,18 +1,21 @@
 import { useState, useEffect  } from "react";
 import { apiKey, baseURL } from "../components/utils.jsx";
 import { ToastContainer, toast } from "react-toastify";
-
+const userId=sessionStorage.getItem('userId');
 
 async function updateUserBalance(userId, newBalance) {
   const endpoint = `${baseURL}/users/${userId}`;
   const body = { "balance": newBalance };
+  let token=sessionStorage.getItem('token');
+  //const id=sessionStorage.getItem('id');
+  
 
   try {
     const response = await fetch(endpoint, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
-        //"x-api-key": apiKey, // Aktivera vid behov
+        'x-access-token': `${token}`,
       },
       body: JSON.stringify(body),
     });
@@ -40,8 +43,12 @@ async function updateUserBalance(userId, newBalance) {
 }
 function DynamicForm() {
   const [selectedOption, setSelectedOption] = useState("");
+  const [formData, setFormData] = useState("");
   const [users, setUsers] = useState([]);
-  const [balance, setBalance] = useState("");
+  //const [balance, setBalance] = useState("");
+  let token=sessionStorage.getItem('token');
+  //let userId=sessionStorage.getItem('userId');
+  //const { firstname, lastname, email, role, balance } = formData;
 
   const showToast = () => {
     toast.success("This is a success toast!", {
@@ -51,27 +58,30 @@ function DynamicForm() {
 
 
   useEffect(() => {
-    fetch(`${baseURL}/users`, {
-      headers: {
-        "Content-Type": "application/json",
-        //"x-api-key": apiKey, // Om API-nyckel behövs
-      },
-    })
+    // Fetch users from the backend API
+    fetch('/users',{headers: {'x-access-token': `${token}`},})
       .then((response) => {
         if (!response.ok) {
-          throw new Error(`HTTP error! Status: ${response.status}`);
+          throw new Error(`HTTP error! status: ${response.status}`);
         }
         return response.json();
       })
-      .then((data) => {
-        if (data?.data) {
-          setUsers(data.data);
-        } else {
-          console.warn("No users found in response.");
-          setUsers([]);
+      .then((responseData) => {
+        setUsers(responseData.data); // Store all users
+        const id = sessionStorage.getItem('id'); // Get id from sessionStorage
+        if (id) {
+          const matchedUser = responseData.data.find((user) => user._id === userId);
+          if (matchedUser) {
+            console.log(matchedUser.balance);
+            //userId = matchedUser._id;
+            //sessionStorage.setItem("userId","_id")
+            setFormData(matchedUser); // Populate the form with the matched user's data
+          }
         }
       })
-      .catch((error) => console.error("Error fetching users:", error));
+      .catch((error) => {
+        console.error('Error fetching users:', error);
+      });
   }, []);
 
   const handleOptionChange = (event) => {
@@ -86,7 +96,7 @@ function DynamicForm() {
       return;
     }
 
-    const userId = "6775634df665dfbf9f5bf389"; // Uppdatera med dynamiskt användar-ID om möjligt
+    //const userId = "6775634df665dfbf9f5bf389"; // Uppdatera med dynamiskt användar-ID om möjligt
     updateUserBalance(userId, balance)
       .then((data) => {
         if (data) {
@@ -124,7 +134,9 @@ function DynamicForm() {
           <div>
             <div className="form__group">
               <label htmlFor="name" className="form__label">Namn på kreditkortet:</label>
-              <input type="text" id="name" name="name" className="form__input" />
+              <input type="text" id="name" name="name" className="form__input"
+              value={formData.firstname +" "+formData.lastname}
+              />
             </div>
             <div className="form__group">
               <label htmlFor="saldo" className="form__label">Belopp:</label>
