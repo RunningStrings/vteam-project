@@ -35,11 +35,7 @@ function Users() {
     .catch((error) => {
       console.error('Error fetching users:', error);
     });
-   
-
-
-
-    }, []);
+  }, []);
 
   return (
     <div className="App" style={{ marginLeft: "200px", padding: "20px" }}>

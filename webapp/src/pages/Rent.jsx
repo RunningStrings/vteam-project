@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react';
 import { ToastContainer, toast } from "react-toastify";
 import { useNavigate } from 'react-router-dom';
-import { apiKey, baseURL } from "../components/utils.jsx";
+import { baseURL } from "../components/utils.jsx";
+import axios from "axios";
 
 const Home = () => {
   let sessionId=sessionStorage.getItem('bikeid');
@@ -12,47 +13,53 @@ const Home = () => {
   
   async function createTrip() {
     const endpoint = `${baseURL}/trips/`;
-    let token=sessionStorage.getItem('token');
+    let token = sessionStorage.getItem("token");
     const body = {
       bike_id: sessionId,
       customer_id: customerId,
-      location : {
-        type: "point",  
-        coordinates:startPos,
+      location: {
+        type: "point",
+        coordinates: startPos,
       },
-        free_parking:false,
+      free_parking: false,
     };
-   try {
-      const response = await fetch(endpoint, {
-        method: "POST",
+  
+    try {
+      const response = await axios.post(endpoint, body, {
         headers: {
           "Content-Type": "application/json",
-          'x-access-token': `${token}`,
+          "x-access-token": token,
         },
-        body: JSON.stringify(body),
       });
   
-      if (!response.ok) {
-        throw new Error(`Error: ${response.status} ${response.statusText}`);
-      }
-      // Kontrollera om svaret innehåller JSON
-      const contentType = response.headers.get("content-type");
-      if (contentType && contentType.includes("application/json")) {
-        const data = await response.json();
-        alert("Trip har skapats!");
-        console.log(response.headers);
-        return data;
+      // Kontrollera om svaret innehåller data
+      if (response.data) {
+        //alert("Trip har skapats!");
+        if (response.data) sessionStorage.setItem("tripId",response.data.tripId);
+        //console.log(response.data.tripId); // Eller hur tripId finns i svaret
+        return response.data;
       } else {
-        alert("Trip har skapats");
-        console.log(response.headers);
+        //alert("Trip har skapats!");
+        console.warn("Inget data returnerades från servern.");
         return null;
       }
     } catch (error) {
-      alert("Ett problem uppstod när trip skapades.");
-      console.error("Error creating trip:", error);
+      // Hantera fel, inklusive felmeddelanden från servern
+      if (error.response) {
+        console.error(
+          `Error: ${error.response.status} ${error.response.statusText}`
+        );
+        console.error("Server response:", error.response.data);
+        alert("Ett problem uppstod när trip skapades. Serverfel.");
+      } else if (error.request) {
+        console.error("Ingen respons mottogs från servern:", error.request);
+        alert("Ett problem uppstod när trip skapades. Ingen respons från servern.");
+      } else {
+        console.error("Ett fel uppstod:", error.message);
+        alert("Ett oväntat fel uppstod.");
+      }
     }
   }
-
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -69,14 +76,10 @@ const Home = () => {
         setBikes(responseData.data);
         const sessionId = sessionStorage.getItem('bikeid');
         console.log(sessionId);
-        
-        //console.log("Den här: "+responseData.data.id);
-        
-        //coordsFromSession = sessionStorage.getItem('bike_coords');
         if (sessionId) {
           const matchedBike = responseData.data.find((bike) => parseInt(bike.id) === parseInt(sessionId));
           if (matchedBike) {
-            console.log(matchedBike);
+            //console.log(matchedBike);
             sessionStorage.setItem("startpos", matchedBike.location.coordinates);
             
             //setFormData(matchedBike);
@@ -116,9 +119,6 @@ const Home = () => {
         name="id"
         className="form__input"
         defaultValue={sessionId} 
-        //onChange={(e) =>
-        //  setFormData({ ...formData, id: e.target.value})
-        //}
          />
       </div>
       <button className="full-button blue-button" type="submit">
