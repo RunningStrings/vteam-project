@@ -2,105 +2,107 @@ version: 1
 
 # Define the build environment
 build:
-  image: node:18  # Specify the Docker image to use for the CI environment
-  services:
-    - mongodb:
-        image: mongo
-        environment:
-          - MONGO_URI=mongodb://mongo:27017
-        volumes:
-          - ./data/db:/data/db
-        networks:
-          - app-network
-        ports:
-          - "27017:27017"
-    
-    - backend:
-        name: "backend"  # Add a name here
-        build:
-          context: ./backend
-          dockerfile: Dockerfile
-        environment:
-          - MONGO_DSN=${MONGO_DSN}
-          - MONGO_URI=${MONGO_URI}
-          - CLIENT_ID=${CLIENT_ID}
-          - CLIENT_SECRET=${CLIENT_SECRET}
-          - REDIRECT_URI=${REDIRECT_URI}
-          - JWT_SECRET=${JWT_SECRET}
-          - REDIRECT_URI_FRONTEND=${REDIRECT_URI_FRONTEND}
-          - NODE_ENV=simulation
-        volumes:
-          - ./backend:/app
-          - /app/node_modules
-        networks:
-          - app-network
-        depends_on:
-          - mongodb
-        command: >
-          sh -c "node ./data-generation/index.js && node ./database-config/seed.js && npm run nodemon"
+  nodes:
+    analysis:
+      image: node:18  # Specify the Docker image to use for the CI environment
+      services:
+        - mongodb:
+            image: mongo
+            environment:
+              - MONGO_URI=mongodb://mongo:27017
+            volumes:
+              - ./data/db:/data/db
+            networks:
+              - app-network
+            ports:
+              - "27017:27017"
+        
+        - backend:
+            name: "backend"  # Add a name here
+            build:
+              context: ./backend
+              dockerfile: Dockerfile
+            environment:
+              - MONGO_DSN=${MONGO_DSN}
+              - MONGO_URI=${MONGO_URI}
+              - CLIENT_ID=${CLIENT_ID}
+              - CLIENT_SECRET=${CLIENT_SECRET}
+              - REDIRECT_URI=${REDIRECT_URI}
+              - JWT_SECRET=${JWT_SECRET}
+              - REDIRECT_URI_FRONTEND=${REDIRECT_URI_FRONTEND}
+              - NODE_ENV=simulation
+            volumes:
+              - ./backend:/app
+              - /app/node_modules
+            networks:
+              - app-network
+            depends_on:
+              - mongodb
+            command: >
+              sh -c "node ./data-generation/index.js && node ./database-config/seed.js && npm run nodemon"
 
-    - frontend:
-        name: "frontend"  # Add a name here
-        build:
-          context: ./frontend
-          dockerfile: Dockerfile
-        ports:
-          - "5173:5173"
-        networks:
-          - app-network
-        volumes:
-          - ./frontend:/app
-          - /app/node_modules
-        depends_on:
-          - backend
-    
-    - frontend_customer:
-        name: "frontend_customer"  # Add a name here
-        build:
-          context: ./frontend_customer
-          dockerfile: Dockerfile
-        ports:
-          - "1337:1337"
-        networks:
-          - app-network
-        volumes:
-          - ./frontend_customer:/app
-          - /app/node_modules
-        depends_on:
-          - backend
+        - frontend:
+            name: "frontend"  # Add a name here
+            build:
+              context: ./frontend
+              dockerfile: Dockerfile
+            ports:
+              - "5173:5173"
+            networks:
+              - app-network
+            volumes:
+              - ./frontend:/app
+              - /app/node_modules
+            depends_on:
+              - backend
+        
+        - frontend_customer:
+            name: "frontend_customer"  # Add a name here
+            build:
+              context: ./frontend_customer
+              dockerfile: Dockerfile
+            ports:
+              - "1337:1337"
+            networks:
+              - app-network
+            volumes:
+              - ./frontend_customer:/app
+              - /app/node_modules
+            depends_on:
+              - backend
 
-    - webapp:
-        name: "webapp"  # Add a name here
-        build:
-          context: ./webapp
-          dockerfile: Dockerfile
-        ports:
-          - "3000:3000"
-        networks:
-          - app-network
-        volumes:
-          - ./webapp:/app
-          - /app/node_modules
-        depends_on:
-          - backend
-    
-    - simulation:
-        name: "simulation"  # Add a name here
-        build:
-          context: ./bike-brain
-          dockerfile: Dockerfile
-        environment:
-          - BIKE_TOKEN=${BIKE_TOKEN}
-        networks:
-          - app-network
-        stdin_open: true
-        tty: true
-        depends_on:
-          - backend
-        command: /bin/sh
-        volumes:
-          - ./bike-brain:/app
-          - /app/node_modules
+        - webapp:
+            name: "webapp"  # Add a name here
+            build:
+              context: ./webapp
+              dockerfile: Dockerfile
+            ports:
+              - "3000:3000"
+            networks:
+              - app-network
+            volumes:
+              - ./webapp:/app
+              - /app/node_modules
+            depends_on:
+              - backend
+        
+        - simulation:
+            name: "simulation"  # Add a name here
+            build:
+              context: ./bike-brain
+              dockerfile: Dockerfile
+            environment:
+              - BIKE_TOKEN=${BIKE_TOKEN}
+            networks:
+              - app-network
+            stdin_open: true
+            tty: true
+            depends_on:
+              - backend
+            command: /bin/sh
+            volumes:
+              - ./bike-brain:/app
+              - /app/node_modules
 
   # Commands to run during the build process
   commands:
@@ -120,7 +122,6 @@ build:
 
   # Shared environment variables for the build
   environment:
-    - NODE_ENV=production
     - MONGO_URI=mongodb://mongo:27017
 
   # Link the services together
