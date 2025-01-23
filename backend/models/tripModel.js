@@ -187,8 +187,8 @@ const tripModel = {
             const timeNow = new Date().getTime();
             let futureTime;
             let calculatedCost;
-            if (typeof body.end.minutes !== 'undefined' && typeof body.free_parking !== 'undefined' &&
-                typeof body.end.free_parking !== 'undefined') {
+            if (typeof body.end?.minutes !== 'undefined' && typeof body.free_parking !== 'undefined' &&
+                typeof body.end?.free_parking !== 'undefined') {
                     const duration = body.end.minutes * 60 * 1000;
                     futureTime = (body.timestamp || timeNow) + duration;
                     console.log(futureTime);
@@ -200,11 +200,11 @@ const tripModel = {
                 customer_id: body.customer_id,
                 start: { location: body.location, timestamp: body.timestamp || timeNow,
                      free_parking: body.free_parking},
-                end: { location: body.end.location || null, timestamp: futureTime || null,
-                    free_parking: body.end.free_parking === undefined ? null : body.end.free_parking },
-                variable_cost: calculatedCost.variable || null,
-                fixed_cost: calculatedCost.fixed || null,
-                cost: calculatedCost.total || null,
+                end: { location: body.end?.location || null, timestamp: futureTime || null,
+                    free_parking: body.end?.free_parking === undefined ? null : body.end?.free_parking },
+                variable_cost: calculatedCost?.variable || null,
+                fixed_cost: calculatedCost?.fixed || null,
+                cost: calculatedCost?.total || null,
                 is_active: body.is_active === undefined ? true : body.is_active
             };
 
