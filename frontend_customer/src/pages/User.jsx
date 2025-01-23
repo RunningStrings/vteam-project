@@ -41,10 +41,12 @@ function User() {
       .then((responseData) => {
         setUsers(responseData.data); // Store all users
         const id = sessionStorage.getItem('id'); // Get id from sessionStorage
+        //console.log(responseData.data);
+        
         if (id) {
-          const matchedUser = responseData.data.find((user) => user._id === id);
+          const matchedUser = responseData.data.find((user) => user._id === id.trim());
           if (matchedUser) {
-            console.log(matchedUser);
+            //console.log(matchedUser);
             //userId = matchedUser._id;
             //sessionStorage.setItem("userId","_id")
             setFormData(matchedUser); // Populate the form with the matched user's data
@@ -73,9 +75,7 @@ function User() {
           name="id"
           value={formData._id}
           className="form__input" 
-          onChange={(e) =>
-            setFormData({ ...formData, id: e.target.value})
-          }
+          onChange={handleChange}
            />
         </div>
         <div className="form__group">
@@ -88,9 +88,7 @@ function User() {
           name="firstname"
           value={formData.firstname}
           className="form__input" 
-          onChange={(e) =>
-            setFormData({ ...formData, firstname: e.target.value})
-          }
+          onChange={handleChange}
            />
         </div>
         <div className="form__group">
@@ -103,9 +101,7 @@ function User() {
           name="lastname" 
           value={formData.lastname}
           className="form__input" 
-          onChange={(e) =>
-            setFormData({ ...formData, lastname: e.target.value})
-          }
+          onChange={handleChange}
            />
         </div>
         <div className="form__group">
@@ -118,9 +114,7 @@ function User() {
           name="email" 
           value={formData.email}
           className="form__input" 
-          onChange={(e) =>
-            setFormData({ ...formData, email: e.target.value})
-          }
+          onChange={handleChange}
            />
         </div>
 
@@ -134,9 +128,7 @@ function User() {
             name="saldo"
             value={formData.balance}
             className="form__input"
-            onChange={(e) =>
-              setFormData({ ...formData, saldo: e.target.value})
-            }
+            onChange={handleChange}
           />
         </div>
         <div className="form__group">

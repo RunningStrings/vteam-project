@@ -189,53 +189,30 @@ const Maps = () => {
         ))}
 
         {parkings.map((parking, index) => (
-
           <Marker
-
             position={parking.location.coordinates} //LatLng.wrap(
             key={index}
             icon={parkingIcon}
             zIndexOffset={100}
-
           >
-
-
             <Popup>
-
               <br />
             </Popup>
           </Marker>
-
-
-
-          //}
-
         ))}
-
-
-
-
         <MarkerClusterGroup>
           {stations.map((station, index) => (
-
-            //L.marker({station.location.coordinates}, {icon: stationIcon}).addTo(map);
-
             <Marker
               position={station.location.coordinates}
               key={index}
               icon={stationIcon}
               zIndexOffset={100}
             >
-
-
               <Popup>
-
                 Station nr: {index} <br />
                 Address: {station.name}
               </Popup>
             </Marker>
-
-
           ))}
         </MarkerClusterGroup>
         <MarkerClusterGroup>

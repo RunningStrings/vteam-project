@@ -20,7 +20,7 @@ const Home = () => {
     const idParam = queryParams.get('id');
     const fnameParam = queryParams.get('fname');
     
-    console.log(tokenParam);
+    //console.log(tokenParam);
     
     setToken(tokenParam);
     setRole(roleParam);
