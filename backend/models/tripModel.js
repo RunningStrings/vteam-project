@@ -108,6 +108,7 @@ const tripModel = {
             }
 
             // Add properties "end" and "is_active"
+            const timeNow = new Date().getTime();
             const allowedProperties = [
                 "city_id",
                 "location",
@@ -128,7 +129,7 @@ const tripModel = {
 
             // Add end timestamp
             if (body.end) {
-                body.end.timestamp = new Date().getTime();
+                body.end.timestamp = timeNow;
             }
 
             result = await db.collectionTrips.updateOne(filter, { $set: body });
