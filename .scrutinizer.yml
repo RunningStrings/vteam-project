@@ -1,7 +1,6 @@
 build:
   nodes:
     analysis:
-      - name: backend
         commands:
           - cd backend && npm install && npm test  # Install dependencies before running tests
 
