@@ -1,146 +1,56 @@
-version: 1
-
-# Global configuration for Scrutinizer
 build:
-  image: node:18
   nodes:
     analysis:
-      services:
-        backend:
-          name: "backend"
-          build:
-            context: ./backend
-            dockerfile: Dockerfile
-          environment:
-            - MONGO_DSN=${MONGO_DSN}
-            - MONGO_URI=${MONGO_URI}
-            - CLIENT_ID=${CLIENT_ID}
-            - CLIENT_SECRET=${CLIENT_SECRET}
-            - REDIRECT_URI=${REDIRECT_URI}
-            - JWT_SECRET=${JWT_SECRET}
-            - REDIRECT_URI_FRONTEND=${REDIRECT_URI_FRONTEND}
-            - NODE_ENV=simulation
-          volumes:
-            - ./backend:/app
-            - /app/node_modules
-          networks:
-            - app-network
-          depends_on:
-            - mongodb
-          command: >
-            sh -c "node ./data-generation/index.js && node ./database-config/seed.js && npm run nodemon"
+      - name: backend
+        commands:
+          - cd backend && npm install && npm test  # Install dependencies before running tests
 
-        frontend:
-          name: "frontend"
-          build:
-            context: ./frontend
-            dockerfile: Dockerfile
-          ports:
-            - "5173:5173"
-          networks:
-            - app-network
-          volumes:
-            - ./frontend:/app
-            - /app/node_modules
-          depends_on:
-            - backend
 
-        frontend_customer:
-          name: "frontend_customer"
-          build:
-            context: ./frontend_customer
-            dockerfile: Dockerfile
-          ports:
-            - "1337:1337"
-          networks:
-            - app-network
-          volumes:
-            - ./frontend_customer:/app
-            - /app/node_modules
-          depends_on:
-            - backend
+# version: '1'
 
-        webapp:
-          name: "webapp"
-          build:
-            context: ./webapp
-            dockerfile: Dockerfile
-          ports:
-            - "3000:3000"
-          networks:
-            - app-network
-          volumes:
-            - ./webapp:/app
-            - /app/node_modules
-          depends_on:
-            - backend
+# # Build section to run in a Node.js container
+# build:
+#   image: node:18
+#   commands:
+#     - docker-compose exec backend npm install  # Install dependencies in backend container
+#     - docker-compose exec frontend npm install  # Install dependencies in frontend container
+#     - docker-compose exec frontend_customer npm install  # Install dependencies in frontend_customer container
+#     - docker-compose exec simulation npm install  # Install dependencies in simulation container
 
-        simulation:
-          name: "simulation"
-          build:
-            context: ./bike-brain
-            dockerfile: Dockerfile
-          environment:
-            - BIKE_TOKEN=${BIKE_TOKEN}
-          networks:
-            - app-network
-          depends_on:
-            - backend
-          stdin_open: true
-          tty: true
-          command: /bin/sh
-          volumes:
-            - ./bike-brain:/app
-            - /app/node_modules
+# # Run tests in specific containers using docker-compose exec
+# tests:
+#   - name: Run tests in backend container
+#     command: docker-compose exec backend npm test
+#   - name: Run tests in frontend container
+#     command: docker-compose exec frontend npm test
+#   - name: Run tests in frontend_customer container
+#     command: docker-compose exec frontend_customer npm test
+#   - name: Run tests in simulation container
+#     command: docker-compose exec simulation npm test
 
-        mongodb:
-          name: "mongodb"
-          image: mongo
-          environment:
-            - MONGO_DATA_DIR=/data/db
-          volumes:
-            - ./data/db:/data/db
-          ports:
-            - "27017:27017"
-          command: mongod --bind_ip_all
-          networks:
-            - app-network
+# after:
+#   - echo "All tests completed."
 
-  # Define the tests for each service
-  tests:
-    - name: "Backend Tests"
-      command: "cd backend && npm test"
-      after: true  # Specifies when the test should run
+# version: '1'
 
-    - name: "Frontend Tests"
-      command: "cd frontend && npm test"
-      after: true
+# # Build section to run in a Node.js container
+# build:
+#   image: node:18
+#   commands:
+#     - npm install  # Install dependencies in the Node.js container
 
-    - name: "Frontend Customer Tests"
-      command: "cd frontend_customer && npm test"
-      after: true
+# # Run tests in specific containers using docker-compose exec
+# tests:
+#   - name: Run tests in backend container
+#     command: docker-compose exec backend npm test
+#   # - name: Run tests in bike-brain container
+#   #   command: docker-compose exec bike-brain npm test
+#   # - name: Run tests in frontend container
+#   #   command: docker-compose exec frontend npm test
+#   # - name: Run tests in frontend_customer container
+#   #   command: docker-compose exec frontend_customer npm test
+#   # - name: Run tests in simulation container
+#   #   command: docker-compose exec simulation npm test
 
-    - name: "Webapp Tests"
-      command: "cd webapp && npm test"
-      after: true
-
-    - name: "Bike Brain Tests"
-      command: "cd bike-brain && npm test"
-      after: true
-
-  # Configure the environment for the tests
-  environment:
-    - NODE_ENV=development
-    - MONGO_URI=mongodb://mongo:27017
-
-  # Define linked containers for testing
-  linked_containers:
-    - backend
-    - frontend
-    - frontend_customer
-    - webapp
-    - simulation
-
-networks:
-  app-network:
-    driver: bridge
+# after:
+#   - echo "All tests completed."
