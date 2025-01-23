@@ -107,7 +107,7 @@ class BikeBrain {
         };
 
         this.sendMessage('update-bike-data', data);
-        console.log(`Bike ${this.id}: Update sent`, data);
+        // console.log(`Bike ${this.id}: Update sent`, data);
     }
 
     /**
@@ -129,10 +129,10 @@ class BikeBrain {
      */
     updateFrequencyBasedOnMovement(isMoving) {
         if (isMoving) {
-            console.log(`Bike ${this.id}: Movement detected, increasing update frequency`);
+            // console.log(`Bike ${this.id}: Movement detected, increasing update frequency`);
             this.startUpdates(10000);
         } else {
-            console.log(`Bike ${this.id}: No movement detected, reducing update frequency`);
+            // console.log(`Bike ${this.id}: No movement detected, reducing update frequency`);
             this.startUpdates(300000);
         }
     }
@@ -148,7 +148,7 @@ class BikeBrain {
             this.sendCombinedUpdate();
         }, interval);
 
-        console.log(`Bike ${this.id}: Location updates started every ${interval / 1000} seconds`);
+        // console.log(`Bike ${this.id}: Location updates started every ${interval / 1000} seconds`);
     }
 
     /**
@@ -279,6 +279,8 @@ class BikeBrain {
      * @param {string} customerId - The ID of the customer renting the bike.
      */
     async startTrip(customerId) {
+        console.log(`startTrip called for bike ${this.id} with status ${this.status} and battery ${this.battery}`);
+
         const startTime = new Date();
 
         this.tripCurrent = {
@@ -320,8 +322,6 @@ class BikeBrain {
                     'x-access-token': process.env.BIKE_TOKEN // Optional, if needed for authentication
                 },
             });
-            
-            console.log('BIKE_TOKEN:', process.env.BIKE_TOKEN);
 
             // Handle the response after the POST request is successful
             console.log('Bike data updated successfully:', response.data);
@@ -332,11 +332,13 @@ class BikeBrain {
                 console.log('Trip successfully created with ID:', this.tripCurrent.tripId);
             } else {
                 console.error('Trip creation failed or tripId not found in response.');
+                this.tripCurrent = null;
             }
     
         } catch (error) {
             // Handle errors (e.g., network errors, server errors)
             console.error('Error sending bike data:', error.message);
+            this.tripCurrent = null;
         }
 
         // await axios.post(`${API_URL}/trips`, { params: { limit: 1 } });
@@ -352,13 +354,14 @@ class BikeBrain {
      */
     async stopTrip() {
         console.log('stopTrip called');
+        console.log('Wake up babe, new trip ID just dropped:', this.tripCurrent.bikeId, this.tripCurrent.tripId);
         const stopTime = new Date();
 
         if (this.tripCurrent && this.tripCurrent.is_active) {
             this.tripCurrent.stopLocation = this.location;
             this.tripCurrent.stopTime = stopTime;
-            const duration = (stopTime - this.tripCurrent.startTime) / (1000 * 60); // Duration in minutes
-            this.tripCurrent.duration = duration;
+            // const duration = (stopTime - this.tripCurrent.startTime) / (1000 * 60); // Duration in minutes
+            // this.tripCurrent.duration = duration;
             this.tripCurrent.is_active = false;
 
             // This line is replaced with the commented out code below when
@@ -529,12 +532,12 @@ class BikeBrain {
      * @return {boolean} - True if the rental is blocked, otherwise false.
      */
     isRentalBlocked() {
-        if (this.status === 'available' && this.batteryLevel <= 20) {
-            console.log(`Bike ${this.id} not available for rental due to low battery (${this.batteryLevel}%)`);
+        if (this.status === 'available' && this.battery <= 20) {
+            console.log(`Bike ${this.id} not available for rental due to low battery (${this.battery}%)`);
             return true;
         }
-        if (!(this.status === 'available' || (this.status === 'charging' && this.batteryLevel >= 50))) {
-            console.log(`Bike ${this.id} not available for rental`);
+        if (!(this.status === 'available' || (this.status === 'charging' && this.battery >= 50))) {
+            console.log(`Bike ${this.id} not available for rental, status ${this.status}, battery ${this.battery}.`);
             return true;
         }
         return false;
@@ -548,12 +551,12 @@ class BikeBrain {
      */
     stopRental() {
         if (this.status !== 'in-use') {
-            console.log(`Bike ${this.id} not in use`);
+            // console.log(`Bike ${this.id} not in use`);
             return;
         }
-        this.updateStatus('available');
         this.stopTrip();
         console.log(`Bike ${this.id} has been returned`);
+        this.updateStatus('available');
         // this.bikeLight(this.status);
     }
 
