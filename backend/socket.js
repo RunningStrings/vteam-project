@@ -6,6 +6,8 @@ export const initializeSocket = (server) => {
             origin: "*",
             methods: ["GET", "POST"],
         },
+        allowEIO3: true,
+        perMessageDeflate: false,
     });
 
     io.on('connection', (socket) => {
@@ -34,9 +36,9 @@ export const initializeSocket = (server) => {
         //     io.emit('bike-update-battery', data); // Frontend listens for this event
         // });
 
-        socket.on('log-trip', (data) => {
-            console.log('Trip log:', data);
-        });
+        // socket.on('log-trip', (data) => {
+        //     console.log('Trip log:', data);
+        // });
 
         socket.on('disconnect', () => {
             console.log('A bike disconnected:', socket.id);
