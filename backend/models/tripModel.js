@@ -8,11 +8,13 @@ import { createError } from './utils/createError.js'
 import cost from './utils/calculateCost.js'
 
 const tripModel = {
-    fetchAllTrips: async function fetchAllTrips() {
+    fetchAllTrips: async function fetchAllTrips(query) {
         const db = await database.getDb();
 
         try {
-            const result = await db.collectionTrips.find().toArray();
+            const { customer_id } = query;
+            const filter = customer_id ? { customer_id: { $regex: new RegExp(customer_id, 'i') } } : {};
+            const result = await db.collectionTrips.find(filter).toArray();
 
             return result;
         } finally {
@@ -44,52 +46,6 @@ const tripModel = {
         }
     },
 
-    updateCompleteTripById: async function updateCompleteTripById(id, body) {
-        if (!ObjectId.isValid(id)) {
-            createError("ID format is invalid", 400);
-        }
-
-        if (!body.city_id || !body.location || !body.status || !body.battery_level || !body.speed) {
-            createError(`city_id, location, status, speed and battery_level are required. Use patch method
-                 instead if you only want to update part of the trip resource.`, 400);
-        }
-
-        const db = await database.getDb();
-
-        try {
-            const filter = {
-                _id: ObjectId.createFromHexString(id)
-                };
-                
-            let result = await db.collectionTrips.findOne(filter);    
-
-            if (!result) {
-                createError(`trip with ID: ${id} cannot be found`, 404);
-            }    
-
-            const updateTrip = {
-                city_id: body.city_id,
-                location: body.location,
-                status: body.status,
-                battery_level: body.battery_level,
-                speed: body.speed
-            };
-
-            result = await db.collectionTrips.updateOne(filter, { $set: updateTrip });
-
-            // if (result.modifiedCount !== 1) {
-            //     createError(`no update possible with the given information for trip with ID: ${id}.
-            //         Make sure information you provide is new.`, 400);
-            // }
-
-            result = await db.collectionTrips.findOne(filter);
-
-            return result;
-        } finally {
-            await db.client.close();
-        }
-    },
-
     updateTripById: async function updateTripById(id, body) {
         if (!ObjectId.isValid(id)) {
             createError("ID format is invalid", 400);
@@ -101,7 +57,7 @@ const tripModel = {
             const filter = {
                 _id: ObjectId.createFromHexString(id)
                 };
-                
+
             let result = await db.collectionTrips.findOne(filter);
 
             if (!result) {

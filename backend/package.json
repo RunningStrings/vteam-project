@@ -8,7 +8,8 @@
         "devStart": "nodemon index.js",
         "eslint": "npx eslint *.js .",
         "eslint:fix": "npx eslint *.js . --fix",
-        "start": "node index.js"
+        "start": "node index.js",
+        "test": "npx eslint *.js ."
     },
     "dependencies": {
         "cors": "^2.8.5",

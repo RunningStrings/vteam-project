@@ -47,10 +47,10 @@ class BikeBrain {
             console.log(`Bike ${this.id} disconnected from the server`);
         });
 
-        // Listen for commands from admin
-        this.socket.on('control', (data) => {
-            this.controlBike(data.action);
-        });
+        // // Listen for commands from admin
+        // this.socket.on('control', (data) => {
+        //     this.controlBike(data.action);
+        // });
 
         this.socket.on('connect_error', (error) => {
             console.error(`Connection error for bike ${this.id}:`, error.message);
@@ -60,7 +60,10 @@ class BikeBrain {
             console.log(`Bike ${this.id} reconnected to the server after ${attemptNumber} attempts`);
         });
 
-        this.startUpdates(10000); // Base interval for updates
+        const initialDelay = Math.floor(Math.random() * 5000);
+        setTimeout(() => {
+            this.startUpdates(20000); // Base interval for updates
+        }, initialDelay);
     }
 
     /**
@@ -297,9 +300,9 @@ class BikeBrain {
             // p
         };
         
-        this.sendMessage('log-trip', {
-            tripLog: this.tripCurrent,
-        });
+        // this.sendMessage('log-trip', {
+        //     tripLog: this.tripCurrent,
+        // });
 
         const data = {
             bike_id: this.id,
@@ -413,10 +416,10 @@ class BikeBrain {
                 console.error('Error updating trip:', error.message);
             }
 
-            // Send only current trip to the server
-            this.sendMessage('log-trip', {
-                tripLog: this.tripCurrent,
-            });
+            // // Send only current trip to the server
+            // this.sendMessage('log-trip', {
+            //     tripLog: this.tripCurrent,
+            // });
         }
         this.tripCurrent = null;
     }
