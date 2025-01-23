@@ -25,7 +25,8 @@ This token grants administrative permissions to each bike in the simulation.
 
 ## Run the Simulation
 ### **Prerequisite:**<br>
-Ensure the base system is running before starting the simulation.
+Ensure the base system is running before starting the simulation. See 
+[Vteam project Configuration Documentation](https://github.com/RunningStrings/vteam-project/blob/main/README.md)
 
 ### **Steps to Run the Simulation**
 

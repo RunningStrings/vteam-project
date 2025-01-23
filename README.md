@@ -50,7 +50,7 @@ docker-compose up --build
 Follow the steps in the "Start the Base System" section.
 
 **2. Configure and Run the Simulation**<br>
-Refer to the [Simulation Configuration Documentation](https://github.com/RunningStrings/vteam-project/blob/development/bike-brain/README.md) for detailed setup and execution.
+Refer to the [Simulation Configuration Documentation](https://github.com/RunningStrings/vteam-project/blob/main/bike-brain/README.md) for detailed setup and execution.
 
 ## Files structure
 The project directory is organized as follows:
@@ -70,10 +70,10 @@ The backend subdirectory houses the database and REST API.
 * **REST API Documentation**<br>
 For a detailed overview, see the [Postman Documentation](https://documenter.getpostman.com/view/40462903/2sAYQdj9je#intro)
 * **Database Configuration**<br>
-For database setup and configuration, see the [Database Configuration Documentation](https://github.com/RunningStrings/vteam-project/blob/development/backend/database-config/README.md)
+For database setup and configuration, see the [Database Configuration Documentation](https://github.com/RunningStrings/vteam-project/blob/main/backend/database-config/README.md)
 
 ### Bike-brain
-Contains the logic and functionality for the bike simulation system. For detailed and setup, see the [Simulation Configuration Documentation](https://github.com/RunningStrings/vteam-project/blob/development/bike-brain/README.md)
+Contains the logic and functionality for the bike simulation system. For detailed and setup, see the [Simulation Configuration Documentation](https://github.com/RunningStrings/vteam-project/blob/main/bike-brain/README.md)
 
 ### Frontend
 The frontend subdirectory is the administrative system with the following features:<br>
