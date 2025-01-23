@@ -1,4 +1,4 @@
-# Simulation Instruction
+# Simulation Configuration
 This simulation provides an immersive experience by showcasing the movement of 1,000 bikes operated by 1,000 users. Follow the steps below to set up and run the simulation.
 
 ## Obtain a JWT Token
