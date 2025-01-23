@@ -4,7 +4,6 @@ version: 1
 build:
   image: node:18  # Specify the Docker image to use for the CI environment
   services:
-    # MongoDB service configuration
     - mongodb:
         image: mongo
         environment:
@@ -16,8 +15,8 @@ build:
         ports:
           - "27017:27017"
     
-    # Backend service configuration
     - backend:
+        name: "backend"  # Add a name here
         build:
           context: ./backend
           dockerfile: Dockerfile
@@ -40,8 +39,8 @@ build:
         command: >
           sh -c "node ./data-generation/index.js && node ./database-config/seed.js && npm run nodemon"
 
-    # Frontend service configuration
     - frontend:
+        name: "frontend"  # Add a name here
         build:
           context: ./frontend
           dockerfile: Dockerfile
@@ -55,8 +54,8 @@ build:
         depends_on:
           - backend
     
-    # Frontend customer service configuration
     - frontend_customer:
+        name: "frontend_customer"  # Add a name here
         build:
           context: ./frontend_customer
           dockerfile: Dockerfile
@@ -70,8 +69,8 @@ build:
         depends_on:
           - backend
 
-    # Webapp service configuration
     - webapp:
+        name: "webapp"  # Add a name here
         build:
           context: ./webapp
           dockerfile: Dockerfile
@@ -85,8 +84,8 @@ build:
         depends_on:
           - backend
     
-    # Bike brain / simulation service configuration
     - simulation:
+        name: "simulation"  # Add a name here
         build:
           context: ./bike-brain
           dockerfile: Dockerfile
@@ -98,7 +97,7 @@ build:
         tty: true
         depends_on:
           - backend
-        command: /bin/sh  # Change this if needed to run specific scripts
+        command: /bin/sh
         volumes:
           - ./bike-brain:/app
           - /app/node_modules
@@ -130,7 +129,7 @@ build:
     - frontend
     - frontend_customer
     - webapp
-    - simulation  # Ensure simulation/bike-brain is included
+    - simulation
 
 networks:
   app-network:
