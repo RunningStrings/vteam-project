@@ -113,18 +113,27 @@ build:
     - cd bike-brain && npm install
 
   # Tests to run during the build process
-  tests:
-    - cd backend && npm test
-    - cd frontend && npm test
-    - cd frontend_customer && npm test
-    - cd webapp && npm test
-    - cd bike-brain && npm test  # Ensure bike-brain has a test command
+tests:
+    - name: "Backend Tests"
+      after: true
+      command: "cd backend && npm test"
+    - name: "Frontend Tests"
+      after: true
+      command: "cd frontend && npm test"
+    - name: "Frontend Customer Tests"
+      after: true
+      command: "cd frontend_customer && npm test"
+    - name: "Webapp Tests"
+      after: true
+      command: "cd webapp && npm test"
+    - name: "Bike Brain Tests"
+      after: true
+      command: "cd bike-brain && npm test"
 
-  # Shared environment variables for the build
   environment:
+    - NODE_ENV=production
     - MONGO_URI=mongodb://mongo:27017
 
-  # Link the services together
   linked_containers:
     - backend
     - frontend
