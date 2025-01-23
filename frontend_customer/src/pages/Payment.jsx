@@ -1,14 +1,30 @@
-import { useState, useEffect  } from "react";
-import { apiKey, baseURL } from "../components/utils.jsx";
+import { useState, useEffect } from 'react';
+import { baseURL } from "../components/utils.jsx";
 import { ToastContainer, toast } from "react-toastify";
-const userId=sessionStorage.getItem('userId');
+//import { useNavigate } from 'react-router-dom';
+import React from "react";
 
-async function updateUserBalance(userId, newBalance) {
-  const endpoint = `${baseURL}/users/${userId}`;
-  const body = { "balance": newBalance };
-  let token=sessionStorage.getItem('token');
-  //const id=sessionStorage.getItem('id');
+let userId = "";
+
+const initialFormValues = {
+
+  id: "",
+  firstname: "",
+  lastname: "",
+  balance: "",
   
+}
+
+async function updateUser(balance,paying) {
+  const endpoint = `${baseURL}/users/${userId}`;
+  
+  let token=sessionStorage.getItem('token');
+  console.log(userId);
+  
+  const body = {
+    "balance": (Number(balance)+Number(paying)),
+  };
+
 
   try {
     const response = await fetch(endpoint, {
@@ -24,38 +40,57 @@ async function updateUserBalance(userId, newBalance) {
       throw new Error(`Error: ${response.status} ${response.statusText}`);
     }
 
-    // Hantera tomt svar (t.ex., 204 No Content)
+    // Kontrollera om svaret innehåller JSON
     const contentType = response.headers.get("content-type");
     if (contentType && contentType.includes("application/json")) {
       const data = await response.json();
-      console.log("Response data:", data);
-      toast("Pengarna är insatta på kontot!");
+      toast.success("Du är nu gjort en insättning!", {
+        onClose: () => {
+          // Navigate or perform any action after the toast disappears
+          //const navigate = useNavigate();
+          //navigate("/user");
+        },
+        autoClose: 3000, // Auto close after 3 seconds
+      });
+      //console.log("Response data:", data);
+      //alert("Användaren har uppdaterats!");
       return data;
     } else {
-      console.warn("No JSON content in response.");
-      toast("Pengarna är insatta på kontot!");
+      toast.success("Du är nu gjort en insättning!", {
+        onClose: () => {
+          // Navigate or perform any action after the toast disappears
+          //navigate("/");
+        },
+        autoClose: 3000, // Auto close after 3 seconds
+      });
+      //alert("Användaren har uppdaterats");
       return null;
     }
   } catch (error) {
-    toast("Ett problem uppstod när pengarna sattes in");
-    console.error("Error updating balance:", error);
+    alert("Ett problem uppstod när betalningen gjordes.");
+    //console.error("Error creating user:", error);
   }
 }
-function DynamicForm() {
-  const [selectedOption, setSelectedOption] = useState("");
-  const [formData, setFormData] = useState("");
-  const [users, setUsers] = useState([]);
-  //const [balance, setBalance] = useState("");
-  let token=sessionStorage.getItem('token');
-  //let userId=sessionStorage.getItem('userId');
-  //const { firstname, lastname, email, role, balance } = formData;
 
-  const showToast = () => {
-    toast.success("This is a success toast!", {
-      position: toast.POSITION.TOP_RIGHT, // Customize position
-    });
+function User() {
+  const [formData, setFormData] = useState(initialFormValues);
+  const [users, setUsers] = useState([]); // Deklarerar users
+  const [selectedUserId, setSelectedUserId] = useState([]); // Deklarerar users
+  let token=sessionStorage.getItem('token');
+  let paying=0;
+
+  const handleSubmit = (evt) => {
+    evt.preventDefault();
+    //console.log(formData);
+    const { firstname, lastname, email, role, balance,paying } = formData;
+    updateUser(balance,paying);
+    //setFormData(initialFormValues);
   };
 
+  const handleChange = (evt) => {
+    const { name, value } = evt.target;
+    setFormData({ ...formData, [name]: value });
+  };
 
   useEffect(() => {
     // Fetch users from the backend API
@@ -68,11 +103,11 @@ function DynamicForm() {
       })
       .then((responseData) => {
         setUsers(responseData.data); // Store all users
-        const id = sessionStorage.getItem('id'); // Get id from sessionStorage
-        if (id) {
+        userId = sessionStorage.getItem('id'); // Get email from sessionStorage
+        if (userId) {
           const matchedUser = responseData.data.find((user) => user._id === userId);
           if (matchedUser) {
-            console.log(matchedUser.balance);
+            //console.log(matchedUser);
             //userId = matchedUser._id;
             //sessionStorage.setItem("userId","_id")
             setFormData(matchedUser); // Populate the form with the matched user's data
@@ -84,110 +119,102 @@ function DynamicForm() {
       });
   }, []);
 
-  const handleOptionChange = (event) => {
-    setSelectedOption(event.target.value);
-  };
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
-
-    if (!balance) {
-      toast("Please enter a valid balance.");
-      return;
+  const handleUserSelect = (evt) => {
+    const userId = evt.target.value;
+    setSelectedUserId(userId);
+    const user = users.find((u) => u.id === userId);
+    if (user) {
+      setFormData(user); // Populate formData with the selected user's data
     }
-
-    //const userId = "6775634df665dfbf9f5bf389"; // Uppdatera med dynamiskt användar-ID om möjligt
-    updateUserBalance(userId, balance)
-      .then((data) => {
-        if (data) {
-          console.log("Update successful:", data);
-          toast.success("This is a success message!");
-        }
-      })
-      .catch((error) => {
-        console.error("Update failed:", error);
-      });
   };
 
   return (
     <div className="App" style={{ marginLeft: "220px", padding: "20px" }}>
-      <h2>Betalning</h2>
-      <p>Välj din betalningstyp:</p>
+      <h2>En användare</h2>
       <form className="form" onSubmit={handleSubmit}>
+
         <div className="form__group">
-          <label htmlFor="category" className="form__label">Betalningstyp:</label>
-          <select
-            id="category"
-            name="category"
-            className="form__select"
-            value={selectedOption}
-            onChange={handleOptionChange}
-          >
-            <option value="">-- Välj --</option>
-            <option value="onetime">Engångsbetalning</option>
-            <option value="month">Månadsbetalning</option>
-          </select>
+          <label htmlFor="name" className="form__label">
+            Namn på kort
+          </label>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            value={formData.firstname+" "+formData.lastname}
+            className="form__input"
+            onChange={handleChange}
+          />
         </div>
-
-        {/* Dynamiska fält */}
-        {selectedOption === "onetime" && (
-          <div>
-            <div className="form__group">
-              <label htmlFor="name" className="form__label">Namn på kreditkortet:</label>
-              <input type="text" id="name" name="name" className="form__input"
-              value={formData.firstname +" "+formData.lastname}
-              />
-            </div>
-            <div className="form__group">
-              <label htmlFor="saldo" className="form__label">Belopp:</label>
-              <input
-                type="number"
-                id="saldo"
-                name="saldo"
-                className="form__input"
-                onChange={(e) => setBalance(e.target.value)}
-                value={balance}
-              />
-            </div>
-          </div>
-        )}
-
-        {selectedOption === "month" && (
-          <div>
-            <div className="form__group">
-              <label htmlFor="account" className="form__label">Kontonummer:</label>
-              <input type="text" id="account" name="account" className="form__input" />
-            </div>
-            <div className="form__group">
-              <label htmlFor="money" className="form__label">Belopp:</label>
-              <input
-                type="number"
-                id="money"
-                name="money"
-                className="form__input"
-                onChange={(e) => setBalance(e.target.value)}
-                value={balance}
-              />
-            </div>
-          </div>
-        )}
-
-        <button type="submit" className="form__button">Skicka</button>
+        <div className="form__group">
+          <label htmlFor="date" className="form__label">
+            Kortnummer
+          </label>
+          <input
+            type="text"
+            id="cardnumber"
+            name="cardnumber"
+            value="1235 4568 5987 4563"
+            className="form__input"
+            onChange={handleChange}
+          />
+        </div>
+        <div className="form__group">
+          <label htmlFor="date" className="form__label">
+            Utgångsdatum
+          </label>
+          <input
+            type="text"
+            id="date"
+            name="date"
+            value="04-27"
+            className="form__input"
+            onChange={handleChange}
+          />
+        </div>
+        <div className="form__group">
+          <label htmlFor="cvc" className="form__label">
+            CVC
+          </label>
+          <input
+            type="text"
+            id="cvc"
+            name="cvc"
+            value="321"
+            className="form__input"
+            onChange={handleChange}
+          />
+        </div>
+        <div className="form__group">
+          <label htmlFor="balance" className="form__label">
+            Önskad insättning
+          </label>
+          <input
+            type="number"
+            id="paying"
+            name="paying"
+            defaultValue={paying}
+            className="form__input"
+            onChange={handleChange}
+          />
+        </div>
+        <button className="button" type="submit">
+          Submit
+        </button>
       </form>
       <ToastContainer 
-        position="top-right"
-        autoClose={5000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-      />
+  position="top-right"
+  autoClose={5000}
+  hideProgressBar={false}
+  newestOnTop={false}
+  closeOnClick
+  rtl={false}
+  pauseOnFocusLoss
+  draggable
+  pauseOnHover
+/>
     </div>
   );
-}
+};
 
-export default DynamicForm;
-
+export default User;

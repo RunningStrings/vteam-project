@@ -2,9 +2,9 @@
 import { MapContainer, TileLayer, Marker, Popup, Polygon, Circle } from "react-leaflet";
 import { useState, useEffect } from 'react';
 import MarkerClusterGroup from "@changey/react-leaflet-markercluster";
-import L, { LatLng } from "leaflet";
+import  L, { LatLng } from "leaflet";
 
-import { useMap } from "../hooks";
+//import { useMap } from "../hooks";
 
 const Maps = () => {
 
