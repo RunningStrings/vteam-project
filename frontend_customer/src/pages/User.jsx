@@ -6,10 +6,8 @@ const initialFormValues = {
   firstname: "",
   lastname: "",
   email: "",
-  password: "",
   saldo: "",
-  phone: "",
-  admin: ""
+  role: ""
 }
 
 function User() {
@@ -42,7 +40,7 @@ function User() {
       })
       .then((responseData) => {
         setUsers(responseData.data); // Store all users
-        const id = sessionStorage.getItem('id'); // Get email from sessionStorage
+        const id = sessionStorage.getItem('id'); // Get id from sessionStorage
         if (id) {
           const matchedUser = responseData.data.find((user) => user._id === id);
           if (matchedUser) {

@@ -10,8 +10,7 @@ const initialFormValues = {
   firstname: "",
   lastname: "",
   email: "",
-  password: "",
-  balnce: "",
+  balance: "",
   admin: ""
 
 }
@@ -25,7 +24,6 @@ async function updateUser(firstName, lastName, email, role, balance) {
     "email": email,
     "role": role,
     "balance": balance,
-    "password": "",
   };
 
 
@@ -195,22 +193,6 @@ function User() {
           }*/
           />
         </div>
-        <div className="form__group">
-          <label htmlFor="trips" className="form__label">
-            Resehistorik
-          </label>
-          <input
-            type="text"
-            id="trips"
-            name="trips"
-            value={formData.trips}
-            className="form__input"
-            onChange={handleChange}
-          /*onChange={(e) =>
-            setFormData({ ...formData, trips: e.target.value})
-          }*/
-          />
-        </div>
 
         <div className="form__group">
           <label htmlFor="balance" className="form__label">
@@ -257,6 +239,24 @@ function User() {
 };
 
 export default User;
+
+/*<div className="form__group">
+<label htmlFor="trips" className="form__label">
+  Resehistorik
+</label>
+<input
+  type="text"
+  id="trips"
+  name="trips"
+  value={formData.trips}
+  className="form__input"
+  onChange={handleChange}
+/>
+</div>*/
+
+
+
+
 
 /*  <ToastContainer 
   position="top-right"

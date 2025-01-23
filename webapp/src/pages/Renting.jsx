@@ -6,68 +6,23 @@ import { apiKey, baseURL } from "../components/utils.jsx";
 
 const Home = () => {
   let bikeid=sessionStorage.getItem('bikeid');
+  let tripid=sessionStorage.getItem('tripId');
   let token=sessionStorage.getItem('token');
   const customerId=sessionStorage.getItem('id');
   const startPos=sessionStorage.getItem('startpos');
   const navigate = useNavigate();
   const [trips, setTrips] = useState([]); // Deklarerar trips
 
-  useEffect(() => {
-    fetch('/trips')
-    .then((response) => {
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
-      return response.json();
-    })
-    .then((responseData) => {
-      if (responseData && responseData.data) {
-        setTrips(responseData.data);
-        // Resterande logik här
-      } else {
-        console.error("Data är tom eller felaktig:", responseData);
-      }  
-      
-      
-      
-      //setTrips(responseData.data);
-
-        if (customerId) {
-          const matchedTrip = responseData.data.find((trip) => trip.customer_id === customerId);
-          if (matchedTrip) {
-            console.log(matchedTrip._id);
-          }
-        }
-    })
-    .catch((error) => {
-    console.error("Error fetching trips:", error);
-    });
-
-  }, []);
-
-
-
-
-
-
-
-
-
-
-
-
-
   async function createTrip() {
-    const endpoint = `${baseURL}/trips/`;
+    const endpoint = `${baseURL}/trips/${tripid}`;
     let token=sessionStorage.getItem('token');
     const body = {
-      bike_id: bikeid,
-      customer_id: customerId,
-      location : {
-        type: "point",  
-        coordinates:[startPos[0]+0.005,startPos[1]+0.004],
-      },
+      end: 
+       {
+        location:startPos,
         free_parking:true,
+      },
+        is_active:false,
     };
    try {
       const response = await fetch(endpoint, {
@@ -86,10 +41,10 @@ const Home = () => {
       const contentType = response.headers.get("content-type");
       if (contentType && contentType.includes("application/json")) {
         const data = await response.json();
-        alert("Trip har skapats!");
+        //alert("Trip har skapats!");
         return data;
       } else {
-        alert("Trip har skapats");
+        //alert("Trip har skapats");
         return null;
       }
     } catch (error) {
