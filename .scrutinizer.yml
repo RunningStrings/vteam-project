@@ -2,55 +2,135 @@ version: 1
 
 # Define the build environment
 build:
-  image: node:18  # Specify the Node.js Docker image
-
-  # Define the services needed for the build (e.g., MongoDB, bike-brain, etc.)
+  image: node:18  # Specify the Docker image to use for the CI environment
   services:
+    # MongoDB service configuration
     - mongodb:
         image: mongo
         environment:
           - MONGO_URI=mongodb://mongo:27017
+        volumes:
+          - ./data/db:/data/db
+        networks:
+          - app-network
+        ports:
+          - "27017:27017"
+    
+    # Backend service configuration
+    - backend:
+        build:
+          context: ./backend
+          dockerfile: Dockerfile
+        environment:
+          - MONGO_DSN=${MONGO_DSN}
+          - MONGO_URI=${MONGO_URI}
+          - CLIENT_ID=${CLIENT_ID}
+          - CLIENT_SECRET=${CLIENT_SECRET}
+          - REDIRECT_URI=${REDIRECT_URI}
+          - JWT_SECRET=${JWT_SECRET}
+          - REDIRECT_URI_FRONTEND=${REDIRECT_URI_FRONTEND}
+          - NODE_ENV=simulation
+        volumes:
+          - ./backend:/app
+          - /app/node_modules
+        networks:
+          - app-network
+        depends_on:
+          - mongodb
+        command: >
+          sh -c "node ./data-generation/index.js && node ./database-config/seed.js && npm run nodemon"
 
-    - bike-brain:
+    # Frontend service configuration
+    - frontend:
+        build:
+          context: ./frontend
+          dockerfile: Dockerfile
+        ports:
+          - "5173:5173"
+        networks:
+          - app-network
+        volumes:
+          - ./frontend:/app
+          - /app/node_modules
+        depends_on:
+          - backend
+    
+    # Frontend customer service configuration
+    - frontend_customer:
+        build:
+          context: ./frontend_customer
+          dockerfile: Dockerfile
+        ports:
+          - "1337:1337"
+        networks:
+          - app-network
+        volumes:
+          - ./frontend_customer:/app
+          - /app/node_modules
+        depends_on:
+          - backend
+
+    # Webapp service configuration
+    - webapp:
+        build:
+          context: ./webapp
+          dockerfile: Dockerfile
+        ports:
+          - "3000:3000"
+        networks:
+          - app-network
+        volumes:
+          - ./webapp:/app
+          - /app/node_modules
+        depends_on:
+          - backend
+    
+    # Bike brain / simulation service configuration
+    - simulation:
         build:
           context: ./bike-brain
           dockerfile: Dockerfile
         environment:
-          - BIKE_TOKEN=${BIKE_TOKEN}  # Assuming this is defined in your .env file
+          - BIKE_TOKEN=${BIKE_TOKEN}
         networks:
           - app-network
         stdin_open: true
         tty: true
-        command: /bin/sh  # You can change this to whatever command you need to run for bike-brain
+        depends_on:
+          - backend
+        command: /bin/sh  # Change this if needed to run specific scripts
+        volumes:
+          - ./bike-brain:/app
+          - /app/node_modules
 
-  # Define the commands to run during the build process
+  # Commands to run during the build process
   commands:
-    - cd backend && npm install  # Install dependencies for the backend
-    - cd frontend && npm install  # Install dependencies for the frontend
-    - cd frontend_customer && npm install  # Install dependencies for frontend_customer
-    - cd webapp && npm install  # Install dependencies for webapp
-    - cd bike-brain && npm install  # Install dependencies for bike-brain
+    - cd backend && npm install
+    - cd frontend && npm install
+    - cd frontend_customer && npm install
+    - cd webapp && npm install
+    - cd bike-brain && npm install
 
-  # Run the tests for each service
+  # Tests to run during the build process
   tests:
-    - cd backend && npm test  # Run tests for backend
-    - cd frontend && npm test  # Run tests for frontend
-    - cd frontend_customer && npm test  # Run tests for frontend_customer
-    - cd webapp && npm test  # Run tests for webapp
-    - cd bike-brain && npm test  # Run tests for bike-brain
+    - cd backend && npm test
+    - cd frontend && npm test
+    - cd frontend_customer && npm test
+    - cd webapp && npm test
+    - cd bike-brain && npm test  # Ensure bike-brain has a test command
 
-  # Optionally, set up environment variables for the build
+  # Shared environment variables for the build
   environment:
     - NODE_ENV=production
     - MONGO_URI=mongodb://mongo:27017
 
-  # Link containers so Scrutinizer knows which services are required for the build
+  # Link the services together
   linked_containers:
     - backend
     - frontend
     - frontend_customer
     - webapp
-    - bike-brain
+    - simulation  # Ensure simulation/bike-brain is included
 
 networks:
   app-network:
