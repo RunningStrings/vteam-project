@@ -10,7 +10,7 @@ router
     .route("/")
     .get(async (req, res, next) => {
         try {
-            const result = await tripModel.fetchAllTrips();
+            const result = await tripModel.fetchAllTrips(req.query);
             res.status(200).json({
                 data: result
             });
