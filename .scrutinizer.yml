@@ -1,22 +1,57 @@
 version: 1
 
+# Define the build environment
 build:
-    image: node:18
-    steps:
-        - run: |
-            cd backend && npm install
-            cd ../frontend && npm install
-            cd ../frontend_customer && npm install
-            cd ../webapp && npm install
-            cd ../bike-brain && npm install
+  image: node:18  # Specify the Node.js Docker image
 
-        - run: |
-            cd backend && npm test
-            cd ../frontend && npm test
-            cd ../frontend_customer && npm test
-            cd ../webapp && npm test
-            cd ../bike-brain && npm test
+  # Define the services needed for the build (e.g., MongoDB, bike-brain, etc.)
+  services:
+    - mongodb:
+        image: mongo
+        environment:
+          - MONGO_URI=mongodb://mongo:27017
+
+    - bike-brain:
+        build:
+          context: ./bike-brain
+          dockerfile: Dockerfile
+        environment:
+          - BIKE_TOKEN=${BIKE_TOKEN}  # Assuming this is defined in your .env file
+        networks:
+          - app-network
+        stdin_open: true
+        tty: true
+        command: /bin/sh  # You can change this to whatever command you need to run for bike-brain
+
+  # Define the commands to run during the build process
+  commands:
+    - cd backend && npm install  # Install dependencies for the backend
+    - cd frontend && npm install  # Install dependencies for the frontend
+    - cd frontend_customer && npm install  # Install dependencies for frontend_customer
+    - cd webapp && npm install  # Install dependencies for webapp
+    - cd bike-brain && npm install  # Install dependencies for bike-brain
+
+  # Run the tests for each service
+  tests:
+    - cd backend && npm test  # Run tests for backend
+    - cd frontend && npm test  # Run tests for frontend
+    - cd frontend_customer && npm test  # Run tests for frontend_customer
+    - cd webapp && npm test  # Run tests for webapp
+    - cd bike-brain && npm test  # Run tests for bike-brain
+
+  # Optionally, set up environment variables for the build
+  environment:
+    - NODE_ENV=production
+    - MONGO_URI=mongodb://mongo:27017
+
+  # Link containers so Scrutinizer knows which services are required for the build
+  linked_containers:
+    - backend
+    - frontend
+    - frontend_customer
+    - webapp
+    - bike-brain
 
 networks:
-    app-network:
-        driver: bridge
+  app-network:
+    driver: bridge
