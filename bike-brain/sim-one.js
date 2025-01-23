@@ -13,7 +13,7 @@ const API_URL = 'http://backend:5000/api/v1';
 
 const BATCH_SIZE = 200;
 
-const MIN_TRIP_DURATION = 1000;
+const MIN_TRIP_DURATION = 30000;
 
 const rl = readline.createInterface({ input, output });
 
@@ -62,7 +62,12 @@ const loadBikesFromDatabase = async () => {
 // Load users from database
 const loadUsersFromDatabase = async () => {
     try {
-        const response = await axios.get(`${API_URL}/users`);
+        const response = await axios.get(`${API_URL}/users`, {
+            headers: {
+                'Content-Type': 'application/json', // Optional, specify the content type
+                'x-access-token': process.env.BIKE_TOKEN // Replace with your token variable
+            }
+        });
 
         const users = response.data?.data || [];
 
@@ -73,16 +78,15 @@ const loadUsersFromDatabase = async () => {
     }
 };
 
-
 const calcBatteryDepletion = (bike) => {
     let depletionRate = 0;
 
     switch (bike.status) {
         case 'in-use':
-            depletionRate = 1 + Math.random() * 1.5;
+            depletionRate = 0.2 + Math.random() * 0.1;
             break;
         case 'available':
-            depletionRate = 0.2 + Math.random() * 0.5;
+            depletionRate = 0.1 + Math.random() * 0.1;
             break;
         case 'charging':
             depletionRate = -5 - Math.random() * 2;
@@ -91,12 +95,12 @@ const calcBatteryDepletion = (bike) => {
             depletionRate = 0;
             break;
         default:
-            depletionRate = 0.1;
+            depletionRate = 0.05;
     }
 
-    const speedFactor = bike.speed > 0 ? bike.speed * 0.02 : 0;
+    const speedFactor = bike.speed > 0 ? bike.speed * 0.01 : 0;
 
-    const randomFactor = Math.random() * 0.2;
+    const randomFactor = Math.random() * 0.1;
 
     const newBatteryLevel = bike.battery - depletionRate - speedFactor - randomFactor;
 
@@ -109,7 +113,7 @@ const simulateBikeUpdates = (bike, customers) => {
         const newLat = bike.location.coordinates[0] + (Math.random() - 0.5) * 0.001;
         const newLon = bike.location.coordinates[1] + (Math.random() - 0.5) * 0.001;
         bike.updateLocation({ type: 'Point', coordinates: [newLat, newLon] });
-        console.log(`Bike ${bike.id} is moving:`, bike.location);
+        // console.log(`Bike ${bike.id} is moving:`, bike.location);
 
         setTimeout(() => {
             if (bike.tripCurrent && bike.tripCurrent.is_active) {
@@ -132,7 +136,7 @@ const simulateBikeUpdates = (bike, customers) => {
         if (customer) {
             console.log(`Bike ${bike.id} starting a new rental for customer ${customer._id}`);
             bike.startRental(customer._id);
-            bike.checkAndUpdateSpeed(20);
+            bike.checkAndUpdateSpeed(7);
         }
         console.log(`tripLog: ${JSON.stringify(bike.tripCurrent)}`);
     } else if (bike.status === 'maintenance') {

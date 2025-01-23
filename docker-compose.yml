@@ -93,6 +93,8 @@ services:
         build:
             context: ./bike-brain
             dockerfile: Dockerfile
+        environment:
+            - BIKE_TOKEN=${BIKE_TOKEN}
         networks:
             - app-network
         depends_on:

@@ -11,15 +11,15 @@ const generateUser = () => {
     const email = fakerSV.internet.email({ firstName, lastName }); // Random email from firstname and lastname
     const role = faker.helpers.arrayElement(['customer', 'admin', 'city_manager']); // Random role;
     const balance = role === 'customer' ? faker.number.int({ min: 0, max: 1000 }) : undefined; // Add balance placeholder if customer
+    const monthly_paid = Math.random() < 0.5;
 
     return {
         role: role,
         firstname: firstName,
         lastname: lastName,
         email: email,
-        password_hash: '',
         balance: role === 'customer' ? balance : undefined, // Add balance only if 'customer'
-        trip_history: []
+        monthly_paid: monthly_paid
     };
 };
 

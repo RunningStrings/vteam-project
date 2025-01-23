@@ -5,6 +5,7 @@
 import database from '../database-config/database.js';
 import { ObjectId, Timestamp } from 'mongodb';
 import { createError } from './utils/createError.js'
+import cost from './utils/calculateCost.js'
 
 const tripModel = {
     fetchAllTrips: async function fetchAllTrips() {
@@ -107,16 +108,30 @@ const tripModel = {
                 createError(`trip with ID: ${id} cannot be found`, 404);
             }
 
-            const allowedProperties = ["city_id", "location", "status",
-                 "battery_level", "speed"];
+            // Add properties "end" and "is_active"
+            const timeNow = new Date().getTime();
+            const allowedProperties = [
+                "city_id",
+                "location",
+                "status",
+                "battery_level",
+                "speed",
+                "end",
+                "is_active",
+            ];
             const reqProperties = Object.keys(body);
             const isInvalidUpdate = reqProperties.some(property =>
                 !allowedProperties.includes(property));
 
-           if (isInvalidUpdate) {
-               createError(`invalid update property key. This API only allow
-                    updates of already existing properties.`, 400);
-           }
+            if (isInvalidUpdate) {
+                createError(`invalid update property key. This API only allow
+                        updates of already existing properties.`, 400);
+            }
+
+            // Add end timestamp
+            if (body.end) {
+                body.end.timestamp = timeNow;
+            }
 
             result = await db.collectionTrips.updateOne(filter, { $set: body });
 
@@ -170,13 +185,27 @@ const tripModel = {
 
         try {
             const timeNow = new Date().getTime();
+            let futureTime;
+            let calculatedCost;
+            if (typeof body.end.minutes !== 'undefined' && typeof body.free_parking !== 'undefined' &&
+                typeof body.end.free_parking !== 'undefined') {
+                    const duration = body.end.minutes * 60 * 1000;
+                    futureTime = (body.timestamp || timeNow) + duration;
+                    console.log(futureTime);
+                    calculatedCost = cost(body.free_parking, body.end.free_parking, duration);
+                }
+            console.log(futureTime);
             const newTrip = {
                 bike_id: body.bike_id,
                 customer_id: body.customer_id,
-                start: { location: body.location, timestamp: timeNow, free_parking: body.free_parking},
-                end: { location: null, timestamp: null, free_parking: null },
-                cost: null,
-                is_active: true
+                start: { location: body.location, timestamp: body.timestamp || timeNow,
+                     free_parking: body.free_parking},
+                end: { location: body.end.location || null, timestamp: futureTime || null,
+                    free_parking: body.end.free_parking === undefined ? null : body.end.free_parking },
+                variable_cost: calculatedCost.variable || null,
+                fixed_cost: calculatedCost.fixed || null,
+                cost: calculatedCost.total || null,
+                is_active: body.is_active === undefined ? true : body.is_active
             };
 
             const result = await db.collectionTrips.insertOne(newTrip);

@@ -23,7 +23,7 @@ router
         try {
             const result = await tripModel.createTrip(req.body);
             res.set('Location', `/trips/${result.insertedId}`);
-            res.status(201).send();
+            res.status(201).send({ tripId: result.insertedId });
         } catch (error) {
             console.error('Error post trips:', error);
             next(error);

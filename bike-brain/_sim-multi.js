@@ -13,19 +13,9 @@ const API_URL = 'http://backend:5000/api/v1';
 
 const BATCH_SIZE = 200;
 
-const MIN_TRIP_DURATION = 10000;
+// const MIN_TRIP_DURATION = 10000;
 
 const rl = readline.createInterface({ input, output });
-
-// const startId = parseInt(process.env.BIKE_ID_START, 10);
-// const endId = parseInt(process.env.BIKE_ID_EMD, 10);
-
-// if (!startId || !endId) {
-//     console.error("Error: BIKE_START_ID and BIKE_END_ID env variables are required.");
-//     process.exit(1);
-// }
-
-// console.log(`Processing bikes from ${startId} to ${endId}`);
 
 const waitForBackend = async () => {
     let retries = 5;
@@ -61,13 +51,9 @@ const loadBikesFromDatabase = async () => {
 
             if (!batch || batch.length === 0) break;
 
-            // // Filter bikes to match the range specified by the env variables
-            // const filteredBatch = batch.filter(bike =>
-            //     bike.id >= startId && bike.id <= endId
-            // );
-
             batch.forEach(doc => {
                 const bike = new BikeBrain(doc._id, doc.id, doc.city_name, doc.location, doc.status);
+
                 bikes.push(bike);
             });
 
@@ -88,7 +74,12 @@ const loadBikesFromDatabase = async () => {
 // Load users from database
 const loadUsersFromDatabase = async () => {
     try {
-        const response = await axios.get(`${API_URL}/users`);
+        const response = await axios.get(`${API_URL}/users`, {
+            headers: {
+                'Content-Type': 'application/json', // Optional, specify the content type
+                'x-access-token': process.env.BIKE_TOKEN // Replace with your token variable
+            }
+        });
 
         const users = response.data?.data || [];
 
@@ -127,10 +118,10 @@ const calcBatteryDepletion = (bike) => {
 
     switch (bike.status) {
         case 'in-use':
-            depletionRate = 1 + Math.random() * 1.5;
+            depletionRate = 0.2 + Math.random() * 0.1;
             break;
         case 'available':
-            depletionRate = 0.2 + Math.random() * 0.5;
+            depletionRate = 0.1 + Math.random() * 0.1;
             break;
         case 'charging':
             depletionRate = -5 - Math.random() * 2;
@@ -139,12 +130,12 @@ const calcBatteryDepletion = (bike) => {
             depletionRate = 0;
             break;
         default:
-            depletionRate = 0.1;
+            depletionRate = 0.05;
     }
 
-    const speedFactor = bike.speed > 0 ? bike.speed * 0.02 : 0;
+    const speedFactor = bike.speed > 0 ? bike.speed * 0.01 : 0;
 
-    const randomFactor = Math.random() * 0.2;
+    const randomFactor = Math.random() * 0.1;
 
     const newBatteryLevel = bike.battery - depletionRate - speedFactor - randomFactor;
 
@@ -163,49 +154,40 @@ const simulateBikeUpdates = (bikes, customers) => {
     for (let i = 0; i < bikes.length; i += BATCH_SIZE) {
         const batch = bikes.slice(i, i + BATCH_SIZE);
         batch.forEach((bike) => {
+            const MIN_TRIP_DURATION = Math.floor(Math.random() * (300000 - 30000 + 1)) + 30000;
+
             if (bike.tripCurrent && bike.tripCurrent.is_active) {
                 if (Date.now() - bike.tripCurrent.startTime >= MIN_TRIP_DURATION) {
                 // if (bike.tripCurrent && bike.tripCurrent.is_active) {
                     bike.checkAndUpdateSpeed(0);
                     bike.stopRental();
+
+                    const customer = customers.find(c => c._id === bike.tripCurrent.customerId);
+                    if (customer) {
+                        customer.activeRental = null; // Reset activeRental when rent ends.
+                    }
                 } else {
                     const newLat = bike.location.coordinates[0] + (Math.random() - 0.5) * 0.001;
                     const newLon = bike.location.coordinates[1] + (Math.random() - 0.5) * 0.001;
 
                     bike.updateLocation({ type: 'Point', coordinates: [newLat, newLon] });
                 }
-                
-
-                // const startLocation = bike.location.coordinates;
-                // const endLocation = {
-                //     lat: startLocation[0] + (Math.random() - 0.5) * 0.01,
-                //     lon: startLocation[1] + (Math.random() - 0.5) * 0.01
-                // };
-                // console.log(`startLocation: ${JSON.stringify(startLocation)}`);
-                // console.log(`endLocation: ${JSON.stringify(endLocation)}`);
-                // const startTime = new Date();
-                // const endTime = new Date(startTime.getTime() + 60000); // Simulate for 1 minute
-                // const steps = 10;
-
-                // simulateBikeMovement(bike, startLocation, endLocation, startTime, endTime, steps);
-                // bike.updateSpeed(Math.floor(Math.random() * 20));
             }
 
             const newBatteryLevel = calcBatteryDepletion(bike);
             bike.updateBattery(newBatteryLevel);
 
-            if (Math.random() > 0.9 && (!bike.tripCurrent || !bike.tripCurrent.is_active)) {
-                const customer = customers[Math.floor(Math.random() * customers.length)];
-                if (customer) {
+            if (Math.random() > 0.9 && !bike.tripCurrent?.is_active) {
+                const availableCustomers = customers.filter(customer => !customer.activeRental);
+                if (availableCustomers.length > 0) {
+                    const customer = availableCustomers[Math.floor(Math.random() * availableCustomers.length)];
                     bike.startRental(customer._id);
+                    customer.activeRental = bike.tripCurrent;
                     bike.checkAndUpdateSpeed(20);
                 }
             }
         });
-
-        socket.emit('batch-update', batch.map(bike => bike.getBikeData()));
-    }
-    try {
+    } try {
         const activeRentals = bikes.filter((bike) => bike.tripCurrent && bike.tripCurrent.is_active).length;
         console.log(`Active rentals: ${activeRentals}`);
     } catch (error) {

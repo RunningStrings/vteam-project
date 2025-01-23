@@ -46,6 +46,10 @@ app.get('/', (req, res, next) => {
     });
 });
 
+app.get('/docs', (req, res, next) => {
+    res.redirect("https://documenter.getpostman.com/view/40462903/2sAYQdj9je");
+});
+
 // app.get('/github/oauth2/callback', (req, res) => {
     //     res.send('Hello from the Backend!');
     // });
