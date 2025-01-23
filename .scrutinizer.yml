@@ -1,114 +1,112 @@
 version: 1
 
+# Global configuration for Scrutinizer
 build:
   image: node:18
-  services:
-    - mongodb:
-        image: mongo
-        environment:
-          - MONGO_URI=mongodb://mongo:27017
-        volumes:
-          - ./data/db:/data/db
-        networks:
-          - app-network
-        ports:
-          - "27017:27017"
+  nodes:
+    analysis:
+      services:
+        backend:
+          name: "backend"
+          build:
+            context: ./backend
+            dockerfile: Dockerfile
+          environment:
+            - MONGO_DSN=${MONGO_DSN}
+            - MONGO_URI=${MONGO_URI}
+            - CLIENT_ID=${CLIENT_ID}
+            - CLIENT_SECRET=${CLIENT_SECRET}
+            - REDIRECT_URI=${REDIRECT_URI}
+            - JWT_SECRET=${JWT_SECRET}
+            - REDIRECT_URI_FRONTEND=${REDIRECT_URI_FRONTEND}
+            - NODE_ENV=simulation
+          volumes:
+            - ./backend:/app
+            - /app/node_modules
+          networks:
+            - app-network
+          depends_on:
+            - mongodb
+          command: >
+            sh -c "node ./data-generation/index.js && node ./database-config/seed.js && npm run nodemon"
 
-    - backend:
-        name: "backend"
-        build:
-          context: ./backend
-          dockerfile: Dockerfile
-        environment:
-          - MONGO_DSN=${MONGO_DSN}
-          - MONGO_URI=${MONGO_URI}
-          - CLIENT_ID=${CLIENT_ID}
-          - CLIENT_SECRET=${CLIENT_SECRET}
-          - REDIRECT_URI=${REDIRECT_URI}
-          - JWT_SECRET=${JWT_SECRET}
-          - REDIRECT_URI_FRONTEND=${REDIRECT_URI_FRONTEND}
-          - NODE_ENV=simulation
-        volumes:
-          - ./backend:/app
-          - /app/node_modules
-        networks:
-          - app-network
-        depends_on:
-          - mongodb
-        command: >
-          sh -c "node ./data-generation/index.js && node ./database-config/seed.js && npm run nodemon"
+        frontend:
+          name: "frontend"
+          build:
+            context: ./frontend
+            dockerfile: Dockerfile
+          ports:
+            - "5173:5173"
+          networks:
+            - app-network
+          volumes:
+            - ./frontend:/app
+            - /app/node_modules
+          depends_on:
+            - backend
 
-    - frontend:
-        name: "frontend"
-        build:
-          context: ./frontend
-          dockerfile: Dockerfile
-        ports:
-          - "5173:5173"
-        networks:
-          - app-network
-        volumes:
-          - ./frontend:/app
-          - /app/node_modules
-        depends_on:
-          - backend
+        frontend_customer:
+          name: "frontend_customer"
+          build:
+            context: ./frontend_customer
+            dockerfile: Dockerfile
+          ports:
+            - "1337:1337"
+          networks:
+            - app-network
+          volumes:
+            - ./frontend_customer:/app
+            - /app/node_modules
+          depends_on:
+            - backend
 
-    - frontend_customer:
-        name: "frontend_customer"
-        build:
-          context: ./frontend_customer
-          dockerfile: Dockerfile
-        ports:
-          - "1337:1337"
-        networks:
-          - app-network
-        volumes:
-          - ./frontend_customer:/app
-          - /app/node_modules
-        depends_on:
-          - backend
+        webapp:
+          name: "webapp"
+          build:
+            context: ./webapp
+            dockerfile: Dockerfile
+          ports:
+            - "3000:3000"
+          networks:
+            - app-network
+          volumes:
+            - ./webapp:/app
+            - /app/node_modules
+          depends_on:
+            - backend
 
-    - webapp:
-        name: "webapp"
-        build:
-          context: ./webapp
-          dockerfile: Dockerfile
-        ports:
-          - "3000:3000"
-        networks:
-          - app-network
-        volumes:
-          - ./webapp:/app
-          - /app/node_modules
-        depends_on:
-          - backend
+        simulation:
+          name: "simulation"
+          build:
+            context: ./bike-brain
+            dockerfile: Dockerfile
+          environment:
+            - BIKE_TOKEN=${BIKE_TOKEN}
+          networks:
+            - app-network
+          depends_on:
+            - backend
+          stdin_open: true
+          tty: true
+          command: /bin/sh
+          volumes:
+            - ./bike-brain:/app
+            - /app/node_modules
 
-    - simulation:
-        name: "simulation"
-        build:
-          context: ./bike-brain
-          dockerfile: Dockerfile
-        environment:
-          - BIKE_TOKEN=${BIKE_TOKEN}
-        networks:
-          - app-network
-        stdin_open: true
-        tty: true
-        depends_on:
-          - backend
-        command: /bin/sh
-        volumes:
-          - ./bike-brain:/app
-          - /app/node_modules
-
-  commands:
-    - cd backend && npm install
-    - cd frontend && npm install
-    - cd frontend_customer && npm install
-    - cd webapp && npm install
-    - cd bike-brain && npm install
-
-  # Properly structured tests section with indentation
+        mongodb:
+          name: "mongodb"
+          image: mongo
+          environment:
+            - MONGO_DATA_DIR=/data/db
+          volumes:
+            - ./data/db:/data/db
+          ports:
+            - "27017:27017"
+          command: mongod --bind_ip_all
+          networks:
+            - app-network
+      
+  # Define the tests for each service
   tests:
     - name: "Backend Tests"
       after: true
@@ -126,10 +124,12 @@ build:
       after: true
       command: "cd bike-brain && npm test"
 
+  # Configure the environment for the tests
   environment:
-    - NODE_ENV=production
+    - NODE_ENV=development
     - MONGO_URI=mongodb://mongo:27017
 
+  # Define linked containers for testing
   linked_containers:
     - backend
     - frontend
