@@ -1,0 +1,22 @@
+version: 1
+
+build:
+    image: node:18
+    steps:
+        - run: |
+            cd backend && npm install
+            cd ../frontend && npm install
+            cd ../frontend_customer && npm install
+            cd ../webapp && npm install
+            cd ../bike-brain && npm install
+
+        - run: |
+            cd backend && npm test
+            cd ../frontend && npm test
+            cd ../frontend_customer && npm test
+            cd ../webapp && npm test
+            cd ../bike-brain && npm test
+
+networks:
+    app-network:
+        driver: bridge

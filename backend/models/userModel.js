@@ -90,8 +90,8 @@ const userModel = {
             createError("ID format is invalid", 400);
         }
 
-        if (!body.firstname || !body.lastname || !body.email || !body.role) {
-            createError("firstname, lastname, email and role are required."
+        if (!body.email || !body.role) {
+            createError("email and role are required."
                 + " Use patch method instead if you only want to update part of the user resource."
                 , 400);
         }
@@ -108,7 +108,7 @@ const userModel = {
             }
 
             const allowedProperties = ["firstname", "lastname",
-                "email", "password", "role", "balance", "trip_history"];
+                "email", "password", "role", "balance", "trip_history", "monthly_paid"];
             const reqProperties = Object.keys(body);
             const isInvalidUpdate = reqProperties.some(property =>
                 !allowedProperties.includes(property));
@@ -119,11 +119,12 @@ const userModel = {
            }
 
             const updateUser = {
-                firstname: body.firstname,
-                lastname: body.lastname,
+                firstname: body.firstname || null,
+                lastname: body.lastname || null,
                 email: body.email,
                 role: body.role,
                 balance: body.balance || null,
+                monthly_paid: body.monthly_paid || false
             };
 
             if (body.trip_history) {
@@ -164,7 +165,7 @@ const userModel = {
 
 
             const allowedProperties = ["firstname", "lastname",
-                "email", "password", "role", "balance", "trip_history"];
+                "email", "monthly_paid", "role", "balance"];
             const reqProperties = Object.keys(body);
             const isInvalidUpdate = reqProperties.some(property =>
                 !allowedProperties.includes(property));
@@ -224,10 +225,9 @@ const userModel = {
                 firstname: body.firstname || null,
                 lastname: body.lastname || null,
                 email: body.email,
-                password_hash: body.password || "",
                 role: body.role,
                 balance: body.balance || null,
-                trip_history: [],
+                monthly_paid: body.monthly_paid || false,
                 githubId: body.githubId,
                 username: body.username
             };
