@@ -1,8 +1,3 @@
-build:
-  nodes:
-    analysis:
-        commands:
-          - cd backend && npm install && npm test  # Install dependencies before running tests
 
 
 # version: '1'
