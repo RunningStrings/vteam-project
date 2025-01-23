@@ -105,24 +105,28 @@ build:
           command: mongod --bind_ip_all
           networks:
             - app-network
-      
+
   # Define the tests for each service
   tests:
     - name: "Backend Tests"
-      after: true
       command: "cd backend && npm test"
+      after: true  # Specifies when the test should run
+
     - name: "Frontend Tests"
-      after: true
       command: "cd frontend && npm test"
+      after: true
+
     - name: "Frontend Customer Tests"
-      after: true
       command: "cd frontend_customer && npm test"
+      after: true
+
     - name: "Webapp Tests"
-      after: true
       command: "cd webapp && npm test"
-    - name: "Bike Brain Tests"
       after: true
+
+    - name: "Bike Brain Tests"
       command: "cd bike-brain && npm test"
+      after: true
 
   # Configure the environment for the tests
   environment:
