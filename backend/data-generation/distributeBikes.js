@@ -1,4 +1,4 @@
-import { readJsonFile, writeJsonFile, getAllDataFromTargets } from './fileDirectoryUtils.js';
+import { readJsonFile, writeJsonFile, getAllDataFromTargets } from "./fileDirectoryUtils.js";
 
 /**
  * Assign a bike to a station/parking and update the bike's location.
@@ -52,7 +52,9 @@ const distributeRemainingBikes = (allData, bikes, bikeIds) => {
                 const bikeToAssign = bikeIds.shift(); // Take one bike
                 assignBike(item, bikeToAssign, bikes); // Assign the bike
                 bikeAssignedInCurrentFile = true;
-                if (bikeIds.length === 0) break; // Exit if no bikes left
+                if (bikeIds.length === 0) {
+                    break; // Exit if no bikes left
+                }
             }
         }
 
@@ -61,7 +63,9 @@ const distributeRemainingBikes = (allData, bikes, bikeIds) => {
             index = (index + 1) % allData.length;
         }
 
-        if (bikeIds.length === 0) break; // Exit the loop if no bikes left
+        if (bikeIds.length === 0) {
+            break; // Exit the loop if no bikes left
+        }
     }
 };
 
@@ -72,7 +76,7 @@ const distributeRemainingBikes = (allData, bikes, bikeIds) => {
  */
 const distributeBikes = (targets, bikesFile) => {
     const bikes = readJsonFile(bikesFile);
-    let bikeIds = bikes.map((bike) => bike.id); // Extract bike IDs
+    const bikeIds = bikes.map((bike) => bike.id); // Extract bike IDs
 
     // Collect data from all targets (directories or files)
     const allData = getAllDataFromTargets(targets);
@@ -86,12 +90,10 @@ const distributeBikes = (targets, bikesFile) => {
     // Write updated data back to their respective files
     allData.forEach(({ file, data }) => {
         writeJsonFile(file, data);
-        console.log(`Updated parking/station data in: ${file}`);
     });
 
     // Update bike locations in the bikes file
     writeJsonFile(bikesFile, bikes);
-    console.log('Bike distribution complete.');
 };
 
 export default distributeBikes;
