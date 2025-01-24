@@ -5,7 +5,7 @@ This simulation provides an immersive experience by showcasing the movement of 1
 To acquire a JWT token, follow these steps:
 
 **1. Login via GitHub**<br>
-Navigate to `https://localhost:1337` and log in using your GitHub account.
+Navigate to `http://localhost:1337` and log in using your GitHub account.
 Upon successful authentication, you will be redirected to a page containing your JWT token in the URL.
 
 Example URL:
@@ -55,7 +55,7 @@ node sim-one.js
 
 **4. View the Simulation**<br>
 Access the administrative frontend to view the simulation:<br>
-`https://localhost:5173`
+`http://localhost:5173`
 
 **5. End the Simulation**<br>
 Stop the simulation by typing one of the following commands and pressing `Enter`:<br>
