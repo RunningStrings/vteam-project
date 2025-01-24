@@ -1,5 +1,5 @@
-import { readJsonFile, writeJsonFile, getJsonFilesFromDirectory } from './fileDirectoryUtils.js';
-import fs from 'node:fs'; // For filesystem operations (reading and writing)
+import { readJsonFile, writeJsonFile, getJsonFilesFromDirectory } from "./fileDirectoryUtils.js";
+import fs from "node:fs"; // For filesystem operations (reading and writing)
 
 /**
  * Processes a single file: updates IDs if the content is an array of objects.
@@ -13,7 +13,7 @@ const processFile = (file, currentId) => {
 
     // If not array, skip processing
     if(!Array.isArray(data)) {
-        console.error(`Skipping ${file}: Content is not an array.`);
+        console.error(`Skipping ${file}: Content is not an array.`); // eslint-disable-line no-console
         return currentId;
     }
 
@@ -23,9 +23,9 @@ const processFile = (file, currentId) => {
     });
 
     writeJsonFile(file, data);
-    console.log(`Updated IDs in: ${file}`);
+    console.log(`Updated IDs in: ${file}`); // eslint-disable-line no-console
     return currentId;
-}
+};
 
 /**
  * Main function, updates IDs in JSON files.
@@ -36,28 +36,28 @@ const updateIds = (targets) => {
 
     // Iterate over each target path
     targets.forEach((target) => {
-      try {
-        // Get target information (directory or file)
-        const stats = fs.statSync(target);
+        try {
+            // Get target information (directory or file)
+            const stats = fs.statSync(target);
 
-        // If directory, get all JSON files inside
-        // If JSON file, include it
-        const filesToProcess = stats.isDirectory()
-          ? getJsonFilesFromDirectory(target)
-          : target.endsWith('.json')
-          ? [target]
-          : [];
+            // If directory, get all JSON files inside
+            // If JSON file, include it
+            const filesToProcess = stats.isDirectory()
+                ? getJsonFilesFromDirectory(target)
+                : target.endsWith(".json")
+                    ? [target]
+                    : [];
 
-        // Process each file and update IDs
-        filesToProcess.forEach((file) => {
-          currentId = processFile(file, currentId);
-        });
+            // Process each file and update IDs
+            filesToProcess.forEach((file) => {
+                currentId = processFile(file, currentId);
+            });
 
-        console.log('ID update complete.');
-      } catch (error) {
-        console.error(`Error processing target ${target}:`, error.message);
-      }
+            console.log("ID update complete."); // eslint-disable-line no-console
+        } catch (error) {
+            console.error(`Error processing target ${target}:`, error.message); // eslint-disable-line no-console
+        }
     });
-  };
+};
 
 export default updateIds;

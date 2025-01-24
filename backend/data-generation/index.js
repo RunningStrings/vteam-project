@@ -1,11 +1,11 @@
-import * as dotenv from 'dotenv';
-import path from 'node:path';
-import { dirname } from 'node:path';
-import { fileURLToPath } from 'node:url';
-import updateIds from './updateIds.js';
-import generateUserJsonFile from './generateUsers.js';
-import generateBikesJsonFile from './generateBikes.js';
-import distributeBikes from './distributeBikes.js';
+import * as dotenv from "dotenv";
+import path from "node:path";
+import { dirname } from "node:path";
+import { fileURLToPath } from "node:url";
+import updateIds from "./updateIds.js";
+import generateUserJsonFile from "./generateUsers.js";
+import generateBikesJsonFile from "./generateBikes.js";
+import distributeBikes from "./distributeBikes.js";
 
 dotenv.config();
 
@@ -15,16 +15,16 @@ dotenv.config();
 const main = () => {
     // Resolve __dirname and data paths
     const __dirname = dirname(fileURLToPath(import.meta.url));
-    const dataJsonDir = path.join(__dirname, '../data-json'); // Root data folder
+    const dataJsonDir = path.join(__dirname, "../data-json"); // Root data folder
 
     // Resolve complete data path
-    const parkingsDirectoryPath = path.join(dataJsonDir, 'parkings');
-    const stationsDirectoryPath = path.join(dataJsonDir, 'stations');
-    const usersFilePath = path.join(dataJsonDir, 'users.json');
-    const bikesFilePath = path.join(dataJsonDir, 'bikes.json');
+    const parkingsDirectoryPath = path.join(dataJsonDir, "parkings");
+    const stationsDirectoryPath = path.join(dataJsonDir, "stations");
+    const usersFilePath = path.join(dataJsonDir, "users.json");
+    const bikesFilePath = path.join(dataJsonDir, "bikes.json");
 
-    // Get the file count based on NODE_ENV ('simulation' for 1000, anything else for 500)
-    const count = process.env.NODE_ENV === 'simulation' ? 1000 : 500;
+    // Get the file count based on NODE_ENV ("simulation" for 1000, anything else for 500)
+    const count = process.env.NODE_ENV === "simulation" ? 1000 : 500;
 
     // Update or create Id and increment it for parkings and stations
     updateIds([parkingsDirectoryPath, stationsDirectoryPath]);

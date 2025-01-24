@@ -1,3 +1,4 @@
+/* eslint-disable max-lines */
 import { readJsonFile, writeJsonFile, getAllDataFromTargets } from "./fileDirectoryUtils.js";
 
 /**
@@ -90,10 +91,12 @@ const distributeBikes = (targets, bikesFile) => {
     // Write updated data back to their respective files
     allData.forEach(({ file, data }) => {
         writeJsonFile(file, data);
+        console.log(`Updated parking/station data in: ${file}`); // eslint-disable-line no-console
     });
 
     // Update bike locations in the bikes file
     writeJsonFile(bikesFile, bikes);
+    console.log("Bike distribution complete."); // eslint-disable-line no-console
 };
 
 export default distributeBikes;
