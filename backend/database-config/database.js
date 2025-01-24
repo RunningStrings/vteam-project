@@ -1,11 +1,11 @@
-import * as dotenv from 'dotenv';
+import * as dotenv from "dotenv";
 dotenv.config();
 
-import { MongoClient, ServerApiVersion } from 'mongodb';
+import { MongoClient, ServerApiVersion } from "mongodb";
 
 const database = {
     getDb: async function getDb () {
-        let dsn = process.env.MONGO_DSN;
+        const dsn = process.env.MONGO_DSN;
 
         const client = new MongoClient(dsn, {
             serverApi: {
@@ -19,12 +19,12 @@ const database = {
 
         const db = client.db();
 
-        let collectionCities = await db.collection("cities");
-        let collectionBikes = await db.collection("bikes");
-        let collectionStations = await db.collection("stations");
-        let collectionParkings = await db.collection("parkings");
-        let collectionUsers = await db.collection("users");
-        let collectionTrips = await db.collection("trips");
+        const collectionCities = await db.collection("cities");
+        const collectionBikes = await db.collection("bikes");
+        const collectionStations = await db.collection("stations");
+        const collectionParkings = await db.collection("parkings");
+        const collectionUsers = await db.collection("users");
+        const collectionTrips = await db.collection("trips");
 
         return {
             collectionCities: collectionCities,

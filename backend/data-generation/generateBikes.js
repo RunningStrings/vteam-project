@@ -1,5 +1,5 @@
-import { writeJsonFile } from './fileDirectoryUtils.js';
-import { faker } from '@faker-js/faker';
+import { writeJsonFile } from "./fileDirectoryUtils.js";
+import { faker } from "@faker-js/faker";
 
 /**
  * Generates a single bike object with mock data from faker.
@@ -9,11 +9,11 @@ const generateBike = () => {
     // const city = faker.helpers.arrayElement(['Stockholm', 'Linköping', 'Malmö']);
     const status = faker.helpers.arrayElement(["available", "maintenance"]); // Random status from array
     const battery = faker.number.int({ min: 0, max: 100 });
-    const speed = status === 'in_use' ? faker.number.int({ min: 1, max: 20 }) : 0; // Random speed if in use
+    const speed = status === "in_use" ? faker.number.int({ min: 1, max: 20 }) : 0; // Random speed if in use
 
     return {
         id: 0,
-        city_name: '',
+        city_name: "",
         location: {
             type: "Point",
             coordinates: []
@@ -41,7 +41,7 @@ const generateBikes = (count) => {
 const generateBikesJsonFile = (filePath, count) => {
     const bikes = generateBikes(count);
     writeJsonFile(filePath, bikes);
-    console.log(`Generated ${count} bikes and saved to ${filePath}`);
+    console.log(`Generated ${count} bikes and saved to ${filePath}`); // eslint-disable-line no-console
 };
 
 export default generateBikesJsonFile;
