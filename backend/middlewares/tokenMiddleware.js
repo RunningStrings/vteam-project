@@ -18,7 +18,7 @@ const tokenMiddleware = (req, res, next) => {
         const userToken = tokenService.verifyToken(token);
         req.token = userToken;
         next();
-    } catch (error) {
+    } catch {
         createError("unauthorized. Invalid token.", 401);
     };
 };
@@ -33,7 +33,7 @@ const adminTokenMiddleware = (req, res, next) => {
     try {
         const adminToken = tokenService.verifyToken(token);
         req.token = adminToken;
-    } catch (error) {
+    } catch {
         createError("unauthorized. Invalid token.", 401);
     };
 
