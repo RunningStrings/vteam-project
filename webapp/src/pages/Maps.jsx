@@ -216,12 +216,12 @@ const Maps = () => {
               zIndexOffset={200}
               position={bike.location.coordinates}
               key={index}
-              icon={bike.status === "available" ? bikeGreen : bike.status === "charging" ? bikeRed : bikeEmpty}
+              icon={bike.status === "available" ? bikeGreen : bikeEmpty}
             >
               <Popup>
-                Cykel nr: {bike.id}<br />
-                Batteri: {bike.battery}% <br />
-                {bike.status}
+                <strong>Cykel nr: {bike.id}</strong><br />
+                <strong>Batteri: {bike.battery}%</strong> <br />
+                <strong>{bike.status}</strong>
                 <button
                   onClick={() => {
                     sessionStorage.setItem("bikeid", bike.id); // Spara index i sessionStorage

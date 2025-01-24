@@ -6,9 +6,7 @@ const initialFormValues = {
   firstname: "",
   lastname: "",
   email: "",
-  password: "",
   saldo: "",
-  phone: "",
   admin: ""
 }
 
@@ -42,11 +40,13 @@ function User() {
       })
       .then((responseData) => {
         setUsers(responseData.data); // Store all users
-        const id = sessionStorage.getItem('id'); // Get email from sessionStorage
+        //console.log(responseData.data);
+        
+        const id = sessionStorage.getItem('id'); // Get id from sessionStorage
         if (id) {
           const matchedUser = responseData.data.find((user) => user._id === id);
           if (matchedUser) {
-            console.log(matchedUser);
+            //console.log(matchedUser);
             //userId = matchedUser._id;
             //sessionStorage.setItem("userId","_id")
             setFormData(matchedUser); // Populate the form with the matched user's data

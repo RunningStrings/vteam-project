@@ -119,7 +119,7 @@ function User() {
         if (emailFromSession) {
           const matchedUser = responseData.data.find((user) => user.email === emailFromSession);
           if (matchedUser) {
-            console.log(matchedUser);
+            //console.log(matchedUser);
             userId = matchedUser._id;
             //sessionStorage.setItem("userId","_id")
             setFormData(matchedUser); // Populate the form with the matched user's data

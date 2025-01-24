@@ -15,7 +15,10 @@ const initialFormValues = {
 
 async function updateBike(id, city, position, battery, status, speed) {
   let token=sessionStorage.getItem('token');
+  let bikeId=sessionStorage.getItem('bike_id');
   const endpoint = `${baseURL}/bikes/${bikeId}`;
+  console.log(endpoint);
+  
   const body = {
     "id": id,
     "city": city,
@@ -28,7 +31,7 @@ async function updateBike(id, city, position, battery, status, speed) {
 
   try {
     const response = await fetch(endpoint, {
-      method: "PUT",
+      method: "PATCH",
       headers: {
         "Content-Type": "application/json",
         'x-access-token': `${token}`,
@@ -120,7 +123,7 @@ function Bike() {
       //if (isMounted) {
         setBikes(responseData.data);
         const bikeFromSession = sessionStorage.getItem('bike');
-        console.log(bikeFromSession);
+        //console.log(bikeFromSession);
         
         //console.log("Den här: "+responseData.data.id);
         
@@ -128,7 +131,7 @@ function Bike() {
         if (bikeFromSession) {
           const matchedBike = responseData.data.find((bike) => parseInt(bike.id) === parseInt(bikeFromSession));
           if (matchedBike) {
-            console.log(matchedBike);
+            //console.log(matchedBike);
             bikeId=matchedBike.id;
             
             setFormData(matchedBike);

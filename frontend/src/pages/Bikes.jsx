@@ -7,9 +7,10 @@ function Bikes() {
   const [error, setError] = useState(null);
   const navigate = useNavigate();
 
-  function handleClick(bike_id, bike_coords) {
+  function handleClick(bike_id,bikeid ,bike_coords) {
     //sessionStorage.setItem("bike", JSON.stringify({ id: bike_id, coordinates: bike_coords }));
-    sessionStorage.setItem("bike", bike_id);
+    sessionStorage.setItem("bike_id", bike_id);
+    sessionStorage.setItem("bike", bikeid);
     sessionStorage.setItem("coordinates", bike_coords)
     //console.log(bike_id);
     
@@ -63,7 +64,7 @@ function Bikes() {
         <tbody>
         {Array.isArray(bikes) && bikes.map((bike) => (
             <tr key={bike.id}>
-              <td onClick={() => handleClick(bike.id, bike.location.coordinates)} style={{ cursor: "pointer", color: "blue" }}>
+              <td onClick={() => handleClick(bike._id, bike.id, bike.location.coordinates)} style={{ cursor: "pointer", color: "blue" }}>
                 {bike.id}
               </td>
               <td>{bike.city_name}</td>
