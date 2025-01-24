@@ -1,50 +1,61 @@
+# version: 1
 
-
-# version: '1'
-
-# # Build section to run in a Node.js container
 # build:
-#   image: node:18
-#   commands:
-#     - docker-compose exec backend npm install  # Install dependencies in backend container
-#     - docker-compose exec frontend npm install  # Install dependencies in frontend container
-#     - docker-compose exec frontend_customer npm install  # Install dependencies in frontend_customer container
-#     - docker-compose exec simulation npm install  # Install dependencies in simulation container
+#   nodes:
+#     analysis:
+#       container: node:18 # Use Node.js image
+#       services:
+#         - mongodb # Include any services like MongoDB if needed
+#       commands:
+#         # Install dependencies in all directories with JS projects
+#         - cd backend && npm install  # Install dependencies in backend
+#         - cd frontend && npm install  # Install dependencies in frontend
+#         - cd frontend_customer && npm install  # Install dependencies in frontend_customer
+#         - cd webapp && npm install  # Install dependencies in webapp
+#         # After installing dependencies, run tests
+#         - cd backend && npm test  # Run tests in backend
+#         - cd frontend && npm test  # Run tests in frontend
+#         - cd frontend_customer && npm test  # Run tests in frontend_customer
+#         - cd webapp && npm test  # Run tests in webapp
 
-# # Run tests in specific containers using docker-compose exec
-# tests:
-#   - name: Run tests in backend container
-#     command: docker-compose exec backend npm test
-#   - name: Run tests in frontend container
-#     command: docker-compose exec frontend npm test
-#   - name: Run tests in frontend_customer container
-#     command: docker-compose exec frontend_customer npm test
-#   - name: Run tests in simulation container
-#     command: docker-compose exec simulation npm test
+# services:
+#   backend:
+#     build:
+#       context: ./backend
+#       dockerfile: Dockerfile
+#     environment:
+#       - NODE_ENV=production
+#     volumes:
+#       - ./backend:/app
+#     depends_on:
+#       - mongodb
 
-# after:
-#   - echo "All tests completed."
+#   frontend:
+#     build:
+#       context: ./frontend
+#       dockerfile: Dockerfile
+#     depends_on:
+#       - backend
 
-# version: '1'
+#   frontend_customer:
+#     build:
+#       context: ./frontend_customer
+#       dockerfile: Dockerfile
+#     depends_on:
+#       - backend
 
-# # Build section to run in a Node.js container
-# build:
-#   image: node:18
-#   commands:
-#     - npm install  # Install dependencies in the Node.js container
+#   webapp:
+#     build:
+#       context: ./webapp
+#       dockerfile: Dockerfile
+#     depends_on:
+#       - backend
 
-# # Run tests in specific containers using docker-compose exec
-# tests:
-#   - name: Run tests in backend container
-#     command: docker-compose exec backend npm test
-#   # - name: Run tests in bike-brain container
-#   #   command: docker-compose exec bike-brain npm test
-#   # - name: Run tests in frontend container
-#   #   command: docker-compose exec frontend npm test
-#   # - name: Run tests in frontend_customer container
-#   #   command: docker-compose exec frontend_customer npm test
-#   # - name: Run tests in simulation container
-#   #   command: docker-compose exec simulation npm test
+#   mongodb:
+#     image: mongo
+#     ports:
+#       - "27017:27017"
 
-# after:
-#   - echo "All tests completed."
+# networks:
+#   app-network:
+#     driver: bridge
