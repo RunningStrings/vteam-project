@@ -40,10 +40,10 @@ docker-compose up --build
 
 **3. Access the frontends**<br>
    * Administrative Frontend:<br>
-    [https://localhost:5173](https://localhost:5173)
+    [http://localhost:5173](http://localhost:5173)
 
    * Customer Frontend:<br>
-    [https://localhost:1337](https://localhost:1337)
+    [http://localhost:1337](http://localhost:1337)
 
 ## Start the simulation system
 **1. Ensure the Base System is Running**<br>
