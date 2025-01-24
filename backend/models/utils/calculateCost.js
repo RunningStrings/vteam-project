@@ -8,7 +8,7 @@
  */
 function calculateCost(freeParkingStart, freeParkingEnd, duration) {
     let cost = {};
-    cost.variable = (3 * Math.ceil(duration / 60000)); // 3 kr cost per minute
+    cost.variable = (3 * Math.ceil(duration / 1000)); // 3 kr cost per minute('second') model
     cost.fixed = (freeParkingStart && !freeParkingEnd) ? 5 :
     (!freeParkingStart && !freeParkingEnd) ? 10 :
     (freeParkingStart && freeParkingEnd) ? 10 :

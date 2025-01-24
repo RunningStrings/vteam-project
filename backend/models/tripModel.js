@@ -87,6 +87,11 @@ const tripModel = {
             // Add end timestamp
             if (body.end) {
                 body.end.timestamp = timeNow;
+                const calculatedCost = cost(result.free_parking, body.end.free_parking,
+                     (timeNow - result.start.timestamp));
+                body.variable_cost = calculatedCost?.variable || null,
+                body.fixed_cost = calculatedCost?.fixed || null,
+                body.cost = calculatedCost?.total || null
             }
 
             result = await db.collectionTrips.updateOne(filter, { $set: body });
@@ -145,12 +150,10 @@ const tripModel = {
             let calculatedCost;
             if (typeof body.end?.minutes !== 'undefined' && typeof body.free_parking !== 'undefined' &&
                 typeof body.end?.free_parking !== 'undefined') {
-                    const duration = body.end.minutes * 60 * 1000;
+                    const duration = body.end.minutes * 1000;
                     futureTime = (body.timestamp || timeNow) + duration;
-                    console.log(futureTime);
                     calculatedCost = cost(body.free_parking, body.end.free_parking, duration);
                 }
-            console.log(futureTime);
             const newTrip = {
                 bike_id: body.bike_id,
                 customer_id: body.customer_id,
