@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 //import { useAuth0 } from "@auth0/auth0-react";
-import LogoutButton from "./LogoutButton";
+//import LogoutButton from "./LogoutButton";
 
 const Navbar = () => {
     //const { isAuthenticated } = useAuth0();
@@ -93,20 +93,9 @@ const Navbar = () => {
             <span className="link-text">Support</span>
             </Link>
         </li>
-    
-        <li className="navbar-item flexbox-left">
-            <Link to="/settings" className="navbar-item-inner flexbox-left">
-            <div className="navbar-item-inner-icon-wrapper flexbox">
-                <ion-icon name="settings-outline"></ion-icon>
-            </div>
-            <span className="link-text">Inställningar</span>
-            </Link>
-        </li>
-    
       </ul>
         <ul className="navbar-items flexbox-col">
             <li className="navbar-item flexbox-left">
-              <LogoutButton />
             </li>
           </ul>
       </nav>

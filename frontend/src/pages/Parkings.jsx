@@ -7,7 +7,7 @@ function Users() {
 
   
   useEffect(() => {
-    console.log(token);
+    //console.log(token);
     
     // Fetch parkings from the backend API
     fetch('/parking_zones', {

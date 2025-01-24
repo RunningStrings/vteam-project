@@ -174,11 +174,6 @@ const Maps = () => {
             zIndexOffset={50}
           >
 
-
-            <Popup>
-
-              <br />
-            </Popup>
           </Circle>
 
 
