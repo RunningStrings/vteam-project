@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-//import React from "react";
+import { ToastContainer, toast } from "react-toastify";
 
 const initialFormValues = {
     id: "",
@@ -15,6 +15,48 @@ function User() {
     const [users, setUsers] = useState([]); // Deklarerar users
     let token=sessionStorage.getItem("token");
     const id=sessionStorage.getItem("id");
+
+    const updateUser = async (firstname, lastname, email, role, balance) => {
+        try {
+            const response = await fetch(`/users/${id}`, {
+                method: "PATCH",
+                headers: {
+                    "Content-Type": "application/json",
+                    "x-access-token": token
+                },
+                body: JSON.stringify({
+                    firstname,
+                    lastname,
+                    email,
+                    role,
+                    balance
+                })
+            });
+
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+
+            const result = await response.json();
+            //console.log("User updated:", result);
+            toast.success("Dina uppgifter är uppdaterade!", {
+                onClose: () => {
+                },
+                autoClose: 3000, // Auto close after 3 seconds
+            });
+
+        } catch (error) {
+            toast.error("Ett problem uppstod! Uppgifterna uppdaterades inte.", {
+                onClose: () => {
+                    //navigate("/");
+                },
+                autoClose: 3000, // Auto close after 3 seconds
+            });
+            console.error("Error updating user:", error);
+        }
+    };
+
+
 
     const handleSubmit = (evt) => {
         evt.preventDefault();
@@ -73,7 +115,7 @@ function User() {
                         type="string" 
                         id="id" 
                         name="id"
-                        value={formData._id}
+                        value={formData._id || ""}
                         className="form__input" 
                         onChange={handleChange}
                     />
@@ -86,7 +128,7 @@ function User() {
                         type="text" 
                         id="firstname" 
                         name="firstname"
-                        value={formData.firstname}
+                        value={formData.firstname || ""}
                         className="form__input" 
                         onChange={handleChange}
                     />
@@ -99,7 +141,7 @@ function User() {
                         type="text" 
                         id="lastname" 
                         name="lastname" 
-                        value={formData.lastname}
+                        value={formData.lastname || ""}
                         className="form__input" 
                         onChange={handleChange}
                     />
@@ -112,7 +154,7 @@ function User() {
                         type="email" 
                         id="email" 
                         name="email" 
-                        value={formData.email}
+                        value={formData.email || ""}
                         className="form__input" 
                         onChange={handleChange}
                     />
@@ -126,7 +168,7 @@ function User() {
                         type="number"
                         id="saldo"
                         name="saldo"
-                        value={formData.balance}
+                        value={formData.balance || ""}
                         className="form__input"
                         onChange={handleChange}
                     />
@@ -151,6 +193,17 @@ function User() {
           Submit
                 </button>
             </form>
+            <ToastContainer 
+                position="top-right"
+                autoClose={5000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+            />
         </div>
     );
 };

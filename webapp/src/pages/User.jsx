@@ -145,7 +145,7 @@ function User() {
                         <option value="customer">Kund</option>
                     </select>
                 </div>
-                <button className="button" type="submit">
+                <button className="blue-button button" type="submit">
           Submit
                 </button>
             </form>

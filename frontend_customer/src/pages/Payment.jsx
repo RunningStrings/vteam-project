@@ -1,30 +1,21 @@
 import { useState, useEffect } from "react";
 import { baseURL } from "../components/utils.jsx";
 import { ToastContainer, toast } from "react-toastify";
-//import { useNavigate } from 'react-router-dom';
-//import React from "react";
 
 let userId = "";
-
 const initialFormValues = {
-
     id: "",
     firstname: "",
     lastname: "",
     balance: "",
-  
 };
 
 async function updateUser(balance,paying) {
     const endpoint = `${baseURL}/users/${userId}`;
-  
     let token=sessionStorage.getItem("token");
-    console.log(userId);
-  
     const body = {
         "balance": (Number(balance)+Number(paying)),
     };
-
 
     try {
         const response = await fetch(endpoint, {
@@ -40,39 +31,30 @@ async function updateUser(balance,paying) {
             throw new Error(`Error: ${response.status} ${response.statusText}`);
         }
 
-        // Kontrollera om svaret innehåller JSON
         const contentType = response.headers.get("content-type");
         if (contentType && contentType.includes("application/json")) {
             const data = await response.json();
             toast.success("Du är nu gjort en insättning!", {
                 onClose: () => {
-                    // Navigate or perform any action after the toast disappears
-                    //const navigate = useNavigate();
-                    //navigate("/user");
                 },
                 autoClose: 3000, // Auto close after 3 seconds
             });
-            //console.log("Response data:", data);
-            //alert("Användaren har uppdaterats!");
             return data;
         } else {
             toast.success("Du är nu gjort en insättning!", {
                 onClose: () => {
-                    // Navigate or perform any action after the toast disappears
                     //navigate("/");
                 },
                 autoClose: 3000, // Auto close after 3 seconds
             });
-            //alert("Användaren har uppdaterats");
             return null;
         }
     } catch (error) {
         alert("Ett problem uppstod när betalningen gjordes.");
-    //console.error("Error creating user:", error);
     }
 }
 
-function User() {
+function Payment() {
     const [formData, setFormData] = useState(initialFormValues);
     const [users, setUsers] = useState([]); // Deklarerar users
     const [selectedUserId, setSelectedUserId] = useState([]); // Deklarerar users
@@ -81,8 +63,7 @@ function User() {
 
     const handleSubmit = (evt) => {
         evt.preventDefault();
-        //console.log(formData);
-        const { firstname, lastname, email, role, balance,paying } = formData;
+        const { balance,paying } = formData;
         updateUser(balance,paying);
     //setFormData(initialFormValues);
     };
@@ -118,15 +99,6 @@ function User() {
                 console.error("Error fetching users:", error);
             });
     }, [token]);
-
-    const handleUserSelect = (evt) => {
-        const userId = evt.target.value;
-        setSelectedUserId(userId);
-        const user = users.find((u) => u.id === userId);
-        if (user) {
-            setFormData(user); // Populate formData with the selected user's data
-        }
-    };
 
     return (
         <div className="App" style={{ marginLeft: "220px", padding: "20px" }}>
@@ -217,4 +189,4 @@ function User() {
     );
 };
 
-export default User;
+export default Payment;

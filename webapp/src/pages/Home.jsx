@@ -49,6 +49,7 @@ const Home = () => {
                 <button
                     onClick={isLoggedIn ? handleLogout : handleLogin}
                     style={{ padding: "10px 20px", fontSize: "16px" }}
+                    className="blue-button"
                 >
                     {isLoggedIn ? "Logga ut" : "Logga in"}
                 </button>

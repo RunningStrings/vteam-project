@@ -69,7 +69,7 @@ const Home = () => {
 
 
 
-        const handleSubmit = (event) => {
+    const handleSubmit = (event) => {
         event.preventDefault();
         const buttonId = event.target.id; // Hämta vilken knapp som trycktes
         let parking = {};
@@ -80,7 +80,7 @@ const Home = () => {
             parking=false;
         }
         sessionStorage.setItem("renting", -1);
-            createTrip(parking);
+        createTrip(parking);
         toast.success("Du har nu lämnat tillbaka: "+ bikeid, {
             onClose: () => {
                 // Navigate or perform any action after the toast disappears
