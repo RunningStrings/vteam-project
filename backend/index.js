@@ -32,6 +32,7 @@ allRoutes(app, pathV1);
 // The variable 'io' is used indirectly to hold the Socket.IO server instance,
 // and is necessary for websocket functionality. Passing server as a parameter
 // attaches Socket.IO to the backend server.
+// eslint-disable-next-line no-unused-vars
 const io = initializeSocket(server);
 
 app.get("/", (req, res) => {
