@@ -9,6 +9,7 @@ const Maps = () => {
     const [cities, setCities] = useState([]);
     const [stations, setStations] = useState([]);
     const [parkings, setParkings] = useState([]);
+    let token=sessionStorage.getItem("token");
 
     useEffect(() => {
         // Fetch cities from the backend API
@@ -57,7 +58,7 @@ const Maps = () => {
             });
 
         // Fetch bikes from the backend API
-        fetch("/bikes")
+        fetch("/bikes",{headers: {"x-access-token": `${token}`},})
             .then((response) => {
                 if (!response.ok) {
                     throw new Error(`HTTP error! status: ${response.status}`);

@@ -6,6 +6,7 @@ function Bikes() {
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState(null);
     const navigate = useNavigate();
+    let token=sessionStorage.getItem("token");
 
     function handleClick(bike_id,bikeid ,bike_coords) {
     //sessionStorage.setItem("bike", JSON.stringify({ id: bike_id, coordinates: bike_coords }));
@@ -19,7 +20,7 @@ function Bikes() {
 
     useEffect(() => {
         setIsLoading(true);
-        fetch("/bikes")
+        fetch("/bikes",{headers: {"x-access-token": `${token}`},})
             .then((response) => {
                 if (!response.ok) {
                     throw new Error(`HTTP error! status: ${response.status}`);
