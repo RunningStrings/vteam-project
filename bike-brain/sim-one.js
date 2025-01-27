@@ -21,7 +21,13 @@ const waitForBackend = async () => {
     let retries = 5;
     while (retries > 0) {
         try {
-            await axios.get(`${API_URL}/bikes`, { params: { limit: 1 } });
+            await axios.get(`${API_URL}/bikes`, {
+                params: { limit: 1 },
+                headers: {
+                    'Content-Type': 'application/json',
+                    'x-access-token': process.env.BIKE_TOKEN
+                }
+            });
             console.log("Backend is ready.");
             return;
         } catch {
@@ -36,7 +42,11 @@ const waitForBackend = async () => {
 const loadBikesFromDatabase = async () => {
     try {
         const response = await axios.get(`${API_URL}/bikes`, {
-            params: { limit: 4 }
+            params: { limit: 4 },
+            headers: {
+                'Content-Type': 'application/json',
+                'x-access-token': process.env.BIKE_TOKEN
+            }
         });
 
         const bikeData = response.data?.data[3];
