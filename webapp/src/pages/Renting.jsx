@@ -38,14 +38,16 @@ const Home = () => {
             if (!response.ok) {
                 throw new Error(`Error: ${response.status} ${response.statusText}`);
             }
-            // Kontrollera om svaret innehåller JSON
             const contentType = response.headers.get("content-type");
             if (contentType && contentType.includes("application/json")) {
                 const data = await response.json();
+                //console.log(response.data);
+                
                 //alert("Trip har skapats!");
                 return data;
             } else {
                 //alert("Trip har skapats");
+                //console.log(response);
                 return null;
             }
         } catch (error) {
@@ -54,20 +56,6 @@ const Home = () => {
         }
     }
   
-
-    /*function Bikes() {
-        const [users, setUsers] = useState([]);
-        const showToast = () => {
-            toast.success("This is a success toast!", {
-                position: toast.POSITION.TOP_RIGHT, // Customize position
-            });
-        };
-    }*/
-
-
-
-
-
 
     const handleSubmit = (event) => {
         event.preventDefault();

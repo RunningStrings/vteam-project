@@ -142,14 +142,3 @@ const Home = () => {
   
 export default Home;
 
-
-/*  function Bikes() {
-    
-  
-    const showToast = () => {
-        toast.success("This is a success toast!", {
-          position: toast.POSITION.TOP_RIGHT, // Customize position
-        });
-      };
-
-  }  */

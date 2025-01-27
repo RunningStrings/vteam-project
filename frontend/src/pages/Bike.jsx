@@ -265,26 +265,3 @@ function Bike() {
 
   
 export default Bike;
-
-
-
-/*
-  
- // Navigate to the next bike
- const handleNext = () => {
-  if (currentIndex < users.length - 1) {
-    const nextIndex = currentIndex + 1;
-    setCurrentIndex(nextIndex);
-    setFormData(users[nextIndex]);
-  }
-};
-
-// Navigate to the previous user
-const handlePrevious = () => {
-  if (currentIndex > 0) {
-    const prevIndex = currentIndex - 1;
-    setCurrentIndex(prevIndex);
-    setFormData(users[prevIndex]);
-  }
-};
-*/

@@ -21,23 +21,22 @@
 }
 
 .form__label {
-  font-weight: bolder;
+    font-weight: bolder;
 }
 
 .form__select {
-  height: 40px;
-  margin-left: 20px;
-  margin-top: 20px;
-  margin-bottom: 20px;
-  background-color: #2049e1;
-  color: white;
-
+    height: 40px;
+    margin-left: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    background-color: #2049e1;
+    color: white;
 }
 
   .full_width {
-    width: 100%;
+      width: 100%;
   }
 
   .button {
-    width: 100%;
+      width: 100%;
   }
