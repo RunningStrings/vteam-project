@@ -1,5 +1,5 @@
-import path from 'node:path'; // For working with file and directory
-import fs from 'node:fs'; // For filesystem operations (reading and writing)
+import path from "node:path"; // For working with file and directory
+import fs from "node:fs"; // For filesystem operations (reading and writing)
 
 /**
  * Reads JSON data from a file.
@@ -9,11 +9,11 @@ import fs from 'node:fs'; // For filesystem operations (reading and writing)
 const readJsonFile = (filePath) => {
     try {
         // Synchronously read the file content
-        const rawData = fs.readFileSync(filePath, 'utf8');
+        const rawData = fs.readFileSync(filePath, "utf8");
         // Parse JSON string into Javascript object and return it
         return JSON.parse(rawData);
     } catch (error) {
-        console.error(`Error reading or parsing ${filePath}:`, error.message);
+        console.error(`Error reading ${filePath}:`, error.message); // eslint-disable-line no-console
         return null;
     }
 };
@@ -28,9 +28,9 @@ const writeJsonFile = (filePath, data) => {
         // Convert Javascript object/array into JSON string pretty print
         const jsonString = JSON.stringify(data, null, 2);
         // Synchronously write JSON string to specified file
-        fs.writeFileSync(filePath, jsonString, 'utf8');
+        fs.writeFileSync(filePath, jsonString, "utf8");
     } catch (error) {
-        console.error(`Error writing to ${filePath}:`, error.message);
+        console.error(`Error writing to ${filePath}:`, error.message); // eslint-disable-line no-console
     }
 };
 
@@ -51,13 +51,13 @@ const getJsonFilesFromDirectory = (dirPath) => {
             // If entry is directory, recursively call this function
             // If entry is file, include in result
             return entry.isDirectory()
-             ? getJsonFilesFromDirectory(fullPath)
-             : entry.name.endsWith('.json')
-             ? fullPath
-             : []; // Exclude non-JSON file
+                ? getJsonFilesFromDirectory(fullPath)
+                : entry.name.endsWith(".json")
+                    ? fullPath
+                    : []; // Exclude non-JSON file
         });
     } catch (error) {
-        console.error(`Error reading directory ${dirPath}:`, error.message);
+        console.error(`Error reading directory ${dirPath}:`, error.message); // eslint-disable-line no-console
         return [];
     }
 };
@@ -68,27 +68,27 @@ const getJsonFilesFromDirectory = (dirPath) => {
  * @returns {Array<{file: string, data: Array}>} - Array of objects containing file path and data.
  */
 const getAllDataFromTargets = (targets) => {
-    let allData = [];
+    const allData = [];
 
     targets.forEach((target) => {
         try {
             const stats = fs.statSync(target);
             const filesToProcess = stats.isDirectory()
-             ? getJsonFilesFromDirectory(target) // Get all JSON files in directory
-             : target.endsWith('.json')
-             ? [target] // Single JSON file
-             : [];
+                ? getJsonFilesFromDirectory(target) // Get all JSON files in directory
+                : target.endsWith(".json")
+                    ? [target] // Single JSON file
+                    : [];
 
             filesToProcess.forEach((file) => {
                 const data = readJsonFile(file);
                 if (Array.isArray(data)) {
                     allData.push({ file, data });
                 } else {
-                    console.error(`Skipping ${file}: Content is not an array.`);
+                    console.error(`Skipping ${file}: Content is not an array.`); // eslint-disable-line no-console
                 }
             });
         } catch (error) {
-            console.error(`Error processing target ${target}:`, error.message);
+            console.error(`Error processing target ${target}:`, error.message); // eslint-disable-line no-console
         }
     });
 

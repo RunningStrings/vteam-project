@@ -3,12 +3,13 @@
  */
 import express from 'express';
 import tripModel from "../models/tripModel.js";
+import { tokenMiddleware, adminTokenMiddleware } from '../middlewares/tokenMiddleware.js';
 
 const router = express.Router();
 
 router
     .route("/")
-    .get(async (req, res, next) => {
+    .get(tokenMiddleware,async (req, res, next) => {
         try {
             const result = await tripModel.fetchAllTrips(req.query);
             res.status(200).json({
@@ -19,7 +20,7 @@ router
             next(error);
         }
     })
-    .post(async (req, res, next) => {
+    .post(tokenMiddleware, async (req, res, next) => {
         try {
             const result = await tripModel.createTrip(req.body);
             res.set('Location', `/trips/${result.insertedId}`);
@@ -32,7 +33,7 @@ router
 
 router
     .route("/:id")
-    .get(async (req, res, next) => {
+    .get(tokenMiddleware, async (req, res, next) => {
         try {
             const result = await tripModel.fetchTripById(req.params.id);
 
@@ -44,19 +45,7 @@ router
             next(error);
         }
     })
-    .put(async (req, res, next) => {
-        try {
-            const result = await tripModel.updateCompleteTripById(req.params.id, req.body);            
-
-            res.status(200).json({
-                data: result
-            });
-        } catch (error) {
-            console.error('Error put one trip:', error);
-            next(error);
-        }
-    })
-    .patch(async (req, res, next) => {
+    .patch(tokenMiddleware, async (req, res, next) => {
         try {
             await tripModel.updateTripById(req.params.id, req.body);
             res.set('Location', `/trips/${req.params.id}`);         
@@ -66,7 +55,7 @@ router
             next(error);
         }
     })
-    .delete(async (req, res, next) => {
+    .delete(adminTokenMiddleware, async (req, res, next) => {
         try {
             await tripModel.deleteTripById(req.params.id);
             res.status(204).send();

@@ -9,7 +9,7 @@ const router = express.Router();
 
 router
     .route("/")
-    .get(async (req, res, next) => {
+    .get(tokenMiddleware, async (req, res, next) => {
         const { limit, offset, city_name } = req.query;
         try {
             const parsedLimit = limit ? parseInt(limit, 10) : undefined;

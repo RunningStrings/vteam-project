@@ -3,7 +3,7 @@
  * Stores model functions for trips route.
  */
 import database from '../database-config/database.js';
-import { ObjectId, Timestamp } from 'mongodb';
+import { ObjectId } from 'mongodb';
 import { createError } from './utils/createError.js'
 import cost from './utils/calculateCost.js'
 

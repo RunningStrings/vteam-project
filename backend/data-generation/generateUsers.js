@@ -1,5 +1,5 @@
-import { writeJsonFile } from './fileDirectoryUtils.js';
-import { faker, fakerSV } from '@faker-js/faker';
+import { writeJsonFile } from "./fileDirectoryUtils.js";
+import { faker, fakerSV } from "@faker-js/faker";
 
 /**
  * Generates a single user object with mock data from faker.
@@ -9,8 +9,8 @@ const generateUser = () => {
     const firstName = fakerSV.person.firstName();
     const lastName = fakerSV.person.lastName();
     const email = fakerSV.internet.email({ firstName, lastName }); // Random email from firstname and lastname
-    const role = faker.helpers.arrayElement(['customer', 'admin', 'city_manager']); // Random role;
-    const balance = role === 'customer' ? faker.number.int({ min: 0, max: 1000 }) : undefined; // Add balance placeholder if customer
+    const role = faker.helpers.arrayElement(["customer", "admin", "city_manager"]); // Random role;
+    const balance = role === "customer" ? faker.number.int({ min: 0, max: 1000 }) : undefined; // Add balance placeholder if customer
     const monthly_paid = Math.random() < 0.5;
 
     return {
@@ -18,7 +18,7 @@ const generateUser = () => {
         firstname: firstName,
         lastname: lastName,
         email: email,
-        balance: role === 'customer' ? balance : undefined, // Add balance only if 'customer'
+        balance: role === "customer" ? balance : undefined, // Add balance only if 'customer'
         monthly_paid: monthly_paid
     };
 };
@@ -40,7 +40,7 @@ const generateUsers = (count) => {
 const generateUserJsonFile = (filePath, count) => {
     const users = generateUsers(count);
     writeJsonFile(filePath, users);
-    console.log(`Generated ${count} users and saved to ${filePath}`);
+    console.log(`Generated ${count} users and saved to ${filePath}`); // eslint-disable-line no-console
 };
 
 export default generateUserJsonFile;

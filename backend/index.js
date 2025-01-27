@@ -16,7 +16,7 @@ import passport from 'passport';
 import "./strategies/githubStrategy.js";
 // import githubStrategy from './strategies/githubStrategy.js';
 import tokenService from './services/tokenService.js';
-import jwt from 'jsonwebtoken';
+// import jwt from 'jsonwebtoken';
 // import { error } from 'console';
 
 const app = express();
@@ -40,13 +40,13 @@ allRoutes(app, pathV1);
 // attaches Socket.IO to the backend server.
 const io = initializeSocket(server);
 
-app.get('/', (req, res, next) => {
+app.get('/', (req, res) => {
     res.status(200).json({
         message: "Welcome to our RESTful BikeAPI! Please refer to the documentation at GET /docs for usage details."
     });
 });
 
-app.get('/docs', (req, res, next) => {
+app.get('/docs', (req, res) => {
     res.redirect("https://documenter.getpostman.com/view/40462903/2sAYQdj9je");
 });
 
