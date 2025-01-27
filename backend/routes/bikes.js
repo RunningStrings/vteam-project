@@ -1,9 +1,9 @@
 /**
  * Route for bikes.
  */
-import express from 'express';
+import express from "express";
 import bikeModel from "../models/bikeModel.js";
-import { tokenMiddleware, adminTokenMiddleware } from '../middlewares/tokenMiddleware.js';
+import { tokenMiddleware, adminTokenMiddleware } from "../middlewares/tokenMiddleware.js";
 
 const router = express.Router();
 
@@ -20,17 +20,17 @@ router
                 data: result
             });
         } catch (error) {
-            console.error('Error get bikes:', error);
+            console.error("Error get bikes:", error);
             next(error);
         }
     })
     .post(adminTokenMiddleware, async (req, res, next) => {
         try {
             const result = await bikeModel.createBike(req.body);
-            res.set('Location', `/bikes/${result.insertedId}`);
+            res.set("Location", `/bikes/${result.insertedId}`);
             res.status(201).send();
         } catch (error) {
-            console.error('Error post bikes:', error);
+            console.error("Error post bikes:", error);
             next(error);
         }
     });
@@ -45,7 +45,7 @@ router
                 data: result
             });
         } catch (error) {
-            console.error('Error get one bike:', error);
+            console.error("Error get one bike:", error);
             next(error);
         }
     })
@@ -57,17 +57,17 @@ router
                 data: result
             });
         } catch (error) {
-            console.error('Error put one bike:', error);
+            console.error("Error put one bike:", error);
             next(error);
         }
     })
     .patch(adminTokenMiddleware, async (req, res, next) => {
         try {
             await bikeModel.updateBikeById(req.params.id, req.body);
-            res.set('Location', `/bikes/${req.params.id}`);         
-            res.status(204).send()
+            res.set("Location", `/bikes/${req.params.id}`);         
+            res.status(204).send();
         } catch (error) {
-            console.error('Error patch one bike:', error);
+            console.error("Error patch one bike:", error);
             next(error);
         }
     })
@@ -76,7 +76,7 @@ router
             await bikeModel.deleteBikeById(req.params.id);
             res.status(204).send();
         } catch (error) {
-            console.error('Error delete one bike:', error);
+            console.error("Error delete one bike:", error);
             next(error);
         }
     });

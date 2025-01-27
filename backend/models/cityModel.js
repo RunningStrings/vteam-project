@@ -1,9 +1,9 @@
 /**
  * Model object for cities. Stores model functions for cities route.
  */
-import database from '../database-config/database.js';
-import { ObjectId } from 'mongodb';
-import { createError } from './utils/createError.js'
+import database from "../database-config/database.js";
+import { ObjectId } from "mongodb";
+import { createError } from "./utils/createError.js";
 
 const cityModel = {
     fetchAllCities: async function fetchAllCities() {
@@ -20,7 +20,7 @@ const cityModel = {
 
     fetchCityById: async function fetchCityById(id) {
         if (!ObjectId.isValid(id)) {
-            createError("ID format is invalid", 400)
+            createError("ID format is invalid", 400);
         }
 
         const db = await database.getDb();
@@ -58,7 +58,7 @@ const cityModel = {
         try {
             const filter = {
                 _id: ObjectId.createFromHexString(id)
-                };
+            };
                 
             let result = await db.collectionCities.findOne(filter);    
 
@@ -96,7 +96,7 @@ const cityModel = {
         try {
             const filter = {
                 _id: ObjectId.createFromHexString(id)
-                };
+            };
                 
             let result = await db.collectionCities.findOne(filter);
 
@@ -107,7 +107,7 @@ const cityModel = {
             const allowedProperties = ["name", "geometry"];
             const reqProperties = Object.keys(body);
             const isInvalidUpdate = reqProperties.some(property =>
-                 !allowedProperties.includes(property));
+                !allowedProperties.includes(property));
 
             if (isInvalidUpdate) {
                 createError(`invalid update property key. This API only allow
@@ -137,7 +137,7 @@ const cityModel = {
         try {
             const filter = {
                 _id: ObjectId.createFromHexString(id)
-                };
+            };
                 
             let result = await db.collectionCities.findOne(filter);
 
@@ -160,7 +160,7 @@ const cityModel = {
     createCity: async function createCity(body) {
         if (!body.name || !body.charging_stations || !body.parking_zones || !body.permitted_zones
             || !body.geometry) {
-                createError(`name and geometry are required properties.`, 400);
+            createError("name and geometry are required properties.", 400);
         }
 
         const db = await database.getDb();

@@ -1,9 +1,9 @@
 /**
  * Route for login.
  */
-import express from 'express';
-import passport from 'passport';
-import { tokenMiddleware } from '../middlewares/tokenMiddleware.js';
+import express from "express";
+import passport from "passport";
+import { tokenMiddleware } from "../middlewares/tokenMiddleware.js";
 import userModel from "../models/userModel.js";
 // import { createError } from '../models/utils/createError.js'
 
@@ -23,12 +23,12 @@ router
         console.log("originUrl");
         console.log(originUrl);
         if (!originUrl) {
-            originUrl = "http://localhost:1337/"
+            originUrl = "http://localhost:1337/";
         }
         const stateParam = encodeURIComponent(originUrl);
 
-        passport.authenticate('github', {
-            scope: ['user', 'user:email'],
+        passport.authenticate("github", {
+            scope: ["user", "user:email"],
             session: false,
             state: stateParam  // Pass the origin as state
         })(req, res, next);  // Call the middleware with req, res, and next
@@ -44,12 +44,12 @@ router
             // }
 
             const result = await userModel.updateUserById(req.token.user._id, { "role": "admin" });
-            res.set('Location', `/users/${req.params.id}`);         
+            res.set("Location", `/users/${req.params.id}`);         
             res.status(200).json({
                 data: result
             });
         } catch (error) {
-            console.error('Error patch one user:', error);
+            console.error("Error patch one user:", error);
             next(error);
         }
     });
@@ -63,12 +63,12 @@ router
             // }
 
             const result = await userModel.updateUserById(req.token.user._id, { "role": "customer" });
-            res.set('Location', `/users/${req.params.id}`);         
+            res.set("Location", `/users/${req.params.id}`);         
             res.status(200).json({
                 data: result
             });
         } catch (error) {
-            console.error('Error patch one user:', error);
+            console.error("Error patch one user:", error);
             next(error);
         }
     });

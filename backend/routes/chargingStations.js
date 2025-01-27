@@ -1,9 +1,9 @@
 /**
  * Route for charging_stations.
  */
-import express from 'express';
+import express from "express";
 import stationModel from "../models/stationModel.js";
-import { tokenMiddleware, adminTokenMiddleware } from '../middlewares/tokenMiddleware.js';
+import { tokenMiddleware, adminTokenMiddleware } from "../middlewares/tokenMiddleware.js";
 
 const router = express.Router();
 
@@ -16,17 +16,17 @@ router
                 data: result
             });
         } catch (error) {
-            console.error('Error get charging_stations:', error);
+            console.error("Error get charging_stations:", error);
             next(error);
         }
     })
     .post(adminTokenMiddleware, async (req, res, next) => {
         try {
             const result = await stationModel.createChargingStation(req.body);
-            res.set('Location', `/charging_stations/${result.insertedId}`);
+            res.set("Location", `/charging_stations/${result.insertedId}`);
             res.status(201).send();
         } catch (error) {
-            console.error('Error post charging_stations:', error);
+            console.error("Error post charging_stations:", error);
             next(error);
         }
     });
@@ -41,7 +41,7 @@ router
                 data: result
             });
         } catch (error) {
-            console.error('Error get one station:', error);
+            console.error("Error get one station:", error);
             next(error);
         }
     })
@@ -53,17 +53,17 @@ router
                 data: result
             });
         } catch (error) {
-            console.error('Error put one station:', error);
+            console.error("Error put one station:", error);
             next(error);
         }
     })
     .patch(adminTokenMiddleware, async (req, res, next) => {
         try {
             await stationModel.updateChargingStationById(req.params.id, req.body);
-            res.set('Location', `/charging_stations/${req.params.id}`);         
-            res.status(204).send()
+            res.set("Location", `/charging_stations/${req.params.id}`);         
+            res.status(204).send();
         } catch (error) {
-            console.error('Error patch one station:', error);
+            console.error("Error patch one station:", error);
             next(error);
         }
     })
@@ -72,23 +72,23 @@ router
             await stationModel.deleteChargingStationById(req.params.id);
             res.status(204).send();
         } catch (error) {
-            console.error('Error delete one station:', error);
+            console.error("Error delete one station:", error);
             next(error);
         }
     });
 
-    router
+router
     .route("/:id/bikes")
     .post(async (req, res, next) => {
         try {
-            console.log(req.params.id, req.body)
+            console.log(req.params.id, req.body);
             const result = await stationModel.moveBikeToChargingStation(req.params.id, req.body);
             // res.set('Location', `/charging_stations/${result.insertedId}`);
             res.status(200).json({
                 data: result
             });
         } catch (error) {
-            console.error('Error post charging_stations/:id/bikes:', error);
+            console.error("Error post charging_stations/:id/bikes:", error);
             next(error);
         }
     });

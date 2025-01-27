@@ -1,9 +1,9 @@
 /**
  * Model object for bikes. Stores model functions for bikes route.
  */
-import database from '../database-config/database.js';
-import { ObjectId } from 'mongodb';
-import { createError } from './utils/createError.js'
+import database from "../database-config/database.js";
+import { ObjectId } from "mongodb";
+import { createError } from "./utils/createError.js";
 
 const bikeModel = {
     fetchAllBikes: async function fetchAllBikes(limit, offset, city_name) {
@@ -14,10 +14,10 @@ const bikeModel = {
                 $and: [
                     {
                         $or: [
-                            city_name ? { city_name: { $regex: new RegExp(city_name, 'i') } } : {}
+                            city_name ? { city_name: { $regex: new RegExp(city_name, "i") } } : {}
                         ]
                     },
-                    ]
+                ]
             };
             const result = await db.collectionBikes
                 .find(filter)
@@ -33,7 +33,7 @@ const bikeModel = {
 
     fetchBikeById: async function fetchBikeById(id) {
         if (!ObjectId.isValid(id)) {
-            createError("ID format is invalid", 400)
+            createError("ID format is invalid", 400);
         }
 
         const db = await database.getDb();
@@ -70,7 +70,7 @@ const bikeModel = {
         try {
             const filter = {
                 _id: ObjectId.createFromHexString(id)
-                };
+            };
                 
             let result = await db.collectionBikes.findOne(filter);    
 
@@ -112,7 +112,7 @@ const bikeModel = {
         try {
             const filter = {
                 _id: ObjectId.createFromHexString(id)
-                };
+            };
                 
             let result = await db.collectionBikes.findOne(filter);
 
@@ -121,7 +121,7 @@ const bikeModel = {
             }
 
             const allowedProperties = ["id", "city_name", "location", "status",
-                 "battery", "speed"];
+                "battery", "speed"];
             const reqProperties = Object.keys(body);
             const isInvalidUpdate = reqProperties.some(property =>
                 !allowedProperties.includes(property));
@@ -154,7 +154,7 @@ const bikeModel = {
         try {
             const filter = {
                 _id: ObjectId.createFromHexString(id)
-                };
+            };
                 
             let result = await db.collectionBikes.findOne(filter);
 

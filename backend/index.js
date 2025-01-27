@@ -4,18 +4,18 @@
  * @author Bikeriderz
  *
  */
-import express from 'express';
-import cors from 'cors';
-import http from 'http'; // Needed for socket.io
-import allRoutes from './routes/index.js';
-import errorMiddleware from './middlewares/errorMiddleware.js';
-import setHeader from './middlewares/setHeader.js';
-import logIncomingToConsole from './middlewares/index.js';
-import { initializeSocket } from './socket.js';
-import passport from 'passport';
+import express from "express";
+import cors from "cors";
+import http from "http"; // Needed for socket.io
+import allRoutes from "./routes/index.js";
+import errorMiddleware from "./middlewares/errorMiddleware.js";
+import setHeader from "./middlewares/setHeader.js";
+import logIncomingToConsole from "./middlewares/index.js";
+import { initializeSocket } from "./socket.js";
+import passport from "passport";
 import "./strategies/githubStrategy.js";
 // import githubStrategy from './strategies/githubStrategy.js';
-import tokenService from './services/tokenService.js';
+import tokenService from "./services/tokenService.js";
 // import jwt from 'jsonwebtoken';
 // import { error } from 'console';
 
@@ -40,19 +40,19 @@ allRoutes(app, pathV1);
 // attaches Socket.IO to the backend server.
 const io = initializeSocket(server);
 
-app.get('/', (req, res) => {
+app.get("/", (req, res) => {
     res.status(200).json({
         message: "Welcome to our RESTful BikeAPI! Please refer to the documentation at GET /docs for usage details."
     });
 });
 
-app.get('/docs', (req, res) => {
+app.get("/docs", (req, res) => {
     res.redirect("https://documenter.getpostman.com/view/40462903/2sAYQdj9je");
 });
 
 // app.get('/github/oauth2/callback', (req, res) => {
-    //     res.send('Hello from the Backend!');
-    // });
+//     res.send('Hello from the Backend!');
+// });
 
 // app.get('/api/v1/login', passport.authenticate('github', {
 //     scope: ['user', 'user:email'],
@@ -62,7 +62,7 @@ app.get('/docs', (req, res) => {
 app.get(
     "/github/oauth2/callback",
     passport.authenticate("github", {
-        failureRedirect: '/',
+        failureRedirect: "/",
         session: false
     }), (req, res, next) => {
         try {
@@ -71,17 +71,17 @@ app.get(
             // res.setHeader('Authorization', `Bearer ${token}`);
 
             const stateParam = req.query.state;
-            console.log('State received from GitHub OAuth callback:', stateParam);
+            console.log("State received from GitHub OAuth callback:", stateParam);
 
             // If needed, decode the state parameter
             const decodedState = decodeURIComponent(stateParam);
-            console.log('Decoded state:', decodedState);
+            console.log("Decoded state:", decodedState);
 
             // if (decodedState !== undefined && decodedState !== '') {
             //     console.log('I TRUGGER HERE')
             // }
-            console.log(stateParam)
-            console.log(decodedState)
+            console.log(stateParam);
+            console.log(decodedState);
             const redirectUrl = `${decodedState}?token=${token}&role=${userObject.user.role}&id=${userObject.user._id}`;
             res.redirect(redirectUrl);
             
@@ -94,7 +94,7 @@ app.get(
 
 
         }  catch (error) {
-            console.error('Error github', error);
+            console.error("Error github", error);
             next(error);
         }
 
