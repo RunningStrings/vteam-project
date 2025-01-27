@@ -21,7 +21,13 @@ const waitForBackend = async () => {
     let retries = 5;
     while (retries > 0) {
         try {
-            await axios.get(`${API_URL}/bikes`, { params: { limit: 1 } });
+            await axios.get(`${API_URL}/bikes`, {
+                params: { limit: 1 },
+                headers: {
+                    'Content-Type': 'application/json',
+                    'x-access-token': process.env.BIKE_TOKEN
+                }
+            });
             console.log("Backend is ready.");
             return;
         } catch {
@@ -41,7 +47,11 @@ const loadBikesFromDatabase = async () => {
         // Fetch bikes in batches
         while (true) {
             const response = await axios.get(`${API_URL}/bikes`, {
-                params: { offset, limit: BATCH_SIZE }
+                params: { offset, limit: BATCH_SIZE },
+                headers: {
+                    'Content-Type': 'application/json',
+                    'x-access-token': process.env.BIKE_TOKEN
+                }
             });
 
             console.log('API Response:', JSON.stringify(response.data, null, 2));
@@ -153,6 +163,7 @@ const simulateBikeUpdates = (bikes, customers) => {
     for (let i = 0; i < bikes.length; i += BATCH_SIZE) {
         const batch = bikes.slice(i, i + BATCH_SIZE);
         batch.forEach((bike) => {
+            // Randomize a trip duration between 30 seconds and 5 minutes.
             const MIN_TRIP_DURATION = Math.floor(Math.random() * (300000 - 30000 + 1)) + 30000;
 
             if (bike.tripCurrent && bike.tripCurrent.is_active) {
