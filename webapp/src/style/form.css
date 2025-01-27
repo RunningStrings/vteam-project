@@ -2,9 +2,10 @@
     background-color: rgba(255, 255, 255, 0.05);
     border: 1px solid #d3d3d3;
     border-radius: 1.5rem;
-    width: 100%;
+    width: 80%;
     font-size: larger;
-  
+    margin-left: 2.5rem;
+    margin-right: 2.5rem;
   }
 
   .form__group {
@@ -20,14 +21,22 @@
 }
 
 .form__label {
-  font-weight: bolder;
+    font-weight: bolder;
 }
 
+.form__select {
+    height: 40px;
+    margin-left: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    background-color: #2049e1;
+    color: white;
+}
 
   .full_width {
-    width: 100%;
+      width: 100%;
   }
 
   .button {
-    width: 100%;
+      width: 100%;
   }
