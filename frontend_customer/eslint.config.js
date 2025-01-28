@@ -28,7 +28,7 @@ export default [
             "semi": ["warn", "always"],
             "quotes": ["warn", "double"],
             "indent": ["warn", 4],
-            ...js.configs.recommended.rules,
+            //...js.configs.recommended.rules,
             ...react.configs.recommended.rules,
             ...react.configs["jsx-runtime"].rules,
             ...reactHooks.configs.recommended.rules,

@@ -38,7 +38,7 @@ function Bikes() {
                 setError(error.message);
                 setIsLoading(false);
             });
-    }, []);
+    }, [token]);
 
     if (isLoading) {
         return <p>Loading...</p>;

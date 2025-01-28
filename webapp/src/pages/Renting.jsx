@@ -1,4 +1,4 @@
-import { useState} from "react";
+import { useState, useEffect } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import { baseURL } from "../components/utils.jsx";
@@ -13,6 +13,79 @@ const Home = () => {
     const navigate = useNavigate();
     const [trips, setTrips] = useState([]); // Deklarerar trips
 
+    const updateUser = async (balance, cost) => {
+        const endpoint = `${baseURL}/users/${customerId}`;
+        //let token=sessionStorage.getItem("token");
+        balance=balance-cost;
+        const body = {
+            "balance": balance,
+        };
+        try {
+            const response = await fetch(endpoint, {
+                method: "PATCH",
+                headers: {
+                    "Content-Type": "application/json",
+                    "x-access-token": `${token}`,
+                },
+                body: JSON.stringify(body),
+            });
+            if (!response.ok) {
+                throw new Error(`Error: ${response.status} ${response.statusText}`);
+            }
+            const contentType = response.headers.get("content-type");
+            if (contentType && contentType.includes("application/json")) {
+                const data = await response.json();
+                //alert("Användaren har uppdaterats!");
+                return data;
+            } else {
+                //alert("Användaren har uppdaterats");
+                return null;
+            }
+        } catch (error) {
+            alert("Ett problem uppstod när saldo uppdaterades.");
+            console.error("Error creating user:", error);
+        }
+    };
+    const fixCost = async (tripId) => {
+        try {
+            const tripResponse = await fetch(`${baseURL}/trips`, {
+                headers: { "x-access-token": token },
+            });
+
+            if (!tripResponse.ok) {
+                throw new Error(`Error: ${tripResponse.status} ${tripResponse.statusText}`);
+            }
+
+            const tripData = await tripResponse.json();
+            const filteredTrip = tripData.data.find((trip) => trip._id === tripId);
+
+            if (!filteredTrip) {
+                throw new Error("Trip not found");
+            }
+
+            const userResponse = await fetch(`${baseURL}/users`, {
+                headers: { "x-access-token": token },
+            });
+
+            if (!userResponse.ok) {
+                throw new Error(`Error: ${userResponse.status} ${userResponse.statusText}`);
+            }
+
+            const userData = await userResponse.json();
+            const user = userData.data.find((user) => user._id === customerId);
+
+            if (!user) {
+                throw new Error("User not found");
+            }
+
+            // Uppdate customers balance
+            await updateUser(user.balance, filteredTrip.cost);
+        } catch (error) {
+            toast.error("Ett problem uppstod vid kostnadsberäkningen.");
+            console.error("Error fixing cost:", error);
+        }
+    };
+    
    
     async function createTrip(parking) {
         const endpoint = `${baseURL}/trips/${tripid}`;
@@ -41,13 +114,10 @@ const Home = () => {
             const contentType = response.headers.get("content-type");
             if (contentType && contentType.includes("application/json")) {
                 const data = await response.json();
-                //console.log(response.data);
-                
-                //alert("Trip har skapats!");
+                fixCost(tripid);
                 return data;
             } else {
-                //alert("Trip har skapats");
-                //console.log(response);
+                fixCost(tripid);
                 return null;
             }
         } catch (error) {
