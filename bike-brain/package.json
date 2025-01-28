@@ -5,9 +5,10 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "test": "jest --coverage",
+    "jesttest": "jest --coverage",
     "lint": "npx eslint *.js",
-    "lint:fix": "npx eslint *.js --fix"
+    "lint:fix": "npx eslint *.js --fix",
+    "test": "npx eslint *.js"
   },
   "author": "",
   "license": "ISC",
