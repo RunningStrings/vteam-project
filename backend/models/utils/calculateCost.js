@@ -7,14 +7,19 @@
  * @returns The cost object containing fixed, variable and total cost.
  */
 function calculateCost(freeParkingStart, freeParkingEnd, duration) {
-    let cost = {};
+    const cost = {
+        variable: null,
+        fixed: null,
+        total: null
+    };
+    
     cost.variable = (3 * Math.ceil(duration / 1000)); // 3 kr cost per minute('second') model
     cost.fixed = (freeParkingStart && !freeParkingEnd) ? 5 :
-    (!freeParkingStart && !freeParkingEnd) ? 10 :
-    (freeParkingStart && freeParkingEnd) ? 10 :
-    (!freeParkingStart && freeParkingEnd) ? 20 : 0;
+        (!freeParkingStart && !freeParkingEnd) ? 10 :
+            (freeParkingStart && freeParkingEnd) ? 10 :
+                (!freeParkingStart && freeParkingEnd) ? 20 : 0;
     cost.total = cost.variable + cost.fixed;
     return cost;
 }
 
-export default calculateCost
+export default calculateCost;

@@ -10,4 +10,4 @@ function createError(message, status) {
     throw error;
 }
 
-export { createError }
+export { createError };

@@ -1,11 +1,11 @@
 import passport from "passport";
-import { Strategy as GitHubStrategy } from 'passport-github2';
+import { Strategy as GitHubStrategy } from "passport-github2";
 // import tokenService from '../services/tokenService.js'
 // import { OAuth2Strategy as GitHubStrategy } from 'passport-github2';
-import userModel from '../models/userModel.js';
+import userModel from "../models/userModel.js";
 // import * as dotenv from 'dotenv';
 // dotenv.config();
-import 'dotenv/config';
+import "dotenv/config";
 
 // passport.serializeUser((user, done) => {
 // 	done(null, user._id);
@@ -30,7 +30,7 @@ import 'dotenv/config';
 // });
 
 export default passport.use(
-        new GitHubStrategy(
+    new GitHubStrategy(
         {
             clientID: process.env.CLIENT_ID,
             clientSecret: process.env.CLIENT_SECRET,
@@ -38,7 +38,7 @@ export default passport.use(
             // clientID: "Ov23li9ndlwDmCu3NI3W",
             // clientSecret: "ceb6c2e1c5fb2099f5a9ab839b6a1a2e30da204f",
             callbackURL: process.env.callbackURL || "http://localhost:5000/github/oauth2/callback",
-            scope: ['user', 'user:email'],
+            scope: ["user", "user:email"],
             session: false
         },
         async (accessToken, refreshToken, profile, done) => {
@@ -76,8 +76,8 @@ export default passport.use(
                 // console.log(user)
                 return done(null, { user });
             } catch (error) {
-            console.error('Error storing user in DB:', error);
-            return done(error, null);
+                console.error("Error storing user in DB:", error);
+                return done(error, null);
             }
         }
     )

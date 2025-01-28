@@ -2,16 +2,17 @@
 // dotenv.config();
 
 // import jwt from 'jsonwebtoken';
-import { createError } from '../models/utils/createError.js'
-import tokenService from '../services/tokenService.js'
+import { createError } from "../models/utils/createError.js";
+import tokenService from "../services/tokenService.js";
 
 // const secret = process.env.JWT_SECRET;
 
 const tokenMiddleware = (req, res, next) => {
-    const token = req.headers['x-access-token'];
+    const token = req.headers["x-access-token"];
+
 
     if (!token) {
-        createError("unauthorized. No token found.", 401)
+        createError("unauthorized. No token found.", 401);
     }
 
     try {
@@ -24,10 +25,12 @@ const tokenMiddleware = (req, res, next) => {
 };
 
 const adminTokenMiddleware = (req, res, next) => {
-    const token = req.headers['x-access-token'];
+    const token = req.headers["x-access-token"];
+    console.log("in middleware");
+    console.log(token);
 
     if (!token) {
-        createError("unauthorized. No token found.", 401)
+        createError("unauthorized. No token found.", 401);
     }
 
     try {
@@ -37,7 +40,7 @@ const adminTokenMiddleware = (req, res, next) => {
         createError("unauthorized. Invalid token.", 401);
     };
 
-    if (req.token.user.role !== 'admin') {
+    if (req.token.user.role !== "admin") {
         createError("you need admin privileges for this route", 403);
     }
     next();

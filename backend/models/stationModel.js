@@ -1,9 +1,9 @@
 /**
  * Model object for charging_stations. Stores model functions for charging_stations route.
  */
-import database from '../database-config/database.js';
-import { ObjectId } from 'mongodb';
-import { createError } from './utils/createError.js'
+import database from "../database-config/database.js";
+import { ObjectId } from "mongodb";
+import { createError } from "./utils/createError.js";
 
 const stationModel = {
     fetchAllChargingStations: async function fetchAllChargingStations(query) {
@@ -15,10 +15,10 @@ const stationModel = {
                 $and: [
                     {
                         $or: [
-                            city_name ? { city_name: { $regex: new RegExp(city_name, 'i') } } : {}
+                            city_name ? { city_name: { $regex: new RegExp(city_name, "i") } } : {}
                         ]
                     },
-                    ]
+                ]
             };
             const result = await db.collectionStations.find(filter).toArray();
 
@@ -30,7 +30,7 @@ const stationModel = {
 
     fetchChargingStationById: async function fetchChargingStationById(id) {
         if (!ObjectId.isValid(id)) {
-            createError("ID format is invalid", 400)
+            createError("ID format is invalid", 400);
         }
 
         const db = await database.getDb();
@@ -68,7 +68,7 @@ const stationModel = {
         try {
             const filter = {
                 _id: ObjectId.createFromHexString(id)
-                };
+            };
                 
             let result = await db.collectionStations.findOne(filter);    
 
@@ -110,7 +110,7 @@ const stationModel = {
         try {
             const filter = {
                 _id: ObjectId.createFromHexString(id)
-                };
+            };
                 
             let result = await db.collectionStations.findOne(filter);
 
@@ -119,10 +119,10 @@ const stationModel = {
             }
 
             const allowedProperties = ["city_name", "location",
-                 "bikes", "capacity", "name", "id"];
+                "bikes", "capacity", "name", "id"];
             const reqProperties = Object.keys(body);
             const isInvalidUpdate = reqProperties.some(property =>
-                 !allowedProperties.includes(property));
+                !allowedProperties.includes(property));
 
             if (isInvalidUpdate) {
                 createError("invalid update property key. This API only allow"
@@ -152,7 +152,7 @@ const stationModel = {
         try {
             const filter = {
                 _id: ObjectId.createFromHexString(id)
-                };
+            };
                 
             let result = await db.collectionStations.findOne(filter);
 
@@ -174,7 +174,7 @@ const stationModel = {
 
     createChargingStation: async function createChargingStation(body) {
         if (!body.city_name || !body.location || !body.name) {
-                createError("city_name, name and location are required properties.", 400);
+            createError("city_name, name and location are required properties.", 400);
         }
 
         const db = await database.getDb();
@@ -228,13 +228,13 @@ const stationModel = {
             // const isInvalidUpdate = reqProperties.some(property =>
             //     !allowedProperties.includes(property));
 
-            if (!Object.keys(body).includes('bikeId')) {
+            if (!Object.keys(body).includes("bikeId")) {
                 createError("bikeId is required", 400);
             }
 
             const updateStation = {
                 $addToSet: { bikes: body.bikeId }
-              };
+            };
 
             await db.collectionStations.updateOne(filterStation, updateStation);
 

@@ -1,22 +1,24 @@
 /**
  * Model object for users. Stores model functions for users route.
  */
-import database from '../database-config/database.js';
-import { ObjectId } from 'mongodb';
-import { createError } from './utils/createError.js'
+import database from "../database-config/database.js";
+import { ObjectId } from "mongodb";
+import { createError } from "./utils/createError.js";
+import { updateUser } from "./utils/updateUser.js";
+import { buildLinks } from "./utils/buildLinks.js";
 
 const userModel = {
     fetchAllUsers: async function fetchAllUsers(req) {
         const db = await database.getDb();
 
         try {
-            const { role, sortField, sortDirection = 'asc', limit = 0, page = 1 } = req.query;
+            const { role, sortField, sortDirection = "asc", limit = 0, page = 1 } = req.query;
 
             const parsedLimit = parseInt(limit, 10);
             const parsedPage = parseInt(page, 10);
             const offset = (parsedPage - 1) * parsedLimit;
-            const filter = role ? { role: { $regex: new RegExp(role, 'i') } } : {};
-            const sortObject = sortField ? { [sortField]: sortDirection === 'desc' ? -1 : 1 } : {};
+            const filter = role ? { role: { $regex: new RegExp(role, "i") } } : {};
+            const sortObject = sortField ? { [sortField]: sortDirection === "desc" ? -1 : 1 } : {};
 
             const totalCount = await db.collectionUsers.countDocuments(filter);
             const totalPages = parsedLimit === 0 ? 1 : Math.ceil(totalCount / parsedLimit);
@@ -27,14 +29,16 @@ const userModel = {
                 .skip(offset)
                 .limit(parsedLimit)
                 .toArray();
+            
+            const links = buildLinks(req, parsedPage, totalPages, parsedLimit);
 
-            const baseUrl = `${req.protocol}://${req.get('host')}${req.baseUrl}`;
+            // const baseUrl = `${req.protocol}://${req.get("host")}${req.baseUrl}`;
 
-            const links = [
-                ...(parsedPage > 1 ? [`<${baseUrl}?page=${parsedPage - 1}&limit=${parsedLimit}>; rel="previous"`] : []),
-                ...(parsedPage < totalPages ? [`<${baseUrl}?page=${parsedPage + 1}&limit=${parsedLimit}>; rel="next"`] : []),
-                ...(totalPages > 1 ? [`<${baseUrl}?page=${totalPages}&limit=${parsedLimit}>; rel="last"`] : [])
-            ];
+            // const links = [
+            //     ...(parsedPage > 1 ? [`<${baseUrl}?page=${parsedPage - 1}&limit=${parsedLimit}>; rel="previous"`] : []),
+            //     ...(parsedPage < totalPages ? [`<${baseUrl}?page=${parsedPage + 1}&limit=${parsedLimit}>; rel="next"`] : []),
+            //     ...(totalPages > 1 ? [`<${baseUrl}?page=${totalPages}&limit=${parsedLimit}>; rel="last"`] : [])
+            // ];
 
             return {
                 data: result,
@@ -93,7 +97,7 @@ const userModel = {
         if (!body.email || !body.role) {
             createError("email and role are required."
                 + " Use patch method instead if you only want to update part of the user resource."
-                , 400);
+            , 400);
         }
 
         const db = await database.getDb();
@@ -113,29 +117,31 @@ const userModel = {
             const isInvalidUpdate = reqProperties.some(property =>
                 !allowedProperties.includes(property));
 
-           if (isInvalidUpdate) {
-               createError("invalid update property key. This API only allow"
+            if (isInvalidUpdate) {
+                createError("invalid update property key. This API only allow"
                     + " updates of already existing properties.", 400);
-           }
+            }
 
-            const updateUser = {
-                firstname: body.firstname || null,
-                lastname: body.lastname || null,
-                email: body.email,
-                role: body.role,
-                balance: body.balance || null,
-                monthly_paid: body.monthly_paid || false
-            };
+            // const updateUser = {
+            //     firstname: body.firstname || null,
+            //     lastname: body.lastname || null,
+            //     email: body.email,
+            //     role: body.role,
+            //     balance: body.balance || null,
+            //     monthly_paid: body.monthly_paid || false
+            // };
+
+            const user = updateUser(body);
 
             if (body.trip_history) {
-                updateUser.trip_history = body.trip_history;
+                user.trip_history = body.trip_history;
             }
 
             if (body.password) {
-                updateUser.password_hash = body.password;
+                user.password_hash = body.password;
             }
 
-            result = await db.collectionUsers.updateOne(filter, { $set: updateUser });
+            result = await db.collectionUsers.updateOne(filter, { $set: user });
 
             result = await db.collectionUsers.findOne(filter);
 
@@ -155,7 +161,7 @@ const userModel = {
         try {
             const filter = {
                 _id: ObjectId.createFromHexString(id)
-                };
+            };
                 
             let result = await db.collectionUsers.findOne(filter);
 
@@ -170,10 +176,10 @@ const userModel = {
             const isInvalidUpdate = reqProperties.some(property =>
                 !allowedProperties.includes(property));
 
-           if (isInvalidUpdate) {
-               createError("invalid update property key. This API only allow"
+            if (isInvalidUpdate) {
+                createError("invalid update property key. This API only allow"
                     + " updates of already existing properties.", 400);
-           }
+            }
 
             result = await db.collectionUsers.updateOne(filter, { $set: body });
 
@@ -238,7 +244,7 @@ const userModel = {
                 const duplicateUser = await db.collectionUsers.findOne({email});
     
                 if (duplicateUser) {
-                    createError("User with this email already exists.", 400)
+                    createError("User with this email already exists.", 400);
                 }
             }
 
@@ -246,7 +252,7 @@ const userModel = {
 
             const filter = {
                 _id: result.insertedId
-                };
+            };
 
             result = await db.collectionUsers.findOne(filter);
 
@@ -256,5 +262,7 @@ const userModel = {
         }
     }
 };
+
+
 
 export default userModel;

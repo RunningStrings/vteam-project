@@ -1,9 +1,9 @@
 /**
  * Model object for parking_zones. Stores model functions for parking_zones route.
  */
-import database from '../database-config/database.js';
-import { ObjectId } from 'mongodb';
-import { createError } from './utils/createError.js'
+import database from "../database-config/database.js";
+import { ObjectId } from "mongodb";
+import { createError } from "./utils/createError.js";
 
 const zoneModel = {
     fetchAllParkingZones: async function fetchAllParkingZones(query) {
@@ -15,10 +15,10 @@ const zoneModel = {
                 $and: [
                     {
                         $or: [
-                            city_name ? { city_name: { $regex: new RegExp(city_name, 'i') } } : {}
+                            city_name ? { city_name: { $regex: new RegExp(city_name, "i") } } : {}
                         ]
                     },
-                    ]
+                ]
             };
             const result = await db.collectionParkings.find(filter).toArray();
 
@@ -30,7 +30,7 @@ const zoneModel = {
 
     fetchParkingZoneById: async function fetchParkingZoneById(id) {
         if (!ObjectId.isValid(id)) {
-            createError("ID format is invalid", 400)
+            createError("ID format is invalid", 400);
         }
 
         const db = await database.getDb();
@@ -68,7 +68,7 @@ const zoneModel = {
         try {
             const filter = {
                 _id: ObjectId.createFromHexString(id)
-                };
+            };
                 
             let result = await db.collectionParkings.findOne(filter);    
 
@@ -110,7 +110,7 @@ const zoneModel = {
         try {
             const filter = {
                 _id: ObjectId.createFromHexString(id)
-                };
+            };
                 
             let result = await db.collectionParkings.findOne(filter);
 
@@ -121,7 +121,7 @@ const zoneModel = {
             const allowedProperties = ["city_name", "location", "id", "name", "location", "capacity"];
             const reqProperties = Object.keys(body);
             const isInvalidUpdate = reqProperties.some(property =>
-                 !allowedProperties.includes(property));
+                !allowedProperties.includes(property));
 
             if (isInvalidUpdate) {
                 createError("invalid update property key. This API only allow"
@@ -151,7 +151,7 @@ const zoneModel = {
         try {
             const filter = {
                 _id: ObjectId.createFromHexString(id)
-                };
+            };
                 
             let result = await db.collectionParkings.findOne(filter);
 
@@ -173,7 +173,7 @@ const zoneModel = {
 
     createParkingZone: async function createParkingZone(body) {
         if (!body.city_name || !body.location || !body.name) {
-                createError(`city_name, name and location are required properties.`, 400);
+            createError("city_name, name and location are required properties.", 400);
         }
 
         const db = await database.getDb();
