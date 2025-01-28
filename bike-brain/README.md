@@ -5,8 +5,7 @@ This simulation provides an immersive experience by showcasing the movement of 1
 To acquire a JWT token, follow these steps:
 
 **1. Login via GitHub**<br>
-Navigate to `http://localhost:1337` and log in using your GitHub account.
-Upon successful authentication, you will be redirected to a page containing your JWT token in the URL.
+Navigate to `http://localhost:5000/api/v1/login?originUrl=bike ` and copy the token from body.
 
 Example URL:
 
