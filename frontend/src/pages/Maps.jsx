@@ -39,9 +39,9 @@ const Maps = () => {
         });
 
         // Clean up the socket connection on unmount
-        return () => {
-            socket.disconnect();
-        };
+        // return () => {
+        //     socket.disconnect();
+        // };
     }, []);
   
     useEffect(() => {
@@ -159,7 +159,8 @@ const Maps = () => {
                         >
                             <Popup>
                                 <strong>Cykel nr: {bike.id}</strong><br />
-                                <strong>Batteri: {bike.battery}% </strong><br />
+                                <strong>Batteri: {bike.battery.toFixed(2)}% </strong><br />
+                                <strong> Hastighet: {bike.speed} km/h</strong><br/>
                                 <strong>{bike.status}</strong><br/>
                                 <button className="mapbutton"
                                     onClick={() => {
