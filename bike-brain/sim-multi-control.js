@@ -177,8 +177,19 @@ const simulateBikeUpdates = (bikes, customers) => {
                         customer.activeRental = null; // Reset activeRental when rent ends.
                     }
                 } else {
-                    const newLat = bike.location.coordinates[0] + (Math.random() - 0.5) * 0.001;
-                    const newLon = bike.location.coordinates[1] + (Math.random() - 0.5) * 0.001;
+                    // Define the distance for each movement step in degrees
+                    const movementStep = 0.0005;
+
+                    // Randomize the direction (angle in radians)
+                    const angle = Math.random() * 2 * Math.PI;
+
+                    // Calculate the change in latitude and longitude based on the angle and step size
+                    const deltaLat = movementStep * Math.cos(angle);
+                    const deltaLon = movementStep * Math.sin(angle);
+
+                    // Update the location with the calculated changes
+                    const newLat = bike.location.coordinates[0] + deltaLat;
+                    const newLon = bike.location.coordinates[1] + deltaLon;
 
                     bike.updateLocation({ type: 'Point', coordinates: [newLat, newLon] });
                 }
