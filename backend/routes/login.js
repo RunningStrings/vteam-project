@@ -9,13 +9,6 @@ import userModel from "../models/userModel.js";
 
 const router = express.Router();
 
-// router
-//     .route("/")
-//     .get(passport.authenticate('github', {
-//         scope: ['user', 'user:email'],
-//         session: false
-//     }));
-
 router
     .route("/")
     .get((req, res, next) => {
@@ -25,6 +18,7 @@ router
         if (!originUrl) {
             originUrl = "http://localhost:1337/";
         }
+
         const stateParam = encodeURIComponent(originUrl);
 
         passport.authenticate("github", {
