@@ -2,14 +2,15 @@ import readline from "readline/promises";
 import { stdin as input, stdout as output } from "process";
 import axios from "axios";
 import BikeBrain from "./bike-brain.js";
-import io from 'socket.io-client';
-import dotenv from 'dotenv';
+import io from "socket.io-client";
+import dotenv from "dotenv";
 
-const socket = io('http://backend:5000');
+// eslint-disable-next-line no-unused-vars
+const socket = io("http://backend:5000");
 
 dotenv.config();
 
-const API_URL = 'http://backend:5000/api/v1';
+const API_URL = "http://backend:5000/api/v1";
 
 const BATCH_SIZE = 200;
 
@@ -24,8 +25,8 @@ const waitForBackend = async () => {
             await axios.get(`${API_URL}/bikes`, {
                 params: { limit: 1 },
                 headers: {
-                    'Content-Type': 'application/json',
-                    'x-access-token': process.env.BIKE_TOKEN
+                    "Content-Type": "application/json",
+                    "x-access-token": process.env.BIKE_TOKEN
                 }
             });
             console.log("Backend is ready.");
@@ -49,17 +50,19 @@ const loadBikesFromDatabase = async () => {
             const response = await axios.get(`${API_URL}/bikes`, {
                 params: { offset, limit: BATCH_SIZE },
                 headers: {
-                    'Content-Type': 'application/json',
-                    'x-access-token': process.env.BIKE_TOKEN
+                    "Content-Type": "application/json",
+                    "x-access-token": process.env.BIKE_TOKEN
                 }
             });
 
-            console.log('API Response:', JSON.stringify(response.data, null, 2));
+            console.log("API Response:", JSON.stringify(response.data, null, 2));
 
             const batch = response.data?.data;
             console.log(batch);
 
-            if (!batch || batch.length === 0) break;
+            if (!batch || batch.length === 0) {
+                break;
+            }
 
             batch.forEach(doc => {
                 const bike = new BikeBrain(doc._id, doc.id, doc.city_name, doc.location, doc.status);
@@ -78,6 +81,7 @@ const loadBikesFromDatabase = async () => {
     } catch (error) {
         console.error("Error loading bikes from database:", error);
         process.exit(1);
+        return [];
     }
 };
 
@@ -86,40 +90,18 @@ const loadUsersFromDatabase = async () => {
     try {
         const response = await axios.get(`${API_URL}/users`, {
             headers: {
-                'Content-Type': 'application/json', // Optional, specify the content type
-                'x-access-token': process.env.BIKE_TOKEN // Replace with your token variable
+                "Content-Type": "application/json", // Optional, specify the content type
+                "x-access-token": process.env.BIKE_TOKEN // Replace with your token variable
             }
         });
 
         const users = response.data?.data || [];
 
-        return users.filter(user => user.role === 'customer');
+        return users.filter(user => user.role === "customer");
     } catch (error) {
         console.error("Error loading users from database:", error);
         process.exit(1);
-    }
-};
-
-const simulateBikeMovement = (bike, startLocation, endLocation, startTime, endTime, steps) => {
-    console.log(`startLocation: ${JSON.stringify(startLocation)}`);
-    console.log(`endLocation: ${JSON.stringify(endLocation)}`);
-
-    const totalDuration = endTime - startTime;
-    const timeStep = totalDuration / steps;
-    const distanceStepX = (endLocation.lat - startLocation.lat) / steps;
-    const distanceStepY = (endLocation.lon - startLocation.lon) / steps;
-
-    for (let i = 0; i <= steps; i ++) {
-        const currentTime = new Date(startTime.getTime() + i * timeStep);
-        const currentLocation = {
-            type: 'Point',
-            coordinates: [
-                startLocation.coordinates[0] + i * distanceStepX,
-                startLocation.coordinates[1] + i * distanceStepY,
-            ],
-        };
-
-        bike.updateLocation(currentLocation);
+        return [];
     }
 };
 
@@ -127,20 +109,20 @@ const calcBatteryDepletion = (bike) => {
     let depletionRate = 0;
 
     switch (bike.status) {
-        case 'in-use':
-            depletionRate = 0.2 + Math.random() * 0.1;
-            break;
-        case 'available':
-            depletionRate = 0.1 + Math.random() * 0.1;
-            break;
-        case 'charging':
-            depletionRate = -5 - Math.random() * 2;
-            break;
-        case 'maintenance':
-            depletionRate = 0;
-            break;
-        default:
-            depletionRate = 0.05;
+    case "in-use":
+        depletionRate = 0.2 + Math.random() * 0.1;
+        break;
+    case "available":
+        depletionRate = 0.1 + Math.random() * 0.1;
+        break;
+    case "charging":
+        depletionRate = -5 - Math.random() * 2;
+        break;
+    case "maintenance":
+        depletionRate = 0;
+        break;
+    default:
+        depletionRate = 0.05;
     }
 
     const speedFactor = bike.speed > 0 ? bike.speed * 0.01 : 0;
@@ -154,7 +136,7 @@ const calcBatteryDepletion = (bike) => {
 
 const simulateBikeUpdates = (bikes, customers) => {
     if (customers.length === 0) {
-        console.error('The customers array is empty.');
+        console.error("The customers array is empty.");
         return;
     } else {
         console.log(`There are ${customers.length} customers available for rentals.`);
@@ -192,7 +174,7 @@ const simulateBikeUpdates = (bikes, customers) => {
                     const newLat = bike.location.coordinates[0] + deltaLat;
                     const newLon = bike.location.coordinates[1] + deltaLon;
 
-                    bike.updateLocation({ type: 'Point', coordinates: [newLat, newLon] });
+                    bike.updateLocation({ type: "Point", coordinates: [newLat, newLon] });
                 }
             }
 
@@ -227,20 +209,21 @@ const startSimulation = async () => {
 
         console.log("Simulation started. Type ctrl + c to stop.");
 
-        let intervalId = setInterval(() => simulateBikeUpdates(bikes, customers), 3000);
+        const intervalId = setInterval(() => simulateBikeUpdates(bikes, customers), 3000);
 
         while (true) {
             const command = await rl.question("simulation> ");
             switch (command.trim().toLowerCase()) {
-                case "exit":
-                case "quit":
-                case "q":
-                    clearInterval(intervalId);
-                    console.log("Simulation ended.");
-                    rl.close();
-                    process.exit(0);
-                default:
-                    console.log(`Unknown command: ${command}`);
+            case "exit":
+            case "quit":
+            case "q":
+                clearInterval(intervalId);
+                console.log("Simulation ended.");
+                rl.close();
+                process.exit(0);
+                break;
+            default:
+                console.log(`Unknown command: ${command}`);
             }
         }
     } catch (error) {

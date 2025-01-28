@@ -1,13 +1,13 @@
 "use strict";
 
-import io from 'socket.io-client'
-import axios from 'axios';
-import dotenv from 'dotenv';
+import io from "socket.io-client";
+import axios from "axios";
+import dotenv from "dotenv";
 // import haversine from './helpers.js';
 
 dotenv.config();
 
-const API_URL = 'http://backend:5000/api/v1';
+const API_URL = "http://backend:5000/api/v1";
 
 /**
  * Represents an electric bike, tracking its state, location, and trips,
@@ -21,11 +21,11 @@ class BikeBrain {
      * @param {Object} location - The bike's location.
      * @param {string} status - The bike's status.
      */
-    constructor(mongodb_id, custom_id, city_name, location, status = 'available') {
+    constructor(mongodb_id, custom_id, city_name, location, status = "available") {
         this._id = mongodb_id;
         this.id = custom_id;
         this.city_name = city_name;
-        this.location = {type: 'Point', coordinates: location.coordinates};
+        this.location = {type: "Point", coordinates: location.coordinates};
         this.status = status; // available, in-use, charging, maintenance
         this.light = this.bikeLight(this.status);
         this.battery = 100;
@@ -37,13 +37,13 @@ class BikeBrain {
         this.previousLocation = null;
         this.previousSpeed = null;
 
-        this.socket = io('http://backend:5000');
+        this.socket = io("http://backend:5000");
 
-        this.socket.on('connect', () => {
+        this.socket.on("connect", () => {
             console.log(`Bike ${this.id} connected to the server`);
         });
 
-        this.socket.on('disconnect', () => {
+        this.socket.on("disconnect", () => {
             console.log(`Bike ${this.id} disconnected from the server`);
         });
 
@@ -52,11 +52,11 @@ class BikeBrain {
         //     this.controlBike(data.action);
         // });
 
-        this.socket.on('connect_error', (error) => {
+        this.socket.on("connect_error", (error) => {
             console.error(`Connection error for bike ${this.id}:`, error.message);
         });
 
-        this.socket.on('reconnect', (attemptNumber) => {
+        this.socket.on("reconnect", (attemptNumber) => {
             console.log(`Bike ${this.id} reconnected to the server after ${attemptNumber} attempts`);
         });
 
@@ -109,7 +109,7 @@ class BikeBrain {
             light: this.light,
         };
 
-        this.sendMessage('update-bike-data', data);
+        this.sendMessage("update-bike-data", data);
         // console.log(`Bike ${this.id}: Update sent`, data);
     }
 
@@ -145,7 +145,9 @@ class BikeBrain {
      * @param {number} interval - Update interval in milliseconds.
      */
     startUpdates(interval) {
-        if (this.updateInterval) clearInterval(this.updateInterval);
+        if (this.updateInterval) {
+            clearInterval(this.updateInterval);
+        }
 
         this.updateInterval = setInterval(() => {
             this.sendCombinedUpdate();
@@ -190,7 +192,7 @@ class BikeBrain {
         // const [lat, lon] = location.coordinates;
         // Update the 'coordinates' array in the 'location' object
         this.location = {
-            type: 'Point',
+            type: "Point",
             coordinates: location.coordinates,
         };
 
@@ -205,8 +207,6 @@ class BikeBrain {
         if (this.previousSpeed === undefined) {
             this.previousSpeed = 0;
         }
-
-        const currentSpeed = this.speed;
 
         if (
             this.previousSpeed !== newSpeed
@@ -253,9 +253,11 @@ class BikeBrain {
      */
     handleBatteryWarnings() {
         if (this.battery < 20) {
-            if (this.status === 'maintenance') return;
+            if (this.status === "maintenance") {
+                return;
+            }
 
-            if (this.status === 'in-use') {
+            if (this.status === "in-use") {
                 if (this.battery <= 10) {
                     console.log(`Bike ${this.id} has low battery (${this.battery}%)`);
                 } else if (this.battery < 20) {
@@ -264,15 +266,15 @@ class BikeBrain {
 
                 // Set status to 'maintenance' when battery is drained
                 if (this.battery === 0) {
-                    this.updateStatus('maintenance');
+                    this.updateStatus("maintenance");
                     console.log(`Bike ${this.id} in need of maintenance due to 0% battery`);
                 }
                 // If bike is not in use, set status to 'maintenance' if battery level
                 // is 20% or lower
             } else if (this.battery < 20) {
                 console.log(`Bike ${this.id} has low battery (${this.battery}%)`);
-                this.updateStatus('maintenance');
-                console.log(`Bike ${this.id} status changed to 'maintenance' due to low battery`)
+                this.updateStatus("maintenance");
+                console.log(`Bike ${this.id} status changed to 'maintenance' due to low battery`);
             }
         }
     }
@@ -321,32 +323,32 @@ class BikeBrain {
             // Await the axios POST request
             const response = await axios.post(`${API_URL}/trips`, data, {
                 headers: {
-                    'Content-Type': 'application/json', // Make sure you're sending JSON data
-                    'x-access-token': process.env.BIKE_TOKEN // Optional, if needed for authentication
+                    "Content-Type": "application/json", // Make sure you're sending JSON data
+                    "x-access-token": process.env.BIKE_TOKEN // Optional, if needed for authentication
                 },
             });
 
             // Handle the response after the POST request is successful
-            console.log('Bike data updated successfully:', response.data);
+            console.log("Bike data updated successfully:", response.data);
 
-            console.log('Server response:', response.data);
+            console.log("Server response:", response.data);
             if (response.data?.tripId) {
                 this.tripCurrent.tripId = response.data.tripId;
-                console.log('Trip successfully created with ID:', this.tripCurrent.tripId);
+                console.log("Trip successfully created with ID:", this.tripCurrent.tripId);
             } else {
-                console.error('Trip creation failed or tripId not found in response.');
+                console.error("Trip creation failed or tripId not found in response.");
                 this.tripCurrent = null;
             }
     
         } catch (error) {
             // Handle errors (e.g., network errors, server errors)
-            console.error('Error sending bike data:', error.message);
+            console.error("Error sending bike data:", error.message);
             this.tripCurrent = null;
         }
 
         // await axios.post(`${API_URL}/trips`, { params: { limit: 1 } });
 
-        console.log('Sending trip data to server:', this.tripCurrent);
+        console.log("Sending trip data to server:", this.tripCurrent);
 
         console.log(`Trip started for customer ${customerId} at ${startTime}`);
     }
@@ -356,8 +358,8 @@ class BikeBrain {
      * current trip to the server, and resets the trip state.
      */
     async stopTrip() {
-        console.log('stopTrip called');
-        console.log('Wake up babe, new trip ID just dropped:', this.tripCurrent.bikeId, this.tripCurrent.tripId);
+        console.log("stopTrip called");
+        console.log("Wake up babe, new trip ID just dropped:", this.tripCurrent.bikeId, this.tripCurrent.tripId);
         const stopTime = new Date();
 
         if (this.tripCurrent && this.tripCurrent.is_active) {
@@ -389,7 +391,7 @@ class BikeBrain {
             const tripId = this.tripCurrent.tripId;
 
             if (!tripId) {
-                console.error('Trip ID is missing, cannot update trip.');
+                console.error("Trip ID is missing, cannot update trip.");
                 return;
             }
 
@@ -406,14 +408,14 @@ class BikeBrain {
             try {
                 await axios.patch(`${API_URL}/trips/${tripId}`, updateData, {
                     headers: {
-                        'Content-Type': 'application/json',
-                        'x-access-token': process.env.BIKE_TOKEN,
+                        "Content-Type": "application/json",
+                        "x-access-token": process.env.BIKE_TOKEN,
                     },
                 });
 
-                console.log('Trip updated successfully:', tripId);
+                console.log("Trip updated successfully:", tripId);
             } catch (error) {
-                console.error('Error updating trip:', error.message);
+                console.error("Error updating trip:", error.message);
             }
 
             // // Send only current trip to the server
@@ -436,7 +438,7 @@ class BikeBrain {
 
         this.tripCurrent.stopValidParking = isValid;
 
-        console.log(`Stop parking validity updated to ${isValid} for trip ${this.tripCurrent.tripId}`)
+        console.log(`Stop parking validity updated to ${isValid} for trip ${this.tripCurrent.tripId}`);
     }
 
     /**
@@ -453,29 +455,29 @@ class BikeBrain {
      *                          - 'charge': Sets the bike to 'charging' status.
      */
     controlBike(action) {
-        const validActions = ['stop', 'make-available', 'maintenance', 'charge'];
+        const validActions = ["stop", "make-available", "maintenance", "charge"];
         if (!validActions.includes(action)) {
             console.error(`Invalid action '${action}' for bike ${this.id}`);
             return;
         }
 
         switch (action) {
-            case 'stop':
-                console.log(`Stopping bike ${this.id}. Speed will gradually decrease to 0.`);
-                this.graduallyStopBike();
-                break;
-            case 'make-available':
-                this.status = 'available';
-                console.log(`Bike ${this.id} is now available for rental.`);
-                break;
-            case 'maintenance':
-                this.status = 'maintenance';
-                console.log(`Bike ${this.id} is in maintenance mode.`);
-                break;
-            case 'charge':
-                this.status = 'charging';
-                console.log(`Bike ${this.id} is charging`);
-                break;
+        case "stop":
+            console.log(`Stopping bike ${this.id}. Speed will gradually decrease to 0.`);
+            this.graduallyStopBike();
+            break;
+        case "make-available":
+            this.status = "available";
+            console.log(`Bike ${this.id} is now available for rental.`);
+            break;
+        case "maintenance":
+            this.status = "maintenance";
+            console.log(`Bike ${this.id} is in maintenance mode.`);
+            break;
+        case "charge":
+            this.status = "charging";
+            console.log(`Bike ${this.id} is charging`);
+            break;
         }
         this.bikeLight(this.status);
     }
@@ -493,7 +495,7 @@ class BikeBrain {
                 console.log(`Bike ${this.id} speed: ${this.speed}`);
             } else {
                 clearInterval(decelerationInterval);
-                this.updateStatus('maintenance');
+                this.updateStatus("maintenance");
                 console.log(`Bike ${this.id} has been stopped and is now in maintenance mode.`);
                 // this.bikeLight(this.status);
             }
@@ -505,7 +507,7 @@ class BikeBrain {
      */
     autoCharge() {
         console.log(`Bike ${this.id} is being charged at a charging station`);
-        this.controlBike('charge');
+        this.controlBike("charge");
     }
 
     /**
@@ -521,10 +523,10 @@ class BikeBrain {
             return;
         }
         if (this.tripCurrent) {
-            console.log('Trip already in progress');
+            console.log("Trip already in progress");
             return;
         }
-        this.updateStatus('in-use');
+        this.updateStatus("in-use");
         this.startTrip(customerId);
         console.log(`Bike ${this.id} has been rented`);
         // this.bikeLight(this.status);
@@ -535,11 +537,11 @@ class BikeBrain {
      * @return {boolean} - True if the rental is blocked, otherwise false.
      */
     isRentalBlocked() {
-        if (this.status === 'available' && this.battery <= 20) {
+        if (this.status === "available" && this.battery <= 20) {
             console.log(`Bike ${this.id} not available for rental due to low battery (${this.battery}%)`);
             return true;
         }
-        if (!(this.status === 'available' || (this.status === 'charging' && this.battery >= 50))) {
+        if (!(this.status === "available" || (this.status === "charging" && this.battery >= 50))) {
             console.log(`Bike ${this.id} not available for rental, status ${this.status}, battery ${this.battery}.`);
             return true;
         }
@@ -553,13 +555,13 @@ class BikeBrain {
      * @returns {void } Returns a message if the bike's status is not 'in-use'.
      */
     stopRental() {
-        if (this.status !== 'in-use') {
+        if (this.status !== "in-use") {
             // console.log(`Bike ${this.id} not in use`);
             return;
         }
         this.stopTrip();
         console.log(`Bike ${this.id} has been returned`);
-        this.updateStatus('available');
+        this.updateStatus("available");
         // this.bikeLight(this.status);
     }
 
@@ -576,13 +578,13 @@ class BikeBrain {
      * @returs {string} - The light color corresponding to the status.
      */
     bikeLight(status) {
-        const normalizedStatus = (status || '').trim().toLowerCase();
+        const normalizedStatus = (status || "").trim().toLowerCase();
 
         const lightColors = {
-            available: 'green',
-            charging: 'red',
-            maintenance: 'yellow',
-            'in-use': 'blue',
+            available: "green",
+            charging: "red",
+            maintenance: "yellow",
+            "in-use": "blue",
         };
 
         const newLight = lightColors[normalizedStatus];

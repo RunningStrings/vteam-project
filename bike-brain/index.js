@@ -1,7 +1,7 @@
-import BikeBrain from './bike-brain.js';
+import BikeBrain from "./bike-brain.js";
 
 // Create a bike instance
-const bike1 = new BikeBrain('bike1', 'Stockholm', 59.3293, 18.0686);
+const bike1 = new BikeBrain("bike1", "Stockholm", 59.3293, 18.0686);
 
 // Update location, speed and battery level
 setTimeout(() => {
@@ -12,7 +12,7 @@ setTimeout(() => {
 
 // Start a rental
 setTimeout(() => {
-    bike1.startRental('customer1');
+    bike1.startRental("customer1");
 }, 4000);
 
 // Get bike data
