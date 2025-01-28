@@ -13,7 +13,7 @@ const Maps = () => {
 
     useEffect(() => {
         // Fetch cities from the backend API
-        fetch("/cities")
+        fetch("/cities",{headers: {"x-access-token": `${token}`},})
             .then((response) => {
                 if (!response.ok) {
                     throw new Error(`HTTP error! status: ${response.status}`);
@@ -28,7 +28,7 @@ const Maps = () => {
             });
 
         // Fetch parkings from the backend API
-        fetch("/parking_zones")
+        fetch("/parking_zones",{headers: {"x-access-token": `${token}`},})
             .then((response) => {
                 if (!response.ok) {
                     throw new Error(`HTTP error! status: ${response.status}`);
@@ -43,7 +43,7 @@ const Maps = () => {
             });
 
         // Fetch stations from the backend API
-        fetch("/charging_stations")
+        fetch("/charging_stations",{headers: {"x-access-token": `${token}`},})
             .then((response) => {
                 if (!response.ok) {
                     throw new Error(`HTTP error! status: ${response.status}`);
@@ -73,7 +73,7 @@ const Maps = () => {
             });
 
 
-    }, []);
+    }, [token]);
 
     const stationIcon = new L.Icon({
         iconUrl: "./src/assets/charging.png",

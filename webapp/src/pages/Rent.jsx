@@ -10,10 +10,10 @@ const Home = () => {
     const startPos=sessionStorage.getItem("startpos");
     const [bikes, setBikes] = useState([]);
     const navigate = useNavigate();
-  
+    let token = sessionStorage.getItem("token");
+
     async function createTrip() {
         const endpoint = `${baseURL}/trips/`;
-        let token = sessionStorage.getItem("token");
         const body = {
             bike_id: sessionId,
             customer_id: customerId,
@@ -35,7 +35,9 @@ const Home = () => {
             // Kontrollera om svaret innehåller data
             if (response.data) {
                 //alert("Trip har skapats!");
-                if (response.data) sessionStorage.setItem("tripId",response.data.tripId);
+                if (response.data){
+                    sessionStorage.setItem("tripId",response.data.tripId);
+                } 
                 //console.log(response.data.tripId); // Eller hur tripId finns i svaret
                 return response.data;
             } else {
@@ -64,7 +66,7 @@ const Home = () => {
     const handleSubmit = (event) => {
         event.preventDefault();
 
-        fetch("/bikes")
+        fetch("/bikes",{headers: {"x-access-token": `${token}`},})
             .then((response) => {
                 if (!response.ok) {
                     throw new Error(`HTTP error! status: ${response.status}`);

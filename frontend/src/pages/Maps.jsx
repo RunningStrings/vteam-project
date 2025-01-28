@@ -39,9 +39,9 @@ const Maps = () => {
         });
 
         // Clean up the socket connection on unmount
-        return () => {
-            socket.disconnect();
-        };
+        //return () => {
+        //    socket.disconnect();
+        //};
     }, []);
   
     useEffect(() => {

@@ -89,7 +89,7 @@ function Bike() {
     const [bikes, setBikes] = useState([]); // Deklarerar bikes
     //const [currentIndex, setCurrentIndex] = useState(0); 
     const [selectedBikeId, setSelectedBikeId] = useState(null); 
-    //let token=sessionStorage.getItem("token");
+    let token=sessionStorage.getItem("token");
     const bikeCoords=sessionStorage.getItem("coordinates");
   
     //let coordsFromSession="";
@@ -112,7 +112,7 @@ function Bike() {
     //let isMounted = true; // Add a flag to check if the component is still mounted
 
 
-        fetch("/bikes")
+        fetch("/bikes",{headers: {"x-access-token": `${token}`},})
             .then((response) => {
                 if (!response.ok) {
                     throw new Error(`HTTP error! status: ${response.status}`);
@@ -146,7 +146,7 @@ function Bike() {
         return () => {
             //isMounted = false; // Cleanup when the component unmounts
         };
-    }, []);
+    }, [token]);
 
     const handleBikeSelect = (evt) => {
         const bikeId = evt.target.value;
